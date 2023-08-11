@@ -346,7 +346,7 @@
             <div class="flex">
                 <h1 class="ml-8 md:ml-12 lg:ml-20 mt-12 text-2xl">P</h1>
                 <div class="block mt-10 mx-auto rounded-full border-2 border-slate-500 py-3 px-5">
-                    24
+                    24 
                 </div>
                 <h1 class="mr-8 md:mr-12 lg:mr-20 mt-12 text-2xl">T</h1>
             </div>
