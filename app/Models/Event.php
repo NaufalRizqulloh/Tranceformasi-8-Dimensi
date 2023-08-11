@@ -13,6 +13,7 @@ class Event extends Model
         'nama',
         'kode_akses',
         'institusi',
+        'tujuan_tes',
         'total_peserta',
         'tanggal_mulai',
         'tanggal_selesai',

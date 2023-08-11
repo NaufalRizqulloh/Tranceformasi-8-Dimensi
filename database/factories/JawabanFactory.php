@@ -91,9 +91,14 @@ class JawabanFactory extends Factory
             'value' => $section2Answer
         ];
 
+        // Leadership dimension
+        $arrayOfimensions = ['Pelopor', 'Tegas', 'Pemikir', 'Inklusif', 'Rendah Hati', 'Afirmasi', 'Penggerak', 'Berwibawa'];
+        $dimension = $arrayOfimensions[array_rand($arrayOfimensions)];
+
         return [
             'user_id' => random_int(1, 10),
             'event_id' => random_int(1, 5),
+            'dimensi_kepemimpinan' => $dimension,
             'type1_formatted_value' =>  json_encode($type1FormattedValue),
             'type2_formatted_value' =>  json_encode($type2FormattedValue),
             'progress' => 'selesai'

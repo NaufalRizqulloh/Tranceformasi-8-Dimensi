@@ -15,6 +15,8 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id');
             $table->foreignId('event_id');
+            $table->string('event_id');
+            $table->string('dimensi_kepemimpinan')->nullable();
             $table->json('type1_formatted_value')->nullable();
             $table->json('type2_formatted_value')->nullable();
             $table->string('progress');

@@ -34,10 +34,7 @@ Route::get('/user/hasil', [UserController::class, 'downloadHasil'])->middleware(
 /**
  * User form route section
  */
-Route::get('/user/form', [FormController::class, 'index'])->middleware('auth')->name('user.form.get');
-Route::post('/user/form', [FormController::class, 'store'])->middleware('auth')->name('user.form.create');
-Route::put('/user/form/update-path', [FormController::class, 'updatePath'])->middleware('auth')->name('user.form.update-path');
-Route::put('/user/form/update-submit', [FormController::class, 'updateSubmit'])->middleware('auth')->name('user.form.update-submit');
+Route::resource('user/form', FormController::class)->middleware('auth');
 
 Route::get('/user/form/terimakasih-sudah-mengisi', function () {
     return view('section-done');
@@ -46,8 +43,11 @@ Route::get('/user/form/terimakasih-sudah-mengisi', function () {
 /**
  * Admin route section
  */
+Route::resource('admin/event', AdminEventController::class)->middleware('admin');
 
-Route::resource('admin', AdminEventController::class)->middleware('admin');
+Route::get('admin/event/overview', [AdminEventController::class, 'overview'])->middleware('admin')->name('event.overview');
+
+/////////
 
 Route::get('/dashboard', function () {
     return view('dashboard');

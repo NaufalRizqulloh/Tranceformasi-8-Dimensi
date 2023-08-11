@@ -18,10 +18,10 @@ return new class extends Migration
             $table->string('jenis_kelamin');
             $table->string('email')->unique();
             $table->string('notelp');
-            //kota/kabupaten
-            //provinsi
+            $table->string('domisili'); 
             $table->smallInteger('usia');
             $table->string('pendidikan_terakhir');
+            // status [1 -> pelajar, 2 -> pekerja]
             $table->smallInteger('status');
             $table->string('institusi')->nullable();
             $table->string('jurusan')->nullable();

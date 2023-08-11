@@ -8,9 +8,6 @@ use App\Models\Jawaban;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Exception;
-use Illuminate\Http\Response;
-use Illuminate\Support\Facades\Redirect;
-use Illuminate\Support\Facades\Validator;
 use Validation;
 use Helpers\Data\DiscHelper;
 use Helpers\Data\SectionTwoHelper;
@@ -43,10 +40,7 @@ class FormController extends Controller
             }
         }
 
-        return response()->json([
-            'status' => '400',
-            'message' => 'Terjadi kesalahan : destination is required'
-        ], Response::HTTP_BAD_REQUEST);
+        return abort(404);
     }
 
     /**
@@ -83,8 +77,7 @@ class FormController extends Controller
                 'destination' => 'Section-1-1'
             ]);
         } catch (Exception $e) {
-            // return Redirect::back()->withErrors(['error' => 'Terjadi kesalahan ' . $e->getMessage()])->withInput();
-            dd("error");
+            return redirect()->back()->with('error', 'Terjadi kesalahan : ' . $e->getMessage());
         }
     }
 

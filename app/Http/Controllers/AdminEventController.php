@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Event;
 use App\Http\Controllers\Controller;
 use App\Models\Jawaban;
+use Helpers\Data\EventOverviewHelper;
 use Helpers\Data\EventStatHelper;
 use Illuminate\Http\Request;
 
@@ -29,7 +30,7 @@ class AdminEventController extends Controller
      */
     public function create()
     {
-        //
+        return redirect()->back()->with('create');
     }
 
     /**
@@ -41,7 +42,7 @@ class AdminEventController extends Controller
             'nama' => 'required|string|max:60',
             'kode-akses' => 'required|unique:events|string|max:25',
             'institusi' => 'required|string|255',
-            'total-peserta' => 'required|int',
+            'total-peserta' => 'required|integer',
             'tanggal-mulai' => 'required|date_format:o-m-d',
             'tanggal-selesai' => 'required|date_format:o-m-d',
             'deskripsi' => 'required|string|255'
@@ -66,29 +67,41 @@ class AdminEventController extends Controller
      */
     public function show(Event $event)
     {
-        $jawabanUsers = $event->jawabans();
+        $usersAnswer = $event->jawabans();
 
-        $userSudah = $jawabanUsers->where('progress', 'selesai')->get();
-        $userBelum = $jawabanUsers->where('progress', '!=', 'selesai')->get();
-        //cek apa pakai _ di orm
+        $finishedUser = $usersAnswer->where('progress', 'selesai')->get();
+        $unfinishedUser = $usersAnswer->where('progress', '!=', 'selesai')->get();
 
         // Gender Category = ['Laki-laki', 'Perempuan']
-        $usersGender = EventStatHelper::calculateGenderDispersion($jawabanUsers);
+        $usersGender = EventStatHelper::calculateGenderDispersion($usersAnswer);
+
         // Age Category = [<15, '15-20', '20-30', '30-40', '40-50', '50>']
-        $usersAge = EventStatHelper::calculateAgeDispersion($jawabanUsers);
-        // Age Category = [<15, '15-20', '20-30', '30-40', '40-50', '50>']
+        $usersAge = EventStatHelper::calculateAgeDispersion($usersAnswer);
+
+        // Education Category = ['sd', 'smp', 'sma', 'd1', 'd2', 'd3', 'd4', 's1', 's2', 's3']
+        $usersLastEducation = EventStatHelper::calculateEducationDispersion($usersAnswer);
+
+        /**
+         * ~ Size depends on users resident dispersion
+         * ~ Filtered by number
+         * Residence Category = ['X1' => 14, 'X2' => 7, 'X3' => 4]
+         */
+        $usersResidence = EventStatHelper::calculateResidenceDispersion($usersAnswer);
+
+        // 8 Dimensions Category = ['Pelopor', 'Penggerak', 'Afirmasi', 'Inklusif', 'Rendah Hati', 'Pemikir', 'Tegas', 'Berwibawa']
+        $usersDimension = EventStatHelper::calculate8DimensionsDispersion($usersAnswer);
 
         return view('', [
             'event' => $event,
-            'progress' => [$userSudah->count, $userBelum->count],
-            'kelamin' => [$usersGender[0], $usersGender[1]],
-            'usia' => [$usersAge[0], $usersAge[1], $usersAge[2], $usersAge[3], $usersAge[4]],
-            'pendidikan' => ['sd', 'smp', 'sma', 'd1', 'd2', 'd3', 'd4', 's1', 's2', 's3'],
-            'domisili' => 1,
-            'penyebaran8D' => ['pelopor', 'penggerak', 'afirmasi', 'inklusif', 'rendahhati', 'pemikir', 'tegas', 'berwibawa'],
+            'progress' => [$finishedUser->count, $unfinishedUser->count],
+            'kelamin' => $usersGender,
+            'usia' => $usersAge,
+            'pendidikan' => $usersLastEducation,
+            'domisili' => $usersResidence,
+            'penyebaran8D' => $usersDimension,
             'daftarUser' => [
-                'selesai' => 1,
-                'mengerjakan' => 2,
+                'selesai' => $finishedUser,
+                'mengerjakan' => $unfinishedUser,
             ],
         ]);
     }
@@ -98,6 +111,7 @@ class AdminEventController extends Controller
      */
     public function edit(Event $event)
     {
+        return redirect()->back()->with('edit', $event);
     }
 
     /**
@@ -109,7 +123,7 @@ class AdminEventController extends Controller
             'nama' => 'required|string|max:60',
             'kode_akses' => 'required|unique:events|string|max:25',
             'institusi' => 'required|string|255',
-            'total_peserta' => 'required|int',
+            'total_peserta' => 'required|integer',
             'tanggal_mulai' => 'required|date_format:o-m-d',
             'tanggal_selesai' => 'required|date_format:o-m-d',
             'deskripsi' => 'required|string|255'
@@ -122,5 +136,17 @@ class AdminEventController extends Controller
     public function destroy(Event $event)
     {
         //
+    }
+
+    public function overview()
+    {   
+        $allEvent = Event::all();
+        $allEventsResults = Event::with('jawabans')->get();
+
+        $eventsGoalStatistic = EventOverviewHelper::calculateEventsGoal($allEvent);
+
+        return view('', [
+            'tujuanEvent' => $eventsGoalStatistic
+        ]);
     }
 }

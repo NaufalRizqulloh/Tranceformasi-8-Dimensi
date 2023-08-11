@@ -21,6 +21,7 @@ class UserFactory extends Factory
             'name' => fake()->name(),
             'email' => fake()->unique()->safeEmail(),
             'tanggal_lahir' => fake()->dateTimeAD("now", "Asia/Jakarta"),
+            'domisili' => fake()->city() . ', ' . fake()->state(),
             'jenis_kelamin' => array_rand(["LAKI", "PEREMPUAN"]),
             'notelp' => fake()->phoneNumber(),
             'usia' => rand(15, 69),
@@ -36,7 +37,7 @@ class UserFactory extends Factory
 
         $arrayOfJurusan = ['Ilmu Pendidikan', 'Ilmu Pengetahuan Alam dan Matematika', 'Soshum', 'Informatika', 'Kedokteran dan Kesehatan', 'Hukum', 'Seni dan Desain', 'Komputer'];
         $jurusan = $arrayOfJurusan[array_rand($arrayOfJurusan)];
-        
+
         $dataStatus = [
             [
                 'status' => 1,

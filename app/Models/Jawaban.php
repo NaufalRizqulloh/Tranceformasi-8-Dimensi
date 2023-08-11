@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 class Jawaban extends Model
 {
     protected $fillable = [
+        'dimensi_kepemimpinan',
         'type1_formatted_value',
         'type2_formatted_value',
         'progress'
