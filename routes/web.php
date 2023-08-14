@@ -10,6 +10,8 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
+use Illuminate\Http\Request;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -25,16 +27,33 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/event-test/{event}', [AdminEventController::class, 'show']);
+
+Route::get('/request', function (Request $request) {
+    return view('form/section-1-1', [
+        'question' => [
+            '1.1' => 'd',
+            '1.2' => 's',
+            '1.3' => 'c',
+        ]
+    ]);
+});
+
+Route::get('/request-invalid', function (Request $request) {
+    return view('form/section-1-1', ['question' => ['1.1' => null]]);
+});
+
 /**
  * User route section
  */
-Route::get('/user', [UserController::class, 'index'])->name('user.dashboard');
+Route::get('/user', [UserController::class, 'index'])->middleware('auth')->name('user.dashboard');
 Route::get('/user/hasil', [UserController::class, 'downloadHasil'])->middleware('auth')->name('user.dashboard.download');
 
 /**
  * User form route section
  */
 Route::resource('user/form', FormController::class)->middleware('auth');
+Route::post('user/form/save-progress', [FormController::class, 'saveProgress'])->middleware('auth');
 
 Route::get('/user/form/terimakasih-sudah-mengisi', function () {
     return view('section-done');
@@ -82,7 +101,11 @@ Route::get('/section-1', function () {
     return view('.form.section-1-1 ');
 });
 
-Route::get('/section-2-1', function(){
+Route::get('/section-1-2', function () {
+    return view('.form.section-1-2');
+});
+
+Route::get('/section-2-1', function () {
     return view('form.section-2-1 ');
 });
 

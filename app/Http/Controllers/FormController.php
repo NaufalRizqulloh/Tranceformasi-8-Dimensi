@@ -21,18 +21,23 @@ class FormController extends Controller
     {
         if (request('destination')) {
             $destination = request('destination');
+            $progress = [
+                '1.1' => 'd',
+                '1.2' => 's',
+                '1.3' => 'c'
+            ];
 
             switch ($destination) {
                 case "section-1-1":
-                    return view('form/section-1-1');
+                    return view('form/section-1-1', ['question' => $progress]);
                 case "section-1-2":
-                    return view('form/section-1-2');
+                    return view('form/section-1-2', ['question' => $progress]);
                 case "section-1-3":
-                    return view('form/section-1-3');
+                    return view('form/section-1-3', ['question' => $progress]);
                 case "section-2-1":
-                    return view('form/section-2-1');
+                    return view('form/section-2-1', ['question' => $progress]);
                 case "section-2-2":
-                    return view('form/section-2-2');
+                    return view('form/section-2-2', ['question' => $progress]);
                 case "section-wait":
                     return view('form/section-wait');
                 default:
@@ -77,7 +82,7 @@ class FormController extends Controller
                 'destination' => 'Section-1-1'
             ]);
         } catch (Exception $e) {
-            return redirect()->back()->with('error', 'Terjadi kesalahan : ' . $e->getMessage());
+            return response()->with('error', 'Terjadi kesalahan : ' . $e->getMessage());
         }
     }
 
@@ -120,7 +125,6 @@ class FormController extends Controller
             return redirect()->route('user.form.get', [
                 'destination' => $currentPath
             ]);
-
         } else if ($answerSection1Col1 || $answerSection1Col2 || $answerSection2) {
             $mostValue = DiscHelper::normalizeDiscValue($answerSection1Col1);
             $leastValue = DiscHelper::normalizeDiscValue($answerSection1Col2);
@@ -143,8 +147,7 @@ class FormController extends Controller
             return redirect()->route('user.form.done');
         }
 
-        redirect()->back()->with('error', 'Terjadi kesalahan');
-        
+        response()->with('error', 'Terjadi kesalahan');
     }
 
     /**
@@ -153,5 +156,18 @@ class FormController extends Controller
     public function destroy(Jawaban $jawaban)
     {
         //
+    }
+
+    public function saveProgress(Request $request)
+    {
+        $progress = $request->progress;
+        $userId = auth()->user()->id;
+
+        if ($progress) {
+            $request->session()->put('progress-' . $userId, $progress);
+            return response()->noContent();
+        }
+
+        dd('error');
     }
 }

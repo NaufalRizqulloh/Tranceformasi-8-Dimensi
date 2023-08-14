@@ -3,6 +3,7 @@
 namespace Helpers\Data;
 
 use App\Models\Jawaban;
+use App\Models\User;
 use Exception;
 use Helpers\GeneralHelper;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -10,22 +11,22 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class EventStatHelper
 {
     // Harus instance dari model Jawaban & HasMany
-    private static function validateThisManyOfJawaban($jawabanUsers)
-    {
-        if (!$jawabanUsers instanceof HasMany && !$jawabanUsers->getRelated() instanceof Jawaban) {
-            throw new Exception("Variabel jawabanUsers bukan instance dari Jawaban & Hasmany");
-        }
-    }
+    // private static function validateThisManyOfJawaban($jawabanUsers)
+    // {
+    //     if (!$jawabanUsers instanceof HasMany && !$jawabanUsers->getRelated() instanceof Jawaban) {
+    //         throw new Exception("Variabel jawabanUsers bukan instance dari Jawaban & Hasmany");
+    //     }
+    // }
 
-    public static function calculateGenderDispersion($usersAnswer): array
+    public static function calculateGenderDispersion($users): array
     {
-        self::validateThisManyOfJawaban($usersAnswer);
+        // self::validateThisManyOfJawaban($users);
 
-        // Gender Category = ['Laki-laki', 'Perempuan']
+        // Gender Category = ['laki', 'perempuan']
         $usersGender = [0, 0];
 
-        foreach ($usersAnswer as $answer) {
-            $userGender = $answer->user()->jenis_kelamin;
+        foreach ($users as $user) {
+            $userGender = strtolower($user->jenis_kelamin);
 
             switch ($userGender) {
                 case 'laki':
@@ -40,15 +41,15 @@ class EventStatHelper
         return $usersGender;
     }
 
-    public static function calculateAgeDispersion($usersAnswer): array
+    public static function calculateAgeDispersion($users)
     {
-        self::validateThisManyOfJawaban($usersAnswer);
+        // self::validateThisManyOfJawaban($users);
 
         // Age Category = ['15-20', '20-30', '30-40', '40-50', '50>']
         $usersAge = [0, 0, 0, 0, 0];
 
-        foreach ($usersAnswer as $answer) {
-            $userAge = $answer->user()->usia;
+        foreach ($users as $answer) {
+            $userAge = $answer->usia;
 
             if (GeneralHelper::isBetweenAnd($userAge, 15, 20)) {
                 $usersAge[0] += 1;
@@ -62,19 +63,19 @@ class EventStatHelper
                 $usersAge[4] += 1;
             }
         }
-
+        
         return $usersAge;
     }
 
-    public static function calculateEducationDispersion($usersAnswer): array
+    public static function calculateEducationDispersion($users): array
     {
-        self::validateThisManyOfJawaban($usersAnswer);
+        // self::validateThisManyOfJawaban($users);
 
         // Education Category = ['sd', 'smp', 'sma', 'd1', 'd2', 'd3', 'd4', 's1', 's2', 's3']
         $usersEducation = [0, 0, 0, 0, 0, 0, 0, 0, 0,];
 
-        foreach ($usersAnswer as $answer) {
-            $userEducation = $answer->user()->pendidikan_terakhir;
+        foreach ($users as $answer) {
+            $userEducation = $answer->pendidikan_terakhir;
 
             switch ($userEducation) {
                 case 'sd':
@@ -113,9 +114,9 @@ class EventStatHelper
         return $usersEducation;
     }
 
-    public static function calculateResidenceDispersion($usersAnswer): array
+    public static function calculateResidenceDispersion($users): array
     {
-        self::validateThisManyOfJawaban($usersAnswer);
+        // self::validateThisManyOfJawaban($users);
 
         /**
          * ~ Size depends on users resident dispersion
@@ -124,8 +125,8 @@ class EventStatHelper
          */
         $usersResidence = [];
 
-        foreach ($usersAnswer as $answer) {
-            $userResidence = $answer->user()->domisili;
+        foreach ($users as $answer) {
+            $userResidence = $answer->domisili;
 
             if (array_key_exists($userResidence, $usersResidence)) {
                 $usersResidence[] = [$userResidence => 1];
@@ -137,14 +138,14 @@ class EventStatHelper
         return $usersResidence;
     }
 
-    public static function calculate8DimensionsDispersion($usersAnswer): array
+    public static function calculate8DimensionsDispersion($users): array
     {
-        self::validateThisManyOfJawaban($usersAnswer);
+        // self::validateThisManyOfJawaban($users);
 
         // 8 Dimensions Category = ['Pelopor', 'Penggerak', 'Afirmasi', 'Inklusif', 'Rendah Hati', 'Pemikir', 'Tegas', 'Berwibawa']
         $usersDimension = [0, 0, 0, 0, 0, 0, 0, 0];
 
-        foreach ($usersAnswer as $answer) {
+        foreach ($users as $answer) {
             $userDimension = $answer->dimensi_kepemimpinan;
 
             switch ($userDimension){

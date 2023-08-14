@@ -29,9 +29,9 @@ class EventFactory extends Factory
             'nama' => fake()->name(),
             'kode_akses' => fake()->password(5, 6),
             'institusi' => fake()->city() . $institution,
-            'total_peserta' => random_int(30, 300),
-            'tanggal_mulai' => fake()->dateTimeAD("now", "Asia/Jakarta"),
-            'tanggal_selesai' => fake()->dateTimeAD("now", "Asia/Jakarta"),
+            'total_peserta' => rand(30, 300),
+            'tanggal_mulai' => fake()->dateTime('now', 'Asia/Jakarta'),
+            'tanggal_selesai' => fake()->dateTime("now", "Asia/Jakarta"),
             'tujuan_tes' => $goal,
             'deskripsi' => fake()->text(),
             'is_expired' => $isExpired

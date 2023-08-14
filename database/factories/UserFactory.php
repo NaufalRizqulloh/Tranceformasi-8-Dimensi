@@ -17,15 +17,21 @@ class UserFactory extends Factory
      */
     public function definition(): array
     {
+        $arrayOfPendidikan = ["sd", "smp", "sma", "smk", "d1", "d2", "d3", "d4", "s1", "s2", "s3"];
+        $pendidikan = $arrayOfPendidikan[array_rand($arrayOfPendidikan)];
+        
+        $arrayOfGender = ["laki", "perempuan"];
+        $gender = $arrayOfGender[array_rand($arrayOfGender)];
+
         $coreData = [
             'name' => fake()->name(),
             'email' => fake()->unique()->safeEmail(),
             'tanggal_lahir' => fake()->dateTimeAD("now", "Asia/Jakarta"),
             'domisili' => fake()->city() . ', ' . fake()->state(),
-            'jenis_kelamin' => array_rand(["LAKI", "PEREMPUAN"]),
+            'jenis_kelamin' => $gender,
             'notelp' => fake()->phoneNumber(),
             'usia' => rand(15, 69),
-            'pendidikan_terakhir' => array_rand(["SD", "SMP", "SMA", "SMK", "D1", "D2", "D3", "D4", "S1", "S2", "S3"]),
+            'pendidikan_terakhir' => $pendidikan,
 
         ];
 

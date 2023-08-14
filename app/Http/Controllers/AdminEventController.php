@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Event;
 use App\Http\Controllers\Controller;
 use App\Models\Jawaban;
+use App\Models\User;
 use Helpers\Data\EventOverviewHelper;
 use Helpers\Data\EventStatHelper;
 use Illuminate\Http\Request;
@@ -30,7 +31,7 @@ class AdminEventController extends Controller
      */
     public function create()
     {
-        return redirect()->back()->with('create');
+        return response()->with('create');
     }
 
     /**
@@ -67,43 +68,58 @@ class AdminEventController extends Controller
      */
     public function show(Event $event)
     {
-        $usersAnswer = $event->jawabans();
+        $usersAnswer = $event->jawabans()->with('user')->get();
+        $users = $usersAnswer->pluck('user');
 
-        $finishedUser = $usersAnswer->where('progress', 'selesai')->get();
-        $unfinishedUser = $usersAnswer->where('progress', '!=', 'selesai')->get();
+        // $finishedUser = $usersAnswer->where('progress', 'selesai')->get();
+        // $unfinishedUser = $usersAnswer->where('progress', '!=', 'selesai')->get();
 
         // Gender Category = ['Laki-laki', 'Perempuan']
-        $usersGender = EventStatHelper::calculateGenderDispersion($usersAnswer);
+        // $usersGender = EventStatHelper::calculateGenderDispersion($usersAnswer);
 
         // Age Category = [<15, '15-20', '20-30', '30-40', '40-50', '50>']
-        $usersAge = EventStatHelper::calculateAgeDispersion($usersAnswer);
+        $usersAge = EventStatHelper::calculateAgeDispersion($users);
 
         // Education Category = ['sd', 'smp', 'sma', 'd1', 'd2', 'd3', 'd4', 's1', 's2', 's3']
-        $usersLastEducation = EventStatHelper::calculateEducationDispersion($usersAnswer);
+        // $usersLastEducation = EventStatHelper::calculateEducationDispersion($usersAnswer);
 
         /**
          * ~ Size depends on users resident dispersion
          * ~ Filtered by number
          * Residence Category = ['X1' => 14, 'X2' => 7, 'X3' => 4]
          */
-        $usersResidence = EventStatHelper::calculateResidenceDispersion($usersAnswer);
+        // $usersResidence = EventStatHelper::calculateResidenceDispersion($usersAnswer);
 
         // 8 Dimensions Category = ['Pelopor', 'Penggerak', 'Afirmasi', 'Inklusif', 'Rendah Hati', 'Pemikir', 'Tegas', 'Berwibawa']
-        $usersDimension = EventStatHelper::calculate8DimensionsDispersion($usersAnswer);
+        // $usersDimension = EventStatHelper::calculate8DimensionsDispersion($usersAnswer);
 
-        return view('', [
+        // return view('', [
+        //     'event' => $event,
+        //     'progress' => [$finishedUser->count, $unfinishedUser->count],
+        //     'kelamin' => $usersGender,
+        //     'usia' => $usersAge,
+        //     'pendidikan' => $usersLastEducation,
+        //     'domisili' => $usersResidence,
+        //     'penyebaran8D' => $usersDimension,
+        //     'daftarUser' => [
+        //         'selesai' => $finishedUser,
+        //         'mengerjakan' => $unfinishedUser,
+        //     ],
+        // ]);
+
+        return [
             'event' => $event,
-            'progress' => [$finishedUser->count, $unfinishedUser->count],
-            'kelamin' => $usersGender,
+            // 'progress' => [$finishedUser->count(), $unfinishedUser->count()],
+            // 'kelamin' => $usersGender,
             'usia' => $usersAge,
-            'pendidikan' => $usersLastEducation,
-            'domisili' => $usersResidence,
-            'penyebaran8D' => $usersDimension,
-            'daftarUser' => [
-                'selesai' => $finishedUser,
-                'mengerjakan' => $unfinishedUser,
-            ],
-        ]);
+            // 'pendidikan' => $usersLastEducation,
+            // 'domisili' => $usersResidence,
+            // 'penyebaran8D' => $usersDimension,
+            // 'daftarUser' => [
+            //     'selesai' => $finishedUser,
+            //     'mengerjakan' => $unfinishedUser,
+            // ],
+        ];
     }
 
     /**
@@ -111,7 +127,7 @@ class AdminEventController extends Controller
      */
     public function edit(Event $event)
     {
-        return redirect()->back()->with('edit', $event);
+        return response()->with('edit', $event);
     }
 
     /**
@@ -138,8 +154,9 @@ class AdminEventController extends Controller
         //
     }
 
+    // Belum jadi
     public function overview()
-    {   
+    {
         $allEvent = Event::all();
         $allEventsResults = Event::with('jawabans')->get();
 

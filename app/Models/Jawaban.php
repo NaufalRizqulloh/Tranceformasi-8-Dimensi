@@ -24,8 +24,4 @@ class Jawaban extends Model
     public function event(){
         return $this->belongsTo(Event::class);
     }
-
-    public function hasilPDF(){
-        return $this->hasOne(HasilPDF::class);
-    }
 }

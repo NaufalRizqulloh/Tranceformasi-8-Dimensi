@@ -2,14 +2,14 @@
 
 @section('content')
 
-<div class="mt-24 mx-auto w-[90%] md:w-[80%] lg:w-[60%]  sm:h-[66px] md:h-[125px] border-2 rounded-[15px] lg:rounded-[50px] bg-[#FFFFFF] text-[#000000]">
-    <h1 class="my-4 md:my-10 text-2xl md:text-4xl font-bold md:font-black text-center">PERSON ANALYSIS RESPONSE</h1>
+<div class="mt-24 mx-auto w-[90%] md:w-[80%] lg:w-[60%] h-fit border-2 rounded-[15px] lg:rounded-[50px] bg-[#FFFFFF] text-[#000000]">
+    <h1 class="my-4 md:my-10 text-xl md:text-4xl font-bold md:font-black text-center">PERSON ANALYSIS RESPONSE</h1>
 </div>
-<div class="mt-8 lg:mt-12 mx-auto w-[90%] md:w-[80%] lg:w-[60%] h-[277px] border-2 rounded-[15px] lg:rounded-[50px] bg-[#FFFFFF] text-[#000000]">
-    <h1 class="mt-8 text-center font-bold text-2xl">INSTRUKSI PENGERJAAN</h1>
-    <h4 class="ml-12 text-1xl mt-6">1. Jawablah dengan jujur berdasarkan parameter yang disediakan</h4>
-    <h4 class="ml-12 text-1xl mt-4">2. Sesuaikan dengan karakter dan pengalaman pribadi anda</h4>
-    <h4 class="ml-12 text-1xl mt-4">3. Pilihlah jawaban yang paling mendekati kecendrungan anda</h4>
+<div class="mt-8 lg:mt-12 mx-auto w-[90%] md:w-[80%] lg:w-[60%] h-fit border-2 rounded-[15px] lg:rounded-[50px] bg-[#FFFFFF] text-[#000000]">
+    <h1 class="mt-8 text-center font-bold text-xl md:text-2xl">INSTRUKSI PENGERJAAN</h1>
+    <h1 class="ml-12 mr-12 text-sm md:text-lg mt-6">1. Jawablah dengan jujur berdasarkan parameter yang disediakan</h1>
+    <h1 class="ml-12 mr-12 text-sm md:text-lg mt-4">2. Sesuaikan dengan karakter dan pengalaman pribadi anda</h1>
+    <h1 class="ml-12 mr-12 mb-8 text-sm md:text-lg mt-4">3. Pilihlah jawaban yang paling mendekati kecendrungan anda</h1>
 </div>
 
 <form action="">
@@ -18,10 +18,10 @@
     <h1 class="mt-10 mb-6 w-max block mx-auto text-center rounded-full border-2 border-slate-500 py-3 px-5">
         1
     </h1>
-    <h1 class="w-max block mx-auto text-center text-xl mb-24">
+    <h1 class="w-fit mx-auto block text-center text-xl mb-24">
         Saya cenderung lebih fokus pada tujuan yang ingin dicapai daripada <br> menghindari hal-hal yang tidak diinginkan.
     </h1>
-    <div class="flex-row w-full mx-auto block">
+    <div class="flex-row w-fit mx-auto block">
         <span class="ml-9 mr-5">Sangat Tidak Setuju</span>
         <input type="checkbox" id="1-1" class="peer/1-1 hidden single-checkbox"/>
             <label for="1-1" class="mt-8 ml-3 md:ml-6 lg:ml-6 select-none cursor-pointer rounded-full border-2 border-slate-400 py-[10px] px-5 transition-colors duration-200 ease-in-out peer-checked/1-1:bg-red-700 peer-checked/1-1:border-transparent mr-1"></label>
