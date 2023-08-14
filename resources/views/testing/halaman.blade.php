@@ -38,7 +38,7 @@
     </div>
     <div class="mt-24 w-[90%] h-[540px] border-2 bg-[#8404F4] rounded-[50px] mx-auto">
         <h1 class="text-4xl text-center mt-12 mb-4 text-[#F7F1F1]">
-            Selamat! Anda memiliki sifat Dimensi kepemimpinan
+            Selamat! Dimensi Kepemimpinan Anda Adalah :
         </h1>
         <hr class="w-3/4 mx-auto">
         <h1 class="text-6xl mt-12 font-black text-[#F7F1F1] text-center">
