@@ -8,6 +8,7 @@ use App\Models\Jawaban;
 use App\Models\User;
 use Helpers\Data\EventOverviewHelper;
 use Helpers\Data\EventStatHelper;
+use Helpers\GeneralHelper;
 use Illuminate\Http\Request;
 
 class AdminEventController extends Controller
@@ -69,33 +70,34 @@ class AdminEventController extends Controller
     public function show(Event $event)
     {
         $usersAnswer = $event->jawabans()->with('user')->get();
-        $users = $usersAnswer->pluck('user');
-
-        // $finishedUser = $usersAnswer->where('progress', 'selesai')->get();
-        // $unfinishedUser = $usersAnswer->where('progress', '!=', 'selesai')->get();
+        $users = GeneralHelper::returnUniqueModelsOnly($usersAnswer->pluck('user'));
+        // $users = $usersAnswer->pluck('user');
+        
+        $finishedUser = $usersAnswer->where('progress', '=', 'Selesai');
+        $unfinishedUser = $usersAnswer->where('progress', '!=', 'Selesai');
 
         // Gender Category = ['Laki-laki', 'Perempuan']
-        // $usersGender = EventStatHelper::calculateGenderDispersion($usersAnswer);
+        $usersGender = EventStatHelper::calculateGenderDispersion($users);
 
         // Age Category = [<15, '15-20', '20-30', '30-40', '40-50', '50>']
         $usersAge = EventStatHelper::calculateAgeDispersion($users);
 
-        // Education Category = ['sd', 'smp', 'sma', 'd1', 'd2', 'd3', 'd4', 's1', 's2', 's3']
-        // $usersLastEducation = EventStatHelper::calculateEducationDispersion($usersAnswer);
+        // Education Category = ['sd', 'smp', 'sma', 'smk', 'd1', 'd2', 'd3', 'd4', 's1', 's2', 's3']
+        $usersLastEducation = EventStatHelper::calculateEducationDispersion($users);
 
         /**
          * ~ Size depends on users resident dispersion
          * ~ Filtered by number
          * Residence Category = ['X1' => 14, 'X2' => 7, 'X3' => 4]
          */
-        // $usersResidence = EventStatHelper::calculateResidenceDispersion($usersAnswer);
+        $usersResidence = EventStatHelper::calculateResidenceDispersion($users);
 
         // 8 Dimensions Category = ['Pelopor', 'Penggerak', 'Afirmasi', 'Inklusif', 'Rendah Hati', 'Pemikir', 'Tegas', 'Berwibawa']
-        // $usersDimension = EventStatHelper::calculate8DimensionsDispersion($usersAnswer);
+        // $usersDimension = EventStatHelper::calculate8DimensionsDispersion($users);
 
         // return view('', [
         //     'event' => $event,
-        //     'progress' => [$finishedUser->count, $unfinishedUser->count],
+        //     'progress' => [count($finishedUser), count($unfinishedUser)],
         //     'kelamin' => $usersGender,
         //     'usia' => $usersAge,
         //     'pendidikan' => $usersLastEducation,
@@ -109,16 +111,16 @@ class AdminEventController extends Controller
 
         return [
             'event' => $event,
-            // 'progress' => [$finishedUser->count(), $unfinishedUser->count()],
-            // 'kelamin' => $usersGender,
+            'progress' => [count($finishedUser), count($unfinishedUser)],
+            'kelamin' => $usersGender,
             'usia' => $usersAge,
-            // 'pendidikan' => $usersLastEducation,
-            // 'domisili' => $usersResidence,
+            'pendidikan' => $usersLastEducation,
+            'domisili' => $usersResidence,
             // 'penyebaran8D' => $usersDimension,
-            // 'daftarUser' => [
-            //     'selesai' => $finishedUser,
-            //     'mengerjakan' => $unfinishedUser,
-            // ],
+            'daftarUser' => [
+                'selesai' => $finishedUser,
+                'mengerjakan' => $unfinishedUser,
+            ],
         ];
     }
 

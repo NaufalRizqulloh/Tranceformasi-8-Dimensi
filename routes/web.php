@@ -52,8 +52,11 @@ Route::get('/user/hasil', [UserController::class, 'downloadHasil'])->middleware(
 /**
  * User form route section
  */
-Route::resource('user/form', FormController::class)->middleware('auth');
-Route::post('user/form/save-progress', [FormController::class, 'saveProgress'])->middleware('auth');
+Route::resource('user/form', FormController::class)->middleware('auth')->only(['index', 'store']);
+Route::patch('users/update/{jawaban}', [FormController::class, 'updateProgress']);
+Route::put('users/update/{jawaban}', [FormController::class, 'submit']);
+
+Route::post('user/form/save-answer/{jawaban}', [FormController::class, 'saveAnswer'])->middleware('auth');
 
 Route::get('/user/form/terimakasih-sudah-mengisi', function () {
     return view('section-done');

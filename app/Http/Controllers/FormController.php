@@ -8,7 +8,7 @@ use App\Models\Jawaban;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Exception;
-use Validation;
+use Helpers\Validation\Validation;
 use Helpers\Data\DiscHelper;
 use Helpers\Data\SectionTwoHelper;
 
@@ -19,33 +19,6 @@ class FormController extends Controller
      */
     public function index()
     {
-        if (request('destination')) {
-            $destination = request('destination');
-            $progress = [
-                '1.1' => 'd',
-                '1.2' => 's',
-                '1.3' => 'c'
-            ];
-
-            switch ($destination) {
-                case "section-1-1":
-                    return view('form/section-1-1', ['question' => $progress]);
-                case "section-1-2":
-                    return view('form/section-1-2', ['question' => $progress]);
-                case "section-1-3":
-                    return view('form/section-1-3', ['question' => $progress]);
-                case "section-2-1":
-                    return view('form/section-2-1', ['question' => $progress]);
-                case "section-2-2":
-                    return view('form/section-2-2', ['question' => $progress]);
-                case "section-wait":
-                    return view('form/section-wait');
-                default:
-                    abort(404);
-            }
-        }
-
-        return abort(404);
     }
 
     /**
@@ -91,7 +64,33 @@ class FormController extends Controller
      */
     public function show(Jawaban $jawaban)
     {
-        //
+        if (request('destination')) {
+            $destination = request('destination');
+            $progress = [
+                '1.1' => 'd',
+                '1.2' => 's',
+                '1.3' => 'c'
+            ];
+
+            switch ($destination) {
+                case "section-1-1":
+                    return view('form/section-1-1', ['question' => $progress]);
+                case "section-1-2":
+                    return view('form/section-1-2', ['question' => $progress]);
+                case "section-1-3":
+                    return view('form/section-1-3', ['question' => $progress]);
+                case "section-2-1":
+                    return view('form/section-2-1', ['question' => $progress]);
+                case "section-2-2":
+                    return view('form/section-2-2', ['question' => $progress]);
+                case "section-wait":
+                    return view('form/section-wait');
+                default:
+                    abort(404);
+            }
+        }
+
+        return abort(404);
     }
 
     /**
@@ -137,11 +136,12 @@ class FormController extends Controller
                 'least_value' => $leastValue,
                 'change_value' => $changeValue
             ]);
+
             $jawaban->type2_formatted_value = json_encode([
                 'value' => $answerSection2
             ]);
 
-            $jawaban->progress = 'selesai';
+            $jawaban->progress = 'Selesai';
             $jawaban->save();
 
             return redirect()->route('user.form.done');
@@ -158,13 +158,32 @@ class FormController extends Controller
         //
     }
 
-    public function saveProgress(Request $request)
+    public function submit(Jawaban $jawaban)
     {
-        $progress = $request->progress;
-        $userId = auth()->user()->id;
+        request()->validate([
+            'destination' => 'required|string'
+        ]);
+    }
 
-        if ($progress) {
-            $request->session()->put('progress-' . $userId, $progress);
+    public function updateProgress(Jawaban $jawaban)
+    {
+        request()->validate([
+            'checkbox' => 'required',
+            'checkbox1' => 'required',
+        ]);
+    }
+
+    public function saveAnswer(Jawaban $jawaban)
+    {
+        request()->validate([
+            'answers' => 'required'
+        ]);
+
+        $answers = request()->answers;
+        $sessionKey = 'answer-' . $jawaban->id;
+
+        if ($answers) {
+            session([$sessionKey => $answers]);
             return response()->noContent();
         }
 

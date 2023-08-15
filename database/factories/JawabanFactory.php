@@ -101,7 +101,7 @@ class JawabanFactory extends Factory
             'dimensi_kepemimpinan' => $dimension,
             'type1_formatted_value' =>  json_encode($type1FormattedValue),
             'type2_formatted_value' =>  json_encode($type2FormattedValue),
-            'progress' => 'selesai'
+            'progress' => 'Selesai'
         ];
     }
 

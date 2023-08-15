@@ -22,7 +22,7 @@
         </div>
         <ul>
             <li class="flex h-auto">
-                <input type="checkbox" id="1-1-1" class="peer/1-1-1 hidden single-checkbox check1" value=""/>
+                <input type="checkbox" id="1-1-1" class="peer/1-1-1 hidden single-checkbox check1" value="" {{ $question['1.1'] == 'd' ? 'checked' : ''}}/>
                 <label for="1-1-1" class="mt-8 ml-4 md:ml-8 lg:ml-[4rem] select-none cursor-pointer rounded-full border-2 border-slate-400 h-10 w-10 transition-colors duration-200 ease-in-out peer-checked/1-1-1:bg-green-500 peer-checked/1-1-1:border-transparent mr-1"></label>
                 <div class="mt-8 text-center block align mx-auto h-auto w-[60%] text-md border-2 border-slate-400 rounded-full">
                     <h1 class="mt-[6px]">Yang penting ada hasil</h1>
@@ -52,7 +52,7 @@
                 <input type="checkbox" id="1-1-4" class="peer/1-1-4 hidden single-checkbox check4" />
                 <label for="1-1-4" class="mt-8 ml-4 md:ml-8 lg:ml-[4rem] select-none cursor-pointer rounded-full border-2 border-slate-400 h-10 w-10 transition-colors duration-200 ease-in-out peer-checked/1-1-4:bg-green-500 peer-checked/1-1-4:border-transparent mr-1"></label>
                 <div class="mt-8 text-center block align mx-auto h-auto w-[60%] text-md border-2 border-slate-400 rounded-full">
-                    <h1 class="mt-[6px]">Kerjakan bersama -sama</h1>
+                    <h1 class="mt-[6px]">Kerjakan bersama-sama</h1>
                 </div>
                 <input type="checkbox" id="1-2-4" class="peer/1-2-4 hidden single-checkbox1 check4" />
                 <label for="1-2-4" class="mt-8 mr-4 md:mr-8 lg:mr-[4rem] select-none cursor-pointer rounded-full border-2 border-slate-400 h-10 w-10 transition-colors duration-200 ease-in-out peer-checked/1-2-4:bg-green-500 peer-checked/1-2-4:border-transparent"></label>
@@ -119,7 +119,7 @@
                 <input type="checkbox" id="3-1-1" class="peer/3-1-1 hidden single-checkbox3 check31" />
                 <label for="3-1-1" class="mt-8 ml-4 md:ml-8 lg:ml-[4rem] select-none cursor-pointer rounded-full border-2 border-slate-400 h-10 w-10 transition-colors duration-200 ease-in-out peer-checked/3-1-1:bg-green-500 peer-checked/3-1-1:border-transparent mr-1"></label>
                 <div class="mt-8 text-center block align mx-auto h-auto w-[60%] text-md border-2 border-slate-400 rounded-full">
-                    <h1 class="mt-[6px]">Bersahabat, mudah bergaul</h1>
+                    <h1 class="mt-[6px]">Bersahabat dan mudah bergaul</h1>
                 </div>
                 <input type="checkbox" id="3-2-1" class="peer/3-2-1 hidden single-checkbox31 check31" />
                 <label for="3-2-1" class="mt-8 mr-4 md:mr-8 lg:mr-[4rem] select-none cursor-pointer rounded-full border-2 border-slate-400 h-10 w-10 transition-colors duration-200 ease-in-out peer-checked/3-2-1:bg-green-500 peer-checked/3-2-1:border-transparent"></label>
@@ -146,7 +146,7 @@
                 <input type="checkbox" id="3-1-4" class="peer/3-1-4 hidden single-checkbox3 check34" />
                 <label for="3-1-4" class="mt-8 ml-4 md:ml-8 lg:ml-[4rem] select-none cursor-pointer rounded-full border-2 border-slate-400 h-10 w-10 transition-colors duration-200 ease-in-out peer-checked/3-1-4:bg-green-500 peer-checked/3-1-4:border-transparent mr-1"></label>
                 <div class="mt-8 text-center block align mx-auto h-auto w-[60%] text-md border-2 border-slate-400 rounded-full">
-                    <h1 class="mt-[6px]">Ingin menetapkan goal/tujuan</h1>
+                    <h1 class="mt-[6px]">Ingin segala akurat dan pasti</h1>
                 </div>
                 <input type="checkbox" id="3-2-4" class="peer/3-2-4 hidden single-checkbox31 check34" />
                 <label for="3-2-4" class="mt-8 mr-4 md:mr-8 lg:mr-[4rem] select-none cursor-pointer rounded-full border-2 border-slate-400 h-10 w-10 transition-colors duration-200 ease-in-out peer-checked/3-2-4:bg-green-500 peer-checked/3-2-4:border-transparent"></label>
@@ -157,7 +157,7 @@
         <div class="flex">
             <h1 class="ml-8 md:ml-12 lg:ml-20 mt-12 text-2xl">P</h1>
             <div class="block mt-10 mx-auto rounded-full border-2 border-slate-500 py-3 px-5">
-                4
+                12
             </div>
             <h1 class="mr-8 md:mr-12 lg:mr-20 mt-12 text-2xl">T</h1>
         </div>
@@ -166,7 +166,7 @@
                 <input type="checkbox" id="4-1-1" class="peer/4-1-1 hidden single-checkbox4 check41" />
                 <label for="4-1-1" class="mt-8 ml-4 md:ml-8 lg:ml-[4rem] select-none cursor-pointer rounded-full border-2 border-slate-400 h-10 w-10 transition-colors duration-200 ease-in-out peer-checked/4-1-1:bg-green-500 peer-checked/4-1-1:border-transparent mr-1"></label>
                 <div class="mt-8 text-center block align mx-auto h-auto w-[60%] text-md border-2 border-slate-400 rounded-full">
-                    <h1 class="mt-[6px]">Menjadi frustasi</h1>
+                    <h1 class="mt-[6px]">Mengalah tidak suka pertentangan</h1>
                 </div>
                 <input type="checkbox" id="4-2-1" class="peer/4-2-1 hidden single-checkbox41 check41" />
                 <label for="4-2-1" class="mt-8 mr-4 md:mr-8 lg:mr-[4rem] select-none cursor-pointer rounded-full border-2 border-slate-400 h-10 w-10 transition-colors duration-200 ease-in-out peer-checked/4-2-1:bg-green-500 peer-checked/4-2-1:border-transparent"></label>
@@ -175,7 +175,7 @@
                 <input type="checkbox" id="4-1-2" class="peer/4-1-2 hidden single-checkbox4 check42" />
                 <label for="4-1-2" class="mt-8 ml-4 md:ml-8 lg:ml-[4rem] select-none cursor-pointer rounded-full border-2 border-slate-400 h-10 w-10 transition-colors duration-200 ease-in-out peer-checked/4-1-2:bg-green-500 peer-checked/4-1-2:border-transparent mr-1"></label>
                 <div class="mt-8 text-center block align mx-auto h-auto w-[60%] text-md border-2 border-slate-400 rounded-full">
-                    <h1 class="mt-[6px]">Memendam perasaan dalam hati</h1>
+                    <h1 class="mt-[6px]">Penuh dengan hal-hal kecil/detail</h1>
                 </div>
                 <input type="checkbox" id="4-2-2" class="peer/4-2-2 hidden single-checkbox41 check42" />
                 <label for="4-2-2" class="mt-8 mr-4 md:mr-8 lg:mr-[4rem] select-none cursor-pointer rounded-full border-2 border-slate-400 h-10 w-10 transition-colors duration-200 ease-in-out peer-checked/4-2-2:bg-green-500 peer-checked/4-2-2:border-transparent"></label>
@@ -184,7 +184,7 @@
                 <input type="checkbox" id="4-1-3" class="peer/4-1-3 hidden single-checkbox4 check43" />
                 <label for="4-1-3" class="mt-8 ml-4 md:ml-8 lg:ml-[4rem] select-none cursor-pointer rounded-full border-2 border-slate-400 h-10 w-10 transition-colors duration-200 ease-in-out peer-checked/4-1-3:bg-green-500 peer-checked/4-1-3:border-transparent mr-1"></label>
                 <div class="mt-8 text-center block align mx-auto h-auto w-[60%] text-md border-2 border-slate-400 rounded-full">
-                    <h1 class="mt-[6px]">Menyampaikan sudut pandang pribadi</h1>
+                    <h1 class="mt-[6px]">Berubah pada menit-menit terakhir</h1>
                 </div>
                 <input type="checkbox" id="4-2-3" class="peer/4-2-3 hidden single-checkbox41 check43" />
                 <label for="4-2-3" class="mt-8 mr-4 md:mr-8 lg:mr-[4rem] select-none cursor-pointer rounded-full border-2 border-slate-400 h-10 w-10 transition-colors duration-200 ease-in-out peer-checked/4-2-3:bg-green-500 peer-checked/4-2-3:border-transparent"></label>
@@ -193,7 +193,7 @@
                 <input type="checkbox" id="4-1-4" class="peer/4-1-4 hidden single-checkbox4 check44" />
                 <label for="4-1-4" class="mt-8 ml-4 md:ml-8 lg:ml-[4rem] select-none cursor-pointer rounded-full border-2 border-slate-400 h-10 w-10 transition-colors duration-200 ease-in-out peer-checked/4-1-4:bg-green-500 peer-checked/4-1-4:border-transparent mr-1"></label>
                 <div class="mt-8 text-center block align mx-auto h-auto w-[60%] text-md border-2 border-slate-400 rounded-full">
-                    <h1 class="mt-[6px]">Berani menghadapi oposisi</h1>
+                    <h1 class="mt-[6px]">Mendesak, memaksa, agak kasar</h1>
                 </div>
                 <input type="checkbox" id="4-2-4" class="peer/4-2-4 hidden single-checkbox41 check44" />
                 <label for="4-2-4" class="mt-8 mr-4 md:mr-8 lg:mr-[4rem] select-none cursor-pointer rounded-full border-2 border-slate-400 h-10 w-10 transition-colors duration-200 ease-in-out peer-checked/4-2-4:bg-green-500 peer-checked/4-2-4:border-transparent"></label>
@@ -204,7 +204,7 @@
         <div class="flex">
             <h1 class="ml-8 md:ml-12 lg:ml-20 mt-12 text-2xl">P</h1>
             <div class="block mt-10 mx-auto rounded-full border-2 border-slate-500 py-3 px-5">
-                5
+                13
             </div>
             <h1 class="mr-8 md:mr-12 lg:mr-20 mt-12 text-2xl">T</h1>
         </div>
@@ -213,7 +213,7 @@
                 <input type="checkbox" id="5-1-1" class="peer/5-1-1 hidden single-checkbox5 check51" />
                 <label for="5-1-1" class="mt-8 ml-4 md:ml-8 lg:ml-[4rem] select-none cursor-pointer rounded-full border-2 border-slate-400 h-10 w-10 transition-colors duration-200 ease-in-out peer-checked/5-1-1:bg-green-500 peer-checked/5-1-1:border-transparent mr-1"></label>
                 <div class="mt-8 text-center block align mx-auto h-auto w-[60%] text-md border-2 border-slate-400 rounded-full">
-                    <h1 class="mt-[6px]">Hidup/lincah banyak bicara</h1>
+                    <h1 class="mt-[6px]">Ingin kemajuan/peningkatan</h1>
                 </div>
                 <input type="checkbox" id="5-2-1" class="peer/5-2-1 hidden single-checkbox51 check51" />
                 <label for="5-2-1" class="mt-8 mr-4 md:mr-8 lg:mr-[4rem] select-none cursor-pointer rounded-full border-2 border-slate-400 h-10 w-10 transition-colors duration-200 ease-in-out peer-checked/5-2-1:bg-green-500 peer-checked/5-2-1:border-transparent"></label>
@@ -222,7 +222,7 @@
                 <input type="checkbox" id="5-1-2" class="peer/5-1-2 hidden single-checkbox5 check52" />
                 <label for="5-1-2" class="mt-8 ml-4 md:ml-8 lg:ml-[4rem] select-none cursor-pointer rounded-full border-2 border-slate-400 h-10 w-10 transition-colors duration-200 ease-in-out peer-checked/5-1-2:bg-green-500 peer-checked/5-1-2:border-transparent mr-1"></label>
                 <div class="mt-8 text-center block align mx-auto h-auto w-[60%] text-md border-2 border-slate-400 rounded-full">
-                    <h1 class="mt-[6px]">Cepat, penuh keyakinan</h1>
+                    <h1 class="mt-[6px]">Puas dengan keadaan tenang/mudah puas</h1>
                 </div>
                 <input type="checkbox" id="5-2-2" class="peer/5-2-2 hidden single-checkbox51 check52" />
                 <label for="5-2-2" class="mt-8 mr-4 md:mr-8 lg:mr-[4rem] select-none cursor-pointer rounded-full border-2 border-slate-400 h-10 w-10 transition-colors duration-200 ease-in-out peer-checked/5-2-2:bg-green-500 peer-checked/5-2-2:border-transparent"></label>
@@ -231,7 +231,7 @@
                 <input type="checkbox" id="5-1-3" class="peer/5-1-3 hidden single-checkbox5 check53" />
                 <label for="5-1-3" class="mt-8 ml-4 md:ml-8 lg:ml-[4rem] select-none cursor-pointer rounded-full border-2 border-slate-400 h-10 w-10 transition-colors duration-200 ease-in-out peer-checked/5-1-3:bg-green-500 peer-checked/5-1-3:border-transparent mr-1"></label>
                 <div class="mt-8 text-center block align mx-auto h-auto w-[60%] text-md border-2 border-slate-400 rounded-full">
-                    <h1 class="mt-[6px]">Berusaha menjaga keseimbangan</h1>
+                    <h1 class="mt-[6px]">Menunjukan perasaan dengan terbuka</h1>
                 </div>
                 <input type="checkbox" id="5-2-3" class="peer/5-2-3 hidden single-checkbox51 check53" />
                 <label for="5-2-3" class="mt-8 mr-4 md:mr-8 lg:mr-[4rem] select-none cursor-pointer rounded-full border-2 border-slate-400 h-10 w-10 transition-colors duration-200 ease-in-out peer-checked/5-2-3:bg-green-500 peer-checked/5-2-3:border-transparent"></label>
@@ -240,7 +240,7 @@
                 <input type="checkbox" id="5-1-4" class="peer/5-1-4 hidden single-checkbox5 check54" />
                 <label for="5-1-4" class="mt-8 ml-4 md:ml-8 lg:ml-[4rem] select-none cursor-pointer rounded-full border-2 border-slate-400 h-10 w-10 transition-colors duration-200 ease-in-out peer-checked/5-1-4:bg-green-500 peer-checked/5-1-4:border-transparent mr-1"></label>
                 <div class="mt-8 text-center block align mx-auto h-auto w-[60%] text-md border-2 border-slate-400 rounded-full">
-                    <h1 class="mt-[6px]">Berusaha pada peraturan</h1>
+                    <h1 class="mt-[6px]">Rendah hati/sederhana</h1>
                 </div>
                 <input type="checkbox" id="5-2-4" class="peer/5-2-4 hidden single-checkbox51 check54" />
                 <label for="5-2-4" class="mt-8 mr-4 md:mr-8 lg:mr-[4rem] select-none cursor-pointer rounded-full border-2 border-slate-400 h-10 w-10 transition-colors duration-200 ease-in-out peer-checked/5-2-4:bg-green-500 peer-checked/5-2-4:border-transparent"></label>
@@ -252,7 +252,7 @@
         <div class="flex">
             <h1 class="ml-8 md:ml-12 lg:ml-20 mt-12 text-2xl">P</h1>
             <div class="block mt-10 mx-auto rounded-full border-2 border-slate-500 py-3 px-5">
-                6
+                14
             </div>
             <h1 class="mr-8 md:mr-12 lg:mr-20 mt-12 text-2xl">T</h1>
         </div>
@@ -261,7 +261,7 @@
                 <input type="checkbox" id="6-1-1" class="peer/6-1-1 hidden single-checkbox6 check61" />
                 <label for="6-1-1" class="mt-8 ml-4 md:ml-8 lg:ml-[4rem] select-none cursor-pointer rounded-full border-2 border-slate-400 h-10 w-10 transition-colors duration-200 ease-in-out peer-checked/6-1-1:bg-green-500 peer-checked/6-1-1:border-transparent mr-1"></label>
                 <div class="mt-8 text-center block align mx-auto h-auto w-[60%] text-md border-2 border-slate-400 rounded-full">
-                    <h1 class="mt-[6px]">Mengelola waktu dengan efisien</h1>
+                    <h1 class="mt-[6px]">Tenang, pendiam, tertup</h1>
                 </div>
                 <input type="checkbox" id="6-2-1" class="peer/6-2-1 hidden single-checkbox61 check61" />
                 <label for="6-2-1" class="mt-8 mr-4 md:mr-8 lg:mr-[4rem] select-none cursor-pointer rounded-full border-2 border-slate-400 h-10 w-10 transition-colors duration-200 ease-in-out peer-checked/6-2-1:bg-green-500 peer-checked/6-2-1:border-transparent"></label>
@@ -270,7 +270,7 @@
                 <input type="checkbox" id="6-1-2" class="peer/6-1-2 hidden single-checkbox6 check62" />
                 <label for="6-1-2" class="mt-8 ml-4 md:ml-8 lg:ml-[4rem] select-none cursor-pointer rounded-full border-2 border-slate-400 h-10 w-10 transition-colors duration-200 ease-in-out peer-checked/6-1-2:bg-green-500 peer-checked/6-1-2:border-transparent mr-1"></label>
                 <div class="mt-8 text-center block align mx-auto h-auto w-[60%] text-md border-2 border-slate-400 rounded-full">
-                    <h1 class="mt-[6px]">Sering terburu buru, merasa ditekan</h1>
+                    <h1 class="mt-[6px]">Gembira, bebas, riang</h1>
                 </div>
                 <input type="checkbox" id="6-2-2" class="peer/6-2-2 hidden single-checkbox61 check62" />
                 <label for="6-2-2" class="mt-8 mr-4 md:mr-8 lg:mr-[4rem] select-none cursor-pointer rounded-full border-2 border-slate-400 h-10 w-10 transition-colors duration-200 ease-in-out peer-checked/6-2-2:bg-green-500 peer-checked/6-2-2:border-transparent"></label>
@@ -279,7 +279,7 @@
                 <input type="checkbox" id="6-1-3" class="peer/6-1-3 hidden single-checkbox6 check63" />
                 <label for="6-1-3" class="mt-8 ml-4 md:ml-8 lg:ml-[4rem] select-none cursor-pointer rounded-full border-2 border-slate-400 h-10 w-10 transition-colors duration-200 ease-in-out peer-checked/6-1-3:bg-green-500 peer-checked/6-1-3:border-transparent mr-1"></label>
                 <div class="mt-8 text-center block align mx-auto h-auto w-[60%] text-md border-2 border-slate-400 rounded-full">
-                    <h1 class="mt-[6px]">Hal-hal sosial adalah penting</h1>
+                    <h1 class="mt-[6px]">Menyenangkan, baik hati</h1>
                 </div>
                 <input type="checkbox" id="6-2-3" class="peer/6-2-3 hidden single-checkbox61 check63" />
                 <label for="6-2-3" class="mt-8 mr-4 md:mr-8 lg:mr-[4rem] select-none cursor-pointer rounded-full border-2 border-slate-400 h-10 w-10 transition-colors duration-200 ease-in-out peer-checked/6-2-3:bg-green-500 peer-checked/6-2-3:border-transparent"></label>
@@ -288,7 +288,7 @@
                 <input type="checkbox" id="6-1-4" class="peer/6-1-4 hidden single-checkbox6 check64" />
                 <label for="6-1-4" class="mt-8 ml-4 md:ml-8 lg:ml-[4rem] select-none cursor-pointer rounded-full border-2 border-slate-400 h-10 w-10 transition-colors duration-200 ease-in-out peer-checked/6-1-4:bg-green-500 peer-checked/6-1-4:border-transparent mr-1"></label>
                 <div class="mt-8 text-center block align mx-auto h-auto w-[60%] text-md border-2 border-slate-400 rounded-full">
-                    <h1 class="mt-[6px]">Suka menyelesaikan hal yang sudah dimulai</h1>
+                    <h1 class="mt-[6px]">Menyolok, berani</h1>
                 </div>
                 <input type="checkbox" id="6-2-4" class="peer/6-2-4 hidden single-checkbox61 check64" />
                 <label for="6-2-4" class="mt-8 mr-4 md:mr-8 lg:mr-[4rem] select-none cursor-pointer rounded-full border-2 border-slate-400 h-10 w-10 transition-colors duration-200 ease-in-out peer-checked/6-2-4:bg-green-500 peer-checked/6-2-4:border-transparent"></label>
@@ -299,7 +299,7 @@
         <div class="flex">
             <h1 class="ml-8 md:ml-12 lg:ml-20 mt-12 text-2xl">P</h1>
             <div class="block mt-10 mx-auto rounded-full border-2 border-slate-500 py-3 px-5">
-                7
+                15
             </div>
             <h1 class="mr-8 md:mr-12 lg:mr-20 mt-12 text-2xl">T</h1>
         </div>
@@ -308,7 +308,7 @@
                 <input type="checkbox" id="7-1-1" class="peer/7-1-1 hidden single-checkbox7 check71" />
                 <label for="7-1-1" class="mt-8 ml-4 md:ml-8 lg:ml-[4rem] select-none cursor-pointer rounded-full border-2 border-slate-400 h-10 w-10 transition-colors duration-200 ease-in-out peer-checked/7-1-1:bg-green-500 peer-checked/7-1-1:border-transparent mr-1"></label>
                 <div class="mt-8 text-center block align mx-auto h-auto w-[60%] text-md border-2 border-slate-400 rounded-full">
-                    <h1 class="mt-[6px]">Menolak perubahan yang mendadak</h1>
+                    <h1 class="mt-[6px]">Menyediakan waktu untuk orang lain</h1>
                 </div>
                 <input type="checkbox" id="7-2-1" class="peer/7-2-1 hidden single-checkbox71 check71" />
                 <label for="7-2-1" class="mt-8 mr-4 md:mr-8 lg:mr-[4rem] select-none cursor-pointer rounded-full border-2 border-slate-400 h-10 w-10 transition-colors duration-200 ease-in-out peer-checked/7-2-1:bg-green-500 peer-checked/7-2-1:border-transparent"></label>
@@ -317,7 +317,7 @@
                 <input type="checkbox" id="7-1-2" class="peer/7-1-2 hidden single-checkbox7 check72" />
                 <label for="7-1-2" class="mt-8 ml-4 md:ml-8 lg:ml-[4rem] select-none cursor-pointer rounded-full border-2 border-slate-400 h-10 w-10 transition-colors duration-200 ease-in-out peer-checked/7-1-2:bg-green-500 peer-checked/7-1-2:border-transparent mr-1"></label>
                 <div class="mt-8 text-center block align mx-auto h-auto w-[60%] text-md border-2 border-slate-400 rounded-full">
-                    <h1 class="mt-[6px]">Cenderung terlalu banyak berjanji</h1>
+                    <h1 class="mt-[6px]">Merencanakan masa depan, bersiap-siap</h1>
                 </div>
                 <input type="checkbox" id="7-2-2" class="peer/7-2-2 hidden single-checkbox71 check72" />
                 <label for="7-2-2" class="mt-8 mr-4 md:mr-8 lg:mr-[4rem] select-none cursor-pointer rounded-full border-2 border-slate-400 h-10 w-10 transition-colors duration-200 ease-in-out peer-checked/7-2-2:bg-green-500 peer-checked/7-2-2:border-transparent"></label>
@@ -326,7 +326,7 @@
                 <input type="checkbox" id="7-1-3" class="peer/7-1-3 hidden single-checkbox7 check73" />
                 <label for="7-1-3" class="mt-8 ml-4 md:ml-8 lg:ml-[4rem] select-none cursor-pointer rounded-full border-2 border-slate-400 h-10 w-10 transition-colors duration-200 ease-in-out peer-checked/7-1-3:bg-green-500 peer-checked/7-1-3:border-transparent mr-1"></label>
                 <div class="mt-8 text-center block align mx-auto h-auto w-[60%] text-md border-2 border-slate-400 rounded-full">
-                    <h1 class="mt-[6px]">Mundur apabila di bawah tekanan</h1>
+                    <h1 class="mt-[6px]">Menuju petualangan baru</h1>
                 </div>
                 <input type="checkbox" id="7-2-3" class="peer/7-2-3 hidden single-checkbox71 check73" />
                 <label for="7-2-3" class="mt-8 mr-4 md:mr-8 lg:mr-[4rem] select-none cursor-pointer rounded-full border-2 border-slate-400 h-10 w-10 transition-colors duration-200 ease-in-out peer-checked/7-2-3:bg-green-500 peer-checked/7-2-3:border-transparent"></label>
@@ -335,7 +335,7 @@
                 <input type="checkbox" id="7-1-4" class="peer/7-1-4 hidden single-checkbox7 check74" />
                 <label for="7-1-4" class="mt-8 ml-4 md:ml-8 lg:ml-[4rem] select-none cursor-pointer rounded-full border-2 border-slate-400 h-10 w-10 transition-colors duration-200 ease-in-out peer-checked/7-1-4:bg-green-500 peer-checked/7-1-4:border-transparent mr-1"></label>
                 <div class="mt-8 text-center block align mx-auto h-auto w-[60%] text-md border-2 border-slate-400 rounded-full">
-                    <h1 class="mt-[6px]">Tidak takut untuk berkelahi</h1>
+                    <h1 class="mt-[6px]">Menerima penghargaan atas pencapaian target</h1>
                 </div>
                 <input type="checkbox" id="7-2-4" class="peer/7-2-4 hidden single-checkbox71 check74" />
                 <label for="7-2-4" class="mt-8 mr-4 md:mr-8 lg:mr-[4rem] select-none cursor-pointer rounded-full border-2 border-slate-400 h-10 w-10 transition-colors duration-200 ease-in-out peer-checked/7-2-4:bg-green-500 peer-checked/7-2-4:border-transparent"></label>
@@ -346,7 +346,7 @@
         <div class="flex">
             <h1 class="ml-8 md:ml-12 lg:ml-20 mt-12 text-2xl">P</h1>
             <div class="block mt-10 mx-auto rounded-full border-2 border-slate-500 py-3 px-5">
-                8
+                16
             </div>
             <h1 class="mr-8 md:mr-12 lg:mr-20 mt-12 text-2xl">T</h1>
         </div>
@@ -355,7 +355,7 @@
                 <input type="checkbox" id="8-1-1" class="peer/8-1-1 hidden single-checkbox8 check81" />
                 <label for="8-1-1" class="mt-8 ml-4 md:ml-8 lg:ml-[4rem] select-none cursor-pointer rounded-full border-2 border-slate-400 h-10 w-10 transition-colors duration-200 ease-in-out peer-checked/8-1-1:bg-green-500 peer-checked/8-1-1:border-transparent mr-1"></label>
                 <div class="mt-8 text-center block align mx-auto h-auto w-[60%] text-md border-2 border-slate-400 rounded-full">
-                    <h1 class="mt-[6px]">Penyemangat/pendukung yang baik</h1>
+                    <h1 class="mt-[6px]">Peraturan perlu diuji</h1>
                 </div>
                 <input type="checkbox" id="8-2-1" class="peer/8-2-1 hidden single-checkbox81 check81" />
                 <label for="8-2-1" class="mt-8 mr-4 md:mr-8 lg:mr-[4rem] select-none cursor-pointer rounded-full border-2 border-slate-400 h-10 w-10 transition-colors duration-200 ease-in-out peer-checked/8-2-1:bg-green-500 peer-checked/8-2-1:border-transparent"></label>
@@ -364,7 +364,7 @@
                 <input type="checkbox" id="8-1-2" class="peer/8-1-2 hidden single-checkbox8 check82" />
                 <label for="8-1-2" class="mt-8 ml-4 md:ml-8 lg:ml-[4rem] select-none cursor-pointer rounded-full border-2 border-slate-400 h-10 w-10 transition-colors duration-200 ease-in-out peer-checked/8-1-2:bg-green-500 peer-checked/8-1-2:border-transparent mr-1"></label>
                 <div class="mt-8 text-center block align mx-auto h-auto w-[60%] text-md border-2 border-slate-400 rounded-full">
-                    <h1 class="mt-[6px]">Pendengar yang baik</h1>
+                    <h1 class="mt-[6px]">Peraturan membuat menjadi adil</h1>
                 </div>
                 <input type="checkbox" id="8-2-2" class="peer/8-2-2 hidden single-checkbox81 check82" />
                 <label for="8-2-2" class="mt-8 mr-4 md:mr-8 lg:mr-[4rem] select-none cursor-pointer rounded-full border-2 border-slate-400 h-10 w-10 transition-colors duration-200 ease-in-out peer-checked/8-2-2:bg-green-500 peer-checked/8-2-2:border-transparent"></label>
@@ -373,7 +373,7 @@
                 <input type="checkbox" id="8-1-3" class="peer/8-1-3 hidden single-checkbox8 check83" />
                 <label for="8-1-3" class="mt-8 ml-4 md:ml-8 lg:ml-[4rem] select-none cursor-pointer rounded-full border-2 border-slate-400 h-10 w-10 transition-colors duration-200 ease-in-out peer-checked/8-1-3:bg-green-500 peer-checked/8-1-3:border-transparent mr-1"></label>
                 <div class="mt-8 text-center block align mx-auto h-auto w-[60%] text-md border-2 border-slate-400 rounded-full">
-                    <h1 class="mt-[6px]">Penganalisa yang baik</h1>
+                    <h1 class="mt-[6px]">Peraturan membuat menjadi membosankan</h1>
                 </div>
                 <input type="checkbox" id="8-2-3" class="peer/8-2-3 hidden single-checkbox81 check83" />
                 <label for="8-2-3" class="mt-8 mr-4 md:mr-8 lg:mr-[4rem] select-none cursor-pointer rounded-full border-2 border-slate-400 h-10 w-10 transition-colors duration-200 ease-in-out peer-checked/8-2-3:bg-green-500 peer-checked/8-2-3:border-transparent"></label>
@@ -382,7 +382,7 @@
                 <input type="checkbox" id="8-1-4" class="peer/8-1-4 hidden single-checkbox8 check84" />
                 <label for="8-1-4" class="mt-8 ml-4 md:ml-8 lg:ml-[4rem] select-none cursor-pointer rounded-full border-2 border-slate-400 h-10 w-10 transition-colors duration-200 ease-in-out peer-checked/8-1-4:bg-green-500 peer-checked/8-1-4:border-transparent mr-1"></label>
                 <div class="mt-8 text-center block align mx-auto h-auto w-[60%] text-md border-2 border-slate-400 rounded-full">
-                    <h1 class="mt-[6px]">Pendelegasian yang baik/pandai membagi tugas</h1>
+                    <h1 class="mt-[6px]">Peraturan membuat menjadi aman</h1>
                 </div>
                 <input type="checkbox" id="8-2-4" class="peer/8-2-4 hidden single-checkbox81 check84" />
                 <label for="8-2-4" class="mt-8 mr-4 md:mr-8 lg:mr-[4rem] select-none cursor-pointer rounded-full border-2 border-slate-400 h-10 w-10 transition-colors duration-200 ease-in-out peer-checked/8-2-4:bg-green-500 peer-checked/8-2-4:border-transparent"></label>
@@ -412,4 +412,4 @@
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-@endsection 
+@endsection
