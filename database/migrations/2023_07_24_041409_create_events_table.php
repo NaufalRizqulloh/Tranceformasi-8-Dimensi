@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('deskripsi');
             $table->string('tujuan_tes');
             //tujuan pengambilan test [personaldev, careerdev]
-            $table->boolean('is_expired')->nullable();
+            $table->boolean('is_expired');
             $table->timestamps();
         });
     }

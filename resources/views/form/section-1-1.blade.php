@@ -10,7 +10,7 @@
     <h4 class="ml-12 mr-12 text-1xl mt-4">2. Jawaban yang sudah dipilih di baris P tidak boleh dipilih kembali di baris T, maupun sebaliknya </h4>
     <h4 class="mb-8 ml-12 mr-12 text-1xl mt-4">3. Pilihlah jawaban yang sesuai dengan karakter anda</h4>
 </div>
-<form action="">
+<form action="/hasil" method="GET">
     @csrf
     <div class="mt-8 md:mt-12 mx-auto w-[90%] md:w-[80%] lg:w-[60%] h-fit border-2 rounded-[15px] lg:rounded-[50px] bg-[#FFFFFF]">
         <div class="flex">
@@ -389,15 +389,15 @@
             </li>
         </ul>
     </div> 
+    <div class="mx-auto w-fit space-x-8 md:space-x-16">
+        <button class="mt-8 text-lg md:text-xl py-2 w-[150px] md:w-[200px] h-93 border-2 rounded-full bg-[#ffffff] text-center">
+            Kembali
+        </button>
+        <button type="submit" class="mt-8 text-lg md:text-xl py-2 w-[150px] md:w-[200px] h-93 border-2 rounded-full bg-[#ffffff] text-center">
+            Selanjutnya
+        </button>
+    </div>
 </form>
-<div class="mx-auto w-fit space-x-8 md:space-x-16">
-    <button class="mt-8 text-lg md:text-xl py-2 w-[150px] md:w-[200px] h-93 border-2 rounded-full bg-[#ffffff] text-center">
-        Kembali
-    </button>
-    <button class="mt-8 text-lg md:text-xl py-2 w-[150px] md:w-[200px] h-93 border-2 rounded-full bg-[#ffffff] text-center">
-        Selanjutnya
-    </button>
-</div>
 
 <!-- <label for="domisili">Pilih Domisili:</label>
 <input type="text" id="domisiliInput" list="domisiliList" name="domisili">

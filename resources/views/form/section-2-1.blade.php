@@ -19,7 +19,7 @@
         1
     </h1>
     <div class="ml-3 mr-3">
-        <h1 class="w-fit mx-auto block text-center text-lg sm:text-xl mb-8 md:mb-12">
+        <h1 class="w-fit mx-auto block text-center text-lg sm:text-xl mb-2 md:mb-4">
             Saya cenderung lebih fokus pada tujuan yang ingin dicapai daripada <br> menghindari hal-hal yang tidak diinginkan.
         </h1>
     </div>
@@ -47,7 +47,7 @@
             peer-checked/1-6:bg-green-400 peer-checked/1-6:border-transparent mr-1 text-center text-xs sm:text-base pt-[10px] peer-checked/1-6:text-white peer-checked/1-5:text-white peer-checked/1-4:text-white">
                 4
             </label>
-            <label for="1-5" class="mt-8 ml-2 sm:ml-6 select-none cursor-pointer rounded-full border-2 border-slate-400 h-10 w-10 sm:h-12 sm:w-12 transition-colors duration-200 ease-in-out peer-checked/1-5:bg-green-500 peer-checked/1-5:border-transparent peer-checked/1-6:bg-green-400 peer-checked/1-6:border-transparent  mr-1 text-center text-xs sm:text-base pt-[10px] peer-checked/1-6:text-white peer-checked/1-5:text-white">
+            <label for="1-5" class="mt-8 ml-2 sm:ml-6 select-none cursor-pointer rounded-full border-2 border-slate-400 h-10 w-10 sm:h-12 sm:w-12 transition-colors duration-200 ease-in-out peer-checked/1-5:bg-green-500 peer-checked/1-5:border-transparent peer-checked/1-6:bg-green-500 peer-checked/1-6:border-transparent  mr-1 text-center text-xs sm:text-base pt-[10px] peer-checked/1-6:text-white peer-checked/1-5:text-white">
                 5
             </label>
             <label for="1-6" class="mt-8 ml-2 sm:ml-6 select-none cursor-pointer rounded-full border-2 border-slate-400 h-10 w-10 sm:h-12 sm:w-12 transition-colors duration-200 ease-in-out peer-checked/1-6:bg-green-600 peer-checked/1-6:border-transparent mr-1 text-center text-xs sm:text-base pt-[10px] peer-checked/1-6:text-white">

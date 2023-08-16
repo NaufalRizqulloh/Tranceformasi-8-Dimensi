@@ -14,6 +14,7 @@ use Helpers\Data\SectionTwoHelper;
 
 class FormController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      */
@@ -38,25 +39,53 @@ class FormController extends Controller
             'kode-akses' => 'required'
         ]);
 
+        $user = auth()->user();
+        $accessCode = $request->input('kode-akses');
+        $event = Event::getEvent($accessCode);
+
         try {
-            $user = auth()->user();
-            $accessCode = $request->input('kode-akses');
-            $event = Event::all()->firstWhere('kode_akses', $accessCode);
+            if (!$event) {
+                throw new Exception('Kode akses invalid');
+            }
+            if ($event->is_expired == true) {
+                throw new Exception('Event yang anda masuki sudah berakhir');
+            }
 
-            Validation::validateUserExistInEvent($user->id, $event->id);
+            $answer = Jawaban::where('event_id', '=', $event->id)
+                ->where('user_id', '=', $user->id)
+                ->first();
 
-            Jawaban::create([
-                'user_id' => $user->id,
-                'event_id' => $event->id,
-                'progress' => 'Section 1-1'
-            ]);
+            if ($answer) {
+                if ($answer->progress != 'Selesai') {
+                    return redirect()->route('user.form.show', [
+                        'jawaban' => $answer,
+                        'destination' => 'section-1-1'
+                    ]);
+                    // return redirect('user/form/'.$answer->id.'?destination=section-1-1');
+                }
+                if ($answer->progress == 'Selesai') {
+                    throw new Exception('Anda sudah mengisi');
+                }
 
-            return redirect()->route('user.form.get', [
-                'destination' => 'Section-1-1'
-            ]);
+                throw new Exception('Terjadi kesalahan sistem');
+            }
         } catch (Exception $e) {
-            return response()->with('error', 'Terjadi kesalahan : ' . $e->getMessage());
+            // return response()->with('error', 'Terjadi kesalahan : ' . $e->getMessage());
+            return abort(400, $e->getMessage());
         }
+
+        Jawaban::create([
+            'user_id' => $user->id,
+            'event_id' => $event->id,
+            'progress' => 'Section 1-1'
+        ]);
+
+        $newAnswer = Jawaban::getAnswer($event->id, $user->id);
+
+        return redirect()->route('user.form.show', [
+            'jawaban' => $newAnswer,
+            'destination' => 'section-1-1'
+        ]);
     }
 
     /**
@@ -65,7 +94,7 @@ class FormController extends Controller
     public function show(Jawaban $jawaban)
     {
         if (request('destination')) {
-            $destination = request('destination');
+            $destination = strtolower(request('destination'));
             $progress = [
                 '1.1' => 'd',
                 '1.2' => 's',
@@ -158,14 +187,19 @@ class FormController extends Controller
         //
     }
 
-    public function submit(Jawaban $jawaban)
+    public function submit(Request $request, Jawaban $jawaban)
     {
-        request()->validate([
-            'destination' => 'required|string'
+        $request->validate([
+            'checkbox' => 'required|string',
+            'checkbox1' => 'required|string',
+            '' => 'required|string',
         ]);
+        $answerSection1Col1 = $request->input('checkbox');
+        $answerSection1Col2 = $request->input('checkbox1');
+        $answerSection2 = $request->input('idk');
     }
 
-    public function updateProgress(Jawaban $jawaban)
+    public function updateProgress(Request $request, Jawaban $jawaban)
     {
         request()->validate([
             'checkbox' => 'required',

@@ -27,6 +27,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/hasil', function () {
+    return request();
+});
+
 Route::get('/event-test/{event}', [AdminEventController::class, 'show']);
 
 Route::get('/request', function (Request $request) {
@@ -52,7 +56,10 @@ Route::get('/user/hasil', [UserController::class, 'downloadHasil'])->middleware(
 /**
  * User form route section
  */
-Route::resource('user/form', FormController::class)->middleware('auth')->only(['index', 'store']);
+Route::post('user/form', [FormController::class, 'store'])->middleware('auth')->name('user.form.store');
+Route::get('user/form/{jawaban}', [FormController::class, 'show'])->middleware('auth')->name('user.form.show');
+Route::delete('user/form/{jawaban}', [FormController::class, 'destroy'])->middleware('auth')->name('user.form.destroy');
+
 Route::patch('users/update/{jawaban}', [FormController::class, 'updateProgress']);
 Route::put('users/update/{jawaban}', [FormController::class, 'submit']);
 

@@ -5,21 +5,38 @@ namespace Helpers\Validation;
 use Exception;
 use App\Models\Event;
 use App\Models\EmailAdmin;
+use App\Models\Jawaban;
 use Ramsey\Uuid\Type\Integer;
 
 class Validation
 {
-    // perlu testing
-    public static function validateUserExistInEvent($userId, $eventId)
+    public static function isCodeAccessValid(): bool
     {
-        $event = Event::with('jawabans')->find($eventId);
-        $jawabans = $event->jawabans();
+        
+        return true;
+    }
 
-        foreach ($jawabans as $jawaban) {
-            if ($jawaban->user()->id == $userId && $jawaban->progress == "Selesai") {
-                throw new Exception('Anda sudah mengisi');
-            }
+    // perlu testing
+    public static function isUserExistIn($userId, $eventId)
+    {
+        $answer = Jawaban::where('event_id', '=', $eventId)
+            ->where('user_id', '=', $userId)
+            ->first();
+        $isAlreadyAnswered = false;
+
+        if ($answer) {
+            $isAlreadyAnswered = $answer->progress == 'Selesai';
         }
+
+        return $isAlreadyAnswered ? true : false;
+
+        // $jawabans = $event->jawabans();
+
+        // foreach ($jawabans as $jawaban) {
+        //     if ($jawaban->user()->id == $userId && $jawaban->progress == "Selesai") {
+        //         throw new Exception('Anda sudah mengisi');
+        //     }
+        // }
     }
 
     // Return true if admin
@@ -35,7 +52,7 @@ class Validation
 
     public static function returnIfInt($intValue, $variableMessage = 'value'): int
     {
-        if (!is_int($intValue)){
+        if (!is_int($intValue)) {
             throw new Exception($variableMessage . ' harus berupa angka');
         }
         return $intValue;
@@ -43,7 +60,7 @@ class Validation
 
     public static function returnIfString($strValue, $variableMessage = 'value'): string
     {
-        if (!is_string($strValue)){
+        if (!is_string($strValue)) {
             throw new Exception($variableMessage . ' harus berupa angka');
         }
         return $strValue;
