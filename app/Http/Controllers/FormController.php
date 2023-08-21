@@ -56,14 +56,14 @@ class FormController extends Controller
                 ->first();
 
             if ($answer) {
-                if ($answer->progress != 'Selesai') {
+                if ($answer->progress != 'selesai') {
                     return redirect()->route('user.form.show', [
                         'jawaban' => $answer,
                         'destination' => 'section-1-1'
                     ]);
                     // return redirect('user/form/'.$answer->id.'?destination=section-1-1');
                 }
-                if ($answer->progress == 'Selesai') {
+                if ($answer->progress == 'selesai') {
                     throw new Exception('Anda sudah mengisi');
                 }
 
@@ -77,7 +77,7 @@ class FormController extends Controller
         Jawaban::create([
             'user_id' => $user->id,
             'event_id' => $event->id,
-            'progress' => 'Section 1-1'
+            'progress' => 'section-1-1'
         ]);
 
         $newAnswer = Jawaban::getAnswer($event->id, $user->id);
@@ -135,48 +135,35 @@ class FormController extends Controller
      */
     public function update(Request $request, Jawaban $jawaban)
     {
+        request()->validate([
+            'destination' => 'required',
+            'answers' => 'required'
+        ]);
 
-        $updatePath = $request->input('destination');
+        $currentPath = $request->input('destination');
+        $user = User::with('jawabans')->find(auth()->id());
 
-        $answerSection1Col1 = $request->input('checkbox');
-        $answerSection1Col2 = $request->input('checkbox1');
-        $answerSection2 = $request->input('idk');
+        $userAnswer = $user->jawabans()->latest()->first();
+        $userAnswer->progress = $currentPath;
+        $userAnswer->save();
+ 
+        //pembatas
 
-        if ($updatePath) {
-            $currentPath = $request->input('destination');
-            $user = User::with('jawabans')->find(auth()->id());
+        // REVISI
+        $answersP = $request->input('checkbox')['p'];
+        $answersT = $request->input('checkbox')['t'];
+        $sessionKey = 'answer-' . $jawaban->id;
 
-            $userAnswer = $user->jawabans()->latest()->first();
-            $userAnswer->progress = $currentPath;
-            $userAnswer->save();
+        // if ($answers) {
+        //     session([$sessionKey => $answers]);
+        // } else {
+        //     abort(400, 'tes');
+        // }
 
-            return redirect()->route('user.form.get', [
-                'destination' => $currentPath
-            ]);
-        } else if ($answerSection1Col1 || $answerSection1Col2 || $answerSection2) {
-            $mostValue = DiscHelper::normalizeDiscValue($answerSection1Col1);
-            $leastValue = DiscHelper::normalizeDiscValue($answerSection1Col2);
-            $changeValue = DiscHelper::getChangeValue($mostValue,  $leastValue);
-
-            $answerSection2 = SectionTwoHelper::normalizeData($answerSection2);
-
-            $jawaban->type1_formatted_value = json_encode([
-                'most_value' => $mostValue,
-                'least_value' => $leastValue,
-                'change_value' => $changeValue
-            ]);
-
-            $jawaban->type2_formatted_value = json_encode([
-                'value' => $answerSection2
-            ]);
-
-            $jawaban->progress = 'Selesai';
-            $jawaban->save();
-
-            return redirect()->route('user.form.done');
-        }
-
-        response()->with('error', 'Terjadi kesalahan');
+        return redirect()->route('user.form.show', [
+            'jawaban' => $jawaban,
+            'destination' => 'section-1-1'
+        ]);
     }
 
     /**
@@ -184,7 +171,8 @@ class FormController extends Controller
      */
     public function destroy(Jawaban $jawaban)
     {
-        //
+        $jawaban->delete();
+        redirect()->response()->with('success', 'Data jawaban berhasil dihapus');
     }
 
     public function submit(Request $request, Jawaban $jawaban)
@@ -192,18 +180,50 @@ class FormController extends Controller
         $request->validate([
             'checkbox' => 'required|string',
             'checkbox1' => 'required|string',
-            '' => 'required|string',
+            'idk' => 'required|string',
         ]);
         $answerSection1Col1 = $request->input('checkbox');
         $answerSection1Col2 = $request->input('checkbox1');
         $answerSection2 = $request->input('idk');
+
+        $mostValue = DiscHelper::normalizeDiscValue($answerSection1Col1);
+        $leastValue = DiscHelper::normalizeDiscValue($answerSection1Col2);
+        $changeValue = DiscHelper::getChangeValue($mostValue,  $leastValue);
+
+        $answerSection2 = SectionTwoHelper::normalizeData($answerSection2);
+
+        $jawaban->type1_formatted_value = json_encode([
+            'most_value' => $mostValue,
+            'least_value' => $leastValue,
+            'change_value' => $changeValue
+        ]);
+
+        $jawaban->type2_formatted_value = json_encode([
+            'value' => $answerSection2
+        ]);
+
+        $jawaban->progress = 'selesai';
+        $jawaban->save();
+
+        return redirect()->route('user.form.done');
     }
 
     public function updateProgress(Request $request, Jawaban $jawaban)
     {
         request()->validate([
-            'checkbox' => 'required',
-            'checkbox1' => 'required',
+            'destination' => 'required',
+        ]);
+
+        $currentPath = $request->input('destination');
+        $user = User::with('jawabans')->find(auth()->id());
+
+        $userAnswer = $user->jawabans()->latest()->first();
+        $userAnswer->progress = $currentPath;
+        $userAnswer->save();
+
+        return redirect()->route('user.form.show', [
+            'jawaban' => $jawaban,
+            'destination' => 'section-1-1'
         ]);
     }
 

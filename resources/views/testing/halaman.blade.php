@@ -1,4 +1,4 @@
-@extends('templates.default')
+ @extends('templates.default')
 
 @section('content')
 <div class="mt-24 mx-auto w-[90%] h-fit border-2 rounded-xl lg:rounded-[50px] lg:rounded-tr-[250px] bg-[#8404F4] lg:bg-[#FFEEFE] text-[#F7F1F1] lg:flex">
@@ -42,21 +42,25 @@
         Selamat! Dimensi Kepemimpinan Anda Adalah :
     </h1>
     <hr class="w-3/4 mx-auto">
-    <h1 class="text-4xl lg:text-6xl mx-4 mt-8 lg:mt-24 font-bold md:font-black text-[#F7F1F1] text-center">
-        Baik Hati dan <br> Tidak Sombong
-    </h1>
-    <h1 class="mx-4 mt-8 lg:mt-24 font-light text-center text-[#F7F1F1] italic">
+    <div class="lg:flex w-fit mx-auto">
+        <h1 class="text-4xl lg:text-6xl mx-4 mt-8 lg:mt-32 font-bold md:font-black text-[#F7F1F1] text-center">
+            Baik Hati dan <br> Tidak Sombong
+        </h1>
+        <img src="/dist/baikhati.png" alt="baikhati" class="mt-2 lg:mt-12">
+    </div>
+    <h1 class="mx-4 mt-8 lg:mt-12 font-light text-center text-[#F7F1F1] italic">
         *Untuk mengetahui detail lebih lanjut, silahkan unduh file di bawah ini
     </h1>
-    <button class="mt-12 mb-8 mx-auto block border-2 rounded-full border-[#FCF304] text-[#FCF304] py-3 px-10">Unduh Hasil Tes</button>
+    <button class="mt-4 mb-8 mx-auto block border-2 rounded-full border-[#FCF304] text-[#FCF304] py-3 px-10">Unduh Hasil Tes</button>
 </div>
-<div class="mt-24 w-[90%] h-[520px] border-2 bg-[#8404F4] rounded-[50px] text-[#F7F1F1] mx-auto">
-    <h1 class="mt-12 mb-4 text-4xl text-[#F7F1F1] text-center font-bold">
+<div class="mt-8 lg:mt-12 w-[90%] h-fit border-2 bg-[#8404F4] rounded-[50px] text-[#F7F1F1] mx-auto">
+    <h1 class="mt-12 mb-4 text-2xl mx-4 lg:text-4xl text-[#F7F1F1] text-center font-bold">
         WAH, TERNYATA KAMU BELUM MENGISI FORMNYA
         <br>
         Klik <span class="font-bold underline cursor-pointer">DISINI</span> untuk segera mengisi
     </h1>
     <hr class="w-3/4 mx-auto">
+    <img src="/dist/kosong.png" alt="" class="mx-auto w-[300px] lg:w-[500px] my-8 lg:my-16">
 </div>
 
 

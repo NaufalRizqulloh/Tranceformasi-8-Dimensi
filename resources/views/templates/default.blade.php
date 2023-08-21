@@ -6,7 +6,7 @@
     <!-- <link href="/public/dist/output.css" rel="stylesheet"> -->
     @include('templates.partials.head')
 
-    <title>Tranceformasi - Beranda</title>
+    <title>Tranceformasi Indonesia</title>
  
 <body class="bg-[#F7F1F1]">
     @include('templates.partials.navigation')

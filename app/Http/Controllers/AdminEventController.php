@@ -73,8 +73,8 @@ class AdminEventController extends Controller
         $users = GeneralHelper::returnUniqueModelsOnly($usersAnswer->pluck('user'));
         // $users = $usersAnswer->pluck('user');
         
-        $finishedUser = $usersAnswer->where('progress', '=', 'Selesai');
-        $unfinishedUser = $usersAnswer->where('progress', '!=', 'Selesai');
+        $finishedUser = $usersAnswer->where('progress', '=', 'selesai');
+        $unfinishedUser = $usersAnswer->where('progress', '!=', 'selesai');
 
         // Gender Category = ['Laki-laki', 'Perempuan']
         $usersGender = EventStatHelper::calculateGenderDispersion($users);

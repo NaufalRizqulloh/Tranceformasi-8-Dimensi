@@ -31,6 +31,10 @@ Route::get('/hasil', function () {
     return request();
 });
 
+Route::get('/altform-1', function () {
+    return view('alt-form/section-1-1');
+});
+
 Route::get('/event-test/{event}', [AdminEventController::class, 'show']);
 
 Route::get('/request', function (Request $request) {
@@ -60,8 +64,8 @@ Route::post('user/form', [FormController::class, 'store'])->middleware('auth')->
 Route::get('user/form/{jawaban}', [FormController::class, 'show'])->middleware('auth')->name('user.form.show');
 Route::delete('user/form/{jawaban}', [FormController::class, 'destroy'])->middleware('auth')->name('user.form.destroy');
 
-Route::patch('users/update/{jawaban}', [FormController::class, 'updateProgress']);
-Route::put('users/update/{jawaban}', [FormController::class, 'submit']);
+Route::patch('users/update/{jawaban}', [FormController::class, 'update'])->middleware('auth')->name('user.form.update');
+Route::put('users/update/{jawaban}', [FormController::class, 'submit'])->middleware('auth')->name('user.form.submit');
 
 Route::post('user/form/save-answer/{jawaban}', [FormController::class, 'saveAnswer'])->middleware('auth');
 
@@ -117,6 +121,14 @@ Route::get('/section-1-2', function () {
 
 Route::get('/section-2-1', function () {
     return view('form.section-2-1 ');
+});
+
+Route::get('/wait', function (){
+    return view('form.section-wait');
+});
+
+Route::get('/done', function (){
+    return view('form.section-done');
 });
 
 require __DIR__ . '/auth.php';

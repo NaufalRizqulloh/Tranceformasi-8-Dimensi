@@ -1,11 +1,5 @@
 <script>
   $(document).ready(function() {
-    $('.single-checkbox').on('change', function() {
-      $('.single-checkbox').not(this).prop('checked', false);
-    });
-  });
-
-  $(document).ready(function() {
     $('.single-checkbox1').on('change', function() {
       $('.single-checkbox1').not(this).prop('checked', false);
     });
@@ -15,21 +9,9 @@
       $('.single-checkbox2').not(this).prop('checked', false);
     });
   });
-
-  $(document).ready(function() {
-    $('.single-checkbox21').on('change', function() {
-      $('.single-checkbox21').not(this).prop('checked', false);
-    });
-  });
   $(document).ready(function() {
     $('.single-checkbox3').on('change', function() {
       $('.single-checkbox3').not(this).prop('checked', false);
-    });
-  });
-
-  $(document).ready(function() {
-    $('.single-checkbox31').on('change', function() {
-      $('.single-checkbox31').not(this).prop('checked', false);
     });
   });
   $(document).ready(function() {
@@ -37,21 +19,9 @@
       $('.single-checkbox4').not(this).prop('checked', false);
     });
   });
-
-  $(document).ready(function() {
-    $('.single-checkbox41').on('change', function() {
-      $('.single-checkbox41').not(this).prop('checked', false);
-    });
-  });
   $(document).ready(function() {
     $('.single-checkbox5').on('change', function() {
       $('.single-checkbox5').not(this).prop('checked', false);
-    });
-  });
-
-  $(document).ready(function() {
-    $('.single-checkbox51').on('change', function() {
-      $('.single-checkbox51').not(this).prop('checked', false);
     });
   });
   $(document).ready(function() {
@@ -59,21 +29,9 @@
       $('.single-checkbox6').not(this).prop('checked', false);
     });
   });
-
-  $(document).ready(function() {
-    $('.single-checkbox61').on('change', function() {
-      $('.single-checkbox61').not(this).prop('checked', false);
-    });
-  });
   $(document).ready(function() {
     $('.single-checkbox7').on('change', function() {
       $('.single-checkbox7').not(this).prop('checked', false);
-    });
-  });
-
-  $(document).ready(function() {
-    $('.single-checkbox71').on('change', function() {
-      $('.single-checkbox71').not(this).prop('checked', false);
     });
   });
   $(document).ready(function() {
@@ -81,31 +39,124 @@
       $('.single-checkbox8').not(this).prop('checked', false);
     });
   });
+  $(document).ready(function() {
+    $('.single-checkbox9').on('change', function() {
+      $('.single-checkbox9').not(this).prop('checked', false);
+    });
+  });
+  $(document).ready(function() {
+    $('.single-checkbox0').on('change', function() {
+      $('.single-checkbox0').not(this).prop('checked', false);
+    });
+  });
 
+  $(document).ready(function() {
+    $('.single-checkbox11').on('change', function() {
+      $('.single-checkbox11').not(this).prop('checked', false);
+    });
+  });
+
+  $(document).ready(function() {
+    $('.single-checkbox12').on('change', function() {
+      $('.single-checkbox12').not(this).prop('checked', false);
+    });
+  });
+  $(document).ready(function() {
+    $('.single-checkbox21').on('change', function() {
+      $('.single-checkbox21').not(this).prop('checked', false);
+    });
+  });
+
+  $(document).ready(function() {
+    $('.single-checkbox22').on('change', function() {
+      $('.single-checkbox22').not(this).prop('checked', false);
+    });
+  });
+  $(document).ready(function() {
+    $('.single-checkbox31').on('change', function() {
+      $('.single-checkbox31').not(this).prop('checked', false);
+    });
+  });
+
+  $(document).ready(function() {
+    $('.single-checkbox32').on('change', function() {
+      $('.single-checkbox32').not(this).prop('checked', false);
+    });
+  });
+  $(document).ready(function() {
+    $('.single-checkbox41').on('change', function() {
+      $('.single-checkbox41').not(this).prop('checked', false);
+    });
+  });
+
+  $(document).ready(function() {
+    $('.single-checkbox42').on('change', function() {
+      $('.single-checkbox42').not(this).prop('checked', false);
+    });
+  });
+  $(document).ready(function() {
+    $('.single-checkbox51').on('change', function() {
+      $('.single-checkbox51').not(this).prop('checked', false);
+    });
+  });
+
+  $(document).ready(function() {
+    $('.single-checkbox52').on('change', function() {
+      $('.single-checkbox52').not(this).prop('checked', false);
+    });
+  });
+  $(document).ready(function() {
+    $('.single-checkbox61').on('change', function() {
+      $('.single-checkbox61').not(this).prop('checked', false);
+    });
+  });
+
+  $(document).ready(function() {
+    $('.single-checkbox62').on('change', function() {
+      $('.single-checkbox62').not(this).prop('checked', false);
+    });
+  });
+  $(document).ready(function() {
+    $('.single-checkbox71').on('change', function() {
+      $('.single-checkbox71').not(this).prop('checked', false);
+    });
+  });
+
+  $(document).ready(function() {
+    $('.single-checkbox72').on('change', function() {
+      $('.single-checkbox72').not(this).prop('checked', false);
+    });
+  });
   $(document).ready(function() {
     $('.single-checkbox81').on('change', function() {
       $('.single-checkbox81').not(this).prop('checked', false);
     });
   });
+
+  $(document).ready(function() {
+    $('.single-checkbox82').on('change', function() {
+      $('.single-checkbox82').not(this).prop('checked', false);
+    });
+  });
   
   $(document).ready(function() {
-    $('.check1').on('change', function() {
-      $('.check1').not(this).prop('checked', false);
+    $('.check11').on('change', function() {
+      $('.check11').not(this).prop('checked', false);
     });
   });
   $(document).ready(function() {
-    $('.check2').on('change', function() {
-      $('.check2').not(this).prop('checked', false);
+    $('.check12').on('change', function() {
+      $('.check12').not(this).prop('checked', false);
     });
   });
   $(document).ready(function() {
-    $('.check3').on('change', function() {
-      $('.check3').not(this).prop('checked', false);
+    $('.check13').on('change', function() {
+      $('.check13').not(this).prop('checked', false);
     });  
   });
   $(document).ready(function() {
-    $('.check4').on('change', function() {
-      $('.check4').not(this).prop('checked', false);
+    $('.check14').on('change', function() {
+      $('.check14').not(this).prop('checked', false);
     });
   });
   $(document).ready(function() {

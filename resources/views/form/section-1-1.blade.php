@@ -8,7 +8,8 @@
     <h1 class="mt-8 text-center font-bold text-2xl">INSTRUKSI PENGERJAAN</h1>
     <h4 class="ml-12 mr-12 text-1xl mt-4">1. Setiap soal harus memiliki satu jawaban P(aling) dan satu jawaban T(idak)</h4>
     <h4 class="ml-12 mr-12 text-1xl mt-4">2. Jawaban yang sudah dipilih di baris P tidak boleh dipilih kembali di baris T, maupun sebaliknya </h4>
-    <h4 class="mb-8 ml-12 mr-12 text-1xl mt-4">3. Pilihlah jawaban yang sesuai dengan karakter anda</h4>
+    <h4 class="ml-12 mr-12 text-1xl mt-4">3. Pilihlah jawaban yang sesuai dengan karakter anda</h4>
+    <div class="mt-0 mb-8"></div> 
 </div>
 <form action="/hasil" method="GET">
     @csrf
