@@ -31,3 +31,9 @@
             $('#domisili').select2();
         });
     </script>
+<style>
+#overlay, #overlay1 {
+  position: fixed;
+  display: none;
+}
+</style>

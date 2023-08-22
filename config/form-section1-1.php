@@ -2,7 +2,7 @@
 
 return [
     'content' => [
-        [ //1
+        1 => [ 
             'question' => [
                 'Mudah bergaul, ramah, mudah setuju',
                 'Mempercayai, percaya pada orang lain',
@@ -22,7 +22,7 @@ return [
                 'c'
             ],
         ],
-        [ //2
+        2 => [ 
             'question' => [
                 'Lembut, tertutup',
                 'Visionary/pandangan ke masa depan',
@@ -42,7 +42,7 @@ return [
                 'c'
             ],
         ],
-        [ //3
+        3 => [
             'question' => [
                 'Menyemangati orang lain',
                 'Berusaha mencapai kesimpulan',
@@ -62,7 +62,7 @@ return [
                 'c'
             ],
         ],
-        [ //4
+        4 => [ 
             'question' => [
                 'Menjadi frustasi',
                 'Memendam perasaan dalam hati',
@@ -82,7 +82,7 @@ return [
                 'c'
             ],
         ],
-        [ //5
+        5 => [ 
             'question' => [
                 'Hidup/lincah banyak bicara',
                 'Cepat, penuh keyakinan',
@@ -102,7 +102,7 @@ return [
                 'd'
             ],
         ],
-        [ //6
+        6 => [
             'question' => [
                 'Mengelola waktu dengan efisien',
                 'Sering terburu-buru, merasa ditekan',
@@ -122,7 +122,7 @@ return [
                 'd'
             ],
         ],
-        [ //7
+        7 => [ 
             'question' => [
                 'Menolak perubahan yang mendadak',
                 'Cenderung terlalu banyak berjanji',
@@ -142,7 +142,7 @@ return [
                 'd'
             ],
         ],
-        [ //8
+        8 => [ 
             'question' => [
                 'Penyemangat/pendukung yang baik',
                 'Pendengar yang baik',

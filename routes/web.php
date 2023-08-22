@@ -22,17 +22,28 @@ use Illuminate\Http\Request;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
+// TESTING
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/hasil', function () {
-    return request();
+Route::get('/ds', function () {
+    dd('anggap dashboard');
 });
 
-Route::get('/altform-1', function () {
-    return view('alt-form/section-1-1');
+Route::get('/dn', function () {
+    dd('anggap done');
+});
+
+Route::get('/testform/{jawaban}', [FormController::class, 'show'])->name('testt');
+
+Route::get('/hasil', function () {
+    $e = request('checkbox');
+    return $e;
+});
+
+Route::get('/test-form', function () {
+    return view('alt-form/testing');
 });
 
 Route::get('/event-test/{event}', [AdminEventController::class, 'show']);

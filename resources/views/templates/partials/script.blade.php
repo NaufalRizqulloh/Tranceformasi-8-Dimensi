@@ -299,5 +299,15 @@
       $('.check84').not(this).prop('checked', false);
     });
   });
+
+  function onoverlay() {
+  document.getElementById("overlay").style.display = "block";
+  document.getElementById("overlay1").style.display = "block";
+  }
+
+  function offoverlay() {
+  document.getElementById("overlay").style.display = "none";
+  document.getElementById("overlay1").style.display = "none";
+  }
   
 </script>

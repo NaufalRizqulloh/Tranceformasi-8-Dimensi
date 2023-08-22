@@ -16,11 +16,11 @@
 
 <div class="mt-8 md:mt-12 mx-auto w-[90%] md:w-[80%] lg:w-[60%] h-fit border-2 rounded-[15px] lg:rounded-[50px] bg-[#FFFFFF]">
     <h1 class="mt-10 mb-6 w-max block mx-auto text-center rounded-full border-2 border-slate-500 py-3 px-5">
-        1
+        11
     </h1>
     <div class="ml-3 mr-3">
         <h1 class="w-fit mx-auto block text-center text-lg sm:text-xl mb-2 md:mb-4">
-            Saya cenderung lebih fokus pada tujuan yang ingin dicapai daripada <br> menghindari hal-hal yang tidak diinginkan.
+        Saya lebih suka mencari persamaan antara situasi atau orang <br> sebelum membuat kesimpulan.
         </h1>
     </div>
     <div class="flex h-fit w-fit mx-auto">
@@ -64,11 +64,11 @@
 </div>
 <div class="mt-8 md:mt-12 mx-auto w-[90%] md:w-[80%] lg:w-[60%] h-fit border-2 rounded-[15px] lg:rounded-[50px] bg-[#FFFFFF]">
     <h1 class="mt-10 mb-6 w-max block mx-auto text-center rounded-full border-2 border-slate-500 py-3 px-5">
-        2
+        12
     </h1>
     <div class="ml-3 mr-3">
         <h1 class="w-fit mx-auto block text-center text-lg sm:text-xl mb-2 md:mb-4">
-            Saya lebih termotivasi oleh kesuksesan dan <br> pencapaian dari pada menghindari kegagalan
+        Saya merasa tertarik untuk memahami perbedaan dan keunikan <br> dalam situasi atau orang sebelum membuat kesimpulan.
         </h1>
     </div>
     <div class="flex h-fit w-fit mx-auto">
@@ -112,11 +112,11 @@
 </div>
 <div class="mt-8 md:mt-12 mx-auto w-[90%] md:w-[80%] lg:w-[60%] h-fit border-2 rounded-[15px] lg:rounded-[50px] bg-[#FFFFFF]">
     <h1 class="mt-10 mb-6 w-max block mx-auto text-center rounded-full border-2 border-slate-500 py-3 px-5">
-        3
+        13
     </h1>
     <div class="ml-3 mr-3">
         <h1 class="w-fit mx-auto block text-center text-lg sm:text-xl mb-2 md:mb-4">
-            Saya lebih suka beroikir hal-hal positif yang saya <br> capai dari pada memikirkan hal-hal yang saya hindari
+        Saya cenderung melihat gambaran besar atau konsep umum <br> dalam situasi atau informasi.
         </h1>
     </div>
     <div class="flex h-fit w-fit mx-auto">
@@ -160,12 +160,11 @@
 </div>
 <div class="mt-8 md:mt-12 mx-auto w-[90%] md:w-[80%] lg:w-[60%] h-fit border-2 rounded-[15px] lg:rounded-[50px] bg-[#FFFFFF]">
     <h1 class="mt-10 mb-6 w-max block mx-auto text-center rounded-full border-2 border-slate-500 py-3 px-5">
-        4
+        14
     </h1>
     <div class="ml-3 mr-3">
         <h1 class="w-fit mx-auto block text-center text-lg sm:text-xl mb-2 md:mb-4">
-        Saya lebih memilih memikirkan langkah-langkah yang perlu <br> diambil untuk mencapai tujuan daripada memikirkan hal-hal 
-yang perlu dihindari.
+        Saya lebih tertarik pada detail dan informasi spesifik dalam <br> situasi atau informasi.
         </h1>
     </div>
     <div class="flex h-fit w-fit mx-auto">
@@ -209,11 +208,11 @@ yang perlu dihindari.
 </div>
 <div class="mt-8 md:mt-12 mx-auto w-[90%] md:w-[80%] lg:w-[60%] h-fit border-2 rounded-[15px] lg:rounded-[50px] bg-[#FFFFFF]">
     <h1 class="mt-10 mb-6 w-max block mx-auto text-center rounded-full border-2 border-slate-500 py-3 px-5">
-        5
+        15
     </h1>
     <div class="ml-3 mr-3">
         <h1 class="w-fit mx-auto block text-center text-lg sm:text-xl mb-2 md:mb-4">
-        Saya cenderung mencari jawaban atau solusi dari <br> dalam diri saya sendiri.
+        Saya lebih suka memahami konteks dan pandangan umum <br> sebelum memperhatikan detail yang lebih spesifik.
         </h1>
     </div>
     <div class="flex h-fit w-fit mx-auto">
@@ -257,11 +256,11 @@ yang perlu dihindari.
 </div>
 <div class="mt-8 md:mt-12 mx-auto w-[90%] md:w-[80%] lg:w-[60%] h-fit border-2 rounded-[15px] lg:rounded-[50px] bg-[#FFFFFF]">
     <h1 class="mt-10 mb-6 w-max block mx-auto text-center rounded-full border-2 border-slate-500 py-3 px-5">
-        6
+        16
     </h1>
     <div class="ml-3 mr-3">
         <h1 class="w-fit mx-auto block text-center text-lg sm:text-xl mb-2 md:mb-4">
-        Saya lebih mengandalkan pemikiran dan pengalaman <br>  pribadi dalam mengambil keputusan.
+        Saya merasa tertarik pada detail dan informasi spesifik sebelum <br> memperhatikan gambaran besar atau konsep umum.
         </h1>
     </div>
     <div class="flex h-fit w-fit mx-auto">
@@ -305,11 +304,11 @@ yang perlu dihindari.
 </div>
 <div class="mt-8 md:mt-12 mx-auto w-[90%] md:w-[80%] lg:w-[60%] h-fit border-2 rounded-[15px] lg:rounded-[50px] bg-[#FFFFFF]">
     <h1 class="mt-10 mb-6 w-max block mx-auto text-center rounded-full border-2 border-slate-500 py-3 px-5">
-        7
+        17
     </h1>
     <div class="ml-3 mr-3">
         <h1 class="w-fit mx-auto block text-center text-lg sm:text-xl mb-2 md:mb-4">
-        Saya lebih suka mencari masukan dan pandangan dari orang lain <br>  sebelum mengambil keputusan.
+        Saya cenderung mengikuti langkah-langkah atau prosedur <br> yang telah ditetapkan sebelumnya.
         </h1>
     </div>
     <div class="flex h-fit w-fit mx-auto">
@@ -353,11 +352,12 @@ yang perlu dihindari.
 </div>
 <div class="mt-8 md:mt-12 mx-auto w-[90%] md:w-[80%] lg:w-[60%] h-fit border-2 rounded-[15px] lg:rounded-[50px] bg-[#FFFFFF]">
     <h1 class="mt-10 mb-6 w-max block mx-auto text-center rounded-full border-2 border-slate-500 py-3 px-5">
-        8
+        18
     </h1>
     <div class="ml-3 mr-3">
         <h1 class="w-fit mx-auto block text-center text-lg sm:text-xl mb-2 md:mb-4">
-        Saya merasa lebih yakin dengan keputusan yang dibuat setelah <br> mempertimbangkan masukan dari orang lain.
+        Saya lebih suka memiliki fleksibilitas dan kebebasan dalam melakukan <br> tindakan tanpa harus mengikuti langkah-langkah yang 
+telah ditetapkan.
         </h1>
     </div>
     <div class="flex h-fit w-fit mx-auto">
@@ -401,11 +401,11 @@ yang perlu dihindari.
 </div>
 <div class="mt-8 md:mt-12 mx-auto w-[90%] md:w-[80%] lg:w-[60%] h-fit border-2 rounded-[15px] lg:rounded-[50px] bg-[#FFFFFF]">
     <h1 class="mt-10 mb-6 w-max block mx-auto text-center rounded-full border-2 border-slate-500 py-3 px-5">
-        9
+        19
     </h1>
     <div class="ml-3 mr-3">
         <h1 class="w-fit mx-auto block text-center text-lg sm:text-xl mb-2 md:mb-4">
-        Saya cenderung melihat kesamaan dan pola yang serupa <br> dalam situasi atau orang.
+        Saya nyaman ketika memiliki panduan atau prosedur yang harus <br> diikuti dalam menjalankan tugas atau kegiatan.
         </h1>
     </div>
     <div class="flex h-fit w-fit mx-auto">
@@ -449,11 +449,11 @@ yang perlu dihindari.
 </div>
 <div class="mt-8 md:mt-12 mx-auto w-[90%] md:w-[80%] lg:w-[60%] h-fit border-2 rounded-[15px] lg:rounded-[50px] bg-[#FFFFFF]">
     <h1 class="mt-10 mb-6 w-max block mx-auto text-center rounded-full border-2 border-slate-500 py-3 px-5">
-        10
+        20
     </h1>
     <div class="ml-3 mr-3">
         <h1 class="w-fit mx-auto block text-center text-lg sm:text-xl mb-2 md:mb-4">
-        Saya lebih tertarik pada perbedaan dan keunikan dalam <br> situasi atau orang.
+        Saya merasa lebih baik ketika diberikan pilihan untuk memutuskan <br>  langkah-langkah atau tindakan yang akan saya ambil.
         </h1>
     </div>
     <div class="flex h-fit w-fit mx-auto">

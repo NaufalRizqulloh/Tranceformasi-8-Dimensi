@@ -2,7 +2,7 @@
 
 return [
     'content' => [
-        [ //1
+        17 => [ 
             'question' => [
                 'Pendidikan, kebudayaan',
                 'Prestasi, penghargaan',
@@ -22,7 +22,7 @@ return [
                 'c'
             ],
         ],
-        [ //2
+        18 => [ 
             'question' => [
                 'Mengambil kendali, bersikap langsung/direct',
                 'Suka bergaul, antusias',
@@ -42,7 +42,7 @@ return [
                 'd'
             ],
         ],
-        [ //3
+        19 => [ 
             'question' => [
                 'Sulit dikalahkan/ditundukan',
                 'Melakukan sesuai perintah',
@@ -62,7 +62,7 @@ return [
                 'd'
             ],
         ],
-        [ //4
+        20 => [ 
             'question' => [
                 'Saya akan pimpin mereka',
                 'Saya akan ikut/mengikuti',
@@ -82,7 +82,7 @@ return [
                 'd'
             ],
         ],
-        [ //5
+        21 => [ 
             'question' => [
                 'Memikirkan orang lain dahulu',
                 'Suka bersaing/kompetitif, suka tantangan',
@@ -102,7 +102,7 @@ return [
                 'd'
             ],
         ],
-        [ //6
+        22 => [ 
             'question' => [
                 'Menyenangkan orang lain, ramah, penurut',
                 'Tertawa lepas, hidup',
@@ -122,7 +122,7 @@ return [
                 'd'
             ],
         ],
-        [ //7
+        23 => [ 
             'question' => [
                 'Ingin wewenang/kekuasaan lebih',
                 'Ingin kesempatan baru',
@@ -142,7 +142,7 @@ return [
                 'd'
             ],
         ],
-        [ //8
+        24 => [ 
             'question' => [
                 'Dapat dipercaya dan diandalkan',
                 'Kreatif, unik',

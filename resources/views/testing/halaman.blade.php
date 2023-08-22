@@ -64,4 +64,14 @@
 </div>
 
 
+<div id="overlay" onclick="offoverlay()">
+  <div id="text">Overlay Text</div>
+</div>
+
+<div style="padding:20px">
+  <h2>Overlay with Text</h2>
+  <button onclick="onoverlay()">Turn on overlay effect</button>
+</div>
+
+
 @endsection

@@ -2,7 +2,7 @@
 
 return [
     'content' => [
-        [ //9
+        9 => [ 
             'question' => [
                 'Yang penting adalah hasil',
                 'Kerjakan dengan benar, ketepatan sangat penting',
@@ -22,7 +22,7 @@ return [
                 'c'
             ],
         ],
-        [ //2
+        10 => [ 
             'question' => [
                 'Menahan diri, bisa hidup tanpa memiliki',
                 'Membeli karena dorongan hasrat/impulse',
@@ -42,7 +42,7 @@ return [
                 'd'
             ],
         ],
-        [ //3
+        11 => [
             'question' => [
                 'Bersahabat, mudah bergaul',
                 'Unit, bosan pada rutinitas',
@@ -62,7 +62,7 @@ return [
                 'd'
             ],
         ],
-        [ //4
+        12 => [ 
             'question' => [
                 'Mengalah, tidak suka pertentangan',
                 'Penuh dengan hal-hal kecil/detail',
@@ -82,7 +82,7 @@ return [
                 'd'
             ],
         ],
-        [ //5
+        13 => [ 
             'question' => [
                 'Ingin kemajuan/peningkatan',
                 'Puas dengan keadaan tenang/mudah puas',
@@ -102,7 +102,7 @@ return [
                 'd'
             ],
         ],
-        [ //6
+        14 => [ 
             'question' => [
                 'Tenang, pendiam, tertutup',
                 'Gembira, bebas, riang',
@@ -122,7 +122,7 @@ return [
                 'd'
             ],
         ],
-        [ //7
+        15 => [ 
             'question' => [
                 'Menyediakan waktu untuk orang lain',
                 'Merencanakan masa depan, bersiap-siap',
@@ -142,7 +142,7 @@ return [
                 'd'
             ],
         ],
-        [ //8
+        16 => [ 
             'question' => [
                 'Peraturan perlu diuji',
                 'Peraturan membuat menjadi adil',

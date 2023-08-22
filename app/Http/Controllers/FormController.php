@@ -80,7 +80,11 @@ class FormController extends Controller
             'progress' => 'section-1-1'
         ]);
 
+        
         $newAnswer = Jawaban::getAnswer($event->id, $user->id);
+
+        $sessionKey = 'answers-' . $newAnswer->id;
+        session([$sessionKey => []]);
 
         return redirect()->route('user.form.show', [
             'jawaban' => $newAnswer,
@@ -93,33 +97,59 @@ class FormController extends Controller
      */
     public function show(Jawaban $jawaban)
     {
-        if (request('destination')) {
-            $destination = strtolower(request('destination'));
-            $progress = [
-                '1.1' => 'd',
-                '1.2' => 's',
-                '1.3' => 'c'
-            ];
+        $destination = strtolower(request('destination'));
+        $destination = str_replace(array(" ", "\t", "\n", "\r"), "", $destination);
+        $pageSection = 0;
+        $questions = "";
+        $nextDestination = "";
+        $previousDestination = "";
 
-            switch ($destination) {
-                case "section-1-1":
-                    return view('form/section-1-1', ['question' => $progress]);
-                case "section-1-2":
-                    return view('form/section-1-2', ['question' => $progress]);
-                case "section-1-3":
-                    return view('form/section-1-3', ['question' => $progress]);
-                case "section-2-1":
-                    return view('form/section-2-1', ['question' => $progress]);
-                case "section-2-2":
-                    return view('form/section-2-2', ['question' => $progress]);
-                case "section-wait":
-                    return view('form/section-wait');
-                default:
-                    abort(404);
-            }
+        switch ($destination) {
+            case "section-1-1":
+                $questions = config('form-section1-1.content');
+                $pageSection = 1;
+                $nextDestination = 'section-1-2';
+                $previousDestination = 'go-dashboard';
+                break;
+            case "section-1-2":
+                $questions = config('form-section1-2.content');
+                $pageSection = 1;
+                $nextDestination = 'section-1-3';
+                $previousDestination = 'section-1-1';
+                break;
+            case "section-1-3":
+                $questions = config('form-section1-3.content');
+                $pageSection = 1;
+                $nextDestination = 'section-2-1';
+                $previousDestination = 'section-1-2';
+                break;
+            case "section-2-1":
+                $questions = config('form-section2-1.content');
+                $pageSection = 2;
+                $nextDestination = 'section-2-2';
+                $previousDestination = 'section-1-3';
+                break;
+            case "section-2-2":
+                $questions = config('form-section2-2.content');
+                $pageSection = 2;
+                $nextDestination = 'go-form-done';
+                $previousDestination = 'section-2-1';
+                break;
+            case "section-wait": // perlu revisi
+                $questions = config('form-section1-1.content');
+                break;
+            default:
+                dd('idk', $destination);
         }
 
-        return abort(404);
+        $answers = session('answers-' . $jawaban->id);
+
+        return view('alt-form/section-1', [
+            'questions' => $questions,
+            'answers' => $answers,
+            'nextDestination' => $nextDestination,
+            'previousDestination' => $previousDestination
+        ]);
     }
 
     /**
@@ -137,32 +167,27 @@ class FormController extends Controller
     {
         request()->validate([
             'destination' => 'required',
-            'answers' => 'required'
+            'checkbox' => 'required'
         ]);
 
-        $currentPath = $request->input('destination');
+        $destination = $request->input('destination');
         $user = User::with('jawabans')->find(auth()->id());
 
         $userAnswer = $user->jawabans()->latest()->first();
-        $userAnswer->progress = $currentPath;
+        $userAnswer->progress = $destination;
         $userAnswer->save();
- 
+
         //pembatas
-
-        // REVISI
-        $answersP = $request->input('checkbox')['p'];
-        $answersT = $request->input('checkbox')['t'];
-        $sessionKey = 'answer-' . $jawaban->id;
-
-        // if ($answers) {
-        //     session([$sessionKey => $answers]);
-        // } else {
-        //     abort(400, 'tes');
-        // }
+        
+        if($request->checkbox){
+            $answers = $request->input('checkbox');
+            $sessionKey = 'answers-' . $jawaban->id;
+            session([$sessionKey => $answers]);
+        }
 
         return redirect()->route('user.form.show', [
             'jawaban' => $jawaban,
-            'destination' => 'section-1-1'
+            'destination' => $destination
         ]);
     }
 
@@ -175,16 +200,11 @@ class FormController extends Controller
         redirect()->response()->with('success', 'Data jawaban berhasil dihapus');
     }
 
-    public function submit(Request $request, Jawaban $jawaban)
+    public function submit(Jawaban $jawaban)
     {
-        $request->validate([
-            'checkbox' => 'required|string',
-            'checkbox1' => 'required|string',
-            'idk' => 'required|string',
-        ]);
-        $answerSection1Col1 = $request->input('checkbox');
-        $answerSection1Col2 = $request->input('checkbox1');
-        $answerSection2 = $request->input('idk');
+        $answerSection1Col1 = session('answers-' . $jawaban->id)['p'];
+        $answerSection1Col2 = session('answers-' . $jawaban->id)['t'];
+        $answerSection2 = ['E'];
 
         $mostValue = DiscHelper::normalizeDiscValue($answerSection1Col1);
         $leastValue = DiscHelper::normalizeDiscValue($answerSection1Col2);
@@ -234,7 +254,7 @@ class FormController extends Controller
         ]);
 
         $answers = request()->answers;
-        $sessionKey = 'answer-' . $jawaban->id;
+        $sessionKey = 'answers-' . $jawaban->id;
 
         if ($answers) {
             session([$sessionKey => $answers]);
