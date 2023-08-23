@@ -91,11 +91,10 @@
         <input type="checkbox" id="2-6" class="peer/2-6 hidden single-checkbox2"/>
         <input type="checkbox" id="2-5" class="peer/2-5 hidden single-checkbox2"/>
         <input type="checkbox" id="2-4" class="peer/2-4 hidden single-checkbox2"/>
-            <label for="2-4" class="mt-8 ml-2 sm:ml-6 select-none cursor-pointer rounded-full border-2 border-slate-400 h-10 w-10 sm:h-12 sm:w-12 transition-colors duration-200 ease-in-out peer-checked/2-4:bg-green-400 peer-checked/2-4:border-transparent peer-checked/2-5:bg-green-400 peer-checked/2-5:border-transparent 
-            peer-checked/2-6:bg-green-400 peer-checked/2-6:border-transparent mr-1 text-center text-xs sm:text-base pt-[10px] peer-checked/2-6:text-white peer-checked/2-5:text-white peer-checked/2-4:text-white">
+            <label for="2-4" class="mt-8 ml-2 sm:ml-6 select-none cursor-pointer rounded-full border-2 border-slate-400 h-10 w-10 sm:h-12 sm:w-12 transition-colors duration-200 ease-in-out peer-checked/2-4:bg-green-400 peer-checked/2-4:border-transparent peer-checked/2-5:bg-green-400 peer-checked/2-5:border-transparent peer-checked/2-6:bg-green-400 peer-checked/2-6:border-transparent mr-1 text-center text-xs sm:text-base pt-[10px] peer-checked/2-6:text-white peer-checked/2-5:text-white peer-checked/2-4:text-white">
                 4
             </label>
-            <label for="2-5" class="mt-8 ml-2 sm:ml-6 select-none cursor-pointer rounded-full border-2 border-slate-400 h-10 w-10 sm:h-12 sm:w-12 transition-colors duration-200 ease-in-out peer-checked/2-5:bg-green-500 peer-checked/2-5:border-transparent peer-checked/2-6:bg-green-500 peer-checked/2-6:border-transparent  mr-1 text-center text-xs sm:text-base pt-[10px] peer-checked/2-6:text-white peer-checked/2-5:text-white">
+            <label for="2-5" class="mt-8 ml-2 sm:ml-6 select-none cursor-pointer rounded-full border-2 border-slate-400 h-10 w-10 sm:h-12 sm:w-12 transition-colors duration-200 ease-in-out peer-checked/2-5:bg-green-500 peer-checked/2-5:border-transparent peer-checked/2-6:bg-green-500 peer-checked/2-6:border-transparent mr-1 text-center text-xs sm:text-base pt-[10px] peer-checked/2-6:text-white peer-checked/2-5:text-white">
                 5
             </label>
             <label for="2-6" class="mt-8 ml-2 sm:ml-6 select-none cursor-pointer rounded-full border-2 border-slate-400 h-10 w-10 sm:h-12 sm:w-12 transition-colors duration-200 ease-in-out peer-checked/2-6:bg-green-600 peer-checked/2-6:border-transparent mr-1 text-center text-xs sm:text-base pt-[10px] peer-checked/2-6:text-white">

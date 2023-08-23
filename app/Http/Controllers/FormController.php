@@ -71,7 +71,7 @@ class FormController extends Controller
             }
         } catch (Exception $e) {
             // return response()->with('error', 'Terjadi kesalahan : ' . $e->getMessage());
-            return abort(400, $e->getMessage());
+            return dd($e->getMessage());
         }
 
         Jawaban::create([
@@ -80,11 +80,13 @@ class FormController extends Controller
             'progress' => 'section-1-1'
         ]);
 
-        
-        $newAnswer = Jawaban::getAnswer($event->id, $user->id);
 
-        $sessionKey = 'answers-' . $newAnswer->id;
-        session([$sessionKey => []]);
+        $newAnswer = Jawaban::where('event_id', '=', $event->id)
+            ->where('user_id', '=', $user->id)
+            ->first();
+
+        // $sessionKey = 'answers-' . $newAnswer->id;
+        // session([$sessionKey => []]);
 
         return redirect()->route('user.form.show', [
             'jawaban' => $newAnswer,
@@ -145,6 +147,7 @@ class FormController extends Controller
         $answers = session('answers-' . $jawaban->id);
 
         return view('alt-form/section-1', [
+            'jawaban' => $jawaban,
             'questions' => $questions,
             'answers' => $answers,
             'nextDestination' => $nextDestination,
@@ -169,7 +172,6 @@ class FormController extends Controller
             'destination' => 'required',
             'checkbox' => 'required'
         ]);
-
         $destination = $request->input('destination');
         $user = User::with('jawabans')->find(auth()->id());
 
@@ -178,8 +180,8 @@ class FormController extends Controller
         $userAnswer->save();
 
         //pembatas
-        
-        if($request->checkbox){
+
+        if ($request->checkbox) {
             $answers = $request->input('checkbox');
             $sessionKey = 'answers-' . $jawaban->id;
             session([$sessionKey => $answers]);

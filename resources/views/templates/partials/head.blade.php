@@ -32,6 +32,10 @@
         });
     </script>
 <style>
+html{
+    scroll-behavior: smooth;
+}
+
 #overlay, #overlay1 {
   position: fixed;
   display: none;

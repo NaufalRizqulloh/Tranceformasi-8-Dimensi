@@ -8,6 +8,7 @@ use App\Http\Controllers\FormController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
+use App\Models\Jawaban;
 use Illuminate\Support\Facades\Route;
 
 use Illuminate\Http\Request;
@@ -32,8 +33,10 @@ Route::get('/ds', function () {
 });
 
 Route::get('/dn', function () {
-    dd('anggap done');
+    dd('anggap done', request());
 });
+
+
 
 Route::get('/testform/{jawaban}', [FormController::class, 'show'])->name('testt');
 
@@ -49,14 +52,20 @@ Route::get('/test-form', function () {
 Route::get('/event-test/{event}', [AdminEventController::class, 'show']);
 
 Route::get('/request', function (Request $request) {
-    return view('form/section-1-1', [
-        'question' => [
-            '1.1' => 'd',
-            '1.2' => 's',
-            '1.3' => 'c',
-        ]
+    return view('alt-form/section-1', [
+        'questions' => config('form-section1-1.content'),
+        'answers' => [],
+        'nextDestination' => 'section-1-2',
+        'previousDestination' => 'go-dashboard'
     ]);
 });
+
+Route::post('/post/{jawaban}', function (Request $request, Jawaban $jawaban) {
+    return redirect()->route('testt', [
+        'jawaban' => $jawaban,
+        'destination' => $request->destination
+    ]);
+})->name('post');
 
 Route::get('/request-invalid', function (Request $request) {
     return view('form/section-1-1', ['question' => ['1.1' => null]]);
@@ -71,13 +80,14 @@ Route::get('/user/hasil', [UserController::class, 'downloadHasil'])->middleware(
 /**
  * User form route section
  */
-Route::post('user/form', [FormController::class, 'store'])->middleware('auth')->name('user.form.store');
 Route::get('user/form/{jawaban}', [FormController::class, 'show'])->middleware('auth')->name('user.form.show');
+Route::post('user/form', [FormController::class, 'store'])->middleware('auth')->name('user.form.store');
 Route::delete('user/form/{jawaban}', [FormController::class, 'destroy'])->middleware('auth')->name('user.form.destroy');
 
 Route::patch('users/update/{jawaban}', [FormController::class, 'update'])->middleware('auth')->name('user.form.update');
 Route::put('users/update/{jawaban}', [FormController::class, 'submit'])->middleware('auth')->name('user.form.submit');
 
+// tdk dipakai
 Route::post('user/form/save-answer/{jawaban}', [FormController::class, 'saveAnswer'])->middleware('auth');
 
 Route::get('/user/form/terimakasih-sudah-mengisi', function () {
@@ -134,11 +144,11 @@ Route::get('/section-2-1', function () {
     return view('form.section-2-1 ');
 });
 
-Route::get('/wait', function (){
+Route::get('/wait', function () {
     return view('form.section-wait');
 });
 
-Route::get('/done', function (){
+Route::get('/done', function () {
     return view('form.section-done');
 });
 

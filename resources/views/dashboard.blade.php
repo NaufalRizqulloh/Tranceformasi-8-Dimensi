@@ -5,6 +5,13 @@
       </h2>
     </x-slot>
 
+    <div>
+      <form action="{{ route('user.form.store', ['kode-akses' => ')ME2{w']) }}" method="POST">
+        @csrf
+        <button type="submit">aaaaaaa</button>
+      </form>
+    </div>
+
     <div class="py-12">
       <div class="max$table->foreignId('jawaban_id');-w-7xl mx-auto sm:px-6 lg:px-8">
         <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">

@@ -8,13 +8,15 @@
       <h1 class="mt-8 text-center font-bold text-2xl">INSTRUKSI PENGERJAAN</h1>
 
       @foreach(config('form-rules.rules-section1') as $index => $rules)
-      <h4 class="ml-12 mr-12 text-1xl mt-4">{{ $index . ". ". $rules }}</h4>
+      <h4 class="ml-12 mr-12 text-1xl mt-4">{!! $index . ". ". $rules !!}</h4>
       @endforeach
 
       <div class="mt-0 mb-8"></div>
   </div>
   <!-- // perlu digantix     -->
-  <form action="/hasil" method="GET">
+  <form action="{{ route('user.form.update', ['jawaban' => $jawaban->id, 'destination' => $nextDestination]) }}" method="POST">
+      @method('PATCH')
+      @csrf
       @foreach( $questions as $index => $quest)
       <div class="mt-8 md:mt-12 mx-auto w-[90%] md:w-[80%] lg:w-[60%] h-fit border-2 rounded-[15px] lg:rounded-[50px] bg-[#FFFFFF]">
           <div class="flex">
@@ -48,18 +50,23 @@
           <a href="/ds" class="mt-8 text-lg md:text-xl py-2 px-16 w-fit h-93 border-2 rounded-full bg-[#ffffff] text-center">
               Kembali
           </a>
-          @elseif($previousDestination == 'go-form-done')
-          <a href="/dn" class="mt-8 text-lg md:text-xl py-2 px-16 w-fit h-93 border-2 rounded-full bg-[#ffffff] text-center">
-              Kembali
-          </a>
           @else
-          <a href="/testform/1?destination={{ $previousDestination }}" class="mt-8 text-lg md:text-xl py-2 px-10 w-[200px] md:w-[200px] h-93 border-2 rounded-full bg-[#ffffff] text-center">
+          <a href="{{ route('user.form.show', ['jawaban' => $jawaban->id, 'destination' => $previousDestination]) }}" class="mt-8 text-lg md:text-xl py-2 px-10 w-[200px] md:w-[200px] h-93 border-2 rounded-full bg-[#ffffff] text-center">
               Kembali
           </a>
           @endif
+
+          @if($nextDestination == 'go-form-done')
+          <a href="/dn" class="mt-8 text-lg md:text-xl py-2 px-16 w-fit h-93 border-2 rounded-full bg-[#ffffff] text-center">
+              Submit
+          </a>
+          @else
           <button type="submit" class="mt-8 text-lg md:text-xl py-2 px-16 w-fit h-93 border-2 rounded-full bg-[#ffffff] text-center">
               Selanjutnya
           </button>
+          @endif
       </div>
   </form>
-  <h1>{{ $nextDestination . "   " . $previousDestination }}</h1>
+  <h1>{{ var_dump($answers) }}</h1>
+  <h1>{{ $previousDestination . "   " .  $nextDestination }}</h1>
+  @endsection
