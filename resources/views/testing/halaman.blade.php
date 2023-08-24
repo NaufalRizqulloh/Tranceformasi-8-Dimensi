@@ -1,7 +1,10 @@
  @extends('templates.default')
 
 @section('content')
-<div class="mt-20 mx-auto w-[90%] h-fit border-2 rounded-xl lg:rounded-[50px] lg:rounded-tr-[250px] bg-[#8404F4] lg:bg-[#FFEEFE] text-[#F7F1F1] lg:flex">
+
+<!-- Main Hero -->
+
+<div class="mt-20 mx-auto w-[90%] h-fit rounded-xl lg:rounded-[50px] lg:rounded-tr-[250px] bg-[#8404F4] lg:bg-[#FFEEFE] lg:dark:bg-slate-700 text-[#F7F1F1] lg:flex">
     <div class="lg:w-1/2 h-max lg:bg-[#8404F4] rounded-xl lg:rounded-tl-[50px] lg:rounded-bl-[50px]">
         <h1 class="font-bold text-center lg:text-left text-[#FCF304] lg:ml-12 pt-8 text-4xl mx-4">DELAPAN DIMENSI <br> KEPEMIMPINAN</h1>
         <h1 class="mx-4 lg:mx-12 text-center lg:text-left text-1xl mt-4 text-[#F7F1F1]">
@@ -22,7 +25,10 @@
         <img src="dist/body1image.png" alt="" width="500" height="500">
     </div>
 </div>
-<div class="mt-8 lg:mt-8 w-[90%] h-fit border-2 bg-[#8404F4] rounded-xl lg:rounded-[50px] mx-auto">
+
+<!-- Start Hero -->
+
+<div class="mt-8 lg:mt-8 w-[90%] border-2 border-transparent h-fit bg-[#8404F4] rounded-xl lg:rounded-[50px] mx-auto">
     <h1 class="text-2xl lg:text-4xl text-center lg:text-left font-semibold mx-4 lg:ml-12 mt-8 lg:mt-12 text-[#F7F1F1]">
         Luangkan waktu 15 menit saja !! <br>
         Yuk langsung klik tombol mulai di bawah ini!
@@ -40,7 +46,10 @@
         Sudah mengerjakan? Lihat hasilnya <span class="underline cursor-pointer hover:text-sky-500">disini!</span>
     </h1>
 </div>
-<div class="mt-8 lg:mt-8 w-[90%] h-fit border-2 bg-[#8404F4] rounded-xl lg:rounded-[50px] mx-auto">
+
+<!-- Dimensi Anda Hero -->
+
+<div class="mt-8 lg:mt-8 w-[90%] border-2 border-transparent h-fit bg-[#8404F4] rounded-xl lg:rounded-[50px] mx-auto">
     <h1 class="text-xl lg:text-3xl text-center mx-4 mt-4 mb-2 lg:mb-4 text-[#F7F1F1]">
         Selamat! Dimensi Kepemimpinan Anda Adalah :
     </h1>
@@ -56,14 +65,19 @@
     </h1>
     <button class="mt-2 mb-8 mx-auto block border-2 rounded-full border-[#FCF304] text-[#FCF304] py-3 px-10">Unduh Hasil Tes</button>
 </div>
-<div class="mt-8 lg:mt-8 w-[90%] h-fit border-2 bg-[#8404F4] rounded-[50px] text-[#F7F1F1] mx-auto">
+
+<!-- Empty Hero -->
+
+<div class="mt-8 lg:mt-8 w-[90%] border-2 border-transparent h-fit bg-[#8404F4] rounded-[50px] text-[#F7F1F1] mx-auto">
     <h1 class="mt-8 mb-4 mx-4 text-lg md:text-2xl lg:text-2xl text-[#F7F1F1] text-center font-bold">
         WAH, TERNYATA KAMU BELUM MENGISI FORMNYA
         <br>
         Klik <span class="font-bold underline cursor-pointer"><a href="#mulai">DISINI</a></span> untuk segera mengisi
     </h1>
     <hr class="w-3/4 mx-auto">
-    <img src="/dist/kosong.png" alt="" class="mx-auto w-[200px] lg:w-[300px] my-4 lg:my-6">
+    <div class="w-[350px] lg:w-[450px] h-[350px] lg:h-[450px] mx-auto justify-center items-center rounded-full bg-white dark:bg-slate-800 my-4 lg:my-6">
+        <img src="/dist/kosong.png" alt="" class="mx-auto py-[4.5rem] w-[200px] lg:w-[300px]">
+    </div>
 </div>
 
 @endsection

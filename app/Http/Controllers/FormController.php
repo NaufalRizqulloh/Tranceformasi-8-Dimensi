@@ -101,8 +101,8 @@ class FormController extends Controller
     {
         $destination = strtolower(request('destination'));
         $destination = str_replace(array(" ", "\t", "\n", "\r"), "", $destination);
-        $pageSection = 0;
         $questions = "";
+        $pageSection = 0;
         $nextDestination = "";
         $previousDestination = "";
 
@@ -144,9 +144,22 @@ class FormController extends Controller
                 dd('idk', $destination);
         }
 
-        $answers = session('answers-' . $jawaban->id);
+        $viewName = '';
+        $answers = [];
 
-        return view('alt-form/section-1', [
+        $sessionData = session('answers-' . $jawaban->id, ['checkbox' => [], 'range' => []]);
+
+        if ($pageSection == 1) {
+            $viewName = 'alt-form/section-1';
+            $answers = $sessionData['checkbox'];
+        } else if ($pageSection == 2) {
+            $viewName = 'alt-form/section-2';
+            $answers = $sessionData['range'];
+        } else {
+            abort(404);
+        }
+
+        return view($viewName, [
             'jawaban' => $jawaban,
             'questions' => $questions,
             'answers' => $answers,
@@ -170,8 +183,12 @@ class FormController extends Controller
     {
         request()->validate([
             'destination' => 'required',
-            'checkbox' => 'required'
+            'checkbox' => 'sometimes|array|required_array_keys:p,t|size:2',
+            'checkbox.p' => 'array|size:8',
+            'checkbox.t' => 'array|size:8',
+            'range' => 'required_without:checkbox|array|size:10'
         ]);
+
         $destination = $request->input('destination');
         $user = User::with('jawabans')->find(auth()->id());
 
@@ -181,11 +198,18 @@ class FormController extends Controller
 
         //pembatas
 
+        $sessionKey = 'answers-' . $jawaban->id;
+        $sessionData = session($sessionKey, []);
+
         if ($request->checkbox) {
-            $answers = $request->input('checkbox');
-            $sessionKey = 'answers-' . $jawaban->id;
-            session([$sessionKey => $answers]);
+            $checkboxAnswers = $request->input('checkbox');
+            $sessionData['checkbox'] = $checkboxAnswers;
+        } else if ($request->range) {
+            $rangeAnswers = $request->input('range');
+            $sessionData['range'] = $rangeAnswers;
         }
+
+        session([$sessionKey => $sessionData]);
 
         return redirect()->route('user.form.show', [
             'jawaban' => $jawaban,

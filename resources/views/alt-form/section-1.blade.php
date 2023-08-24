@@ -13,7 +13,6 @@
 
       <div class="mt-0 mb-8"></div>
   </div>
-  <!-- // perlu digantix     -->
   <form action="{{ route('user.form.update', ['jawaban' => $jawaban->id, 'destination' => $nextDestination]) }}" method="POST">
       @method('PATCH')
       @csrf
@@ -28,13 +27,13 @@
           </div>
           <ul>
               @for ($i = 1; $i <= 4; $i++) <li class="flex h-auto">
-                  <input type="checkbox" id="{{ ($index) . '-1-' . $i }}" class="peer/{{ ($index) . '-1-' . $i }} hidden single-checkbox{{ $index}}1 check{{ ($index) . $i }}" name="{{ 'checkbox[p][' . ($index) . ']' }}" value="{{ $quest['value-p'][($i - 1)] }}" {{ (isset($answers['p'][$index]) && $answers['p'][$index] == $quest['value-p'][$i - 1]) ? 'checked' : ''}} />
-                  <label for="{{ ($index) . '-1-' . $i }}" class="mt-8 ml-4 md:ml-8 lg:ml-[4rem] select-none cursor-pointer rounded-full border-2 border-slate-400 h-10 w-10 transition-colors duration-200 ease-in-out peer-checked/{{ ($index) . '-1-' . $i }}:bg-green-500 peer-checked/{{ ($index) . '-1-' . $i }}:border-transparent mr-1"></label>
+                  <input type="checkbox" id="{{ $index . '-1-' . $i }}" class="peer/{{ $index . '-1-' . $i }} hidden single-checkbox{{ $index }}1 check{{ $index . $i }}" name="checkbox[p][{{ $index }}]" value="{{ $quest['value-p'][($i - 1)] }}" {{ (isset($answers['p'][$index]) && $answers['p'][$index] == $quest['value-p'][$i - 1]) ? 'checked' : ''}} />
+                  <label for="{{ $index . '-1-' . $i }}" class="mt-8 ml-4 md:ml-8 lg:ml-[4rem] select-none cursor-pointer rounded-full border-2 border-slate-400 h-10 w-10 transition-colors duration-200 ease-in-out peer-checked/{{ ($index) . '-1-' . $i }}:bg-green-500 peer-checked/{{ ($index) . '-1-' . $i }}:border-transparent mr-1"></label>
                   <div class="mt-8 text-center block align mx-auto h-auto w-[60%] text-md border-2 border-slate-400 rounded-full">
                       <h1 class="mt-[6px]">{{ $quest['question'][($i - 1)] }}</h1>
                   </div>
-                  <input type="checkbox" id="{{ ($index) . '-2-' . $i }}" class="peer/{{ ($index) . '-2-' . $i }} hidden single-checkbox{{ $index}}2 check{{ ($index) . $i }}" name="{{ 'checkbox[t][' . ($index) . ']' }}" value="{{ $quest['value-t'][($i - 1)] }}" {{ (isset($answers['t'][$index]) && $answers['t'][$index] == $quest['value-t'][$i - 1]) ? 'checked' : ''}} />
-                  <label for="{{ ($index) . '-2-' . $i }}" class="mt-8 mr-4 md:mr-8 lg:mr-[4rem] select-none cursor-pointer rounded-full border-2 border-slate-400 h-10 w-10 transition-colors duration-200 ease-in-out peer-checked/{{ ($index) . '-2-' . $i }}:bg-green-500 peer-checked/{{ ($index) . '-2-' . $i }}:border-transparent"></label>
+                  <input type="checkbox" id="{{ $index . '-2-' . $i }}" class="peer/{{ $index . '-2-' . $i }} hidden single-checkbox{{ $index }}2 check{{ $index . $i }}" name="checkbox[t][{{ $index }}]" value="{{ $quest['value-t'][($i - 1)] }}" {{ (isset($answers['t'][$index]) && $answers['t'][$index] == $quest['value-t'][$i - 1]) ? 'checked' : ''}} />
+                  <label for="{{ $index . '-2-' . $i }}" class="mt-8 mr-4 md:mr-8 lg:mr-[4rem] select-none cursor-pointer rounded-full border-2 border-slate-400 h-10 w-10 transition-colors duration-200 ease-in-out peer-checked/{{ ($index) . '-2-' . $i }}:bg-green-500 peer-checked/{{ ($index) . '-2-' . $i }}:border-transparent"></label>
                   </li>
                   <br>
                   {{ $quest['value-p'][$i - 1] }}
@@ -56,15 +55,9 @@
           </a>
           @endif
 
-          @if($nextDestination == 'go-form-done')
-          <a href="/dn" class="mt-8 text-lg md:text-xl py-2 px-16 w-fit h-93 border-2 rounded-full bg-[#ffffff] text-center">
-              Submit
-          </a>
-          @else
           <button type="submit" class="mt-8 text-lg md:text-xl py-2 px-16 w-fit h-93 border-2 rounded-full bg-[#ffffff] text-center">
               Selanjutnya
           </button>
-          @endif
       </div>
   </form>
   <h1>{{ var_dump($answers) }}</h1>

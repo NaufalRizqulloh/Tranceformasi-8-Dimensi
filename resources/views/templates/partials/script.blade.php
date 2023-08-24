@@ -309,5 +309,12 @@
   document.getElementById("overlay").style.display = "none";
   document.getElementById("overlay1").style.display = "none";
   }
+
+  const checkbox = document.querySelector('#toggle');
+  const html = document.querySelector('html');
+      
+  checkbox.addEventListener('click', function(){
+    checkbox.checked ? html.classList.add('dark') : html.classList.remove('dark');
+  });
   
 </script>

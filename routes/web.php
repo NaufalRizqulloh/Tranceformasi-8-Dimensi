@@ -36,13 +36,14 @@ Route::get('/dn', function () {
     dd('anggap done', request());
 });
 
-
+Route::get('/section2', function (){
+    return view('alt-form/section-2');
+});
 
 Route::get('/testform/{jawaban}', [FormController::class, 'show'])->name('testt');
 
 Route::get('/hasil', function () {
-    $e = request('checkbox');
-    return $e;
+    return request();
 });
 
 Route::get('/test-form', function () {

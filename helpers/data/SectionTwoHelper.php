@@ -9,23 +9,20 @@ class SectionTwoHelper
 {
     public static function normalizeData(array $values): array
     {
-        $i = 1;
         $scores = [0, 0, 0, 0, 0];
+        foreach ($values as $index => $value) {
 
-        foreach ($values as $value) {
-
-            if (GeneralHelper::isBetweenAnd($i, 1, 4)) {
+            if (GeneralHelper::isBetweenAnd($index, 1, 4)) {
                 $scores[0] += $value;
-            } else if (GeneralHelper::isBetweenAnd($i, 5, 8)) {
+            } else if (GeneralHelper::isBetweenAnd($index, 5, 8)) {
                 $scores[1] += $value;
-            } else if (GeneralHelper::isBetweenAnd($i, 9, 12)) {
+            } else if (GeneralHelper::isBetweenAnd($index, 9, 12)) {
                 $scores[2] += $value;
-            } else if (GeneralHelper::isBetweenAnd($i, 13, 16)) {
+            } else if (GeneralHelper::isBetweenAnd($index, 13, 16)) {
                 $scores[3] += $value;
-            } else if (GeneralHelper::isBetweenAnd($i, 17, 20)) {
+            } else if (GeneralHelper::isBetweenAnd($index, 17, 20)) {
                 $scores[4] += $value;
             }
-            $i++;
         }
 
         $finalScores = [];
