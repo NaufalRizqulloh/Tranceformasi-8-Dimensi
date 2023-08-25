@@ -9,7 +9,9 @@
     <title>Tranceformasi Indonesia</title>
  
 <body class="bg-[#F7F1F1] dark:bg-slate-800">
-    @include('templates.partials.navigation')
+    <section id="top" class="pt-2 header">
+        @include('templates.partials.navigation')
+    </section>
 
     @yield('content')
 

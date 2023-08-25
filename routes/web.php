@@ -46,8 +46,11 @@ Route::get('/hasil', function () {
     return request();
 });
 
-Route::get('/test-form', function () {
-    return view('alt-form/testing');
+Route::get('/wait', function () {
+    return view('alt-form/section-wait', [
+        'nextDestination' => 'section-2-1',
+        'jawaban' => 1
+    ]);
 });
 
 Route::get('/event-test/{event}', [AdminEventController::class, 'show']);
@@ -145,9 +148,9 @@ Route::get('/section-2-1', function () {
     return view('form.section-2-1 ');
 });
 
-Route::get('/wait', function () {
-    return view('form.section-wait');
-});
+// Route::get('/wait', function () {
+//     return view('form.section-wait');
+// });
 
 Route::get('/done', function () {
     return view('form.section-done');

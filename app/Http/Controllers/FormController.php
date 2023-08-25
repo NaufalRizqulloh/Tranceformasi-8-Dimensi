@@ -122,7 +122,7 @@ class FormController extends Controller
             case "section-1-3":
                 $questions = config('form-section1-3.content');
                 $pageSection = 1;
-                $nextDestination = 'section-2-1';
+                $nextDestination = 'section-wait';
                 $previousDestination = 'section-1-2';
                 break;
             case "section-2-1":
@@ -134,12 +134,14 @@ class FormController extends Controller
             case "section-2-2":
                 $questions = config('form-section2-2.content');
                 $pageSection = 2;
-                $nextDestination = 'go-form-done';
+                $nextDestination = 'go-form-submit';
                 $previousDestination = 'section-2-1';
                 break;
-            case "section-wait": // perlu revisi
-                $questions = config('form-section1-1.content');
-                break;
+            case "section-wait":
+                return view('alt-form/section-wait', [
+                    'nextDestination' => 'section-2-1',
+                    'jawaban' => $jawaban
+                ]);
             default:
                 dd('idk', $destination);
         }
@@ -199,14 +201,15 @@ class FormController extends Controller
         //pembatas
 
         $sessionKey = 'answers-' . $jawaban->id;
-        $sessionData = session($sessionKey, []);
+        $sessionData = session($sessionKey, ['checkbox' => [], 'range' => []]);
 
         if ($request->checkbox) {
             $checkboxAnswers = $request->input('checkbox');
-            $sessionData['checkbox'] = $checkboxAnswers;
+            $sessionData['checkbox']['p'] = $checkboxAnswers['p'] + $sessionData['checkbox']['p'];
+            $sessionData['checkbox']['t'] = $checkboxAnswers['t'] + $sessionData['checkbox']['t'];
         } else if ($request->range) {
             $rangeAnswers = $request->input('range');
-            $sessionData['range'] = $rangeAnswers;
+            $sessionData['range'] =  $rangeAnswers + $sessionData['range'];
         }
 
         session([$sessionKey => $sessionData]);

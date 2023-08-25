@@ -16,10 +16,11 @@
             3. Apa yang paling penting dalam pengembangan kepemimpinan Anda saat ini dan yang akan datang
         </h1>
         <h1 class="mx-4 text-xl lg:text-2xl text-center mt-8">Mulai ekplorasi, klik tombol dibawah ini</h1>
-        <div class="" id="mulai"></div>
-        <a href="#mulai">            
-            <img src="dist/ArrowDown1.png" alt="" width="75" height="75" class="mx-auto mt-4 mb-8">
-        </a>
+        <div class="mt-4 pb-8" id="mulai">
+            <a href="#mulai" class="block w-fit mx-auto">            
+                <img src="dist/ArrowDown1.png" alt="" width="75" height="75" class="mx-auto">
+            </a>
+        </div>
     </div>
     <div class="max-lg:hidden lg:w-1/2 h-full">
         <img src="dist/body1image.png" alt="" width="500" height="500">
@@ -37,7 +38,7 @@
         *Gunakan kode akses yang sudah anda terima dari admin
     </h1>
     <div class="group w-fit mx-auto">
-        <img src="dist/play.png" alt="" class="w-[60px] mx-auto mt-8 lg:mt-12 transition ease-in-out delay-150 duration-300 group-hover:hidden ">
+        <img src="dist/play.png" alt="" class="w-[60px] mx-auto mt-8 lg:mt-12 transition ease-in-out delay-150 duration-300 group-hover:hidden  ">
         <button class="hidden transition ease-in-out delay-150 duration-300 group-hover:block mx-auto text-3xl text-center rounded-full font-bold mt-8 lg:mt-12 text-[#8404F4] bg-[#FCF304] py-3 px-10">
             <a href="/user/form?destination=Section-1-1">Mulai</a>
         </button>
@@ -63,7 +64,7 @@
     <h1 class="mx-4 mt-8 lg:mt-4 font-light text-center text-[#F7F1F1] italic">
         *Untuk mengetahui detail lebih lanjut, silahkan unduh file di bawah ini
     </h1>
-    <button class="mt-2 mb-8 mx-auto block border-2 rounded-full border-[#FCF304] text-[#FCF304] py-3 px-10">Unduh Hasil Tes</button>
+    <button class="mt-2 mb-8 mx-auto block border-2 rounded-full border-[#FCF304] text-[#FCF304] hover:bg-[#FCF304] hover:border-transparent hover:text-[#8404F4] py-3 px-10">Unduh Hasil Tes</button>
 </div>
 
 <!-- Empty Hero -->
@@ -75,9 +76,10 @@
         Klik <span class="font-bold underline cursor-pointer"><a href="#mulai">DISINI</a></span> untuk segera mengisi
     </h1>
     <hr class="w-3/4 mx-auto">
-    <div class="w-[350px] lg:w-[450px] h-[350px] lg:h-[450px] mx-auto justify-center items-center rounded-full bg-white dark:bg-slate-800 my-4 lg:my-6">
+    <div class="w-[350px] lg:w-[450px] h-[350px] lg:h-[450px] mx-auto justify-center items-center rounded-full bg-[#F7F1F1] dark:bg-slate-800 my-4 lg:my-6">
         <img src="/dist/kosong.png" alt="" class="mx-auto py-[4.5rem] w-[200px] lg:w-[300px]">
     </div>
 </div>
+
 
 @endsection
