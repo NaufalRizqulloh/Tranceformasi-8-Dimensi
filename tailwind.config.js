@@ -8,8 +8,9 @@ export default {
     content: [
         './vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php',
         './storage/framework/views/*.php',
-        './resources/views/**/*.blade.php',
         "./resources/**/*.blade.php",
+        './resources/views/**/*.blade.php',
+        './resources/views/testing/**/*.blade.php',
         "./resources/**/*.js",
         "./resources/**/*.vue",
     ],
@@ -17,9 +18,8 @@ export default {
 
     theme: {
         extend: {
-            fontFamily: {
-                sans: ['Figtree', ...defaultTheme.fontFamily.sans],
-                montserrat: ['Montserrat'], 
+            fontFamily:{
+                montserrat: ['Montserrat', 'sans'],
             },
             colors: {
                 primary: '#8404F4',

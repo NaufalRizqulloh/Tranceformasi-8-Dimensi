@@ -13,7 +13,8 @@
 
       <div class="mt-0 mb-8"></div>
   </div>
-  <form action="{{ route('user.form.update', ['jawaban' => $jawaban->id, 'destination' => $nextDestination]) }}" method="POST">
+  {{-- action="{{ route('user.form.update', ['jawaban' => $jawaban->id, 'destination' => $nextDestination]) }}" --}}
+  <form id="form" method="POST">
       @method('PATCH')
       @csrf
       @foreach( $questions as $index => $quest)
@@ -44,26 +45,41 @@
           <div class="mt-0 mb-12"></div>
       </div>
       @endforeach
+
+      {{-- kalau error --}}
+      <div>
+          @foreach(['checkbox', 'checkbox.p', 'checkbox.t', 'range'] as $field)
+          @error($field)
+          <h1 class="text-red-600">{{ $message }}</h1>
+          @enderror
+          @endforeach
+      </div>
+
       <div class="mx-auto w-fit space-x-8 md:space-x-16">
           @if($previousDestination == 'go-dashboard')
           <a href="/ds" class="mt-8 text-lg md:text-xl py-2 px-16 w-fit h-93 border-2 rounded-full bg-[#ffffff] text-center">
               Kembali
           </a>
           @else
-          <a href="{{ route('user.form.show', ['jawaban' => $jawaban->id, 'destination' => $previousDestination]) }}" class="mt-8 text-lg md:text-xl py-2 px-10 w-[200px] md:w-[200px] h-93 border-2 rounded-full bg-[#ffffff] text-center">
+          <button id="to-previous-button" type="button" class="mt-8 text-lg md:text-xl py-2 px-16 w-fit h-93 border-2 rounded-full bg-[#ffffff] text-center">
               Kembali
-          </a>
-
-          <button id="previous-button" type="button" class="mt-8 text-lg md:text-xl py-2 px-16 w-fit h-93 border-2 rounded-full bg-[#ffffff] text-center">
-              Selanjutnya
           </button>
           @endif
 
-          <button id="next-button" type="submit" class="mt-8 text-lg md:text-xl py-2 px-16 w-fit h-93 border-2 rounded-full bg-[#ffffff] text-center">
+          @if($nextDestination == 'section-wait')
+          <a href="{{ route('user.form.show', ['jawaban' => $jawaban, 'destination' => $nextDestination]) }}" class="mt-8 text-lg md:text-xl py-2 px-16 w-fit h-93 border-2 rounded-full bg-[#ffffff] text-center">
+              Selanjutnya
+          </a>
+          @else
+          <button id="to-next-button" type="button" class="mt-8 text-lg md:text-xl py-2 px-16 w-fit h-93 border-2 rounded-full bg-[#ffffff] text-center">
               Selanjutnya
           </button>
+          @endif
       </div>
+
   </form>
   <h1>{{ var_dump($answers) }}</h1>
   <h1>{{ $previousDestination . "   " .  $nextDestination }}</h1>
+
+  @include('templates.partials.script-form')
   @endsection

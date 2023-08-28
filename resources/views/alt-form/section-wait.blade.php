@@ -19,4 +19,5 @@
     <img src="/dist/lanjutkan.png" alt="" class="mr-2">
 </a>
 
+
 @endsection

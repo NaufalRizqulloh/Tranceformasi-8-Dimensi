@@ -8,13 +8,14 @@
     <div>
       <form action="{{ route('user.form.store', ['kode-akses' => ')ME2{w']) }}" method="POST">
         @csrf
-        <button type="submit">aaaaaaa</button>
+        <button type="submit" class="text-secondary font-montserrat text-9xl">aaaaaaa</button>
       </form>
+      <button onclick="alertFunction()" class="border-2 border-black text-white bg-slate-700 ml-20">testing tombol alert</button>
     </div>
 
     <div class="py-12">
       <div class="max$table->foreignId('jawaban_id');-w-7xl mx-auto sm:px-6 lg:px-8">
-        <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
+        <div class="bg-primary dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
           <div class="p-6 text-gray-900 dark:text-gray-100">
             {{ __("You're logged in!") }}
           </div>

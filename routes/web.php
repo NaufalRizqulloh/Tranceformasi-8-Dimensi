@@ -89,6 +89,7 @@ Route::post('user/form', [FormController::class, 'store'])->middleware('auth')->
 Route::delete('user/form/{jawaban}', [FormController::class, 'destroy'])->middleware('auth')->name('user.form.destroy');
 
 Route::patch('users/update/{jawaban}', [FormController::class, 'update'])->middleware('auth')->name('user.form.update');
+Route::patch('users/update/{jawaban}/back', [FormController::class, 'updateBack'])->middleware('auth')->name('user.form.update.back');
 Route::put('users/update/{jawaban}', [FormController::class, 'submit'])->middleware('auth')->name('user.form.submit');
 
 // tdk dipakai
@@ -133,7 +134,7 @@ Route::get('/tfregister', function () {
 
 
 Route::get('/tests', function () {
-    return view('/testing/halaman ');
+    return view('/testing/halaman');
 });
 
 Route::get('/section-1', function () {

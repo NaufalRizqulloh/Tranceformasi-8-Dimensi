@@ -14,7 +14,7 @@
     <div class="mt-0 mb-8"></div>
 </div>
 
-<form action="{{ route('user.form.update', ['jawaban' => $jawaban->id, 'destination' => $nextDestination]) }}" method="POST">
+<form id="form" method="POST">
     @method('PATCH')
     @csrf
     @foreach($questions as $index => $quest)
@@ -66,22 +66,38 @@
 
     </div>
     @endforeach
+
     <div>
         <h1>{{ var_dump($answers) }}</h1>
     </div>
-    <a href="{{ route('user.form.show', ['jawaban' => $jawaban->id, 'destination' => $previousDestination]) }}" class="mt-8 text-lg md:text-xl py-2 px-10 w-[200px] md:w-[200px] h-93 border-2 rounded-full bg-[#ffffff] text-center">
-        Kembali
-    </a>
 
-    @if($nextDestination == 'go-form-submit')
-    <a href="{{ route('user.form.submit', ['jawaban' => $jawaban->id]) }}" class="mt-8 text-lg md:text-xl py-2 px-16 w-fit h-93 border-2 rounded-full bg-[#ffffff] text-center">
-        Submit
-    </a>
-    @else
-    <button type="submit" class="mt-8 text-lg md:text-xl py-2 px-16 w-fit h-93 border-2 rounded-full bg-[#ffffff] text-center">
-        Selanjutnya
-    </button>
-    @endif
+    {{-- kalau error --}}
+    <div>
+        @foreach(['checkbox', 'checkbox.p', 'checkbox.t', 'range'] as $field)
+        @error($field)
+        <h1 class="text-red-600">{{ $message }}</h1>
+        @enderror
+        @endforeach
+    </div>
+
+    {{-- previous or next button --}}
+    <div>
+        <button id="to-previous-button" class="mt-8 text-lg md:text-xl py-2 px-16 w-fit h-93 border-2 rounded-full bg-[#ffffff] text-center">
+            Kembali
+        </button>
+
+        @if($nextDestination == 'submit')
+        <button id="to-next-button" class="mt-8 text-lg md:text-xl py-2 px-16 w-fit h-93 border-2 rounded-full bg-[#ffffff] text-center">
+            Submit
+        </button>
+        @else
+        <button id="to-next-button" class="mt-8 text-lg md:text-xl py-2 px-16 w-fit h-93 border-2 rounded-full bg-[#ffffff] text-center">
+            Selanjutnya
+        </button>
+        @endif
+    </div>
+
 </form>
 
+@include('templates.partials.script-form')
 @endsection

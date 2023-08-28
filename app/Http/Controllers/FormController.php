@@ -134,7 +134,7 @@ class FormController extends Controller
             case "section-2-2":
                 $questions = config('form-section2-2.content');
                 $pageSection = 2;
-                $nextDestination = 'go-form-submit';
+                $nextDestination = 'submit';
                 $previousDestination = 'section-2-1';
                 break;
             case "section-wait":
@@ -199,20 +199,43 @@ class FormController extends Controller
         $userAnswer->save();
 
         //pembatas
+        $checkboxAnswers = $request->input('checkbox', ['p' => [], 't' => []]);
+        $rangeAnswers = $request->input('range', []);
 
-        $sessionKey = 'answers-' . $jawaban->id;
-        $sessionData = session($sessionKey, ['checkbox' => [], 'range' => []]);
+        $this->saveAnswer($jawaban->id, $checkboxAnswers, $rangeAnswers);
 
-        if ($request->checkbox) {
-            $checkboxAnswers = $request->input('checkbox');
-            $sessionData['checkbox']['p'] = $checkboxAnswers['p'] + $sessionData['checkbox']['p'];
-            $sessionData['checkbox']['t'] = $checkboxAnswers['t'] + $sessionData['checkbox']['t'];
-        } else if ($request->range) {
-            $rangeAnswers = $request->input('range');
-            $sessionData['range'] =  $rangeAnswers + $sessionData['range'];
+        if ($destination == 'submit') {
+            return redirect()->route('user.form.submit', [
+                'jawaban' => $jawaban->id
+            ]);
+        } else {
+            return redirect()->route('user.form.show', [
+                'jawaban' => $jawaban,
+                'destination' => $destination
+            ]);
         }
+    }
 
-        session([$sessionKey => $sessionData]);
+    public function updateBack(Request $request, Jawaban $jawaban)
+    {
+        request()->validate([
+            'destination' => 'required',
+            'checkbox' => 'array|required_array_keys:p,t|size:2',
+            'range' => 'array'
+        ]);
+
+        $destination = $request->input('destination');
+        $user = User::with('jawabans')->find(auth()->id());
+
+        $userAnswer = $user->jawabans()->latest()->first();
+        $userAnswer->progress = $destination;
+        $userAnswer->save();
+
+        // scaniiwocca        
+        $checkboxAnswers = $request->input('checkbox', ['p' => [], 't' => []]);
+        $rangeAnswers = $request->input('range', []);
+
+        $this->saveAnswer($jawaban->id, $checkboxAnswers, $rangeAnswers);
 
         return redirect()->route('user.form.show', [
             'jawaban' => $jawaban,
@@ -226,17 +249,17 @@ class FormController extends Controller
     public function destroy(Jawaban $jawaban)
     {
         $jawaban->delete();
-        redirect()->response()->with('success', 'Data jawaban berhasil dihapus');
     }
 
     public function submit(Jawaban $jawaban)
     {
-        $answerSection1Col1 = session('answers-' . $jawaban->id)['p'];
-        $answerSection1Col2 = session('answers-' . $jawaban->id)['t'];
-        $answerSection2 = ['E'];
+        $answer = session('answers-' . $jawaban->id);
+        $answerSection1P = $answer['checkbox']['p'];
+        $answerSection1T = $answer['checkbox']['t'];
+        $answerSection2 = $answer['range'];
 
-        $mostValue = DiscHelper::normalizeDiscValue($answerSection1Col1);
-        $leastValue = DiscHelper::normalizeDiscValue($answerSection1Col2);
+        $mostValue = DiscHelper::normalizeDiscValue($answerSection1P);
+        $leastValue = DiscHelper::normalizeDiscValue($answerSection1T);
         $changeValue = DiscHelper::getChangeValue($mostValue,  $leastValue);
 
         $answerSection2 = SectionTwoHelper::normalizeData($answerSection2);
@@ -276,20 +299,18 @@ class FormController extends Controller
         ]);
     }
 
-    public function saveAnswer(Jawaban $jawaban)
+    public function saveAnswer(int $jawabanId, array $checkboxAnswers = ['p' => [], 't' => []], array $rangeAnswers = [])
     {
-        request()->validate([
-            'answers' => 'required'
-        ]);
+        $sessionKey = 'answers-' . $jawabanId;
+        $sessionData = session($sessionKey, ['checkbox' => ['p' => [], 't' => []], 'range' => []]);
 
-        $answers = request()->answers;
-        $sessionKey = 'answers-' . $jawaban->id;
-
-        if ($answers) {
-            session([$sessionKey => $answers]);
-            return response()->noContent();
+        if ($checkboxAnswers) {
+            $sessionData['checkbox']['p'] = $checkboxAnswers['p'] + $sessionData['checkbox']['p'];
+            $sessionData['checkbox']['t'] = $checkboxAnswers['t'] + $sessionData['checkbox']['t'];
+        } else if ($rangeAnswers) {
+            $sessionData['range'] =  $rangeAnswers + $sessionData['range'];
         }
 
-        dd('error');
+        session([$sessionKey => $sessionData]);
     }
 }
