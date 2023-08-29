@@ -85,19 +85,43 @@
         <button id="to-previous-button" class="mt-8 text-lg md:text-xl py-2 px-16 w-fit h-93 border-2 rounded-full bg-[#ffffff] text-center">
             Kembali
         </button>
-
+        
         @if($nextDestination == 'submit')
-        <button id="to-next-button" class="mt-8 text-lg md:text-xl py-2 px-16 w-fit h-93 border-2 rounded-full bg-[#ffffff] text-center">
+        <a id="pre-submit" onclick="kodeAkses()" class="mt-8 text-lg md:text-xl py-2 px-16 w-fit h-93 border-2 rounded-full bg-[#ffffff] text-center cursor-pointer">
             Submit
-        </button>
+        </a>
         @else
         <button id="to-next-button" class="mt-8 text-lg md:text-xl py-2 px-16 w-fit h-93 border-2 rounded-full bg-[#ffffff] text-center">
             Selanjutnya
         </button>
         @endif
     </div>
+    
+    
+    <!-- overlaySubmit -->
+    
+    <div id="kodeAkses" class="top-1/4 left-1/4 w-1/2 h-fit rounded-3xl bg-white z-30 flex">
+        <div class="w-full flex bg-primary mb-5 z-40 top-0 rounded-t-3xl items-center">
+            <h1 class="py-3 text-secondary text-xl mx-auto">Delapan Dimensi Kepemimpinan</h1>
+        </div>
+        <h1 class="text-2xl text-black font-bold text-center mb-5">Apakah Anda yakin dengan jawaban anda?</h1>
+        <h1 class="text-lg text-black text-center mb-4">Klik "Lanjutkan" untuk menyelesaikan sesi ini</h1>
+            <ul class="inline-flex w-full justify-center mx-auto">
+                <li>
+                    <a href="" class="flex w-[200px] h-8 border-2 border-slate-300 rounded-full mx-auto mb-8 items-center justify-center italic mr-4" onclick="offoverlay()">
+                        Kembali
+                    </a>
+                </li>
+                <li>
+                    <button id="submit" class="flex w-[200px] h-8 border-2 border-slate-300 rounded-full mx-auto mb-8 items-center justify-center">
+                        <h1 class="text-center text-md ml-4 mr-3 italic">Lanjutkan</h1>
+                    </button> 
+                </li>
+            </ul>
+    </div>
+    
+    <!-- End overlaySubmit -->
 
 </form>
-
 @include('templates.partials.script-form')
 @endsection

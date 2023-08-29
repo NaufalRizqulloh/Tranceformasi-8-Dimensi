@@ -36,8 +36,8 @@ Route::get('/dn', function () {
     dd('anggap done', request());
 });
 
-Route::get('/section2', function (){
-    return view('alt-form/section-2');
+Route::get('/request21', function (){
+    return session('answers-21');
 });
 
 Route::get('/testform/{jawaban}', [FormController::class, 'show'])->name('testt');
@@ -88,9 +88,9 @@ Route::get('user/form/{jawaban}', [FormController::class, 'show'])->middleware('
 Route::post('user/form', [FormController::class, 'store'])->middleware('auth')->name('user.form.store');
 Route::delete('user/form/{jawaban}', [FormController::class, 'destroy'])->middleware('auth')->name('user.form.destroy');
 
-Route::patch('users/update/{jawaban}', [FormController::class, 'update'])->middleware('auth')->name('user.form.update');
-Route::patch('users/update/{jawaban}/back', [FormController::class, 'updateBack'])->middleware('auth')->name('user.form.update.back');
-Route::put('users/update/{jawaban}', [FormController::class, 'submit'])->middleware('auth')->name('user.form.submit');
+Route::patch('user/form/update/{jawaban}', [FormController::class, 'update'])->middleware('auth')->name('user.form.update');
+Route::patch('user/form/update/{jawaban}/back', [FormController::class, 'updateBack'])->middleware('auth')->name('user.form.update.back');
+Route::patch('user/form/update/{jawaban}/submit', [FormController::class, 'submit'])->middleware('auth')->name('user.form.update.submit');
 
 // tdk dipakai
 Route::post('user/form/save-answer/{jawaban}', [FormController::class, 'saveAnswer'])->middleware('auth');
@@ -128,12 +128,19 @@ Route::get('/test', function () {
     return view('/testing/welcome');
 });
 
+Route::get('/tprofile', function () {
+    return view('/testing/profile');
+});
+
 Route::get('/tfregister', function () {
     return view('/testing/register');
 });
 
 
 Route::get('/tests', function () {
+    return view('/testing/halaman');
+});
+Route::get('/', function () {
     return view('/testing/halaman');
 });
 

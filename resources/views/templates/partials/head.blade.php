@@ -11,17 +11,12 @@ html{
     scroll-behavior: smooth;
 }
 
-body{
-    font-family: 'Montserrat', sans-serif;
-}
-
-#overlay, #overlay1 {
+#overlay, #overlay1, #kodeAkses {
   position: fixed;
   display: none;
 }
 
 .navbar-fixed{
-    @apply fixed z-10 bg-opacity-80;
     backdrop-filter: blur(5px);
     box-shadow: inset 0 -1px 0 0 rgba(0, 0, 0, 0.1);
 }
@@ -30,4 +25,9 @@ body{
     top: 0;
     right: 4;
 }
+
+h1{
+    font-family: 'Montserrat', 'sans';
+}
+
 </style>

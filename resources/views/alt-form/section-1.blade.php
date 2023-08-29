@@ -29,7 +29,7 @@
           <ul>
               @for ($i = 1; $i <= 4; $i++) <li class="flex h-auto">
                   <input type="checkbox" id="{{ $index . '-1-' . $i }}" class="peer/{{ $index . '-1-' . $i }} hidden single-checkbox{{ $index }}1 check{{ $index . $i }}" name="checkbox[p][{{ $index }}]" value="{{ $quest['value-p'][($i - 1)] }}" {{ (isset($answers['p'][$index]) && $answers['p'][$index] == $quest['value-p'][$i - 1]) ? 'checked' : ''}} />
-                  <label for="{{ $index . '-1-' . $i }}" class="mt-8 ml-4 md:ml-8 lg:ml-[4rem] select-none cursor-pointer rounded-full border-2 border-slate-500 dark:border-white h-10 w-10 transition-colors duration-200 ease-in-out peer-checked/{{ ($index) . '-1-' . $i }}:bg-green-500 peer-checked/{{ ($index) . '-1-' . $i }}:border-transparent dark:peer-checked/{{ ($index) . '-1-' . $i }}:border-white mr-1"></label>
+                  <label for="{{ $index . '-1-' . $i }}" class="mt-8 ml-4 md:ml-8 lg:ml-[4rem] select-none cursor-pointer rounded-full border-2 border-slate-500 dark:border-white h-10 w-10 transition-colors duration-200 ease-in-out peer-checked/{{ ($index) . '-1-' . $i }}:bg-green-500 peer-checked/{{ ($index) . '-1-' . $i }}:border-transparent dark:peer-checked/{{ ($index) . '-1-' . $i }}:border-white"></label>
                   <div class="mt-8 text-center block align mx-auto h-auto w-[60%] text-md border-2 border-slate-500 dark:border-white rounded-full">
                       <h1 class="mt-[6px]">{{ $quest['question'][($i - 1)] }}</h1>
                   </div>

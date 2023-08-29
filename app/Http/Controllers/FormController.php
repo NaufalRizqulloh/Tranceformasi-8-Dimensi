@@ -183,6 +183,7 @@ class FormController extends Controller
      */
     public function update(Request $request, Jawaban $jawaban)
     {
+        dd('updateback');
         request()->validate([
             'destination' => 'required',
             'checkbox' => 'sometimes|array|required_array_keys:p,t|size:2',
@@ -204,24 +205,19 @@ class FormController extends Controller
 
         $this->saveAnswer($jawaban->id, $checkboxAnswers, $rangeAnswers);
 
-        if ($destination == 'submit') {
-            return redirect()->route('user.form.submit', [
-                'jawaban' => $jawaban->id
-            ]);
-        } else {
-            return redirect()->route('user.form.show', [
-                'jawaban' => $jawaban,
-                'destination' => $destination
-            ]);
-        }
+        return redirect()->route('user.form.show', [
+            'jawaban' => $jawaban,
+            'destination' => $destination
+        ]);
     }
 
     public function updateBack(Request $request, Jawaban $jawaban)
     {
+        dd('updateback');
         request()->validate([
             'destination' => 'required',
-            'checkbox' => 'array|required_array_keys:p,t|size:2',
-            'range' => 'array'
+            'checkbox' => 'sometimes|array|in:p,t|max:2',
+            'range' => 'sometimes|array'
         ]);
 
         $destination = $request->input('destination');
@@ -251,8 +247,21 @@ class FormController extends Controller
         $jawaban->delete();
     }
 
+    // submit di save dlu di saveAnswer
     public function submit(Jawaban $jawaban)
     {
+        request()->validate([
+            'checkbox' => 'sometimes|array|required_array_keys:p,t|size:2',
+            'checkbox.p' => 'array|size:8',
+            'checkbox.t' => 'array|size:8',
+            'range' => 'required_without:checkbox|array|size:10'
+        ]);
+
+        $checkboxAnswers = request('checkbox', ['p' => [], 't' => []]);
+        $rangeAnswers = request('range', []);
+
+        $this->saveAnswer($jawaban->id, $checkboxAnswers, $rangeAnswers);
+
         $answer = session('answers-' . $jawaban->id);
         $answerSection1P = $answer['checkbox']['p'];
         $answerSection1T = $answer['checkbox']['t'];
@@ -307,7 +316,9 @@ class FormController extends Controller
         if ($checkboxAnswers) {
             $sessionData['checkbox']['p'] = $checkboxAnswers['p'] + $sessionData['checkbox']['p'];
             $sessionData['checkbox']['t'] = $checkboxAnswers['t'] + $sessionData['checkbox']['t'];
-        } else if ($rangeAnswers) {
+        }
+
+        if ($rangeAnswers) {
             $sessionData['range'] =  $rangeAnswers + $sessionData['range'];
         }
 
