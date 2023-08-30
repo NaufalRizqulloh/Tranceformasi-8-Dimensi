@@ -27,54 +27,36 @@
     }
   });
 
+  const form = document.getElementById("form")
+
   // button logic
+  const nextRoute = "{{ route('user.form.update', ['jawaban' => $jawaban, 'destination' => $nextDestination]) }}";
+  const previousRoute = "{{ route('user.form.update.back', ['jawaban' => $jawaban, 'destination' => $previousDestination]) }}";
+  const submitRoute = "{{ route('user.form.update.submit', ['jawaban' => $jawaban]) }}";
 
-  document.addEventListener('DOMContentLoaded', function() {
-    const form = document.getElementById("form");
-    const nextButton = document.getElementById("to-next-button");
-    const previousButton = document.getElementById("to-previous-button");
-    // const preSubmitButton = document.getElementById("pre-submit");
-    const submitButton = document.getElementById("submit");
+  function toNext() {
+    form.setAttribute("action", nextRoute);
+    form.submit();
+  }
 
-    const nextRoute = "{{ route('user.form.update', ['jawaban' => $jawaban, 'destination' => $nextDestination]) }}";
-    const previousRoute = "{{ route('user.form.update.back', ['jawaban' => $jawaban, 'destination' => $previousDestination]) }}";
-    const submitRoute = "{{ route('user.form.update.submit', ['jawaban' => $jawaban]) }}";
+  function toPrevious() {
+    form.setAttribute("action", previousRoute);
+    form.submit();
+  }
 
-    nextButton.addEventListener("click", function() {
-      form.setAttribute("action", nextRoute);
-      form.submit();
-    });
+  function submit() {
+    form.setAttribute("action", submitRoute);
+    form.submit();
+  }
 
-    previousButton.addEventListener("click", function() {
-      form.setAttribute("action", previousRoute);
-      form.submit();
-    });
+  function offoverlay() {
+    document.getElementById("overlay").style.display = "none";
+    document.getElementById("confirm-element").style.display = "none";
+  }
 
-    submitButton.addEventListener("click", function() {
-      form.setAttribute("action", submitRoute);
-      form.submit();
-    });
-    
-    // preSubmitButton.addEventListener("click", function() {
-    //   const formData = new FormData(document.getElementById("form"));
-    //   const formDataObject = {};
-    //   formData.forEach((value, key) => {
-    //     formDataObject[key] = value;
-    //   });
+  function confirm() {
+    document.getElementById("overlay").style.display = "block";
+    document.getElementById("confirm-element").style.display = "block";
+  }
 
-    //   fetch(nextRoute, {
-    //       method: "POST",
-    //       headers: {
-    //         "Content-Type": "application/json",
-    //         "X-CSRF-TOKEN": document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
-    //       },
-    //       body: JSON.stringify(formDataObject),
-    //     })
-    //     .catch(error => {
-    //       alert(error)
-    //     });
-    // });
-
-
-  });
 </script>

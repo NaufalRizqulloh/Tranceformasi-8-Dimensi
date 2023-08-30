@@ -183,7 +183,6 @@ class FormController extends Controller
      */
     public function update(Request $request, Jawaban $jawaban)
     {
-        dd('updateback');
         request()->validate([
             'destination' => 'required',
             'checkbox' => 'sometimes|array|required_array_keys:p,t|size:2',
@@ -204,7 +203,6 @@ class FormController extends Controller
         $rangeAnswers = $request->input('range', []);
 
         $this->saveAnswer($jawaban->id, $checkboxAnswers, $rangeAnswers);
-
         return redirect()->route('user.form.show', [
             'jawaban' => $jawaban,
             'destination' => $destination
@@ -213,11 +211,8 @@ class FormController extends Controller
 
     public function updateBack(Request $request, Jawaban $jawaban)
     {
-        dd('updateback');
         request()->validate([
             'destination' => 'required',
-            'checkbox' => 'sometimes|array|in:p,t|max:2',
-            'range' => 'sometimes|array'
         ]);
 
         $destination = $request->input('destination');
@@ -232,7 +227,7 @@ class FormController extends Controller
         $rangeAnswers = $request->input('range', []);
 
         $this->saveAnswer($jawaban->id, $checkboxAnswers, $rangeAnswers);
-
+        
         return redirect()->route('user.form.show', [
             'jawaban' => $jawaban,
             'destination' => $destination

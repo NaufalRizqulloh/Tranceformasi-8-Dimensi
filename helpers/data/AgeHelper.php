@@ -9,10 +9,8 @@ class AgeHelper
 {
     public static function getUsia(DateTime $lahir, DateTime $now): int
     {
-        // Tidak boleh diluar zona waktu Indonesia
-        $lahir->getTimezone()->getName() == "Asia/Jakarta" ? null : throw new Exception("Timezone tidak sesuai");
-
-
+        // Tidak boleh diluar zona waktu Indonesia //revisi
+        // $lahir->getTimezone()->getName() == "Asia/Jakarta" ? null : throw new Exception("Timezone tidak sesuai");
 
         $usia = $lahir->format('Y') - $now->format('Y');
 

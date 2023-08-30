@@ -16,6 +16,7 @@
     <h1 class="mt-2 mb-5 block text-center text-xl">
         Cepat dan Mudah
     </h1>
+    
     <form method="POST" action="{{ route('register') }}" class="max-w-sm mx-auto">
         @csrf
         <h1 class="ml-1 mb-1">Isi Data Dirimu</h1>
@@ -30,11 +31,11 @@
         <label for="jeniskelamin" id="" class="flex mb-5">
             <ul class="flex mt-1">
                 <li>
-                <input type="checkbox" name="jenis_kelamin" id="jenis_kelamin1" class="peer/laki hidden single-check" value="Laki-Laki" />
+                <input type="checkbox" name="jenis_kelamin" id="jenis_kelamin1" class="peer/laki hidden single-check" value="laki" />
                     <label for="jenis_kelamin1" class="select-none cursor-pointer rounded-lg border-2 border-sky-500 py-[6px] px-[61px] font-bold text-sky-500 transition-colors duration-200 ease-in-out peer-checked/laki:bg-sky-500 peer-checked/laki:text-[#F7F1F1] peer-checked/laki:border-[#F7F1F1] mr-1"> Laki-laki </label>
                 </li>
                 <li>
-                <input type="checkbox" name="jenis_kelamin" id="jenis_kelamin2" class="peer/perempuan hidden single-check" value="Perempuan" />
+                <input type="checkbox" name="jenis_kelamin" id="jenis_kelamin2" class="peer/perempuan hidden single-check" value="perempuan" />
                     <label for="jenis_kelamin2" class="select-none cursor-pointer rounded-lg border-2 border-pink-500 py-[6px] px-[50px] font-bold text-pink-500 transition-colors duration-200 ease-in-out peer-checked/perempuan:bg-pink-500 peer-checked/perempuan:text-[#F7F1F1] peer-checked/perempuan:border-[#F7F1F1]"> Perempuan </label>
                 </li>
             </ul>
@@ -58,7 +59,7 @@
             <input type="text" name="perusahaan" id="Perusahaan" placeholder="Perusahaan" class="mb-3 rounded-md border-black ring-black mx-auto px-3 py-2 border shadow rounder w-full block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 invalid:text-pink-700 invalid:focus:ring-pink-700 invalid:focus:border-pink-700 focus:placeholder:text-transparent"/>
         </label>
         <label for="status" id="">
-            <input type="text" name="status" id="status" placeholder="Status" class="mb-3 rounded-md border-black ring-black mx-auto px-3 py-2 border shadow rounder w-full block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 invalid:text-pink-700 invalid:focus:ring-pink-700 invalid:focus:border-pink-700 focus:placeholder:text-transparent"/>
+            <input type="text" name="status" id="status" placeholder="Status" value="" class="mb-3 rounded-md border-black ring-black mx-auto px-3 py-2 border shadow rounder w-full block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 invalid:text-pink-700 invalid:focus:ring-pink-700 invalid:focus:border-pink-700 focus:placeholder:text-transparent"/>
         </label>
         <label for="jabatan" id="">
             <input type="text" name="jabatan" id="jabatan" placeholder="Jabatan dalam perusahaan" class="mb-3 rounded-md border-black ring-black mx-auto px-3 py-2 border shadow rounder w-full block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 invalid:text-pink-700 invalid:focus:ring-pink-700 invalid:focus:border-pink-700 focus:placeholder:text-transparent"/>

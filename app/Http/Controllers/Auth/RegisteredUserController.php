@@ -57,7 +57,8 @@ class RegisteredUserController extends Controller
             'masa_kerja' => ['required_if:status,2', 'integer'],
         ]);
 
-        $usia = AgeHelper::getUsia($request->tanggal_lahir, new DateTime());
+        $tanggalLahir = DateTime::createFromFormat('Y-m-d', $request->tanggal_lahir);
+        $usia = AgeHelper::getUsia($tanggalLahir, new DateTime());
 
         $user = User::create([
             'name' => $request->name,

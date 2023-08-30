@@ -11,7 +11,7 @@ html{
     scroll-behavior: smooth;
 }
 
-#overlay, #overlay1, #kodeAkses {
+#overlay, #overlay1, #kodeAkses, #confirm-element {
   position: fixed;
   display: none;
 }
@@ -28,6 +28,8 @@ html{
 
 h1{
     font-family: 'Montserrat', 'sans';
+    color: black;
 }
+
 
 </style>
