@@ -7,24 +7,15 @@ use Helpers\GeneralHelper;
 
 class EventStatHelper
 {
-    // Harus instance dari model Jawaban & HasMany
-    // private static function validateThisManyOfJawaban($jawabanUsers)
-    // {
-    //     if (!$jawabanUsers instanceof HasMany && !$jawabanUsers->getRelated() instanceof Jawaban) {
-    //         throw new Exception("Variabel jawabanUsers bukan instance dari Jawaban & Hasmany");
-    //     }
-    // }
 
     public static function calculateGenderDispersion($users): array
     {
-        // self::validateThisManyOfJawaban($users);
-
         // Gender Category = ['laki', 'perempuan']
         $usersGender = [0, 0];
 
         foreach ($users as $user) {
-            $userGender = Validation::returnIfString($user->jenis_kelamin, 'Jenis kelamin');
-            $userGender = strtolower($user->jenis_kelamin);
+            $userGender = Validation::returnIfString($user, 'Jenis kelamin');
+            $userGender = strtolower($user);
 
             switch ($userGender) {
                 case 'laki':
@@ -41,13 +32,11 @@ class EventStatHelper
 
     public static function calculateAgeDispersion($users)
     {
-        // self::validateThisManyOfJawaban($users);
-
         // Age Category = ['<15', '15-20', '20-30', '30-40', '40-50', '50>']
         $usersAge = [0, 0, 0, 0, 0, 0];
 
         foreach ($users as $user) {
-            $userAge = Validation::returnIfInt($user->usia, 'Usia');
+            $userAge = Validation::returnIfInt($user, 'Usia');
 
             if ($userAge < 15) {
                 $usersAge[0] += 1;
@@ -63,19 +52,17 @@ class EventStatHelper
                 $usersAge[5] += 1;
             }
         }
-        
+
         return $usersAge;
     }
 
     public static function calculateEducationDispersion($users): array
     {
-        // self::validateThisManyOfJawaban($users);
-
         // Education Category = ['sd', 'smp', 'sma', 'smk', 'd1', 'd2', 'd3', 'd4', 's1', 's2', 's3']
         $usersEducation = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 
         foreach ($users as $user) {
-            $userEducation = Validation::returnIfString($user->pendidikan_terakhir, 'Pendidikan terakhir');
+            $userEducation = Validation::returnIfString($user, 'Pendidikan terakhir');
             $userEducation = strtolower(strtr($userEducation, [' ' => '']));
 
             switch ($userEducation) {
@@ -120,8 +107,6 @@ class EventStatHelper
 
     public static function calculateResidenceDispersion($users): array
     {
-        // self::validateThisManyOfJawaban($users);
-
         /**
          * ~ Size depends on users resident dispersion
          * ~ Filtered by number
@@ -130,7 +115,7 @@ class EventStatHelper
         $usersResidence = [];
 
         foreach ($users as $user) {
-            $userResidence = Validation::returnIfString($user->domisili, 'Domisili');
+            $userResidence = Validation::returnIfString($user, 'Domisili');
 
             if (!isset($usersResidence[$userResidence])) {
                 $usersResidence[$userResidence] = 1;
@@ -144,40 +129,41 @@ class EventStatHelper
 
     public static function calculate8DimensionsDispersion($answers): array
     {
-        // self::validateThisManyOfJawaban($users);
-
         // 8 Dimensions Category = ['Pelopor', 'Penggerak', 'Afirmasi', 'Inklusif', 'Rendah Hati', 'Pemikir', 'Tegas', 'Berwibawa']
         $answersDimension = [0, 0, 0, 0, 0, 0, 0, 0];
 
         foreach ($answers as $answer) {
-            $answerDimension = Validation::returnIfString($answer->dimensi_kepemimpinan, 'Dimensi kepemimpinan');
+            if (empty($answer)) {
+                continue;
+            }
+            $answerDimension = Validation::returnIfString($answer, 'Dimensi kepemimpinan');
             $answerDimension = strtolower(strtr($answerDimension, [' ' => '']));
 
-            switch ($answerDimension){
+            switch ($answerDimension) {
                 case 'pelopor':
                     $answersDimension[0] += 1;
-                    break; 
+                    break;
                 case 'penggerak':
                     $answersDimension[1] += 1;
-                    break; 
+                    break;
                 case 'afirmasi':
                     $answersDimension[2] += 1;
-                    break; 
+                    break;
                 case 'inklusif':
                     $answersDimension[3] += 1;
-                    break; 
+                    break;
                 case 'rendahhati':
                     $answersDimension[4] += 1;
-                    break; 
+                    break;
                 case 'pemikir':
                     $answersDimension[5] += 1;
-                    break; 
+                    break;
                 case 'tegas':
                     $answersDimension[6] += 1;
-                    break; 
+                    break;
                 case 'berwibawa':
                     $answersDimension[7] += 1;
-                    break;  
+                    break;
             }
         }
 

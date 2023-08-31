@@ -11,7 +11,7 @@ class GeneralHelper
         return $value >= $min && $value <= $max;
     }
 
-    public static function returnUniqueModelsOnly($models): array
+    public static function returnUniqueModelsOnly($models)
     {
         $uniqueModels = [];
 
@@ -23,6 +23,6 @@ class GeneralHelper
             }
         }
 
-        return array_values($uniqueModels);
+        return (object) $uniqueModels;
     }
 }

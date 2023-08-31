@@ -61,7 +61,7 @@ class Validation
     public static function returnIfString($strValue, $variableMessage = 'value'): string
     {
         if (!is_string($strValue)) {
-            throw new Exception($variableMessage . ' harus berupa angka');
+            throw new Exception($variableMessage . ' harus berupa string');
         }
         return $strValue;
     }

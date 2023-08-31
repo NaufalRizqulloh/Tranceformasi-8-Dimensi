@@ -41,7 +41,8 @@ class FormController extends Controller
 
         $user = auth()->user();
         $accessCode = $request->input('kode-akses');
-        $event = Event::getEvent($accessCode);
+        $event = Event::where('kode_akses', '=', $accessCode)
+            ->first();
 
         try {
             if (!$event) {
@@ -53,6 +54,7 @@ class FormController extends Controller
 
             $answer = Jawaban::where('event_id', '=', $event->id)
                 ->where('user_id', '=', $user->id)
+                ->latest()
                 ->first();
 
             if ($answer) {
@@ -227,7 +229,7 @@ class FormController extends Controller
         $rangeAnswers = $request->input('range', []);
 
         $this->saveAnswer($jawaban->id, $checkboxAnswers, $rangeAnswers);
-        
+
         return redirect()->route('user.form.show', [
             'jawaban' => $jawaban,
             'destination' => $destination
