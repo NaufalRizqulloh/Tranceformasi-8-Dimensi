@@ -75,71 +75,182 @@
         <button type="submit">Submit</button>
       </form>
     </div> 
-    
 
-                                        <input type="checkbox" id="7-6" class="peer/7-6 single-checkbox-section2-7" name="range[7]" value="6">
-    <label for="7-6" class="mt-8 ml-2 sm:ml-6 select-none cursor-pointer rounded-full border-2 border-slate-400 h-10 w-10 sm:h-12 sm:w-12 transition-colors duration-200 ease-in-out peer-checked/7-6:bg-green-600 peer-checked/7-6:border-transparent mr-1 text-center text-xs sm:text-base pt-[10px] peer-checked/7-6:text-white">
-                5
-            </label>
-    <input type="checkbox" id="8-6" class="peer/8-6 single-checkbox-section2-8" name="range[8]" value="6">
-    <label for="8-6" class="mt-8 ml-2 sm:ml-6 select-none cursor-pointer rounded-full border-2 border-slate-400 h-10 w-10 sm:h-12 sm:w-12 transition-colors duration-200 ease-in-out peer-checked/8-6:bg-green-600 peer-checked/8-6:border-transparent mr-1 text-center text-xs sm:text-base pt-[10px] peer-checked/8-6:text-white">
-                5
-            </label>
-    <input type="checkbox" id="9-6" class="peer/9-6 single-checkbox-section2-9" name="range[9]" value="6">
-    <label for="9-6" class="mt-8 ml-2 sm:ml-6 select-none cursor-pointer rounded-full border-2 border-slate-400 h-10 w-10 sm:h-12 sm:w-12 transition-colors duration-200 ease-in-out peer-checked/9-6:bg-green-600 peer-checked/9-6:border-transparent mr-1 text-center text-xs sm:text-base pt-[10px] peer-checked/9-6:text-white">
-                5
-            </label>
-    <input type="checkbox" id="10-6" class="peer/10-6 single-checkbox-section2-10" name="range[10]" value="6">
-    <label for="10-6" class="mt-8 ml-2 sm:ml-6 select-none cursor-pointer rounded-full border-2 border-slate-400 h-10 w-10 sm:h-12 sm:w-12 transition-colors duration-200 ease-in-out peer-checked/10-6:bg-green-600 peer-checked/10-6:border-transparent mr-1 text-center text-xs sm:text-base pt-[10px] peer-checked/10-6:text-white">
-                5
-            </label>
-    <input type="checkbox" id="11-6" class="peer/11-6 single-checkbox-section2-11" name="range[11]" value="6">
-    <label for="11-6" class="mt-8 ml-2 sm:ml-6 select-none cursor-pointer rounded-full border-2 border-slate-400 h-11 w-11 sm:h-12 sm:w-12 transition-colors duration-200 ease-in-out peer-checked/11-6:bg-green-600 peer-checked/11-6:border-transparent mr-1 text-center text-xs sm:text-base pt-[10px] peer-checked/11-6:text-white">
-                5
-            </label>
-    <input type="checkbox" id="12-6" class="peer/12-6 single-checkbox-section2-12" name="range[12]" value="6">
-    <label for="12-6" class="mt-8 ml-2 sm:ml-6 select-none cursor-pointer rounded-full border-2 border-slate-400 h-12 w-12 sm:h-12 sm:w-12 transition-colors duration-200 ease-in-out peer-checked/12-6:bg-green-600 peer-checked/12-6:border-transparent mr-1 text-center text-xs sm:text-base pt-[10px] peer-checked/12-6:text-white">
-                5
-            </label>
-    <input type="checkbox" id="13-6" class="peer/13-6 single-checkbox-section2-13" name="range[13]" value="6">
-    <label for="13-6" class="mt-8 ml-2 sm:ml-6 select-none cursor-pointer rounded-full border-2 border-slate-400 h-13 w-13 sm:h-12 sm:w-12 transition-colors duration-200 ease-in-out peer-checked/13-6:bg-green-600 peer-checked/13-6:border-transparent mr-1 text-center text-xs sm:text-base pt-[10px] peer-checked/13-6:text-white">
-                5
-            </label>
-    <input type="checkbox" id="14-6" class="peer/14-6 single-checkbox-section2-14" name="range[14]" value="6">
-    <label for="14-6" class="mt-8 ml-2 sm:ml-6 select-none cursor-pointer rounded-full border-2 border-slate-400 h-14 w-14 sm:h-12 sm:w-12 transition-colors duration-200 ease-in-out peer-checked/14-6:bg-green-600 peer-checked/14-6:border-transparent mr-1 text-center text-xs sm:text-base pt-[10px] peer-checked/14-6:text-white">
-                5
-            </label>
-    <input type="checkbox" id="15-6" class="peer/15-6 single-checkbox-section2-15" name="range[15]" value="6">
-    <label for="15-6" class="mt-8 ml-2 sm:ml-6 select-none cursor-pointer rounded-full border-2 border-slate-400 h-15 w-15 sm:h-12 sm:w-12 transition-colors duration-200 ease-in-out peer-checked/15-6:bg-green-600 peer-checked/15-6:border-transparent mr-1 text-center text-xs sm:text-base pt-[10px] peer-checked/15-6:text-white">
-                5
-            </label>
-    <input type="checkbox" id="16-6" class="peer/16-6 single-checkbox-section2-16" name="range[16]" value="6">
-    <label for="16-6" class="mt-8 ml-2 sm:ml-6 select-none cursor-pointer rounded-full border-2 border-slate-400 h-16 w-16 sm:h-12 sm:w-12 transition-colors duration-200 ease-in-out peer-checked/16-6:bg-green-600 peer-checked/16-6:border-transparent mr-1 text-center text-xs sm:text-base pt-[10px] peer-checked/16-6:text-white">
-                5
-            </label>
-    <input type="checkbox" id="17-6" class="peer/17-6 single-checkbox-section2-17" name="range[17]" value="6">
-    <label for="17-6" class="mt-8 ml-2 sm:ml-6 select-none cursor-pointer rounded-full border-2 border-slate-400 h-17 w-17 sm:h-12 sm:w-12 transition-colors duration-200 ease-in-out peer-checked/17-6:bg-green-600 peer-checked/17-6:border-transparent mr-1 text-center text-xs sm:text-base pt-[10px] peer-checked/17-6:text-white">
-                5
-            </label>
-    <input type="checkbox" id="18-6" class="peer/18-6 single-checkbox-section2-18" name="range[18]" value="6">
-    <label for="18-6" class="mt-8 ml-2 sm:ml-6 select-none cursor-pointer rounded-full border-2 border-slate-400 h-18 w-18 sm:h-12 sm:w-12 transition-colors duration-200 ease-in-out peer-checked/18-6:bg-green-600 peer-checked/18-6:border-transparent mr-1 text-center text-xs sm:text-base pt-[10px] peer-checked/18-6:text-white">
-                5
-            </label>
-    <input type="checkbox" id="19-6" class="peer/19-6 single-checkbox-section2-19" name="range[19]" value="6">
-    <label for="19-6" class="mt-8 ml-2 sm:ml-6 select-none cursor-pointer rounded-full border-2 border-slate-400 h-19 w-19 sm:h-12 sm:w-12 transition-colors duration-200 ease-in-out peer-checked/19-6:bg-green-600 peer-checked/19-6:border-transparent mr-1 text-center text-xs sm:text-base pt-[10px] peer-checked/19-6:text-white">
-                5
-            </label>
-    <input type="checkbox" id="20-6" class="peer/20-6 single-checkbox-section2-20" name="range[20]" value="6">
-    <label for="20-6" class="mt-8 ml-2 sm:ml-6 select-none cursor-pointer rounded-full border-2 border-slate-400 h-20 w-20 sm:h-12 sm:w-12 transition-colors duration-200 ease-in-out peer-checked/20-6:bg-green-600 peer-checked/20-6:border-transparent mr-1 text-center text-xs sm:text-base pt-[10px] peer-checked/20-6:text-white">
-                5
-            </label>
+  <input type="range" min="1" max="6" value="1" step="0.1" id="myRange" list="dataList">
+  <datalist id="dataList">
+    <option value="1"></option>
+    <option value="2"></option>
+    <option value="3"></option>
+    <option value="4"></option>
+    <option value="5"></option>
+    <option value="6"></option>
+  </datalist>
+    <p>Value: <span id="demo"></span></p>
 
 
+    <!-- <button id="play">Play</button>
+
+<input id="yearslider" class="" type="range" min="1" value="1" max="6" step="0.01" list="ticks">
+<datalist id="ticks">
+    <option>1</option>
+    <option>2</option>
+    <option>3</option>
+    <option>4</option>
+    <option>5</option>
+    <option>6</option>
+</datalist>
+<output id="rangevalue"></output> -->
   </x-app-layout>
 
+  <div class="mt-8 md:mt-12 mx-auto w-[90%] md:w-[80%] lg:w-[60%] h-fit border-2 rounded-[15px] lg:rounded-[50px] bg-[#FFFFFF]">
+        <h1 class="mt-10 mb-6 w-max block mx-auto text-center rounded-full border-2 border-slate-500 py-3 px-5">           
+            1
+        </h1>
+        <div class="ml-3 mr-3">
+            <h1 class="w-fit mx-auto block text-center text-lg sm:text-xl mb-2 md:mb-4">               
+                pertanyaan
+            </h1>
+        </div>
+        <div class="flex h-fit w-fit mx-auto">
+            <div class="w-8 sm:w-12 mt-10 sm:mt-9">
+                <img src="dist/thumbdown.png" alt="Tidak Setuju">
+            </div>
+            <input id="yearslider" class="" type="range" min="1" value="1" max="6" step="0.001" list="ticks">
+            <datalist id="ticks">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+                <option>6</option>
+            </datalist>
+            <output id="rangevalue"></output>
+            <div class="w-8 sm:w-12 mt-7 sm:mt-4 ml-4 sm:ml-5">
+                <img src="dist/thumbup.png" alt="Setuju">
+            </div>
+            <div class="container flex">
+              <h1 id="labelSlider1" class="mt-10 mb-6 w-max block mx-auto text-center rounded-full border-transparet text-transparent py-3 px-5">           
+                1
+              </h1>
+              <h1 id="labelSlider2" class="mt-10 mb-6 w-max block mx-auto text-center rounded-full border-transparet text-transparent py-3 px-5">           
+                2
+              </h1>
+              <h1 id="labelSlider3" class="mt-10 mb-6 w-max block mx-auto text-center rounded-full border-transparet text-transparent py-3 px-5">           
+                3
+              </h1>
+              <h1 id="labelSlider4" class="mt-10 mb-6 w-max block mx-auto text-center rounded-full border-transparet text-transparent py-3 px-5">           
+                4
+              </h1>
+              <h1 id="labelSlider5" class="mt-10 mb-6 w-max block mx-auto text-center rounded-full border-transparet text-transparent py-3 px-5">           
+                5
+              </h1>
+              <h1 id="labelSlider6" class="mt-10 mb-6 w-max block mx-auto text-center rounded-full border-transparet text-transparent py-3 px-5">           
+                6
+              </h1>
+            </div>
+          </div>
+        <div class="mb-12">
+
+        </div>
+
+    </div>
 
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script>
+    var slider = document.getElementById("yearslider");
+    var output = document.getElementById("rangevalue");
+    output.innerHTML = slider.value;
+    
+    slider.oninput = function() {
+      output.innerHTML = this.value;
+      output.innerHTML = Math.round(output.innerHTML);
+
+      const satu = document.getElementById("labelSlider1")
+      const dua = document.getElementById("labelSlider2")
+      const tiga = document.getElementById("labelSlider3")
+      const empat = document.getElementById("labelSlider4")
+      const lima = document.getElementById("labelSlider5")
+      const enam = document.getElementById("labelSlider6")
+      if(output.innerHTML == 1){
+        satu.classList.add('bg-primary', 'border-slate-500', 'border-2', 'text-slate-300');
+        satu.classList.remove('border-transparent','text-transparent');
+      }
+      else{
+        satu.classList.remove('bg-primary', 'border-slate-500', 'border-2', 'text-slate-300');
+        satu.classList.add('border-transparent','text-transparent');
+      }
+      if(output.innerHTML == 2){
+        dua.classList.add('bg-primary', 'border-slate-500', 'border-2', 'text-slate-300');
+        dua.classList.remove('border-transparent', 'text-transparent');
+      }
+      else{
+        dua.classList.remove('bg-primary', 'border-slate-500', 'border-2', 'text-slate-300');
+        dua.classList.add('border-transparent', 'text-transparent');
+      }
+      if(output.innerHTML == 3){
+        tiga.classList.add('bg-primary', 'border-slate-500', 'border-2', 'text-slate-300');
+        tiga.classList.remove('border-transparent', 'text-transparent');
+      }
+      else{
+        tiga.classList.remove('bg-primary', 'border-slate-500', 'border-2', 'text-slate-300');
+        tiga.classList.add('border-transparent', 'text-transparent');
+      }
+      if(output.innerHTML == 4){
+        empat.classList.add('bg-primary', 'border-slate-500', 'border-2', 'text-slate-300');
+        empat.classList.remove('border-transparent', 'text-transparent');
+      }
+      else{
+        empat.classList.remove('bg-primary', 'border-slate-500', 'border-2', 'text-slate-300');
+        empat.classList.add('border-transparent', 'text-transparent');
+      }
+      if(output.innerHTML == 5){
+        lima.classList.add('bg-primary', 'border-slate-500', 'border-2', 'text-slate-300');
+        lima.classList.add('border-transparent', 'text-transparent');
+      }
+      else{
+        lima.classList.remove('bg-primary', 'border-slate-500', 'border-2', 'text-slate-300');
+        lima.classList.add('border-transparent', 'text-transparent');
+      }
+      if(output.innerHTML == 6){
+        enam.classList.add('bg-primary', 'border-slate-500', 'border-2', 'text-slate-300');
+        enam.classList.remove('border-transparent', 'text-transparent');
+      }
+      else{
+        enam.classList.remove('bg-primary', 'border-slate-500', 'border-2', 'text-slate-300');
+        enam.classList.add('border-transparent', 'text-transparent');
+      }
+    } 
+
+
+    // snapping position
+    let years = [1,2,3,4,5,6];
+
+function getClosest(arr, val) {
+	return arr.reduce(function (prev, curr) {
+    return (Math.abs(curr - val) < Math.abs(prev - val) ? curr : prev);
+  });
+}
+
+document.querySelector("#yearslider").addEventListener("change", function() {
+	let closest = getClosest(years, this.value);
+  this.value = document.querySelector("#rangevalue").value = closest;
+});
+
+document.querySelector("#play").addEventListener("click", function() {
+	let yearslider = document.querySelector("#yearslider");
+  let output = document.querySelector("#rangevalue");
+  years.forEach(function(item, index, array) {
+    // set a timeout so each second one button gets clicked
+    setTimeout( (function( index ) {
+        return function() {
+            yearslider.value = output.value = array[index]; 
+        };
+    }( index )), (2000 * index) );
+}); 
+});
+
+
+
     $(document).ready(function() {
       $('.single-checkbox').on('change', function() {
         $('.single-checkbox').not(this).prop('checked', false);

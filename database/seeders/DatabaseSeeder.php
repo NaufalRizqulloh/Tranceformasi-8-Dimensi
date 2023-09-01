@@ -15,9 +15,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        \App\Models\User::factory(10)->create();
-        \App\Models\Event::factory(5)->create();
-        \App\Models\Jawaban::factory(20)->create();
+        \App\Models\User::factory(15)->create();
+        \App\Models\Event::factory(10)->create();
+        \App\Models\Jawaban::factory(50)->create();
 
         EmailAdmin::create([
             'email_admin' => 'admin@gmail.com'

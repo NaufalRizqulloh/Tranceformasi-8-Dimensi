@@ -36,7 +36,7 @@ Route::get('/dn', function () {
     dd('anggap done', request());
 });
 
-Route::get('/request21', function (){
+Route::get('/request21', function () {
     return session('answers-21');
 });
 
@@ -44,6 +44,16 @@ Route::get('/testform/{jawaban}', [FormController::class, 'show'])->name('testt'
 
 Route::get('/hasil', function () {
     return request();
+});
+
+Route::get('/overview', [AdminEventController::class, 'overview']);
+Route::get('/testing', function () {
+    return [
+        substr('123456789', 0, 4),
+        substr('123456789', 0, -3),
+        substr('123456789', 2, 3),
+        substr('123456789', 2, -3)
+    ];
 });
 
 Route::get('/wait', function () {

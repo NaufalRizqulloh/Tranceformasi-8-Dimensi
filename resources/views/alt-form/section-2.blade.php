@@ -30,7 +30,7 @@
             <div class="w-8 sm:w-12 mt-10 sm:mt-9">
                 <img src="dist/thumbdown.png" alt="Tidak Setuju">
             </div>
-            <input type="checkbox" id="{{ $index }}-1" class="peer/{{ $index }}-1 single-checkbox-section2-{{ $index }}" name="range[{{ $index }}]" value="1" {{ (isset($answers[$index]) && $answers[$index] == "1") ? 'checked' : '' }} />
+            <!-- <input type="checkbox" id="{{ $index }}-1" class="peer/{{ $index }}-1 single-checkbox-section2-{{ $index }}" name="range[{{ $index }}]" value="1" {{ (isset($answers[$index]) && $answers[$index] == "1") ? 'checked' : '' }} />
             <label for="{{ $index }}-1" class="mt-8 ml-4 sm:ml-6 select-none cursor-pointer rounded-full border-2 border-slate-400 h-10 w-10 sm:h-12 sm:w-12 transition-colors duration-200 ease-in-out peer-checked/{{ $index }}-1:bg-red-700 peer-checked/{{ $index }}-1:border-transparent mr-1 text-center text-xs sm:text-base pt-[10px] peer-checked/{{ $index }}-1:text-white">
                 1
             </label>
@@ -54,7 +54,17 @@
             </label>
             <label for="{{ $index }}-6" class="mt-8 ml-2 sm:ml-6 select-none cursor-pointer rounded-full border-2 border-slate-400 h-10 w-10 sm:h-12 sm:w-12 transition-colors duration-200 ease-in-out peer-checked/{{ $index }}-6:bg-green-600 peer-checked/{{ $index }}-6:border-transparent mr-1 text-center text-xs sm:text-base pt-[10px] peer-checked/{{ $index }}-6:text-white">
                 6
-            </label>
+            </label> -->
+            <input id="yearslider" class="" type="range" min="1" value="1" max="6" step="0.01" list="ticks">
+            <datalist id="ticks">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+                <option>6</option>
+            </datalist>
+            <output id="rangevalue"></output>
             <div class="w-8 sm:w-12 mt-7 sm:mt-4 ml-4 sm:ml-5">
                 <img src="dist/thumbup.png" alt="Setuju">
             </div>

@@ -17,8 +17,8 @@ return new class extends Migration
             $table->string('kode_akses')->unique();
             $table->string('institusi');
             $table->integer('total_peserta');
-            $table->date('tanggal_mulai'); 
-            $table->date('tanggal_selesai');
+            $table->dateTime('tanggal_mulai'); 
+            $table->dateTime('tanggal_selesai');
             $table->string('deskripsi');
             $table->string('tujuan_tes');
             //tujuan pengambilan test [personaldev, careerdev]
