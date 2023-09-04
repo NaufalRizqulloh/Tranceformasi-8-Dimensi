@@ -4,7 +4,9 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
-
+        <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
+        </script>
         <title>{{ config('app.name', 'Laravel') }}</title>
 
         <!-- Fonts -->
@@ -33,18 +35,39 @@
             }
             #yearslider {
                 -webkit-appearance: none;
-                width: 200px;
-                height: 25px;
-                background: yellow;
+                width: 500px;
+                height: 10px;
                 outline: none;
+                display: flex;
+                border-radius: 9999px;
             }
             #yearslider::-webkit-slider-thumb{
                 -webkit-appearance: none;
                 appearance: none;
-                width: 25px;
-                height: 25px;
-                background: #04AA6D;
+                width: 10px;
+                height: 50px;
+                border-radius: 9999px;
+                background: #8404F4;
                 cursor: pointer;
+                transform: translateY(-10%);
+            }
+            .bubble {
+                background: red;
+                color: white;
+                padding: 4px 12px;
+                position: absolute;
+                border-radius: 4px;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            .bubble::after {
+              content: "";
+              position: absolute;
+              width: 2px;
+              height: 2px;
+              background: red;
+              top: -1px;
+              left: 50%;
             }
         </style>
 

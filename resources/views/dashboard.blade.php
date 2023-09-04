@@ -100,7 +100,10 @@
     <option>6</option>
 </datalist>
 <output id="rangevalue"></output> -->
-  </x-app-layout>
+<canvas id="barChart" style="width:100%;max-width:700px"></canvas>
+<canvas id="pieChart" style="width:100%;max-width:600px"></canvas>
+<canvas id="radarChart" style="width:100%;max-width:600px"></canvas>
+</x-app-layout>
 
   <div class="mt-8 md:mt-12 mx-auto w-[90%] md:w-[80%] lg:w-[60%] h-fit border-2 rounded-[15px] lg:rounded-[50px] bg-[#FFFFFF]">
         <h1 class="mt-10 mb-6 w-max block mx-auto text-center rounded-full border-2 border-slate-500 py-3 px-5">           
@@ -115,16 +118,18 @@
             <div class="w-8 sm:w-12 mt-10 sm:mt-9">
                 <img src="dist/thumbdown.png" alt="Tidak Setuju">
             </div>
-            <input id="yearslider" class="" type="range" min="1" value="1" max="6" step="0.001" list="ticks">
-            <datalist id="ticks">
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
-                <option>6</option>
-            </datalist>
-            <output id="rangevalue"></output>
+            <div class="container relative">
+              <input id="yearslider" class="bg-gradient-to-r from-red-500 to-green-500 jarak" type="range" min="1" value="1" max="6" step="0.001" list="ticks">
+              <datalist id="ticks">
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                  <option>5</option>
+                  <option>6</option>
+              </datalist>
+              <output id="rangevalue" class="bubble"></output>
+            </div>
             <div class="w-8 sm:w-12 mt-7 sm:mt-4 ml-4 sm:ml-5">
                 <img src="dist/thumbup.png" alt="Setuju">
             </div>
@@ -157,6 +162,94 @@
 
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script>
+    // barChart rentangUsia
+    var xValues = ["<15", "15-20", "21-30", "31-40","41-50", ">51"];
+    var yValues = [12, 49, 90, 51, 14, 20];
+    var barColors = "#8404F4";
+
+    new Chart("barChart", {
+      type: "bar",
+      data: {
+        labels: xValues,
+        datasets: [{
+          backgroundColor: barColors,
+          data: yValues,
+          barThickness: 20,
+          clip: {
+            left: 5,
+            top: 0,
+            right: 10,
+            bottom: 2,
+          },
+        }]
+      },
+      options: {
+        legend: {display: false},
+        title: {
+          display: true,
+          text: "Rentang Usia"
+        },
+        scales:{
+          y: {
+            beginAtZero: true
+          }
+        }     
+      }
+    });
+
+    // pieChart
+
+    var xValues = ["Laki", "Perempuan"];
+    var yValues = [60, 40];
+    var barColors = [
+      "#4C32EA",
+      "#CC00CC",
+    ];
+
+    new Chart("pieChart", {
+      type: "pie",
+      data: {
+        labels: xValues,
+        datasets: [{
+          backgroundColor: barColors,
+          data: yValues
+        }]
+      },
+      options: {
+        title: {
+          display: true,
+          text: "Jenis Kelamin"
+        }
+      }
+    });
+
+    new Chart("radarChart", {
+      type: "radar",
+      data: {
+        labels: [
+          'Pelopor',
+          'Tegas',
+          'Pemikir',
+          'Inklusif',
+          'Rendah Hati',
+          'Afirmasi',
+          'Penggerak',
+          'Berwibawa',
+        ],
+        datasets: [{
+          backgroundColor: "yellow",
+          data: [65,70,80,90,40,55,20,30],
+          barThickness: 20,
+          clip: {
+            left: 5,
+            top: 0,
+            right: 10,
+            bottom: 2,
+          },
+        }]
+      },
+    });
+
     var slider = document.getElementById("yearslider");
     var output = document.getElementById("rangevalue");
     output.innerHTML = slider.value;
@@ -205,7 +298,7 @@
       }
       if(output.innerHTML == 5){
         lima.classList.add('bg-primary', 'border-slate-500', 'border-2', 'text-slate-300');
-        lima.classList.add('border-transparent', 'text-transparent');
+        lima.classList.remove('border-transparent', 'text-transparent');
       }
       else{
         lima.classList.remove('bg-primary', 'border-slate-500', 'border-2', 'text-slate-300');
@@ -236,18 +329,23 @@ document.querySelector("#yearslider").addEventListener("change", function() {
   this.value = document.querySelector("#rangevalue").value = closest;
 });
 
-document.querySelector("#play").addEventListener("click", function() {
-	let yearslider = document.querySelector("#yearslider");
-  let output = document.querySelector("#rangevalue");
-  years.forEach(function(item, index, array) {
-    // set a timeout so each second one button gets clicked
-    setTimeout( (function( index ) {
-        return function() {
-            yearslider.value = output.value = array[index]; 
-        };
-    }( index )), (2000 * index) );
-}); 
+const range = document.querySelector(".jarak");
+const bubble = document.querySelector(".bubble");
+range.addEventListener("input", () => {
+  setBubble(range, bubble);
 });
+setBubble(range, bubble);
+
+function setBubble(range, bubble) {
+  const val = range.value;
+  const min = range.min ? range.min : 0;
+  const max = range.max ? range.max : 100;
+  const newVal = Number(((val - min) * 100) / (max - min));
+  bubble.innerHTML = Math.round(val);
+
+  // Sorta magic numbers based on size of the native UI thumb
+  bubble.style.left = `calc(${newVal}% + (${8 - newVal * 0.15}px))`;
+}
 
 
 
