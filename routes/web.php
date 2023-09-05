@@ -10,6 +10,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use App\Models\Jawaban;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ChartController;
 
 use Illuminate\Http\Request;
 
@@ -121,6 +122,7 @@ Route::get('admin/event/overview', [AdminEventController::class, 'overview'])->m
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
+Route::get('/dashboardchart', [ChartController::class, 'dashboardchart']);
 // ->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
@@ -133,6 +135,8 @@ Route::resource('checkbox', CheckboxController::class);
 // Route::post('/storeCheckboxes', [CheckboxController::class, 'store'])->name('storeCheckboxes');
 
 Route::get('/dashboard/{user}', []);
+
+Route::get('/charts', [ChartController::class, 'index']) ->name('chart.index');
 
 Route::get('/test', function () {
     return view('/testing/welcome');

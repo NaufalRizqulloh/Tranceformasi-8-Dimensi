@@ -100,9 +100,9 @@
     <option>6</option>
 </datalist>
 <output id="rangevalue"></output> -->
-<canvas id="barChart" style="width:100%;max-width:700px"></canvas>
-<canvas id="pieChart" style="width:100%;max-width:600px"></canvas>
-<canvas id="radarChart" style="width:100%;max-width:600px"></canvas>
+<canvas id="barChart" style="width:100%;max-width:500px;height:100%;max-height:500px"></canvas>
+<canvas id="pieChart" style="width:100%;max-width:600px;height:100%;max-height:500px"></canvas>
+<canvas id="radarChart" style="width:100%;max-width:600px;height:100%;max-height:500px"></canvas>
 </x-app-layout>
 
   <div class="mt-8 md:mt-12 mx-auto w-[90%] md:w-[80%] lg:w-[60%] h-fit border-2 rounded-[15px] lg:rounded-[50px] bg-[#FFFFFF]">
@@ -191,7 +191,8 @@
         },
         scales:{
           y: {
-            beginAtZero: true
+            suggestedMin : 0,
+            suggestedMax : 100,
           }
         }     
       }
@@ -200,7 +201,9 @@
     // pieChart
 
     var xValues = ["Laki", "Perempuan"];
-    var yValues = [60, 40];
+    var yValues = [
+      {{ $jeniskelaminData['laki'] }}, {{ $jeniskelaminData['perempuan'] }}
+    ];
     var barColors = [
       "#4C32EA",
       "#CC00CC",
@@ -223,6 +226,16 @@
       }
     });
 
+    // radarChart
+    var inklusif = {{ $penyebaranData ['inklusif'] }};
+    var pelopor = {{ $penyebaranData  ['pelopor'] }};
+    var tegas = {{ $penyebaranData  ['tegas'] }};
+    var pemikir = {{ $penyebaranData  ['pemikir'] }};
+    var rendahHati = {{ $penyebaranData ['rendahHati'] }};
+    var afirmasi = {{ $penyebaranData ['afirmasi'] }};
+    var penggerak = {{ $penyebaranData  ['penggerak'] }};
+    var berwibawa = {{ $penyebaranData  ['berwibawa'] }};
+
     new Chart("radarChart", {
       type: "radar",
       data: {
@@ -237,8 +250,8 @@
           'Berwibawa',
         ],
         datasets: [{
-          backgroundColor: "yellow",
-          data: [65,70,80,90,40,55,20,30],
+          backgroundColor: 'rgba(255, 99, 132, 0.2)',
+          data: [pelopor,tegas,pemikir,inklusif,rendahHati,afirmasi,penggerak,berwibawa],
           barThickness: 20,
           clip: {
             left: 5,
@@ -248,6 +261,14 @@
           },
         }]
       },
+      options: {
+        scales:{
+          r: {
+            beginAtZero: true,
+            suggestedMax : 10
+          }
+        }   
+      }
     });
 
     var slider = document.getElementById("yearslider");
