@@ -39,6 +39,7 @@ class EventOverviewHelper
         }
         return $formattedParticipants;
     }
+    
     public static function calculateInstitution(array $institutions): array
     {
         // Total number of participants based on the year the event ended = ['2023' => '']
@@ -51,7 +52,6 @@ class EventOverviewHelper
                 $formattedInstitutions[$year][] = $institution;
             }
         }
-        dd ($formattedInstitutions);
         return $formattedInstitutions;
     }
 }

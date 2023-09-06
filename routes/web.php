@@ -37,6 +37,10 @@ Route::get('/dn', function () {
     dd('anggap done', request());
 });
 
+Route::get('/j', function () {
+    return view('alt-form/nojump');
+});
+
 Route::get('/request21', function () {
     return session('answers-21');
 });
@@ -48,6 +52,7 @@ Route::get('/hasil', function () {
 });
 
 Route::get('/overview', [AdminEventController::class, 'overview']);
+Route::get('/chart', [AdminEventController::class, 'show']);
 Route::get('/testing', function () {
     return [
         substr('123456789', 0, 4),

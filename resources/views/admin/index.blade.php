@@ -7,11 +7,14 @@
 </head>
 <body>
     @foreach ($latestEvents as $event)
-    <h1>{{$event->nama}}</h1>
+    <a href="admin/event?event={{ $event->id }}">{{$event->nama}}</a>
     @endforeach
     <br>
+    <h1>EXPIRED</h1>
+    <br>
     @foreach ($expiredEvents as $event)
-    <h1>{{$event->nama}}</h1>
+    <a href="admin/event?event={{ $event->id }}">{{$event->nama}}</a>
     @endforeach
+    
 </body>
 </html>

@@ -12,7 +12,7 @@ class Validation
 {
     public static function isCodeAccessValid(): bool
     {
-        
+
         return true;
     }
 
@@ -64,5 +64,29 @@ class Validation
             throw new Exception($variableMessage . ' harus berupa string');
         }
         return $strValue;
+    }
+
+    // return i true if jump
+    public static function jumperDetector($answerID)
+    {
+        $answer = session('answers-' . $answerID);
+
+        if (empty($answer)) {
+            return true;
+        }
+
+        if (!$answer['checkbox'] && !$answer['range']) {
+            return true;
+        }
+
+        if (count($answer['checkbox']['p']) != 24 && count($answer['checkbox']['t']) != 24) {
+            return true;
+        }
+
+        if (count($answer['range']) != 20) {
+            return true;
+        }
+
+        return false;
     }
 }

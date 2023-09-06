@@ -6,7 +6,7 @@
     </x-slot>
 
     <div>
-      <form action="{{ route('user.form.store', ['kode-akses' => '%`$]6n']) }}" method="POST">
+      <form action="{{ route('user.form.store', ['kode-akses' => 'M,*d`}']) }}" method="POST">
         @csrf
         <button type="submit" class="text-secondary font-montserrat text-9xl">aaaaaaa</button>
       </form>
@@ -114,12 +114,10 @@
                 pertanyaan
             </h1>
         </div>
-        <div class="flex h-fit w-fit mx-auto">
-            <div class="w-8 sm:w-12 mt-10 sm:mt-9">
-                <img src="dist/thumbdown.png" alt="Tidak Setuju">
-            </div>
-            <div class="container relative">
-              <input id="yearslider" class="bg-gradient-to-r from-red-500 to-green-500 jarak" type="range" min="1" value="1" max="6" step="0.001" list="ticks">
+        <div class="flex w-fit mx-auto">
+          <i class="fa fa-frown-o" style="font-size:48px;color:red"></i>
+            <div class="container relative w-fit h-fit my-auto mx-8">
+              <input id="yearslider" class="h-fit my-auto bg-gradient-to-r from-red-500 to-green-500 jarak" type="range" min="1" value="1" max="6" step="0.001" list="ticks">
               <datalist id="ticks">
                   <option>1</option>
                   <option>2</option>
@@ -128,32 +126,33 @@
                   <option>5</option>
                   <option>6</option>
               </datalist>
-              <output id="rangevalue" class="bubble"></output>
+              <output id="rangevalue" class="bubble hidden"></output>
             </div>
-            <div class="w-8 sm:w-12 mt-7 sm:mt-4 ml-4 sm:ml-5">
-                <img src="dist/thumbup.png" alt="Setuju">
-            </div>
-            <div class="container flex">
-              <h1 id="labelSlider1" class="mt-10 mb-6 w-max block mx-auto text-center rounded-full border-transparet text-transparent py-3 px-5">           
-                1
-              </h1>
-              <h1 id="labelSlider2" class="mt-10 mb-6 w-max block mx-auto text-center rounded-full border-transparet text-transparent py-3 px-5">           
-                2
-              </h1>
-              <h1 id="labelSlider3" class="mt-10 mb-6 w-max block mx-auto text-center rounded-full border-transparet text-transparent py-3 px-5">           
-                3
-              </h1>
-              <h1 id="labelSlider4" class="mt-10 mb-6 w-max block mx-auto text-center rounded-full border-transparet text-transparent py-3 px-5">           
-                4
-              </h1>
-              <h1 id="labelSlider5" class="mt-10 mb-6 w-max block mx-auto text-center rounded-full border-transparet text-transparent py-3 px-5">           
-                5
-              </h1>
-              <h1 id="labelSlider6" class="mt-10 mb-6 w-max block mx-auto text-center rounded-full border-transparet text-transparent py-3 px-5">           
-                6
-              </h1>
-            </div>
-          </div>
+            <i class="fa fa-smile-o" style="font-size:48px;color:green"></i>
+        </div>
+            
+
+        <div class="container flex w-fit mx-auto">
+          <h1 id="labelSlider1" class="mt-2 mb-6 w-fit block mx-5 text-center rounded-full border-2 border-slate-500 text-slate-500 py-3 px-5">           
+            1
+          </h1>
+          <h1 id="labelSlider2" class="mt-2 mb-6 w-fit block mx-5 text-center rounded-full border-2 border-slate-500 text-slate-500 py-3 px-5">           
+            2
+          </h1>
+          <h1 id="labelSlider3" class="mt-2 mb-6 w-fit block mx-5 text-center rounded-full border-2 border-slate-500 text-slate-500 py-3 px-5">           
+            3
+          </h1>
+          <h1 id="labelSlider4" class="mt-2 mb-6 w-fit block mx-5 text-center rounded-full border-2 border-slate-500 text-slate-500 py-3 px-5">           
+            4
+          </h1>
+          <h1 id="labelSlider5" class="mt-2 mb-6 w-fit block mx-5 text-center rounded-full border-2 border-slate-500 text-slate-500 py-3 px-5">           
+            5
+          </h1>
+          <h1 id="labelSlider6" class="mt-2 mb-6 w-fit block mx-5 text-center rounded-full border-2 border-slate-500 text-slate-500 py-3 px-5">           
+            6
+          </h1>
+        </div>
+
         <div class="mb-12">
 
         </div>
@@ -227,7 +226,7 @@
     });
 
     // radarChart
-    var inklusif = {{ $penyebaranData ['inklusif'] }};
+    var inklusif = {{ $penyebaranData['inklusif'] }};
     var pelopor = {{ $penyebaranData  ['pelopor'] }};
     var tegas = {{ $penyebaranData  ['tegas'] }};
     var pemikir = {{ $penyebaranData  ['pemikir'] }};
@@ -267,7 +266,12 @@
             beginAtZero: true,
             suggestedMax : 10
           }
-        }   
+        },
+        plugins: {
+          legend : {
+            display : false
+          }
+        }
       }
     });
 
@@ -286,52 +290,52 @@
       const lima = document.getElementById("labelSlider5")
       const enam = document.getElementById("labelSlider6")
       if(output.innerHTML == 1){
-        satu.classList.add('bg-primary', 'border-slate-500', 'border-2', 'text-slate-300');
-        satu.classList.remove('border-transparent','text-transparent');
+        satu.classList.add('bg-red-600', 'border-slate-300', 'text-slate-300');
+        satu.classList.remove('border-slate-500', 'text-slate-500');
       }
       else{
-        satu.classList.remove('bg-primary', 'border-slate-500', 'border-2', 'text-slate-300');
-        satu.classList.add('border-transparent','text-transparent');
+        satu.classList.remove('bg-red-600', 'border-slate-300', 'text-slate-300');
+        satu.classList.add('border-slate-500', 'text-slate-500');
       }
       if(output.innerHTML == 2){
-        dua.classList.add('bg-primary', 'border-slate-500', 'border-2', 'text-slate-300');
-        dua.classList.remove('border-transparent', 'text-transparent');
+        dua.classList.add('bg-red-600', 'border-slate-300', 'text-slate-300');
+        dua.classList.remove('border-slate-500', 'text-slate-500');
       }
       else{
-        dua.classList.remove('bg-primary', 'border-slate-500', 'border-2', 'text-slate-300');
-        dua.classList.add('border-transparent', 'text-transparent');
+        dua.classList.remove('bg-red-600', 'border-slate-300', 'text-slate-300');
+        dua.classList.add('border-slate-500', 'text-slate-500');
       }
       if(output.innerHTML == 3){
-        tiga.classList.add('bg-primary', 'border-slate-500', 'border-2', 'text-slate-300');
-        tiga.classList.remove('border-transparent', 'text-transparent');
+        tiga.classList.add('bg-red-600', 'border-slate-300', 'text-slate-300');
+        tiga.classList.remove('border-slate-500', 'text-slate-500');
       }
       else{
-        tiga.classList.remove('bg-primary', 'border-slate-500', 'border-2', 'text-slate-300');
-        tiga.classList.add('border-transparent', 'text-transparent');
+        tiga.classList.remove('bg-red-600', 'border-slate-300', 'text-slate-300');
+        tiga.classList.add('border-slate-500', 'text-slate-500');
       }
       if(output.innerHTML == 4){
-        empat.classList.add('bg-primary', 'border-slate-500', 'border-2', 'text-slate-300');
-        empat.classList.remove('border-transparent', 'text-transparent');
+        empat.classList.add('bg-green-600', 'border-slate-300', 'text-slate-300');
+        empat.classList.remove('border-slate-500', 'text-slate-500');
       }
       else{
-        empat.classList.remove('bg-primary', 'border-slate-500', 'border-2', 'text-slate-300');
-        empat.classList.add('border-transparent', 'text-transparent');
+        empat.classList.remove('bg-green-600', 'border-slate-300', 'text-slate-300');
+        empat.classList.add('border-slate-500', 'text-slate-500');
       }
       if(output.innerHTML == 5){
-        lima.classList.add('bg-primary', 'border-slate-500', 'border-2', 'text-slate-300');
-        lima.classList.remove('border-transparent', 'text-transparent');
+        lima.classList.add('bg-green-600', 'border-slate-300', 'text-slate-300');
+        lima.classList.remove('border-slate-500', 'text-slate-500');
       }
       else{
-        lima.classList.remove('bg-primary', 'border-slate-500', 'border-2', 'text-slate-300');
-        lima.classList.add('border-transparent', 'text-transparent');
+        lima.classList.remove('bg-green-600', 'border-slate-300', 'text-slate-300');
+        lima.classList.add('border-slate-500', 'text-slate-500');
       }
       if(output.innerHTML == 6){
-        enam.classList.add('bg-primary', 'border-slate-500', 'border-2', 'text-slate-300');
-        enam.classList.remove('border-transparent', 'text-transparent');
+        enam.classList.add('bg-green-600', 'border-slate-300', 'text-slate-300');
+        enam.classList.remove('border-slate-500', 'text-slate-500');
       }
       else{
-        enam.classList.remove('bg-primary', 'border-slate-500', 'border-2', 'text-slate-300');
-        enam.classList.add('border-transparent', 'text-transparent');
+        enam.classList.remove('bg-green-600', 'border-slate-300', 'text-slate-300');
+        enam.classList.add('border-slate-500', 'text-slate-500');
       }
     } 
 
@@ -350,23 +354,23 @@ document.querySelector("#yearslider").addEventListener("change", function() {
   this.value = document.querySelector("#rangevalue").value = closest;
 });
 
-const range = document.querySelector(".jarak");
-const bubble = document.querySelector(".bubble");
-range.addEventListener("input", () => {
-  setBubble(range, bubble);
-});
-setBubble(range, bubble);
+// const range = document.querySelector(".jarak");
+// const bubble = document.querySelector(".bubble");
+// range.addEventListener("input", () => {
+//   setBubble(range, bubble);
+// });
+// setBubble(range, bubble);
 
-function setBubble(range, bubble) {
-  const val = range.value;
-  const min = range.min ? range.min : 0;
-  const max = range.max ? range.max : 100;
-  const newVal = Number(((val - min) * 100) / (max - min));
-  bubble.innerHTML = Math.round(val);
+// function setBubble(range, bubble) {
+//   const val = range.value;
+//   const min = range.min ? range.min : 0;
+//   const max = range.max ? range.max : 100;
+//   const newVal = Number(((val - min) * 100) / (max - min));
+//   bubble.innerHTML = Math.round(val);
 
-  // Sorta magic numbers based on size of the native UI thumb
-  bubble.style.left = `calc(${newVal}% + (${8 - newVal * 0.15}px))`;
-}
+//   // Sorta magic numbers based on size of the native UI thumb
+//   bubble.style.left = `calc(${newVal}% + (${8 - newVal * 0.15}px))`;
+// }
 
 
 

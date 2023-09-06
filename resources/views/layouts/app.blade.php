@@ -15,6 +15,7 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <style>
             #myRange {
                 -webkit-appearance: none;
@@ -42,30 +43,12 @@
             #yearslider::-webkit-slider-thumb{
                 -webkit-appearance: none;
                 appearance: none;
-                width: 10px;
-                height: 50px;
+                width: 30px;
+                height: 30px;
                 border-radius: 9999px;
                 background: #8404F4;
                 cursor: pointer;
                 transform: translateY(-10%);
-            }
-            .bubble {
-                background: red;
-                color: white;
-                padding: 4px 12px;
-                position: absolute;
-                border-radius: 4px;
-                left: 50%;
-                transform: translateX(-50%);
-            }
-            .bubble::after {
-              content: "";
-              position: absolute;
-              width: 2px;
-              height: 2px;
-              background: red;
-              top: -1px;
-              left: 50%;
             }
         </style>
 

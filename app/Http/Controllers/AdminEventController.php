@@ -72,12 +72,11 @@ class AdminEventController extends Controller
      */
     public function show(Event $event)
     {
-        $usersAnswer = $event->jawabans()->with('user')->get();
-        $users = $usersAnswer->pluck('user')->unique();
-        $usersDimensionRaw = $usersAnswer->pluck('dimensi_kepemimpinan')->toArray();
+        $currentEvent = $event->jawabans()->with('user')->get();
+        $users = $currentEvent->pluck('user')->unique();
 
-        $finishedUser = $usersAnswer->where('progress', '=', 'selesai');
-        $unfinishedUser = $usersAnswer->where('progress', '!=', 'selesai');
+        $finishedUser = $currentEvent->where('progress', '=', 'selesai')->count();
+        $unfinishedUser = $currentEvent->where('progress', '!=', 'selesai')->count();
 
         // Gender Category = ['Laki-laki', 'Perempuan']
         $usersGender = EventStatHelper::calculateGenderDispersion($users->pluck('jenis_kelamin')->toArray());
@@ -96,11 +95,11 @@ class AdminEventController extends Controller
         $usersResidence = EventStatHelper::calculateResidenceDispersion($users->pluck('domisili')->toArray());
 
         // 8 Dimensions Category = ['Pelopor', 'Penggerak', 'Afirmasi', 'Inklusif', 'Rendah Hati', 'Pemikir', 'Tegas', 'Berwibawa']
-        $usersDimension = EventStatHelper::calculate8DimensionsDispersion($usersDimensionRaw);
+        $usersDimension = EventStatHelper::calculate8DimensionsDispersion($currentEvent->pluck('dimensi_kepemimpinan')->toArray());
 
-        return [
+        return view('testing/chart', [
             'event' => $event,
-            'progress' => [count($finishedUser), count($unfinishedUser)],
+            'progress' => [($finishedUser), ($unfinishedUser)],
             'kelamin' => $usersGender,
             'usia' => $usersAge,
             'pendidikan' => $usersLastEducation,
@@ -110,7 +109,7 @@ class AdminEventController extends Controller
                 'selesai' => $finishedUser,
                 'mengerjakan' => $unfinishedUser,
             ],
-        ];
+        ]);
     }
 
     /**
@@ -151,22 +150,24 @@ class AdminEventController extends Controller
     // Belum jadi
     public function overview()
     {
-        $yearRequested = request('year');
+        $yearRequested = request('year', date('Y'));
 
-        $allEvents = Event::where('')
-            ->with('jawabans')->get();
+        $allEvents = Event::where('tanggal_selesai', 'like', '%' . $yearRequested . '%')
+            ->with('jawabans.user')->get();
 
-        $usersAnswer = Event::all()->jawabans->with('user')->get();
-        $users = $usersAnswer->pluck('user')->unique();
-        $usersDimensionRaw = $usersAnswer->pluck('dimensi_kepemimpinan')->toArray();
+        $eventAnswers = $allEvents->flatMap(function ($event) {
+            return $event->jawabans;
+        });
+        $eventUsers = $eventAnswers->pluck('user')->unique();
 
-        $finishedUser = $usersAnswer->where('progress', '=', 'selesai');
-        $unfinishedUser = $usersAnswer->where('progress', '!=', 'selesai');
-        $usersGender = EventStatHelper::calculateGenderDispersion($users->pluck('jenis_kelamin')->toArray());
-        $usersAge = EventStatHelper::calculateAgeDispersion($users->pluck('usia')->toArray());
-        $usersLastEducation = EventStatHelper::calculateEducationDispersion($users->pluck('pendidikan_terakhir')->toArray());
-        $usersResidence = EventStatHelper::calculateResidenceDispersion($users->pluck('domisili')->toArray());
-        $usersDimension = EventStatHelper::calculate8DimensionsDispersion($usersDimensionRaw);
+        $finishedUser = $eventAnswers->where('progress', '=', 'selesai');
+        $unfinishedUser = $eventAnswers->where('progress', '!=', 'selesai');
+
+        $usersGender = EventStatHelper::calculateGenderDispersion($eventUsers->pluck('jenis_kelamin')->toArray());
+        $usersAge = EventStatHelper::calculateAgeDispersion($eventUsers->pluck('usia')->toArray());
+        $usersLastEducation = EventStatHelper::calculateEducationDispersion($eventUsers->pluck('pendidikan_terakhir')->toArray());
+        $usersResidence = EventStatHelper::calculateResidenceDispersion($eventUsers->pluck('domisili')->toArray());
+        $usersDimension = EventStatHelper::calculate8DimensionsDispersion($eventAnswers->pluck('dimensi_kepemimpinan')->toArray());
 
         $eventsGoalStatistic = EventOverviewHelper::calculateEventsGoal($allEvents->pluck('tujuan_tes')->toArray());
         $eventsTotalParticipant = EventOverviewHelper::calculateTotalParticipant($allEvents->pluck('total_peserta', 'tanggal_selesai')->toArray());
@@ -176,7 +177,13 @@ class AdminEventController extends Controller
             'goal' => $eventsGoalStatistic,
             'participant' => $eventsTotalParticipant,
             'institusi' => $eventsInstitution,
+            
+            'progress' => [count($finishedUser), count($unfinishedUser)],
+            'kelamin' => $usersGender,
+            'usia' => $usersAge,
+            'pendidikan' => $usersLastEducation,
+            'domisili' => $usersResidence,
+            'penyebaran8D' => $usersDimension,
         ];
-        
     }
 }

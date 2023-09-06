@@ -259,6 +259,11 @@ class FormController extends Controller
 
         $this->saveAnswer($jawaban->id, $checkboxAnswers, $rangeAnswers);
 
+        $isJumper = Validation::jumperDetector($jawaban->id);
+        if ($isJumper) {
+            dd('no');
+        }
+
         $answer = session('answers-' . $jawaban->id);
         $answerSection1P = $answer['checkbox']['p'];
         $answerSection1T = $answer['checkbox']['t'];
