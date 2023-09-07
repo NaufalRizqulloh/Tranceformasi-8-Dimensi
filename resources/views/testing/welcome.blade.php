@@ -32,7 +32,7 @@
                 </form>
                     <a href="" class="text-bgcolor text-2xl md:text-base dark:md:text-slate-300 md:text-black w-max block mx-auto underline font-montserrat hover:text-blue-400 dark:hover:text-blue-400">
                         Lupa Kata Sandi?
-                    </a>
+                    </a> 
                 <br>
                 <div class="flex space-x-20 justify-center">
                     <a href="/tests">

@@ -66,27 +66,15 @@ class Validation
         return $strValue;
     }
 
-    // return i true if jump
-    public static function jumperDetector($answerID)
-    {
-        $answer = session('answers-' . $answerID);
-
-        if (empty($answer)) {
-            return true;
+    public static function removeArrayNullValues(&$array) {
+        foreach ($array as $key => &$value) {
+            if (is_array($value)) {
+                self::removeArrayNullValues($value);
+            } else {
+                if ($value === null) {
+                    unset($array[$key]);
+                }
+            }
         }
-
-        if (!$answer['checkbox'] && !$answer['range']) {
-            return true;
-        }
-
-        if (count($answer['checkbox']['p']) != 24 && count($answer['checkbox']['t']) != 24) {
-            return true;
-        }
-
-        if (count($answer['range']) != 20) {
-            return true;
-        }
-
-        return false;
     }
 }

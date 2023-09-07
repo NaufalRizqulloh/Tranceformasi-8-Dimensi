@@ -11,6 +11,7 @@ use Exception;
 use Helpers\Validation\Validation;
 use Helpers\Data\DiscHelper;
 use Helpers\Data\SectionTwoHelper;
+use Helpers\Validation\JumperValidation;
 
 class FormController extends Controller
 {
@@ -103,6 +104,11 @@ class FormController extends Controller
     {
         $destination = strtolower(request('destination'));
         $destination = str_replace(array(" ", "\t", "\n", "\r"), "", $destination);
+        
+        if (JumperValidation::isJumping($jawaban->id, $destination)) {
+            return redirect()->route('user.form.jumper', ['jawaban' => $jawaban->id]);
+        }
+
         $questions = "";
         $pageSection = 0;
         $nextDestination = "";
@@ -259,8 +265,7 @@ class FormController extends Controller
 
         $this->saveAnswer($jawaban->id, $checkboxAnswers, $rangeAnswers);
 
-        $isJumper = Validation::jumperDetector($jawaban->id);
-        if ($isJumper) {
+        if (JumperValidation::isJumpingSubmit($jawaban->id)) {
             dd('no');
         }
 

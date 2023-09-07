@@ -33,12 +33,32 @@ Route::get('/ds', function () {
     dd('anggap dashboard');
 });
 
+Route::get('/t', function () {
+    $originalArray = [
+        1 => 'One',
+        2 => 'Two',
+        3 => 'Three',
+        4 => 'Four',
+        5 => 'Five',
+        6 => 'Six',
+
+    ];
+
+    $selectedElements = array_slice($originalArray, 0, 10, true);
+    $aa = array_slice(session('aa', ['d', 'w', null]), 0, 10, true);
+    $filteredArray = array_filter($aa, function ($value) {
+        return $value !== null;
+    });
+
+    dd(count($filteredArray) == 3, $filteredArray, empty(null));
+});
+
 Route::get('/dn', function () {
     dd('anggap done', request());
 });
 
 Route::get('/j', function () {
-    return view('alt-form/nojump');
+    return view('alt-form/no-jump');
 });
 
 Route::get('/request21', function () {
@@ -109,11 +129,16 @@ Route::patch('user/form/update/{jawaban}/back', [FormController::class, 'updateB
 Route::patch('user/form/update/{jawaban}/submit', [FormController::class, 'submit'])->middleware('auth')->name('user.form.update.submit');
 
 // tdk dipakai
-Route::post('user/form/save-answer/{jawaban}', [FormController::class, 'saveAnswer'])->middleware('auth');
+Route::post('user/form/save-answer/{jawaban}', [FormController::class, 'saveAnswer'])->middleware('auth')->name('user.form.save-answer');
 
-Route::get('/user/form/terimakasih-sudah-mengisi', function () {
+Route::get('user/form/terimakasih-sudah-mengisi', function () {
     return view('section-done');
 })->middleware('auth')->name('user.form.done');
+
+Route::get('/𐎥𐎦𐎧𐎨𐎪𐎫𐎬𐎭𐎮𐎯𐎰𐎱𐎲𐎳𐎴𐎵𐎶𐎷𐎸𐎹𐎺𐎻𐎼𐎽𐎾𐎿𐏀𐏁𐏂𐎔𐎒𐎓𐎘𐎙𐎛𐎜𐎝 𐎞𐎟𐎠𐎡𐎢𐎣𐎤𐎳𐎴𐎵𐎶𐎷 𐎸𐎹𐎺𐎻𐎼𐎽', function () {
+    $jawaban = request('jawaban');
+    return view('alt-form/no-jump', ['jawaban' => $jawaban]);
+})->name('user.form.jumper');
 
 /**
  * Admin route section
@@ -141,7 +166,7 @@ Route::resource('checkbox', CheckboxController::class);
 
 Route::get('/dashboard/{user}', []);
 
-Route::get('/charts', [ChartController::class, 'index']) ->name('chart.index');
+Route::get('/charts', [ChartController::class, 'index'])->name('chart.index');
 
 Route::get('/test', function () {
     return view('/testing/welcome');
@@ -157,9 +182,6 @@ Route::get('/tfregister', function () {
 
 
 Route::get('/tests', function () {
-    return view('/testing/halaman');
-});
-Route::get('/', function () {
     return view('/testing/halaman');
 });
 

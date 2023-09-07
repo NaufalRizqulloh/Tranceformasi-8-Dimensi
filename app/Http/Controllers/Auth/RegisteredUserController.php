@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use DateTime;
 use Exception;
+use Illuminate\Support\Carbon;
 use GuzzleHttp\Client;
 use Helpers\Data\AgeHelper;
 use Illuminate\Auth\Events\Registered;
@@ -46,7 +47,7 @@ class RegisteredUserController extends Controller
             'notelp' => 'required',
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
             'pendidikan_terakhir' => ['required', 'string'],
-            'domisili' => ['required', 'string'],
+            // 'domisili' => ['required', 'string'],
             'status' => ['required', 'in:1,2', 'integer'],
 
             'institusi' => ['required_if:status,1', 'string'],
@@ -57,9 +58,11 @@ class RegisteredUserController extends Controller
             'masa_kerja' => ['required_if:status,2', 'integer'],
         ]);
 
-        $tanggalLahir = DateTime::createFromFormat('Y-m-d', $request->tanggal_lahir);
-        $usia = AgeHelper::getUsia($tanggalLahir, new DateTime());
-
+        // $tanggalLahir = DateTime::createFromFormat('Y-m-d', $request->tanggal_lahir);
+        $tanggalLahir = Carbon::parse($request->tanggal_lahir)->setTimezone('Asia/Jakarta');
+        $usia = $tanggalLahir->age;
+        dd($usia, $tanggalLahir, $request->tanggal_lahir);
+        
         $user = User::create([
             'name' => $request->name,
             'tanggal_lahir' => $request->tanggal_lahir,
