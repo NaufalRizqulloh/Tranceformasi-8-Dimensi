@@ -135,7 +135,7 @@ Route::get('user/form/terimakasih-sudah-mengisi', function () {
     return view('section-done');
 })->middleware('auth')->name('user.form.done');
 
-Route::get('/𐎥𐎦𐎧𐎨𐎪𐎫𐎬𐎭𐎮𐎯𐎰𐎱𐎲𐎳𐎴𐎵𐎶𐎷𐎸𐎹𐎺𐎻𐎼𐎽𐎾𐎿𐏀𐏁𐏂𐎔𐎒𐎓𐎘𐎙𐎛𐎜𐎝 𐎞𐎟𐎠𐎡𐎢𐎣𐎤𐎳𐎴𐎵𐎶𐎷 𐎸𐎹𐎺𐎻𐎼𐎽', function () {
+Route::get('/在漫游于一个旋涡般的资本主义中我与一只戴着单片眼镜的大猩猩进行了一次奇怪的对话他能够通过解释有感知能力的棉花糖的运动来预测外太空的橡皮鸭的情感', function () {
     $jawaban = request('jawaban');
     return view('alt-form/no-jump', ['jawaban' => $jawaban]);
 })->name('user.form.jumper');

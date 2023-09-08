@@ -49,7 +49,7 @@
                 border-radius: 9999px;
                 background: #8404F4;
                 cursor: pointer;
-                transform: translateY(-10%);
+                transform: translateY(-17%);
             }
         </style>
 

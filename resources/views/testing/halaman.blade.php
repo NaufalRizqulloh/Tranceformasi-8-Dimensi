@@ -4,7 +4,7 @@
 
 <!-- Main Hero -->
 
-<div class="mt-20 mx-auto w-[90%] h-fit rounded-xl lg:rounded-[50px] lg:rounded-tr-[250px] bg-primary lg:bg-[#FFEEFE] lg:dark:bg-slate-700 lg:flex">
+<div class="mt-20 mx-auto w-[90%] ring-2 ring-white dark:ring-0 h-fit rounded-xl lg:rounded-[50px] lg:rounded-tr-[250px] bg-primary lg:bg-[#FFEEFE] lg:dark:bg-slate-700 lg:flex">
     <div class="lg:w-1/2 h-max lg:bg-primary rounded-xl lg:rounded-tl-[50px] lg:rounded-bl-[50px]">
         <h1 class="font-bold text-center lg:text-left text-secondary lg:ml-12 pt-8 text-4xl mx-4">DELAPAN DIMENSI <br> KEPEMIMPINAN</h1>
         <h1 class="mx-4 lg:mx-12 text-center lg:text-left text-1xl mt-4 text-bgcolor">
