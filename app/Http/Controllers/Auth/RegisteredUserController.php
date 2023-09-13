@@ -37,37 +37,54 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
-        dd('masuk');
         $request->validate([
             'name' => ['required', 'string'],
-            'tanggal_lahir' => 'required',
+            'tanggal_lahir' => ['required', 'string'],
+            'jenis_kelamin' => ['required', 'string'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:' . User::class],
             'notelp' => 'required',
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
             'pendidikan_terakhir' => ['required', 'string'],
-            // 'domisili' => ['required', 'string'],
+            'domisili' => ['required', 'string'],
             'status' => ['required', 'in:1,2'],
 
-            'institusi' => ['required_if:status,1', 'string'],
-            'jurusan' => ['required_if:status,1', 'string'],
+            'institusi' => ['required_if:status,1'],
+            'jurusan' => ['required_if:status,1'],
 
-            'perusahaan' => ['required_if:status,2', 'string'],
-            'jabatan' => ['required_if:status,2', 'string'],
-            'masa_kerja' => ['required_if:status,2', 'integer'],
+            'perusahaan' => ['required_if:status,2'],
+            'jabatan' => ['required_if:status,2'],
+            'masa_kerja' => ['required_if:status,2'],
         ]);
 
         // $tanggalLahir = DateTime::createFromFormat('Y-m-d', $request->tanggal_lahir);
         $tanggalLahir = Carbon::parse($request->tanggal_lahir)->setTimezone('Asia/Jakarta');
         $usia = $tanggalLahir->age;
-        dd($usia, $tanggalLahir, $request->tanggal_lahir);
+
+        // dd('berhasil');
+        // dd(
+        //     $usia,
+        //     $request->jenis_kelamin,
+        //     $request->name,
+        //     $request->email,
+        //     $request->notelp,
+        //     $request->password,
+        //     $request->pendidikan_terakhir,
+        //     $request->domisili,
+        //     $request->status,
+        //     $request->institusi,
+        //     $request->jurusan,
+        //     $request->perusahaan,
+        //     $request->jabatan,
+        //     $request->masa_kerja,
+        // );
         
         $user = User::create([
             'name' => $request->name,
             'tanggal_lahir' => $request->tanggal_lahir,
-            'jenis_kelamin1' => $request->jenis_kelamin1,
+            'jenis_kelamin' => $request->jenis_kelamin,
             'email' => $request->email,
             'usia' => $usia,
-            // 'domisili' => $request->domisili,
+            'domisili' => $request->domisili,
             'notelp' => $request->notelp,
             'pendidikan_terakhir' => $request->pendidikan_terakhir,
             'status' => $request->status,

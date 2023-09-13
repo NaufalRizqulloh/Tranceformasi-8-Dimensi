@@ -19,15 +19,15 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('notelp');
             $table->string('domisili'); 
-            $table->smallInteger('usia');
+            $table->integer('usia');
             $table->string('pendidikan_terakhir');
             // status [1 -> pelajar, 2 -> pekerja]
-            $table->smallInteger('status');
+            $table->integer('status');
             $table->string('institusi')->nullable();
             $table->string('jurusan')->nullable();
             $table->string('perusahaan')->nullable();
             $table->string('jabatan')->nullable();
-            $table->smallInteger('masa_kerja')->nullable();
+            $table->integer('masa_kerja')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
