@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Jawaban;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use GuzzleHttp\Client;
 
 class ChartController extends Controller
 {
@@ -81,9 +82,25 @@ class ChartController extends Controller
         $penyebaranData = $this->penyebaranCount($request);
         $jeniskelaminData = $this->jeniskelaminCount($request);
 
+        $client = new Client();
+        $response = $client->get('https://api.rajaongkir.com/starter/city', [
+            'headers' => [
+                'key' => '1d168db07423b0d975eb96d96b1d5bea'
+            ],
+        ]);
+
+        $datas = json_decode($response->getBody(), true);
+
+        $finalData = [];
+        
+        foreach ($datas['rajaongkir']['results'] as $data) {
+            $finalData[] = $data['city_name'] . ', ' . $data['province'];
+        }
+
         return view('dashboard', [
             'penyebaranData' => $penyebaranData,
             'jeniskelaminData' => $jeniskelaminData,
+            'domisilis' => $finalData,
         ]);
     }
 

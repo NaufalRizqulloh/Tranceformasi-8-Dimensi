@@ -13,6 +13,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
 use PhpParser\Node\Expr\Cast\Bool_;
@@ -25,9 +26,20 @@ class RegisteredUserController extends Controller
     public function create(): View
     {
         $client = new Client();
+        $response = $client->get('https://api.rajaongkir.com/starter/city', [
+            'headers' => [
+                'key' => '1d168db07423b0d975eb96d96b1d5bea'
+            ],
+        ]);
 
+        $datas = json_decode($response->getBody(), true);
 
-        return view('testing.register');
+        $finalData = [];
+        
+        foreach ($datas['rajaongkir']['results'] as $data) {
+            $finalData[] = $data['city_name'] . ', ' . $data['province'];
+        }
+         return view('testing.register', ['domisilis' => $finalData]);
     }
 
     /**
@@ -37,7 +49,31 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
-        $request->validate([
+        $messages = [
+            'name.required' => 'Mohon bagian ini diisi.',
+            'tanggal_lahir.required' => 'Mohon masukkan tanggal lahir.',
+            'jenis_kelamin.required' => 'Mohon pilih salah satu.',
+            'email.required' => 'Mohon bagian ini diisi.',
+            'email.email' => 'Format Email Salah.',
+            'notelp.required' => 'Mohon bagian ini diisi.',
+            'domisili.required' => 'Mohon bagian ini diisi.',
+            'pendidikan_terakhir.required' => 'Mohon bagian ini diisi.',
+            'status.required' => 'Mohon pilih salah satu.',
+            'status.in' => 'Status yang dipilih tidak valid.',
+
+            'institusi.required' => 'Mohon bagian ini diisi.',
+            'jurusan.required' => 'Mohon bagian ini diisi.',
+            
+            'perusahaan.required' => 'Mohon bagian ini diisi.',
+            'jabatan.required' => 'Mohon bagian ini diisi.',
+            'masa_kerja.required' => 'Mohon bagian ini diisi.',
+            
+            'password.required' => 'Mohon bagian ini diisi.',
+            'password.confirmed' => 'Konfirmasi Password tidak sama.',
+            // Add custom messages for other rules here if needed
+        ];
+
+        $validator = Validator::make($request->all(), [
             'name' => ['required', 'string'],
             'tanggal_lahir' => ['required', 'string'],
             'jenis_kelamin' => ['required', 'string'],
@@ -54,7 +90,13 @@ class RegisteredUserController extends Controller
             'perusahaan' => ['required_if:status,2'],
             'jabatan' => ['required_if:status,2'],
             'masa_kerja' => ['required_if:status,2'],
-        ]);
+        ], $messages);
+
+        if ($validator->fails()) {
+            return redirect()->back()
+                ->withErrors($validator)
+                ->withInput();
+        }
 
         // $tanggalLahir = DateTime::createFromFormat('Y-m-d', $request->tanggal_lahir);
         $tanggalLahir = Carbon::parse($request->tanggal_lahir)->setTimezone('Asia/Jakarta');

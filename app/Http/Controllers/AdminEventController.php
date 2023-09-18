@@ -177,7 +177,7 @@ class AdminEventController extends Controller
             'goal' => $eventsGoalStatistic,
             'participant' => $eventsTotalParticipant,
             'institusi' => $eventsInstitution,
-            
+
             'progress' => [count($finishedUser), count($unfinishedUser)],
             'kelamin' => $usersGender,
             'usia' => $usersAge,
@@ -185,5 +185,12 @@ class AdminEventController extends Controller
             'domisili' => $usersResidence,
             'penyebaran8D' => $usersDimension,
         ];
+    }
+
+    public function updateCityApi()
+    {
+        
+
+        return response()->json(['city-api-update' => 'success']);
     }
 }

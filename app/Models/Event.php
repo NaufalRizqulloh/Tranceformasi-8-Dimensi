@@ -11,6 +11,7 @@ class Event extends Model
 
     protected $fillable = [
         'nama',
+        'is_answers_hold',
         'kode_akses',
         'institusi',
         'tujuan_tes',

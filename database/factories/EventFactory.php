@@ -37,7 +37,8 @@ class EventFactory extends Factory
             'tanggal_selesai' => Carbon::parse($randDate . ' 15:00:00'),
             'tujuan_tes' => $goal,
             'deskripsi' => fake()->text('100'),
-            'is_expired' => $isExpired
+            'is_expired' => $isExpired,
+            'is_answers_hold' => false
         ];
         // fake()->dateTime("now", "Asia/Jakarta")
     }

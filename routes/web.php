@@ -128,7 +128,6 @@ Route::patch('user/form/update/{jawaban}', [FormController::class, 'update'])->m
 Route::patch('user/form/update/{jawaban}/back', [FormController::class, 'updateBack'])->middleware('auth')->name('user.form.update.back');
 Route::patch('user/form/update/{jawaban}/submit', [FormController::class, 'submit'])->middleware('auth')->name('user.form.update.submit');
 
-// tdk dipakai
 Route::post('user/form/save-answer/{jawaban}', [FormController::class, 'saveAnswer'])->middleware('auth')->name('user.form.save-answer');
 
 Route::get('user/form/terimakasih-sudah-mengisi', function () {
@@ -146,6 +145,7 @@ Route::get('/在漫游于一个旋涡般的资本主义中我与一只戴着单�
 Route::resource('admin/event', AdminEventController::class)->middleware('admin');
 
 Route::get('admin/event/overview', [AdminEventController::class, 'overview'])->middleware('admin')->name('event.overview');
+Route::get('admin/event/update-city-api', [AdminEventController::class, 'updateCityApi'])->middleware('admin')->name('event.update.city-api');
 
 /////////
 
@@ -168,7 +168,7 @@ Route::get('/dashboard/{user}', []);
 
 Route::get('/charts', [ChartController::class, 'index'])->name('chart.index');
 
-Route::get('/test', function () {
+Route::get('/', function () {
     return view('/testing/welcome');
 });
 
@@ -181,7 +181,7 @@ Route::get('/tfregister', function () {
 });
 
 
-Route::get('/tests', function () {
+Route::get('/home', function () {
     return view('/testing/halaman');
 });
 
