@@ -1,10 +1,6 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Chart.js in Laravel</title>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-</head>
-<body>
+@extends('templates.default')
+
+@section('content')
     <canvas id="myChart" width="400" height="400"></canvas>
 
     <script>
@@ -49,5 +45,4 @@
     console.log
 </script>
 
-</body>
-</html>
+@endsection

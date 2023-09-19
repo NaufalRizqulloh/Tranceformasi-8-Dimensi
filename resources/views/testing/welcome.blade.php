@@ -35,15 +35,15 @@
                     </a> 
                 <br>
                 <div class="flex space-x-20 justify-center">
-                    <a href="/tests">
-                        <input type="submit" class="hidden">
-                        <button class="w-48 md:w-32 border-solid rounded-2xl md:rounded-lg border-2 bg-bgcolor md:bg-transparent dark:md:bg-bgcolor md:border-primary">
-                            <h1 class="text-primary md:text-base text-center font-montserrat font-semibold italic my-4 md:m-1">Masuk</h1>
-                        </button>
-                    </a>
-                    <button class="w-48 md:w-32 border-solid rounded-2xl md:rounded-lg border-2 md:bg-primary">
-                        <h1 class="text-bgcolor md:text-base text-center font-montserrat font-semibold italic my-4 md:m-1">Daftar</h1>
+                    <input type="submit" class="hidden">
+                    <button class="w-48 md:w-32 border-solid rounded-2xl md:rounded-lg border-2 bg-bgcolor md:bg-transparent dark:md:bg-bgcolor md:border-primary">
+                        <h1 class="text-primary md:text-base text-center font-montserrat font-semibold italic my-4 md:m-1">Masuk</h1>
                     </button>
+                    <form action="{{ route('tfregister.create') }}">
+                        <button class="w-48 md:w-32 border-solid rounded-2xl md:rounded-lg border-2 md:bg-primary">
+                            <h1 class="text-bgcolor md:text-base text-center font-montserrat font-semibold italic my-4 md:m-1">Daftar</h1>
+                        </button>
+                    </form>                    
                 </div>
                 <h1 class="md:hidden font-montserrat justify-center align-middle text-center text-bgcolor italic font-light text-md mb-56">
                     PT. TRANCEFORMASI INDONESIA - 2023

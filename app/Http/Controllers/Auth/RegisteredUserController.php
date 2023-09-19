@@ -3,10 +3,11 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Info;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Support\Carbon;
-use GuzzleHttp\Client;
+
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -25,25 +26,14 @@ class RegisteredUserController extends Controller
      */
     public function create(): View
     {
-        $client = new Client();
-        $response = $client->get('https://api.rajaongkir.com/starter/city', [
-            'headers' => [
-                'key' => '1d168db07423b0d975eb96d96b1d5bea'
-            ],
-        ]);
+        $cityName = Info::where('name', '=', 'city')->first();
+        $finalData = json_decode($cityName->json_value, true)['city'];
 
-        $datas = json_decode($response->getBody(), true);
-
-        $finalData = [];
-        
-        foreach ($datas['rajaongkir']['results'] as $data) {
-            $finalData[] = $data['city_name'] . ', ' . $data['province'];
-        }
-         return view('testing.register', ['domisilis' => $finalData]);
+        return view('testing.register', ['domisilis' => $finalData]);
     }
 
     /**
-     * Handle an incoming registration request.
+     * Handle an incoming registration request.v
      *
      * @throws \Illuminate\Validation\ValidationException
      */
@@ -63,11 +53,11 @@ class RegisteredUserController extends Controller
 
             'institusi.required' => 'Mohon bagian ini diisi.',
             'jurusan.required' => 'Mohon bagian ini diisi.',
-            
+
             'perusahaan.required' => 'Mohon bagian ini diisi.',
             'jabatan.required' => 'Mohon bagian ini diisi.',
             'masa_kerja.required' => 'Mohon bagian ini diisi.',
-            
+
             'password.required' => 'Mohon bagian ini diisi.',
             'password.confirmed' => 'Konfirmasi Password tidak sama.',
             // Add custom messages for other rules here if needed
@@ -119,7 +109,7 @@ class RegisteredUserController extends Controller
         //     $request->jabatan,
         //     $request->masa_kerja,
         // );
-        
+
         $user = User::create([
             'name' => $request->name,
             'tanggal_lahir' => $request->tanggal_lahir,

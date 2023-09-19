@@ -63,7 +63,7 @@
              <h1 class="text-red-600 -mt-3 mb-1">{{ $message }}</h1>
              @enderror
          </label>
-         <label for="domisili" id="">
+         <!-- <label for="domisili" id="">
              <input type="text" list="domisili" name="domisili" id="domisili" placeholder="Domisili" class="mb-3 rounded-md border-black ring-black mx-auto px-3 py-2 border shadow rounder w-full block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 focus:placeholder:text-transparent @error('domisili')  placeholder-shown:border-red-500 @enderror" value="{{ old('domisili') }}" />
              <datalist id="domisili">
                  @foreach($domisilis as $domisili)
@@ -73,7 +73,13 @@
              @error('domisili')
              <h1 class="text-red-600 -mt-3 mb-1">{{ $message }}</h1>
              @enderror
-         </label>
+         </label> -->
+         <select id="domisili" name="domisili" size="1" class="mb-3 rounded-md border-black ring-black mx-auto px-3 py-2 border shadow rounder w-full block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 focus:placeholder:text-transparent @error('domisili')  placeholder-shown:border-red-500 @enderror" >
+           <option value="">-- Pilih Domisili --</option>
+           @foreach($domisilis as $domisili)
+           <option value="{{ $domisili }}" @if(old('domisili')==$domisili ) selected @endif>{{ $domisili }}</option>
+           @endforeach
+         </select>
          <label for="pendidikan_terakhir" id="">
              <input type="text" name="pendidikan_terakhir" id="pendidikan_terakhir" placeholder="Pendidikan Terakhir (SMA/D3/S1/S2/dsb)" class="mb-3 rounded-md border-black ring-black mx-auto px-3 py-2 border shadow rounder w-full block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 focus:placeholder:text-transparent @error('pendidikan_terakhir')  placeholder-shown:border-red-500 @enderror" value="{{ old('pendidikan_terakhir') }}" />
              @error('pendidikan_terakhir')

@@ -3,12 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Event;
+use GuzzleHttp\Client;
 use App\Http\Controllers\Controller;
-use App\Models\Jawaban;
-use App\Models\User;
+use App\Models\Info;
 use Helpers\Data\EventOverviewHelper;
 use Helpers\Data\EventStatHelper;
-use Helpers\GeneralHelper;
 use Illuminate\Http\Request;
 
 class AdminEventController extends Controller
@@ -189,8 +188,40 @@ class AdminEventController extends Controller
 
     public function updateCityApi()
     {
-        
+        $client = new Client();
 
-        return response()->json(['city-api-update' => 'success']);
+        $response = $client->get('https://api.rajaongkir.com/starter/city', [
+            'headers' => [
+                'key' => '1d168db07423b0d975eb96d96b1d5bea'
+            ],
+        ]);
+
+        $datas = json_decode($response->getBody(), true);
+
+        $city = [];
+
+        foreach ($datas['rajaongkir']['results'] as $data) {
+            $city[] = $data['city_name'] . ', ' . $data['province'];
+        }
+
+        $finalData = json_encode(['city' => $city]);
+
+        Info::updateOrCreate(
+            ['name' => 'city'],
+            ['json_value' => $finalData]
+        );
+
+        return response()->json(['city-update' => 'success']);
+    }
+
+    public function updateOnHold(Event $event)
+    {
+        $isHold = request('value', false);
+        
+        $event->is_answers_hold = $isHold;
+        $event->save();
+        
+        return response()->json(['on-hold' => $isHold]);
+
     }
 }

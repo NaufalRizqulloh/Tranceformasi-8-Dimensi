@@ -7,5 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Info extends Model
 {
+
+    protected $fillable = [
+        'name',
+        'str_value',
+        'num_value',
+        'json_value',
+    ];
+
     use HasFactory;
 }

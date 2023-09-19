@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AdminEventController;
 use App\Http\Controllers\AdminFormController;
+use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\CheckboxController;
 use App\Http\Controllers\FormController;
 use App\Http\Controllers\LoginController;
@@ -145,7 +146,8 @@ Route::get('/在漫游于一个旋涡般的资本主义中我与一只戴着单�
 Route::resource('admin/event', AdminEventController::class)->middleware('admin');
 
 Route::get('admin/event/overview', [AdminEventController::class, 'overview'])->middleware('admin')->name('event.overview');
-Route::get('admin/event/update-city-api', [AdminEventController::class, 'updateCityApi'])->middleware('admin')->name('event.update.city-api');
+Route::get('admin/event/update-on-hold/{event}', [AdminEventController::class, 'updateOnHold'])->name('update.event.on-hold');
+Route::get('admin/update-city', [AdminEventController::class, 'updateCityApi'])->name('update.city-api');
 
 /////////
 
@@ -176,9 +178,7 @@ Route::get('/tprofile', function () {
     return view('/testing/profile');
 });
 
-Route::get('/tfregister', function () {
-    return view('/testing/register');
-});
+Route::get('/tfregister', [RegisteredUserController::class, 'create'])->name('tfregister.create');
 
 
 Route::get('/home', function () {
