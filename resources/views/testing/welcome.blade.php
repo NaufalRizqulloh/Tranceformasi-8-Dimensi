@@ -20,32 +20,33 @@
                 <h1 class="text-primary font-montserrat md:text-primary text-center font-bold text-6xl md:text-4xl mb-10">
                     Masuk
                 </h1>
-                <form action="" class="max-w-lg mx-auto">
+                <form method="POST" action="{{ route('login') }}" class="max-w-lg mx-auto">
+                    @csrf
                     <label for="email" id="">
-                        <input type="email" placeholder="Masukkan Email" class="mb-10 rounded-xl md:rounded-md border-black ring-black mx-auto px-3 py-2 border shadow rounder w-full max-md:h-16 md:w-full block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 invalid:text-pink-700 invalid:focus:ring-pink-700 invalid:focus:border-pink-700 peer max-md:placeholder:text-2xl max-md:placeholder:text-slate-400 focus:placeholder:text-transparent"
+                        <input id="email" type="email" name="email" placeholder="Masukkan Email" class="mb-10 rounded-xl md:rounded-md border-black ring-black mx-auto px-3 py-2 border shadow rounder w-full max-md:h-16 md:w-full block text-2xl md:text-sm text-black placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 invalid:focus:ring-pink-700 invalid:focus:border-pink-700 peer max-md:placeholder:text-2xl max-md:placeholder:text-slate-400 focus:placeholder:text-transparent" value="{{ old('email') }}" required
                         />
                     </label>
                     <label for="password" id="">
-                        <input type="password" placeholder="Masukkan Password" class="mb-10 rounded-xl md:rounded-md border-black ring-black mx-auto px-3 py-2 border shadow rounder w-full md:w-full max-md:h-16 block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 invalid:text-pink-700 invalid:focus:ring-pink-700 invalid:focus:border-pink-700 peer max-md:placeholder:text-2xl max-md:placeholder:text-slate-400 focus:placeholder:text-transparent"
+                        <input id="password" type="password" name="password" placeholder="Masukkan Password" class="mb-10 rounded-xl md:rounded-md border-black ring-black mx-auto px-3 py-2 border shadow rounder w-full md:w-full max-md:h-16 block text-2xl md:text-sm text-black placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 peer max-md:placeholder:text-2xl max-md:placeholder:text-slate-400 focus:placeholder:text-transparent" required
                         />
                     </label>
-                </form>
+                    @error('email')
+                    <h1 class="text-red-600 -mt-10 mb-4">{{ $message }}</h1>
+                    @enderror
                     <a href="" class="text-bgcolor text-2xl md:text-base dark:md:text-slate-300 md:text-black w-max block mx-auto underline font-montserrat hover:text-blue-400 dark:hover:text-blue-400">
                         Lupa Kata Sandi?
                     </a> 
-                <br>
-                <div class="flex space-x-20 justify-center">
-                    <input type="submit" class="hidden">
-                    <button class="w-48 md:w-32 border-solid rounded-2xl md:rounded-lg border-2 bg-bgcolor md:bg-transparent dark:md:bg-bgcolor md:border-primary">
-                        <h1 class="text-primary md:text-base text-center font-montserrat font-semibold italic my-4 md:m-1">Masuk</h1>
-                    </button>
-                    <form action="{{ route('tfregister.create') }}">
-                        <button class="w-48 md:w-32 border-solid rounded-2xl md:rounded-lg border-2 md:bg-primary">
-                            <h1 class="text-bgcolor md:text-base text-center font-montserrat font-semibold italic my-4 md:m-1">Daftar</h1>
+                    <br>
+                    <div class="flex space-x-20 justify-center">
+                        <button type="submit" class="w-48 md:w-32 border-solid rounded-2xl md:rounded-lg border-2 bg-bgcolor md:bg-transparent dark:md:bg-bgcolor md:border-primary">
+                            <h1 class="text-primary text-2xl md:text-base text-center font-montserrat font-semibold italic my-4 md:m-1">Masuk</h1>
                         </button>
-                    </form>                    
-                </div>
-                <h1 class="md:hidden font-montserrat justify-center align-middle text-center text-bgcolor italic font-light text-md mb-56">
+                        <a href="{{ route('tfregister.create') }}" class="w-48 md:w-32 border-solid rounded-2xl md:rounded-lg border-2 md:bg-primary">
+                            <h1 class="text-bgcolor text-2xl md:text-base text-center font-montserrat font-semibold italic my-4 md:m-1">Daftar</h1>
+                        </a>
+                    </div>
+                </form>
+                <h1 class="md:hidden mt-4 font-montserrat justify-center align-middle text-center text-bgcolor italic font-light text-md mb-56">
                     PT. TRANCEFORMASI INDONESIA - 2023
                 </h1>
             </div>
@@ -63,7 +64,7 @@
         </section>
     </div>
     <input type="checkbox" name="" id="toggle" class="peer hidden"/>
-    <label for="toggle" class="items-center justify-center fixed h-14 w-14 bg-primary dark:border-black border-2 rounded-full z-10 bottom-4 right-4 p-4 transition ease-in-out hover:-translate-y-1 cursor-pointer">
+    <label for="toggle" class="max-md:hidden items-center justify-center fixed h-14 w-14 bg-primary dark:border-black border-2 rounded-full z-10 bottom-4 right-4 p-4 transition ease-in-out hover:-translate-y-1  cursor-pointer">
         <span>
             <img src="/dist/moon.png" alt="">
         </span>

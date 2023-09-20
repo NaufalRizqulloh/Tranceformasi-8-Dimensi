@@ -47,6 +47,7 @@ class RegisteredUserController extends Controller
             'email.email' => 'Format Email Salah.',
             'notelp.required' => 'Mohon bagian ini diisi.',
             'domisili.required' => 'Mohon bagian ini diisi.',
+            'domisili.not_in' => 'Mohon pilih domisili/kota tempat tinggal',
             'pendidikan_terakhir.required' => 'Mohon bagian ini diisi.',
             'status.required' => 'Mohon pilih salah satu.',
             'status.in' => 'Status yang dipilih tidak valid.',
@@ -71,7 +72,7 @@ class RegisteredUserController extends Controller
             'notelp' => 'required',
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
             'pendidikan_terakhir' => ['required', 'string'],
-            'domisili' => ['required', 'string'],
+            'domisili' => ['required', 'string', 'not_in:0'],
             'status' => ['required', 'in:1,2'],
 
             'institusi' => ['required_if:status,1'],

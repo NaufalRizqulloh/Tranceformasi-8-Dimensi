@@ -16,7 +16,7 @@
         <h1 class="ml-4 pl-4 text-white my-4 border-l-2">Nama</h1>
     </div> 
     <div class="block">
-        <a href="/tests">  
+        <a href="/home">  
             <input type="submit" class="hidden"/>  
             <button class="mt-[3.3rem] py-4 flex mx-auto w-full text-lg border-b-2 border-slate-500">
                 <div class="w-auto mx-auto flex">
@@ -34,15 +34,15 @@
                 </div>
             </button>
         </a>
-        <a href="/test">
-            <input type="submit" class="hidden"/>
-            <button class="py-4 flex mx-auto w-full text-lg border-b-2 border-slate-500">
+        <form method="POST" action="{{ route('logout') }}">
+            @csrf
+            <button type="submit" class="py-4 flex mx-auto w-full text-lg border-b-2 border-slate-500">
                 <div class="w-auto mx-auto flex">
                     <img src="/dist/logoutlogo.png" alt="" class="h-8 w-auto">
                     <h1 class="w-auto ml-5 text-red-600">Log Out</h1>
                 </div>
             </button>
-        </a>
+        </form>
         <div class="flex w-full select-none">
             <input type="checkbox" name="" id="toggle" class="peer hidden"/>
             <label for="toggle" class="py-4 flex mx-auto w-full text-lg border-b-2 border-slate-500 justify-center items-center cursor-pointer">

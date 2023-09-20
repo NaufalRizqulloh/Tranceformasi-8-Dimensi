@@ -35,23 +35,25 @@ Route::get('/ds', function () {
 });
 
 Route::get('/t', function () {
-    $originalArray = [
-        1 => 'One',
-        2 => 'Two',
-        3 => 'Three',
-        4 => 'Four',
-        5 => 'Five',
-        6 => 'Six',
+    // $originalArray = [
+    //     1 => 'One',
+    //     2 => 'Two',
+    //     3 => 'Three',
+    //     4 => 'Four',
+    //     5 => 'Five',
+    //     6 => 'Six',
 
-    ];
+    // ];
 
-    $selectedElements = array_slice($originalArray, 0, 10, true);
-    $aa = array_slice(session('aa', ['d', 'w', null]), 0, 10, true);
-    $filteredArray = array_filter($aa, function ($value) {
-        return $value !== null;
-    });
+    // $selectedElements = array_slice($originalArray, 0, 10, true);
+    // $aa = array_slice(session('aa', ['d', 'w', null]), 0, 10, true);
+    // $filteredArray = array_filter($aa, function ($value) {
+    //     return $value !== null;
+    // });
 
-    dd(count($filteredArray) == 3, $filteredArray, empty(null));
+    // dd(count($filteredArray) == 3, $filteredArray, empty(null));
+
+    dd(3 > 2.113, 13.1331 > 11.4324);
 });
 
 Route::get('/dn', function () {
