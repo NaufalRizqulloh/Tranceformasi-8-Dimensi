@@ -8,6 +8,7 @@
     document.getElementById("overlay").style.display = "none";
     document.getElementById("overlay1").style.display = "none";
     document.getElementById("kodeAkses").style.display = "none";
+    document.getElementById("confirm-element").style.display = "none";
   }
   
   function kodeAkses() {

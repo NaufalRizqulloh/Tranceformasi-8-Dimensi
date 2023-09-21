@@ -10,16 +10,16 @@ return [
                 'Kerjakan bersama-sama'
             ],
             'value-p' => [
-                's',
-                'i',
+                'd',
+                'c',
                 'star',
-                'c'
+                'star'
             ],
             'value-t' => [
-                's',
-                'i',
                 'd',
-                'c'
+                'c',
+                'i',
+                's'
             ],
         ],
         10 => [ 
@@ -30,16 +30,16 @@ return [
                 'Akan membeli apa yang diinginkan'
             ],
             'value-p' => [
-                's',
-                'i',
                 'star',
-                'c'
+                'd',
+                's',
+                'i'
             ],
             'value-t' => [
-                's',
-                'i',
                 'c',
-                'd'
+                'd',
+                's',
+                'star'
             ],
         ],
         11 => [
@@ -51,15 +51,15 @@ return [
             ],
             'value-p' => [
                 's',
-                'i',
                 'star',
+                'd',
                 'c'
             ],
             'value-t' => [
-                's',
+                'star',
                 'i',
-                'c',
-                'd'
+                'd',
+                'c'
             ],
         ],
         12 => [ 
@@ -70,15 +70,15 @@ return [
                 'Mendesak, memaksa, agak kasar'
             ],
             'value-p' => [
-                's',
-                'i',
                 'star',
-                'c'
+                'c',
+                'i',
+                'd'
             ],
             'value-t' => [
                 's',
+                'star',
                 'i',
-                'c',
                 'd'
             ],
         ],
@@ -90,16 +90,16 @@ return [
                 'Rendah hati/sederhana'
             ],
             'value-p' => [
+                'd',
                 's',
                 'i',
-                'star',
-                'c'
+                'star'
             ],
             'value-t' => [
-                's',
-                'i',
-                'c',
-                'd'
+                'd',
+                'star',
+                'star',
+                'c'
             ],
         ],
         14 => [ 
@@ -110,15 +110,15 @@ return [
                 'Menyolok, berani'
             ],
             'value-p' => [
-                's',
+                'c',
                 'i',
-                'star',
-                'c'
+                's',
+                'd'
             ],
             'value-t' => [
-                's',
-                'i',
                 'c',
+                'i',
+                'star',
                 'd'
             ],
         ],
@@ -131,14 +131,14 @@ return [
             ],
             'value-p' => [
                 's',
+                'c',
                 'i',
-                'star',
-                'c'
+                'd'
             ],
             'value-t' => [
                 's',
+                'star',
                 'i',
-                'c',
                 'd'
             ],
         ],
@@ -150,16 +150,16 @@ return [
                 'Peraturan membuat menjadi aman'
             ],
             'value-p' => [
-                's',
-                'i',
                 'star',
-                'c'
+                'c',
+                'i',
+                's'
             ],
             'value-t' => [
-                's',
+                'd',
+                'star',
                 'i',
-                'c',
-                'd'
+                's'
             ],
         ],
     ]

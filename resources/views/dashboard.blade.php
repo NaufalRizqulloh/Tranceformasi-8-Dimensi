@@ -6,7 +6,7 @@
     </x-slot>
 
     <div>
-      <form action="{{ route('user.form.store', ['kode-akses' => 'M,*d`}']) }}" method="POST">
+      <form action="{{ route('user.form.store', ['kode-akses' => 'YUl|D']) }}" method="POST">
         @csrf
         <button type="submit" class="text-secondary font-montserrat text-9xl">aaaaaaa</button>
       </form>

@@ -49,6 +49,31 @@
     form.submit();
   }
 
+  function confirmSubmit() {
+    alert('tes');
+    let text = "Apakah Anda Yakin?\nPencet tombol OK/Cancel.";
+    if (confirm(text) == true) {
+      submit();
+    } else {
+
+    }
+  }
+
+document.getElementById("submit-button").addEventListener("click", function() {
+    document.getElementById("overlay").style.display = "block";
+    document.getElementById("confirm-element").style.display = "block";
+});
+
+document.getElementById("close-button").addEventListener("click", function() {
+    document.getElementById("overlay").style.display = "none";
+    document.getElementById("confirm-element").style.display = "none";
+});
+
+document.getElementById("overlay").addEventListener("click", function() {
+    document.getElementById("overlay").style.display = "none";
+    document.getElementById("confirm-element").style.display = "none";
+});
+
   function offoverlay() {
     document.getElementById("overlay").style.display = "none";
     document.getElementById("confirm-element").style.display = "none";
@@ -58,5 +83,4 @@
     document.getElementById("overlay").style.display = "block";
     document.getElementById("confirm-element").style.display = "block";
   }
-
 </script>

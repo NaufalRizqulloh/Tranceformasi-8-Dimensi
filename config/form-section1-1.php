@@ -30,16 +30,16 @@ return [
                 'Pendamai, pembawa ketenangan'
             ],
             'value-p' => [
-                's',
-                'i',
+                'c',
+                'd',
                 'star',
-                'c'
+                's'
             ],
             'value-t' => [
-                's',
-                'i',
+                'star',
                 'd',
-                'c'
+                'i',
+                's'
             ],
         ],
         3 => [
@@ -50,16 +50,16 @@ return [
                 'Ingin menetapkan goal/tujuan'
             ],
             'value-p' => [
-                's',
                 'i',
                 'star',
-                'c'
+                'star',
+                'd'
             ],
             'value-t' => [
-                's',
                 'i',
-                'd',
-                'c'
+                'c',
+                's',
+                'star'
             ],
         ],
         4 => [ 
@@ -70,16 +70,16 @@ return [
                 'Berani menghadapi oposisi'
             ],
             'value-p' => [
+                'c',
                 's',
-                'i',
                 'star',
-                'c'
+                'd'
             ],
             'value-t' => [
+                'c',
                 's',
                 'i',
-                'd',
-                'c'
+                'd'
             ],
         ],
         5 => [ 
@@ -90,16 +90,16 @@ return [
                 'Berusaha patuh pada peraturan'
             ],
             'value-p' => [
-                's',
                 'i',
-                'star',
-                'c'
+                'd',
+                's',
+                'star'
             ],
             'value-t' => [
+                'star',
+                'd',
                 's',
-                'i',
-                'c',
-                'd'
+                'c'
             ],
         ],
         6 => [
@@ -110,16 +110,16 @@ return [
                 'Suka menyelesaikan hal yang sudah dimulai'
             ],
             'value-p' => [
-                's',
+                'c',
+                'd',
                 'i',
-                'star',
-                'c'
+                's'
             ],
             'value-t' => [
-                's',
+                'star',
+                'd',
                 'i',
-                'c',
-                'd'
+                's'
             ],
         ],
         7 => [ 
@@ -127,16 +127,16 @@ return [
                 'Menolak perubahan yang mendadak',
                 'Cenderung terlalu banyak berjanji',
                 'Mundur apabila dibawah tekanan',
-                'Tidk takut untuk berkelahi'
+                'Tidak takut untuk berkelahi'
             ],
             'value-p' => [
                 's',
                 'i',
                 'star',
-                'c'
+                'star'
             ],
             'value-t' => [
-                's',
+                'star',
                 'i',
                 'c',
                 'd'
@@ -150,14 +150,14 @@ return [
                 'Pendelegasian yang baik/pandai membagi tugas'
             ],
             'value-p' => [
-                's',
                 'i',
-                'star',
-                'c'
+                's',
+                'c',
+                'd'
             ],
             'value-t' => [
-                's',
                 'i',
+                's',
                 'c',
                 'd'
             ],

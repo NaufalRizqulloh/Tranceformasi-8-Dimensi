@@ -10,16 +10,16 @@ return [
                 'Sosial, pertemuan kelompok'
             ],
             'value-p' => [
-                's',
-                'i',
                 'star',
-                'c'
+                'd',
+                's',
+                'i'
             ],
             'value-t' => [
-                's',
-                'i',
+                'c',
                 'd',
-                'c'
+                's',
+                'star'
             ],
         ],
         18 => [ 
@@ -30,16 +30,16 @@ return [
                 'Waspada, berhati-hati'
             ],
             'value-p' => [
-                's',
-                'i',
+                'd',
+                'star',
                 'star',
                 'c'
             ],
             'value-t' => [
-                's',
+                'd',
                 'i',
-                'c',
-                'd'
+                's',
+                'star'
             ],
         ],
         19 => [ 
@@ -50,16 +50,16 @@ return [
                 'Ingin keteraturan, rapi'
             ],
             'value-p' => [
+                'd',
                 's',
                 'i',
-                'star',
-                'c'
+                'star'
             ],
             'value-t' => [
-                's',
+                'd',
+                'star',
                 'i',
-                'c',
-                'd'
+                'c'
             ],
         ],
         20 => [ 
@@ -70,16 +70,16 @@ return [
                 'Saya akan mendapatkan fakta-faktanya'
             ],
             'value-p' => [
+                'd',
                 's',
                 'i',
-                'star',
                 'c'
             ],
             'value-t' => [
+                'star',
                 's',
                 'i',
-                'c',
-                'd'
+                'star'
             ],
         ],
         21 => [ 
@@ -91,15 +91,15 @@ return [
             ],
             'value-p' => [
                 's',
+                'd',
                 'i',
-                'star',
-                'c'
+                'star'
             ],
             'value-t' => [
                 's',
+                'd',
                 'i',
-                'c',
-                'd'
+                'c'
             ],
         ],
         22 => [ 
@@ -111,15 +111,15 @@ return [
             ],
             'value-p' => [
                 's',
-                'i',
                 'star',
+                'd',
                 'c'
             ],
             'value-t' => [
                 's',
                 'i',
-                'c',
-                'd'
+                'd',
+                'c'
             ],
         ],
         23 => [ 
@@ -130,16 +130,16 @@ return [
                 'Ingin arahan yang jelas'
             ],
             'value-p' => [
-                's',
-                'i',
                 'star',
-                'c'
+                'i',
+                's',
+                'star'
             ],
             'value-t' => [
+                'd',
+                'star',
                 's',
-                'i',
-                'c',
-                'd'
+                'c'
             ],
         ],
         24 => [ 
@@ -150,16 +150,16 @@ return [
                 'Memegang teguh standar yang tinggi, akurat'
             ],
             'value-p' => [
-                's',
-                'i',
                 'star',
+                'i',
+                'd',
                 'c'
             ],
             'value-t' => [
                 's',
                 'i',
-                'c',
-                'd'
+                'star',
+                'star'
             ],
         ],
     ]

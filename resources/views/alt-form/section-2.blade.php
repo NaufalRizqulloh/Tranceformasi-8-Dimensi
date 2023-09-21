@@ -103,9 +103,9 @@
         </button>
         
         @if($nextDestination == 'submit')
-        <button onclick="submit()" class="mt-8 text-lg md:text-xl py-2 px-16 w-fit h-93 border-2 rounded-full bg-[#ffffff] text-center cursor-pointer">
+        <a id="submit-button" class="mt-8 text-lg md:text-xl py-2 px-16 w-fit h-93 border-2 rounded-full bg-[#ffffff] text-center cursor-pointer">
             Submit
-        </button>
+        </a>
         @else
         <button onclick="toNext()" class="mt-8 text-lg md:text-xl py-2 px-16 w-fit h-93 border-2 rounded-full bg-[#ffffff] text-center">
             Selanjutnya
@@ -134,6 +134,7 @@
                     </button> 
                 </li>
             </ul>
+            <button type="button" id="close-button" class="mt-4 bg-red-500 text-white px-4 py-2 rounded-lg">Close</button>
     </div>
     
     <!-- End overlaySubmit -->
