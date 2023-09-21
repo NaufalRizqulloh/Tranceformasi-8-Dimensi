@@ -63,7 +63,7 @@ class EventStatHelper
 
         foreach ($users as $user) {
             $userEducation = Validation::returnIfString($user, 'Pendidikan terakhir');
-            $userEducation = strtolower(strtr($userEducation, [' ' => '']));
+            $userEducation = strtolower(str_replace([' ', "\t", "\n", "\r"], '', $userEducation));
 
             switch ($userEducation) {
                 case 'sd':
@@ -137,7 +137,7 @@ class EventStatHelper
                 continue;
             }
             $answerDimension = Validation::returnIfString($answer, 'Dimensi kepemimpinan');
-            $answerDimension = strtolower(strtr($answerDimension, [' ' => '']));
+            $answerDimension = strtolower(str_replace([' ', "\t", "\n", "\r"], '', $answerDimension));
 
             switch ($answerDimension) {
                 case 'pelopor':

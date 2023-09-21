@@ -64,7 +64,6 @@ class FormController extends Controller
                         'jawaban' => $answer,
                         'destination' => 'section-1-1'
                     ]);
-                    // return redirect('user/form/'.$answer->id.'?destination=section-1-1');
                 }
                 if ($answer->progress == 'selesai') {
                     throw new Exception('Anda sudah mengisi');
@@ -104,7 +103,7 @@ class FormController extends Controller
     {
         $destination = strtolower(request('destination'));
         $destination = str_replace(array(" ", "\t", "\n", "\r"), "", $destination);
-        
+
         if (JumperValidation::isJumping($jawaban->id, $destination)) {
             return redirect()->route('user.form.jumper', ['jawaban' => $jawaban->id]);
         }
@@ -279,6 +278,13 @@ class FormController extends Controller
         $changeValue = DiscHelper::getChangeValue($mostValue,  $leastValue);
 
         $answerSection2 = SectionTwoHelper::normalizeData($answerSection2);
+        
+        $graph2Value = DiscHelper::calculateGraphValue($leastValue, config('graph-key.graph2'));
+        $graph3Value = DiscHelper::calculateGraphValue($changeValue, config('graph-key.graph3'));
+
+        $dimension = DiscHelper::decideDimension($graph2Value, $graph3Value);
+        
+        $jawaban->dimensi_kepemimpinan = $dimension;
 
         $jawaban->type1_formatted_value = json_encode([
             'most_value' => $mostValue,

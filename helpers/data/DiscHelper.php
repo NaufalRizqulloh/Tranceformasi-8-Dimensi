@@ -94,4 +94,64 @@ class DiscHelper
         $result = self::formatDiscValue(self::normalizeDiscValue($values));
         return $result;
     }
+
+    public static function calculateGraphValue(array $disc, array $graph): string
+    {
+        $finalDisc = [];
+        foreach ($graph as $index => $values) {
+            $finalDisc[] = $values[$disc[$index]];
+        }
+
+        $biggestValue = 0;
+        $biggestIndex = 0;
+
+        foreach ($finalDisc as $index => $value) {
+            $biggestIndex = $value > $biggestValue ? $index + 1 : $biggestIndex;
+            $biggestValue = $value > $biggestValue ? $value : $biggestValue;
+        }
+
+        $finalBiggestDisc = null;
+        switch ($biggestIndex) {
+            case 1:
+                $finalBiggestDisc = 'd';
+                break;
+            case 2:
+                $finalBiggestDisc = 'i';
+                break;
+            case 3:
+                $finalBiggestDisc = 's';
+                break;
+            case 4:
+                $finalBiggestDisc = 'c';
+                break;
+        }
+
+        return $finalBiggestDisc;
+    }
+
+    public static function decideDimension(string $graph2Value, string $graph3Value) : string
+    {
+        $keyword = str_replace([' ', "\t", "\n", "\r"], '', strtolower($graph2Value . $graph3Value));
+        $dimension = null;
+
+        if ($keyword == 'di' || $keyword == 'id') {
+            $dimension = "Pelopor";
+        } else if ($keyword == 'ii') {
+            $dimension = "Penggerak";
+        } else if ($keyword == 'is' && $keyword == 'si') {
+            $dimension = "Afirmasi";
+        } else if ($keyword == 'ss') {
+            $dimension = "Inklusif";
+        } else if ($keyword == 'sc' && $keyword == 'cs') {
+            $dimension = "Rendah Hati";
+        } else if ($keyword == 'cc') {
+            $dimension = "Pemikir";
+        } else if ($keyword == 'cd' && $keyword == 'dc') {
+            $dimension = "Tegas";
+        } else if ($keyword == 'dd') {
+            $dimension = "Berwibawa";
+        }
+
+        return $dimension;
+    }
 }
