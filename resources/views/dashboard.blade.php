@@ -114,13 +114,13 @@
     <option>6</option>
 </datalist>
 <output id="rangevalue"></output> -->
-    <canvas id="barChart" style="width:100%;max-width:500px;height:100%;max-height:500px"></canvas>
+    <!-- <canvas id="barChart" style="width:100%;max-width:500px;height:100%;max-height:500px"></canvas> -->
     <canvas id="pieChart" style="width:100%;max-width:600px;height:100%;max-height:500px"></canvas>
-    <canvas id="radarChart" style="width:100%;max-width:600px;height:100%;max-height:500px"></canvas>
+    <!-- <canvas id="radarChart" style="width:100%;max-width:600px;height:100%;max-height:500px"></canvas>
     <canvas id="horizontalBarChart" style="width:100%;max-width:600px;height:100%;max-height:500px"></canvas>
     <canvas id="myChart4" style="width:100%;max-width:600px;height:100%;max-height:500px"></canvas>
     <canvas id="progressBar" style="width:100%;max-width:600px;height:100%;max-height:100px"></canvas>
-    <canvas id="progressBar1" style="width:100%;max-width:600px;height:100%;max-height:100px"></canvas>
+    <canvas id="progressBar1" style="width:100%;max-width:600px;height:100%;max-height:100px"></canvas> -->
 
     <progress id="bar" value="10" max="100" class="ml-2"></progress>
   </x-app-layout>
@@ -182,55 +182,50 @@
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script>
     // barChart rentangUsia
-    var xValues = ["<15", "15-20", "21-30", "31-40", "41-50", ">51"];
-    var yValues = [12, 49, 90, 51, 14, 20];
-    var barColors = "#8404F4";
+    // var xValues = ["<15", "15-20", "21-30", "31-40", "41-50", ">51"];
+    // var yValues = [12, 49, 90, 51, 14, 20];
+    // var barColors = "#8404F4";
 
-    new Chart("barChart", {
-      type: "bar",
-      data: {
-        labels: xValues,
-        datasets: [{
-          backgroundColor: barColors,
-          data: yValues,
-          barThickness: 20,
-          clip: {
-            left: 5,
-            top: 0,
-            right: 10,
-            bottom: 2,
-          },
-        }]
-      },
-      options: {
-        legend: {
-          display: false
-        },
-        title: {
-          display: true,
-          text: "Rentang Usia"
-        },
-        scales: {
-          y: {
-            suggestedMin: 0,
-            suggestedMax: 100,
-          }
-        }
-      }
-    });
+    // new Chart("barChart", {
+    //   type: "bar",
+    //   data: {
+    //     labels: xValues,
+    //     datasets: [{
+    //       backgroundColor: barColors,
+    //       data: yValues,
+    //       barThickness: 20,
+    //       clip: {
+    //         left: 5,
+    //         top: 0,
+    //         right: 10,
+    //         bottom: 2,
+    //       },
+    //     }]
+    //   },
+    //   options: {
+    //     legend: {
+    //       display: false
+    //     },
+    //     title: {
+    //       display: true,
+    //       text: "Rentang Usia"
+    //     },
+    //     scales: {
+    //       y: {
+    //         suggestedMin: 0,
+    //         suggestedMax: 100,
+    //       }
+    //     }
+    //   }
+    // });
 
     // pieChart
 
     var xValues = ["Laki", "Perempuan"];
-    var yValues = [{
-      {
-        $jeniskelaminData['laki']
-      }
-    }, {
-      {
-        $jeniskelaminData['perempuan']
-      }
-    }];
+    var yValues = [
+      {{ $jeniskelaminData['laki'] }},
+      {{ $jeniskelaminData['perempuan'] }}
+    ];
     var barColors = [
       "#4C32EA",
       "#CC00CC",
@@ -253,259 +248,259 @@
       }
     });
 
-    // radarChart
-    var inklusif = {
-      {
-        $penyebaranData['inklusif']
-      }
-    };
-    var pelopor = {
-      {
-        $penyebaranData['pelopor']
-      }
-    };
-    var tegas = {
-      {
-        $penyebaranData['tegas']
-      }
-    };
-    var pemikir = {
-      {
-        $penyebaranData['pemikir']
-      }
-    };
-    var rendahHati = {
-      {
-        $penyebaranData['rendahHati']
-      }
-    };
-    var afirmasi = {
-      {
-        $penyebaranData['afirmasi']
-      }
-    };
-    var penggerak = {
-      {
-        $penyebaranData['penggerak']
-      }
-    };
-    var berwibawa = {
-      {
-        $penyebaranData['berwibawa']
-      }
-    };
+    // // radarChart
+    // var inklusif = {
+    //   {
+    //     $penyebaranData['inklusif']
+    //   }
+    // };
+    // var pelopor = {
+    //   {
+    //     $penyebaranData['pelopor']
+    //   }
+    // };
+    // var tegas = {
+    //   {
+    //     $penyebaranData['tegas']
+    //   }
+    // };
+    // var pemikir = {
+    //   {
+    //     $penyebaranData['pemikir']
+    //   }
+    // };
+    // var rendahHati = {
+    //   {
+    //     $penyebaranData['rendahHati']
+    //   }
+    // };
+    // var afirmasi = {
+    //   {
+    //     $penyebaranData['afirmasi']
+    //   }
+    // };
+    // var penggerak = {
+    //   {
+    //     $penyebaranData['penggerak']
+    //   }
+    // };
+    // var berwibawa = {
+    //   {
+    //     $penyebaranData['berwibawa']
+    //   }
+    // };
 
-    new Chart("radarChart", {
-      type: "radar",
-      data: {
-        labels: [
-          'Pelopor',
-          'Tegas',
-          'Pemikir',
-          'Inklusif',
-          'Rendah Hati',
-          'Afirmasi',
-          'Penggerak',
-          'Berwibawa',
-        ],
-        datasets: [{
-          backgroundColor: 'rgba(255, 99, 132, 0.2)',
-          data: [pelopor, tegas, pemikir, inklusif, rendahHati, afirmasi, penggerak, berwibawa],
-          barThickness: 20,
-          clip: {
-            left: 5,
-            top: 0,
-            right: 10,
-            bottom: 2,
-          },
-        }]
-      },
-      options: {
-        scales: {
-          r: {
-            beginAtZero: true,
-            suggestedMax: 10
-          }
-        },
-        plugins: {
-          legend: {
-            display: false
-          }
-        }
-      }
-    });
+    // new Chart("radarChart", {
+    //   type: "radar",
+    //   data: {
+    //     labels: [
+    //       'Pelopor',
+    //       'Tegas',
+    //       'Pemikir',
+    //       'Inklusif',
+    //       'Rendah Hati',
+    //       'Afirmasi',
+    //       'Penggerak',
+    //       'Berwibawa',
+    //     ],
+    //     datasets: [{
+    //       backgroundColor: 'rgba(255, 99, 132, 0.2)',
+    //       data: [pelopor, tegas, pemikir, inklusif, rendahHati, afirmasi, penggerak, berwibawa],
+    //       barThickness: 20,
+    //       clip: {
+    //         left: 5,
+    //         top: 0,
+    //         right: 10,
+    //         bottom: 2,
+    //       },
+    //     }]
+    //   },
+    //   options: {
+    //     scales: {
+    //       r: {
+    //         beginAtZero: true,
+    //         suggestedMax: 10
+    //       }
+    //     },
+    //     plugins: {
+    //       legend: {
+    //         display: false
+    //       }
+    //     }
+    //   }
+    // });
 
-    // horizontalBarChart 
-    var myContext = document.getElementById("horizontalBarChart").getContext('2d');
-    var myChart = new Chart(myContext, {
-      type: 'bar',
-      data: {
-        labels: ["bike", "car", "scooter", "truck"],
-        datasets: [{
-          label: 'worst',
-          backgroundColor: "blue",
-          data: [17, 16, 4, 1],
-        }, {
-          label: 'Okay',
-          backgroundColor: "green",
-          data: [4, 2, 10, 6],
-        }, {
-          label: 'bad',
-          backgroundColor: "red",
-          data: [2, 21, 3, 24],
-        }],
-      },
-      options: {
-        indexAxis: 'y',
-        scales: {
-          x: {
-            stacked: true,
-          },
-          y: {
-            stacked: true
-          }
-        },
-        responsive: true
-      }
-    });
+    // // horizontalBarChart 
+    // var myContext = document.getElementById("horizontalBarChart").getContext('2d');
+    // var myChart = new Chart(myContext, {
+    //   type: 'bar',
+    //   data: {
+    //     labels: ["bike", "car", "scooter", "truck"],
+    //     datasets: [{
+    //       label: 'worst',
+    //       backgroundColor: "blue",
+    //       data: [17, 16, 4, 1],
+    //     }, {
+    //       label: 'Okay',
+    //       backgroundColor: "green",
+    //       data: [4, 2, 10, 6],
+    //     }, {
+    //       label: 'bad',
+    //       backgroundColor: "red",
+    //       data: [2, 21, 3, 24],
+    //     }],
+    //   },
+    //   options: {
+    //     indexAxis: 'y',
+    //     scales: {
+    //       x: {
+    //         stacked: true,
+    //       },
+    //       y: {
+    //         stacked: true
+    //       }
+    //     },
+    //     responsive: true
+    //   }
+    // });
 
-    //myChart4
-    var ctx = document.getElementById("myChart4").getContext('2d');
-    var myChart = new Chart(ctx, {
-      type: 'bar',
-      data: {
-        labels: ["<  1", "1 - 2", "3 - 4", "5 - 9", "10 - 14", "15 - 19", "20 - 24", "25 - 29", "> - 29"],
-        datasets: [{
-          label: 'Employee',
-          backgroundColor: "#caf270",
-          data: [12, 59, 5, 56, 58, 12, 59, 87, 45],
-        }, {
-          label: 'Engineer',
-          backgroundColor: "#45c490",
-          data: [12, 59, 5, 56, 58, 12, 59, 85, 23],
-        }, {
-          label: 'Government',
-          backgroundColor: "#008d93",
-          data: [12, 59, 5, 56, 58, 12, 59, 65, 51],
-        }, {
-          label: 'Political parties',
-          backgroundColor: "#2e5468",
-          data: [12, 59, 5, 56, 58, 12, 59, 12, 74],
-        }],
-      },
-      options: {
-        scales: {
-          x: {
-            stacked: true,
-            grid: {
-              display: false
-            }
-          },
-          y: {
-            stacked: true,
-            ticks: {
-              beginAtZero: true,
-            },
-            grid: {
-              display: false
-            },
-            type: 'linear',
-          },
-        },
-        responsive: true,
-        maintainAspectRatio: false,
-        legend: {
-          position: 'bottom'
-        },
-      }
-    });
+    // //myChart4
+    // var ctx = document.getElementById("myChart4").getContext('2d');
+    // var myChart = new Chart(ctx, {
+    //   type: 'bar',
+    //   data: {
+    //     labels: ["<  1", "1 - 2", "3 - 4", "5 - 9", "10 - 14", "15 - 19", "20 - 24", "25 - 29", "> - 29"],
+    //     datasets: [{
+    //       label: 'Employee',
+    //       backgroundColor: "#caf270",
+    //       data: [12, 59, 5, 56, 58, 12, 59, 87, 45],
+    //     }, {
+    //       label: 'Engineer',
+    //       backgroundColor: "#45c490",
+    //       data: [12, 59, 5, 56, 58, 12, 59, 85, 23],
+    //     }, {
+    //       label: 'Government',
+    //       backgroundColor: "#008d93",
+    //       data: [12, 59, 5, 56, 58, 12, 59, 65, 51],
+    //     }, {
+    //       label: 'Political parties',
+    //       backgroundColor: "#2e5468",
+    //       data: [12, 59, 5, 56, 58, 12, 59, 12, 74],
+    //     }],
+    //   },
+    //   options: {
+    //     scales: {
+    //       x: {
+    //         stacked: true,
+    //         grid: {
+    //           display: false
+    //         }
+    //       },
+    //       y: {
+    //         stacked: true,
+    //         ticks: {
+    //           beginAtZero: true,
+    //         },
+    //         grid: {
+    //           display: false
+    //         },
+    //         type: 'linear',
+    //       },
+    //     },
+    //     responsive: true,
+    //     maintainAspectRatio: false,
+    //     legend: {
+    //       position: 'bottom'
+    //     },
+    //   }
+    // });
 
-    //progress Bar
-    var progress2 = document.getElementById("progressBar").getContext('2d');
-    let done = 26;
-    let total = 234;
-    let donePercent = done / total * 100;
-    let totalPercent = (total - done) / total * 100;
+    // //progress Bar
+    // var progress2 = document.getElementById("progressBar").getContext('2d');
+    // let done = 26;
+    // let total = 234;
+    // let donePercent = done / total * 100;
+    // let totalPercent = (total - done) / total * 100;
 
-    var myChart = new Chart(progress2, {
-      type: 'bar',
-      data: {
-        labels: ["Progress"],
-        datasets: [{
-            label: 'Sudah Mengerjakan',
-            backgroundColor: "blue",
-            data: [donePercent],
-          },
-          {
-            label: 'Belum Mengerjakan',
-            backgroundColor: "green",
-            data: [totalPercent],
-          },
-        ],
-      },
-      options: {
-        border: {
-          color: "red"
-        },
-        indexAxis: 'y',
-        scales: {
-          x: {
-            stacked: true,
-            grid: {
-              display: false
-            }
-          },
-          y: {
-            stacked: true,
-            grid: {
-              display: false
-            }
-          }
-        },
-        responsive: true
-      }
-    });
+    // var myChart = new Chart(progress2, {
+    //   type: 'bar',
+    //   data: {
+    //     labels: ["Progress"],
+    //     datasets: [{
+    //         label: 'Sudah Mengerjakan',
+    //         backgroundColor: "blue",
+    //         data: [donePercent],
+    //       },
+    //       {
+    //         label: 'Belum Mengerjakan',
+    //         backgroundColor: "green",
+    //         data: [totalPercent],
+    //       },
+    //     ],
+    //   },
+    //   options: {
+    //     border: {
+    //       color: "red"
+    //     },
+    //     indexAxis: 'y',
+    //     scales: {
+    //       x: {
+    //         stacked: true,
+    //         grid: {
+    //           display: false
+    //         }
+    //       },
+    //       y: {
+    //         stacked: true,
+    //         grid: {
+    //           display: false
+    //         }
+    //       }
+    //     },
+    //     responsive: true
+    //   }
+    // });
 
-    var progress1 = document.getElementById("progressBar1").getContext('2d');
+    // var progress1 = document.getElementById("progressBar1").getContext('2d');
 
-    var myChart = new Chart(progress1, {
-      type: 'bar',
-      data: {
-        labels: ["Progress"],
-        datasets: [{
-            label: 'Sudah Mengerjakan',
-            backgroundColor: "blue",
-            data: [done],
-          },
-          {
-            label: 'Belum Mengerjakan',
-            backgroundColor: "green",
-            data: [total],
-          },
-        ],
-      },
-      options: {
-        border: {
-          color: "red"
-        },
-        indexAxis: 'y',
-        scales: {
-          x: {
-            stacked: true,
-            grid: {
-              display: false
-            }
-          },
-          y: {
-            stacked: true,
-            grid: {
-              display: false
-            }
-          }
-        },
-        responsive: true
-      }
-    });
+    // var myChart = new Chart(progress1, {
+    //   type: 'bar',
+    //   data: {
+    //     labels: ["Progress"],
+    //     datasets: [{
+    //         label: 'Sudah Mengerjakan',
+    //         backgroundColor: "blue",
+    //         data: [done],
+    //       },
+    //       {
+    //         label: 'Belum Mengerjakan',
+    //         backgroundColor: "green",
+    //         data: [total],
+    //       },
+    //     ],
+    //   },
+    //   options: {
+    //     border: {
+    //       color: "red"
+    //     },
+    //     indexAxis: 'y',
+    //     scales: {
+    //       x: {
+    //         stacked: true,
+    //         grid: {
+    //           display: false
+    //         }
+    //       },
+    //       y: {
+    //         stacked: true,
+    //         grid: {
+    //           display: false
+    //         }
+    //       }
+    //     },
+    //     responsive: true
+    //   }
+    // });
 
 
     var slider = document.getElementById("yearslider");

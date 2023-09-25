@@ -79,7 +79,7 @@ class RegisteredUserController extends Controller
             'jurusan' => ['required_if:status,1'],
 
             'perusahaan' => ['required_if:status,2'],
-            'jabatan' => ['required_if:status,2'],
+            'jabatan' => ['required_if:status,2', 'not_in:0'],
             'masa_kerja' => ['required_if:status,2'],
         ], $messages);
 

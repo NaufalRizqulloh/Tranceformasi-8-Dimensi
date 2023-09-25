@@ -115,7 +115,18 @@
                  @error('jabatan')
                  <h1 class="text-red-600 -mt-3 mb-1">{{ $message }}</h1>
                  @enderror
-                 <input type="text" name="jabatan" id="jabatan" placeholder="Jabatan dalam perusahaan" class="mb-3 rounded-md border-black ring-black mx-auto px-3 py-2 border shadow rounder w-full block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 focus:placeholder:text-transparent" value="{{ old('jabatan') }}" />
+                 {{-- <input type="text" name="jabatan" id="jabatan" placeholder="Jabatan dalam perusahaan" class="mb-3 rounded-md border-black ring-black mx-auto px-3 py-2 border shadow rounder w-full block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 focus:placeholder:text-transparent" value="{{ old('jabatan') }}" /> --}}
+                 <select id="jabatan" name="jabatan" size="1" class="mb-3 rounded-md border-black ring-black mx-auto px-3 py-2 border shadow rounder w-full block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 focus:placeholder:text-transparent @if(old('jabatan') == '0') border-red-500 @endif" >
+                    <option value="0">-- Pilih Jabatan --</option>
+                    <option value="Staff/Pelaksana" @if(old('jabatan')=='Staff/Pelaksana' ) selected @endif>Staff/Pelaksana</option>
+                    <option value="Team Lead/Supervisor" @if(old('jabatan')=='Team Lead/Supervisor' ) selected @endif>Team Lead/Supervisor</option>
+                    <option value="Assisten Manager/Muda" @if(old('jabatan')=='Assisten Manager/Muda' ) selected @endif>Assisten Manager/Muda</option>
+                    <option value="Manager/Jr. Manager/Madya" @if(old('jabatan')=='Manager/Jr. Manager/Madya' ) selected @endif>Manager/Jr. Manager/Madya</option>
+                    <option value="General Manager/Sr. Manager/Utama" @if(old('jabatan')=='General Manager/Sr. Manager/Utama' ) selected @endif>General Manager/Sr. Manager/Utama</option>
+                    <option value="Direktur/C-Level" @if(old('jabatan')=='Direktur/C-Level' ) selected @endif>Direktur/C-Level</option>
+                    <option value="Owner/Pemilik" @if(old('jabatan')=='Owner/Pemilik' ) selected @endif>Owner/Pemilik</option>
+                    <option value="Lain-lain" @if(old('jabatan')=='Lain-lain' ) selected @endif>Lain-lain</option>
+                  </select>
              </label>
              <label for="masa_kerja" id="">
                  @error('masa_kerja')

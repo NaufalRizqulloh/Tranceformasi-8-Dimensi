@@ -80,15 +80,8 @@
     </div>
 </div>
 
-<div class="w-fit mx-auto flex mb-12">
-    <div class="bg-black w-4 h-4 mx-2 rounded-full"></div>
-    <div class="bg-black w-4 h-4 mx-2 rounded-full"></div>
-    <div class="bg-black w-4 h-4 mx-2 rounded-full"></div>
-</div>
-
 <h1 class="ml-12 font-montserrat">Event yang sudah berlalu</h1>
 <hr class="mx-12 mb-5 border-black">
-
 <div class="mb-12"></div>
 
 <div class="w-fit mx-auto flex mb-12">
@@ -99,6 +92,57 @@
 
 <h1 class="ml-12 font-montserrat">Data Keseluruhan</h1>
 <hr class="mx-12 mb-5 border-black">
+
+<div class="w-[93%] h-fit ml-12 mb-12 drop-shadow-2xl border-4 border-primary rounded-3xl flex space-x-24">
+    <div class="">
+        <h1 class="text-2xl font-bold text-center mt-4 -mb-12">Jenis Kelamin</h1>
+        <canvas id="pieChart" class="mx-16" style="width:100%;max-width:600px;height:100%;max-height:500px"></canvas>
+    </div>
+    <div class="">
+        <div class="mr-8">
+            <h1 class="text-center text-black">Rentang Usia</h1>
+            <canvas id="rentangUsiaChart" style="width:100%;max-width:500px;height:100%;max-height:300px"></canvas>
+        </div>
+        <div class="">
+            <h1 class="text-center text-black">Pendidikan</h1>
+            <canvas id="PendidikanChart" style="width:100%;max-width:500px;height:100%;max-height:300px"></canvas>
+        </div>
+    </div>
+</div>
+<div class="w-fit mx-auto flex">
+    
+</div>
+
+
+<ul>
+    @foreach ($counts as $data)
+        <li>
+            Age Range: {{ $data['range']['min'] }} - {{ $data['range']['max'] }}
+            Count: {{ $data['count'] }}
+        </li>
+    @endforeach
+</ul>
+
+
+{{$sd}}
+{{$smp}}
+{{$smak}}
+{{$d1}}
+{{$d2}}
+{{$d3}}
+{{$d4}}
+{{$s1}}
+{{$s2}}
+{{$s3}}
+
+<br>
+
+<form method="POST" action="{{ route('logout') }}" class="w-fit mx-auto">
+@csrf
+<button type="submit" class="w-fit h-fit border-2 border-black rounded-full">
+    <h1 class="mx-8 my-2 text-black">Log Out</h1>
+</button>
+</form>
 
 @foreach ($latestEvents as $event)
 <a href="admin/event?event={{ $event->id }}">{{$event->nama}}</a>
@@ -126,6 +170,153 @@
 </label>
 
 <script>
+
+
+    var JKelamin = ["Laki", "Perempuan"];
+    var dataJKelamin = [
+      {{ $laki }},
+      {{ $perempuan }}
+    ];
+    var barColors = [
+      "#4C32EA",
+      "#CC00CC",
+    ];
+
+    new Chart("pieChart", {
+      type: "pie",
+      data: {
+        labels: JKelamin,
+        datasets: [{
+          backgroundColor: barColors,
+          data: dataJKelamin
+        }]
+      },
+      options: {
+        title: {
+          display: true,
+          text: "Jenis Kelamin"
+        },
+        plugins: {
+            legend: {
+                position: 'right',
+                labels: {
+                    font: {
+                        size: 16
+                    }
+                }
+            }
+        }
+      }
+    });
+
+    // rentangUsiaChart rentangUsia
+
+    
+    var rentangUsia = ["<15", "15-20", "21-30", "31-40", "41-50", ">51"];
+    var dataRUsia = [
+        @foreach ($counts as $data)
+        {{ $data['count'] }},
+        @endforeach
+    ];
+    var barColors = "#8404F4";
+
+    new Chart("rentangUsiaChart", {
+      type: "bar",
+      data: {
+        labels: rentangUsia,
+        datasets: [{
+          backgroundColor: barColors,
+          data: dataRUsia,
+          barThickness: 20,
+          clip: {
+            left: 5,
+            top: 0,
+            right: 10,
+            bottom: 2,
+          },
+        }]
+      },
+      options: {
+        plugins: {
+            legend: {
+              display: false
+            },
+        },
+        title: {
+          display: true,
+          text: "Rentang Usia"
+        },
+        scales: {
+            x: {
+                grid:{
+                    display: false
+                }
+            },
+            y: {
+              suggestedMin: 0,
+              suggestedMax: 10,
+            }
+        }
+      }
+    });
+
+    // PendidikanChart PendidikanChart
+
+    
+    var pendidikan = ["SD", "SMP", "SMA/K", "D1", "D2", "D3", "D4", "S1", "S2", "S3"];
+    var dataPendidikan = [
+        {{$sd}},
+        {{$smp}},
+        {{$smak}},
+        {{$d1}},
+        {{$d2}},
+        {{$d3}},
+        {{$d4}},
+        {{$s1}},
+        {{$s2}},
+        {{$s3}},
+    ];
+    var barColors = "#8404F4";
+
+    new Chart("PendidikanChart", {
+      type: "bar",
+      data: {
+        labels: pendidikan,
+        datasets: [{
+          backgroundColor: barColors,
+          data: dataPendidikan,
+          barThickness: 20,
+          clip: {
+            left: 5,
+            top: 0,
+            right: 10,
+            bottom: 2,
+          },
+        }]
+      },
+      options: {
+        plugins: {
+            legend: {
+                display: false
+            },
+            title: {
+                display: false                
+            },
+        },
+        scales: {
+            x: {
+                grid:{
+                    display: false
+                }
+            },
+            y: {
+                suggestedMin: 0,
+                suggestedMax: 5,
+            }
+        }
+      }
+    });
+
     const cityRoute = "{{ route('update.city-api') }}";
     const cityNotification = document.getElementById('city-notification')
     const errorNotification = document.getElementById('error-notification')

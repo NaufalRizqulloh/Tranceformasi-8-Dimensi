@@ -12,6 +12,8 @@ use App\Http\Controllers\UserController;
 use App\Models\Jawaban;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ChartController;
+use Dompdf\Dompdf;
+use Illuminate\Support\Facades\File;
 
 use Illuminate\Http\Request;
 
@@ -35,25 +37,19 @@ Route::get('/ds', function () {
 });
 
 Route::get('/t', function () {
-    // $originalArray = [
-    //     1 => 'One',
-    //     2 => 'Two',
-    //     3 => 'Three',
-    //     4 => 'Four',
-    //     5 => 'Five',
-    //     6 => 'Six',
+    $html = File::get(resource_path('views/testing-pdf/8d.blade.php'));
 
-    // ];
+    $dompdf = new Dompdf();
+    $dompdf->loadHtml($html);
 
-    // $selectedElements = array_slice($originalArray, 0, 10, true);
-    // $aa = array_slice(session('aa', ['d', 'w', null]), 0, 10, true);
-    // $filteredArray = array_filter($aa, function ($value) {
-    //     return $value !== null;
-    // });
+    $dompdf->setPaper('A4', 'potrait');
 
-    // dd(count($filteredArray) == 3, $filteredArray, empty(null));
+    $dompdf->render();
 
-    dd(3 > 2.113, 13.1331 > 11.4324);
+    $pdfFileName = 'aaa-' . date('Y') . '.pdf';
+
+    $dompdf->stream($pdfFileName, array('Attachment' => false));
+    exit(0);
 });
 
 Route::get('/dn', function () {
