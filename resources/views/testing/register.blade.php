@@ -23,14 +23,14 @@
          @csrf
          <h1 class="ml-1 mb-1">Isi Data Dirimu</h1>
          <label for="name" id="">
-             <input type="text" name="name" id="name" class="mb-2 rounded-md border-black ring-black mx-auto px-3 py-2 border shadow rounder w-full block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 focus:placeholder:text-transparent @error('name')  placeholder-shown:border-red-500 @enderror" value="{{ old('name') }}"/>
+             <input type="text" name="name" id="name" class="mb-2 rounded-md border-black ring-black mx-auto px-3 py-2 border shadow rounder w-full block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 @error('name')  placeholder-shown:border-red-500 @enderror" value="{{ old('name') }}" placeholder="Nama Lengkap" autofocus/>
              @error('name')
              <h1 class="text-red-600 -mt-2">{{ $message }}</h1>
              @enderror
          </label>
          <h1 class="ml-1 mb-1">Tanggal Lahir</h1>
          <label for="tanggal_lahir" id="">
-             <input type="date" name="tanggal_lahir" id="tanggal_lahir" placeholder="Nama Lengkap" onfocus="this.showPicker()" class="mb-2 rounded-md border-black ring-black mx-auto px-3 py-2 border shadow rounder w-full block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 focus:placeholder:text-transparent @if($errors->has('tanggal_lahir')) border-red-500 @endif" value="{{ old('tanggal_lahir') }}" oninput="removeRedBorder(this)" />
+             <input type="date" name="tanggal_lahir" id="tanggal_lahir" placeholder="Nama Lengkap" onfocus="this.showPicker()" class="mb-2 rounded-md border-black ring-black mx-auto px-3 py-2 border shadow rounder w-full block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 @if($errors->has('tanggal_lahir')) border-red-500 @endif" value="{{ old('tanggal_lahir') }}" oninput="removeRedBorder(this)" />
              @error('tanggal_lahir')
              <h1 class="text-red-600 -mt-2">{{ $message }}</h1>
              @enderror
@@ -52,18 +52,18 @@
          <h1 class="text-red-600 -mt-3 mb-1">{{ $message }}</h1>
          @enderror
          <label for="email" id="">
-             <input type="email" name="email" id="email" placeholder="Alamat Email" class="mb-3 rounded-md border-black ring-black mx-auto px-3 py-2 border shadow rounder w-full block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 invalid:text-pink-700 invalid:focus:ring-pink-700 invalid:focus:border-pink-700 focus:placeholder:text-transparent @error('email') placeholder-shown:border-red-500 @enderror" value="{{ old('email') }}" />
+             <input type="email" name="email" id="email" placeholder="Alamat Email" class="mb-3 rounded-md border-black ring-black mx-auto px-3 py-2 border shadow rounder w-full block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 invalid:text-pink-700 invalid:focus:ring-pink-700 invalid:focus:border-pink-700 @error('email') placeholder-shown:border-red-500 @enderror" value="{{ old('email') }}" />
              @error('email')
              <h1 class="text-red-600 -mt-3 mb-1">{{ $message }}</h1>
              @enderror
          </label>
          <label for="notelp" id="">
-             <input type="number" name="notelp" id="notelp" placeholder="Nomor Telepon" class="mb-3 rounded-md border-black ring-black mx-auto px-3 py-2 border shadow rounder w-full block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 focus:placeholder:text-transparent @error('notelp') placeholder-shown:border-red-500 @enderror" value="{{ old('notelp') }}" />
+             <input type="number" name="notelp" id="notelp" placeholder="Nomor Telepon" class="mb-3 rounded-md border-black ring-black mx-auto px-3 py-2 border shadow rounder w-full block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 @error('notelp') placeholder-shown:border-red-500 @enderror" value="{{ old('notelp') }}" />
              @error('notelp')
              <h1 class="text-red-600 -mt-3 mb-1">{{ $message }}</h1>
              @enderror
          </label>
-         <select id="domisili" name="domisili" size="1" class="mb-3 rounded-md border-black ring-black mx-auto px-3 py-2 border shadow rounder w-full block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 focus:placeholder:text-transparent @if(old('domisili') == '0') border-red-500 @endif" >
+         <select id="domisili" name="domisili" size="1" class="mb-3 rounded-md border-black ring-black mx-auto px-3 py-2 border shadow rounder w-full block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 @if(old('domisili') == '0') border-red-500 @endif" >
            <option value="0">-- Pilih Domisili --</option>
            @foreach($domisilis as $domisili)
            <option value="{{ $domisili }}" @if(old('domisili')==$domisili ) selected @endif>{{ $domisili }}</option>
@@ -73,13 +73,13 @@
          <h1 class="text-red-600 -mt-3 mb-1">{{ $message }}</h1>
          @enderror
          <label for="pendidikan_terakhir" id="">
-             <input type="text" name="pendidikan_terakhir" id="pendidikan_terakhir" placeholder="Pendidikan Terakhir (SMA/D3/S1/S2/dsb)" class="mb-3 rounded-md border-black ring-black mx-auto px-3 py-2 border shadow rounder w-full block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 focus:placeholder:text-transparent @error('pendidikan_terakhir')  placeholder-shown:border-red-500 @enderror" value="{{ old('pendidikan_terakhir') }}" />
+             <input type="text" name="pendidikan_terakhir" id="pendidikan_terakhir" placeholder="Pendidikan Terakhir (SMA/D3/S1/S2/dsb)" class="mb-3 rounded-md border-black ring-black mx-auto px-3 py-2 border shadow rounder w-full block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 @error('pendidikan_terakhir')  placeholder-shown:border-red-500 @enderror" value="{{ old('pendidikan_terakhir') }}" />
              @error('pendidikan_terakhir')
              <h1 class="text-red-600 -mt-3 mb-1">{{ $message }}</h1>
              @enderror
          </label>
          <label for="status" id="">
-             <select name="status" id="status" class="mb-3 rounded-md border-black ring-black mx-auto px-3 py-2 border shadow rounder w-full block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 focus:placeholder:text-transparent @if(old('status') == '0') border-red-500 @endif" oninput="removeRedBorder(this)">
+             <select name="status" id="status" class="mb-3 rounded-md border-black ring-black mx-auto px-3 py-2 border shadow rounder w-full block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 @if(old('status') == '0') border-red-500 @endif" oninput="removeRedBorder(this)">
                  <option value="0" @if(old('status')=='0' ) selected @endif>-- Pilih Status --</option>
                  <option value="1" @if(old('status')=='1' ) selected @endif>Pelajar</option>
                  <option value="2" @if(old('status')=='2' ) selected @endif>Pekerja</option>
@@ -94,13 +94,13 @@
                  @error('jurusan')
                  <h1 class="text-red-600 -mt-3 mb-1">{{ $message }}</h1>
                  @enderror
-                 <input type="text" name="jurusan" id="jurusan" placeholder="Jurusan" class="mb-3 rounded-md border-black ring-black mx-auto px-3 py-2 border shadow rounder w-full block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 focus:placeholder:text-transparent" value="{{ old('jurusan') }}" />
+                 <input type="text" name="jurusan" id="jurusan" placeholder="Jurusan" class="mb-3 rounded-md border-black ring-black mx-auto px-3 py-2 border shadow rounder w-full block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500" value="{{ old('jurusan') }}" />
              </label>
              <label for="institusi" id="">
                  @error('institusi')
                  <h1 class="text-red-600 -mt-3 mb-1">{{ $message }}</h1>
                  @enderror
-                 <input type="text" name="institusi" id="institusi" placeholder="Institusi" class="mb-3 rounded-md border-black ring-black mx-auto px-3 py-2 border shadow rounder w-full block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 focus:placeholder:text-transparent" value="{{ old('institusi') }}" />
+                 <input type="text" name="institusi" id="institusi" placeholder="Institusi" class="mb-3 rounded-md border-black ring-black mx-auto px-3 py-2 border shadow rounder w-full block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500" value="{{ old('institusi') }}" />
              </label>
          </div>
          <div id="div-pekerja" class="@if(old('status') == '2') block @else hidden @endif">
@@ -109,14 +109,14 @@
                  @error('perusahaan')
                  <h1 class="text-red-600 -mt-3 mb-1">{{ $message }}</h1>
                  @enderror
-                 <input type="text" name="perusahaan" id="perusahaan" placeholder="Perusahaan" class="mb-3 rounded-md border-black ring-black mx-auto px-3 py-2 border shadow rounder w-full block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 focus:placeholder:text-transparent" value="{{ old('perusahaan') }}" />
+                 <input type="text" name="perusahaan" id="perusahaan" placeholder="Perusahaan" class="mb-3 rounded-md border-black ring-black mx-auto px-3 py-2 border shadow rounder w-full block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500" value="{{ old('perusahaan') }}" />
              </label>
              <label for="jabatan" id="">
                  @error('jabatan')
                  <h1 class="text-red-600 -mt-3 mb-1">{{ $message }}</h1>
                  @enderror
-                 {{-- <input type="text" name="jabatan" id="jabatan" placeholder="Jabatan dalam perusahaan" class="mb-3 rounded-md border-black ring-black mx-auto px-3 py-2 border shadow rounder w-full block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 focus:placeholder:text-transparent" value="{{ old('jabatan') }}" /> --}}
-                 <select id="jabatan" name="jabatan" size="1" class="mb-3 rounded-md border-black ring-black mx-auto px-3 py-2 border shadow rounder w-full block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 focus:placeholder:text-transparent @if(old('jabatan') == '0') border-red-500 @endif" >
+                 {{-- <input type="text" name="jabatan" id="jabatan" placeholder="Jabatan dalam perusahaan" class="mb-3 rounded-md border-black ring-black mx-auto px-3 py-2 border shadow rounder w-full block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500" value="{{ old('jabatan') }}" /> --}}
+                 <select id="jabatan" name="jabatan" size="1" class="mb-3 rounded-md border-black ring-black mx-auto px-3 py-2 border shadow rounder w-full block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 @if(old('jabatan') == '0') border-red-500 @endif" >
                     <option value="0">-- Pilih Jabatan --</option>
                     <option value="Staff/Pelaksana" @if(old('jabatan')=='Staff/Pelaksana' ) selected @endif>Staff/Pelaksana</option>
                     <option value="Team Lead/Supervisor" @if(old('jabatan')=='Team Lead/Supervisor' ) selected @endif>Team Lead/Supervisor</option>
@@ -132,17 +132,17 @@
                  @error('masa_kerja')
                  <h1 class="text-red-600 -mt-3 mb-1">{{ $message }}</h1>
                  @enderror
-                 <input type="number" name="masa_kerja" id="masa_kerja" placeholder="Masa Kerja" class="mb-3 rounded-md border-black ring-black mx-auto px-3 py-2 border shadow rounder w-full block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 focus:placeholder:text-transparent" value="{{ old('masa_kerja') }}" />
+                 <input type="number" name="masa_kerja" id="masa_kerja" placeholder="Masa Kerja" class="mb-3 rounded-md border-black ring-black mx-auto px-3 py-2 border shadow rounder w-full block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500" value="{{ old('masa_kerja') }}" />
              </label>
          </div>
          <label for="password" id="">
              @error('password')
              <h1 class="text-red-600 -mt-3 mb-1">{{ $message }}</h1>
              @enderror
-             <input type="password" name="password" id="password" placeholder="Password" class="mb-3 rounded-md border-black ring-black mx-auto px-3 py-2 border shadow rounder w-full block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 focus:placeholder:text-transparent @error('password')  placeholder-shown:border-red-500 @enderror" value="{{ old('password') }}" />
+             <input type="password" name="password" id="password" placeholder="Password" class="mb-3 rounded-md border-black ring-black mx-auto px-3 py-2 border shadow rounder w-full block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 @error('password')  placeholder-shown:border-red-500 @enderror" value="{{ old('password') }}" />
          </label>
          <label for="confirmpassword" id="">
-             <input type="password" name="password_confirmation" id="confirmpassword" placeholder="Konfirmasi Password" class="mb-3 rounded-md border-black ring-black mx-auto px-3 py-2 border shadow rounder w-full block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 focus:placeholder:text-transparent @error('password') placeholder-shown:border-red-500 @enderror" value="{{ old('password_confirmation') }}" />
+             <input type="password" name="password_confirmation" id="confirmpassword" placeholder="Konfirmasi Password" class="mb-3 rounded-md border-black ring-black mx-auto px-3 py-2 border shadow rounder w-full block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 @error('password') placeholder-shown:border-red-500 @enderror" value="{{ old('password_confirmation') }}" />
              @error('password_confirmation')
              <h1 class="text-red-600 -mt-3 mb-1">{{ $message }}</h1>
              @enderror

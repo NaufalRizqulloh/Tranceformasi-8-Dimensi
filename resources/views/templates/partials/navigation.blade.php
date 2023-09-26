@@ -1,10 +1,10 @@
 <!-- navBar -->
 
-<header class="w-full flex bg-primary mb-10 drop-shadow-2xl absolute top-0 left-0 right-0">
+<header class="w-full grid grid-cols-3 bg-primary mb-10 drop-shadow-2xl absolute top-0 left-0 right-0">
     <div class="block md:hidden w-8 h-8 ml-8"></div>
     <h1 class="my-4 mx-auto text-secondary font-bold max-md:hidden">Tranceformasi</h1>
-    <h1 class="-ml-8 w-full md:w-auto md:mx-auto my-4 text-bgcolor ">Delapan Dimensi Kepemimpinan</h1>
-    <img src="/dist/profile.png" alt="" class="w-8 h-8 mr-8 justify-end md:mx-auto my-auto cursor-pointer" onclick="onoverlay()">
+    <h1 class="w-full md:w-auto md:mx-auto my-4 text-bgcolor ">Delapan Dimensi Kepemimpinan</h1>
+    <img src="/dist/profile.png" alt="" class="w-8 h-8 justify-end md:mx-auto my-auto cursor-pointer" onclick="onoverlay()">
 </header>
 
 <!-- overlay -->

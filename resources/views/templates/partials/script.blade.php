@@ -9,12 +9,29 @@
     document.getElementById("overlay1").style.display = "none";
     document.getElementById("kodeAkses").style.display = "none";
     document.getElementById("confirm-element").style.display = "none";
+    document.getElementById("buatEvent").style.display = "none";
   }
   
   function kodeAkses() {
     document.getElementById("overlay").style.display = "block";
     document.getElementById("kodeAkses").style.display = "block";
   }
+
+  function buatEvent() {
+    document.getElementById("overlay").style.display = "block";
+    document.getElementById("buatEvent").style.display = "block";
+  }
+  
+  document.getElementById("buatEventbtn").addEventListener("click", function() {
+    document.getElementById("overlay").style.display = "block";
+    document.getElementById("buatEvent").style.display = "block";
+  });
+
+  document.getElementById("overlay").addEventListener("click", function() {
+    document.getElementById("overlay").style.display = "none";
+    document.getElementById("buatEvent").style.display = "none";
+  });
+
    
   const checkbox = document.querySelector('#toggle');
   const html = document.querySelector('html');
@@ -42,4 +59,5 @@
       toTop.classList.add('hidden');
     }
   }
+  
 </script>

@@ -12,7 +12,7 @@ html{
     scroll-behavior: smooth;
 }
 
-#overlay, #overlay1, #kodeAkses, #confirm-element {
+#overlay, #overlay1, #kodeAkses, #confirm-element, #buatEvent {
   position: fixed;
   display: none;
 }
