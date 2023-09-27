@@ -179,6 +179,7 @@ class AdminEventController extends Controller
         $currentEvent = $event->jawabans()->with('user')->get();
         $users = $currentEvent->pluck('user')->unique();
 
+        $totalUser = $currentEvent->count();
         $finishedUser = $currentEvent->where('progress', '=', 'selesai')->count();
         $unfinishedUser = $currentEvent->where('progress', '!=', 'selesai')->count();
 
@@ -201,9 +202,11 @@ class AdminEventController extends Controller
         // 8 Dimensions Category = ['Pelopor', 'Penggerak', 'Afirmasi', 'Inklusif', 'Rendah Hati', 'Pemikir', 'Tegas', 'Berwibawa']
         $usersDimension = EventStatHelper::calculate8DimensionsDispersion($currentEvent->pluck('dimensi_kepemimpinan')->toArray());
 
-        return view('testing/chart', [
+        return view('admin.show', [
             'event' => $event,
-            'progress' => [($finishedUser), ($unfinishedUser)],
+            'user' => $totalUser,
+            'finishedUser' => $finishedUser,
+            'unfinishedUser' => $unfinishedUser,
             'kelamin' => $usersGender,
             'usia' => $usersAge,
             'pendidikan' => $usersLastEducation,

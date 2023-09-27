@@ -4,6 +4,7 @@
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
+<div class="mb-12"></div>
 
 <div>
   <p> progress {{ var_dump($progress) }}</p>

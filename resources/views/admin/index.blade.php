@@ -36,10 +36,12 @@
         </div>
         <h1 class="text-secondary font-semibold font-montserrat ml-3 mt-4">{{ $e->nama }} - {{ $e->tanggal_selesai }}</h1>
         <div class="absolute right-0 mr-4 flex">
-            <button class="bg-white w-fit h-fit mt-2 mr-4 rounded-full flex">
-                <img src="/dist/data.png" alt="" class="ml-4 mt-1">
-                <h1 class="text-black font-montserrat font-semibold mx-4 my-2">Lihat Data</h1>
-            </button>
+            <a href="{{ route('admin.event.show', $e) }}">
+                <button class="bg-white w-fit h-fit mt-2 mr-4 rounded-full flex">
+                    <img src="/dist/data.png" alt="" class="ml-4 mt-1">
+                    <h1 class="text-black font-montserrat font-semibold mx-4 my-2">Lihat Data</h1>
+                </button>
+            </a>
             <button class="bg-white w-fit h-fit mt-2 rounded-full flex">
                 <img src="/dist/editEvent.png" alt="" class="ml-4 mt-1">
                 <h1 class="text-black font-montserrat font-semibold mx-4 my-2">Edit Event</h1>

@@ -6,7 +6,7 @@
     </x-slot>
 
     <div>
-      <form action="{{ route('user.form.store', ['kode-akses' => 'ASDFAD']) }}" method="POST">
+      <form action="{{ route('user.form.store', ['kode-akses' => 'FFFFFF']) }}" method="POST">
         @csrf
         <button type="submit" class="text-secondary font-montserrat text-9xl">aaaaaaa</button>
       </form>
@@ -116,11 +116,11 @@
 <output id="rangevalue"></output> -->
     <!-- <canvas id="barChart" style="width:100%;max-width:500px;height:100%;max-height:500px"></canvas> -->
     <canvas id="pieChart" style="width:100%;max-width:600px;height:100%;max-height:500px"></canvas>
-    <!-- <canvas id="radarChart" style="width:100%;max-width:600px;height:100%;max-height:500px"></canvas>
+    <canvas id="radarChart" style="width:100%;max-width:600px;height:100%;max-height:500px"></canvas>
     <canvas id="horizontalBarChart" style="width:100%;max-width:600px;height:100%;max-height:500px"></canvas>
     <canvas id="myChart4" style="width:100%;max-width:600px;height:100%;max-height:500px"></canvas>
     <canvas id="progressBar" style="width:100%;max-width:600px;height:100%;max-height:100px"></canvas>
-    <canvas id="progressBar1" style="width:100%;max-width:600px;height:100%;max-height:100px"></canvas> -->
+    <canvas id="progressBar1" style="width:100%;max-width:600px;height:100%;max-height:100px"></canvas>
 
     <progress id="bar" value="10" max="100" class="ml-2"></progress>
   </x-app-layout>
@@ -415,51 +415,51 @@
     //   }
     // });
 
-    // //progress Bar
-    // var progress2 = document.getElementById("progressBar").getContext('2d');
-    // let done = 26;
-    // let total = 234;
-    // let donePercent = done / total * 100;
-    // let totalPercent = (total - done) / total * 100;
+    //progress Bar
+    var progress2 = document.getElementById("progressBar").getContext('2d');
+    let done = 26;
+    let total = 234;
+    let donePercent = done / total * 100;
+    let totalPercent = (total - done) / total * 100;
 
-    // var myChart = new Chart(progress2, {
-    //   type: 'bar',
-    //   data: {
-    //     labels: ["Progress"],
-    //     datasets: [{
-    //         label: 'Sudah Mengerjakan',
-    //         backgroundColor: "blue",
-    //         data: [donePercent],
-    //       },
-    //       {
-    //         label: 'Belum Mengerjakan',
-    //         backgroundColor: "green",
-    //         data: [totalPercent],
-    //       },
-    //     ],
-    //   },
-    //   options: {
-    //     border: {
-    //       color: "red"
-    //     },
-    //     indexAxis: 'y',
-    //     scales: {
-    //       x: {
-    //         stacked: true,
-    //         grid: {
-    //           display: false
-    //         }
-    //       },
-    //       y: {
-    //         stacked: true,
-    //         grid: {
-    //           display: false
-    //         }
-    //       }
-    //     },
-    //     responsive: true
-    //   }
-    // });
+    var myChart = new Chart(progress2, {
+      type: 'bar',
+      data: {
+        labels: ["Progress"],
+        datasets: [{
+            label: 'Sudah Mengerjakan',
+            backgroundColor: "blue",
+            data: [donePercent],
+          },
+          {
+            label: 'Belum Mengerjakan',
+            backgroundColor: "green",
+            data: [totalPercent],
+          },
+        ],
+      },
+      options: {
+        border: {
+          color: "red"
+        },
+        indexAxis: 'y',
+        scales: {
+          x: {
+            stacked: true,
+            grid: {
+              display: false
+            }
+          },
+          y: {
+            stacked: true,
+            grid: {
+              display: false
+            }
+          }
+        },
+        responsive: true
+      }
+    });
 
     // var progress1 = document.getElementById("progressBar1").getContext('2d');
 
