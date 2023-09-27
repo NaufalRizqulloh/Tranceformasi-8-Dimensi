@@ -15,15 +15,15 @@ return new class extends Migration
             $table->id();
             $table->string('nama')->unique();
             $table->string('kode_akses')->unique();
-            $table->boolean('is_answers_hold');
             $table->string('institusi');
             $table->integer('total_peserta');
-            $table->dateTime('tanggal_mulai'); 
-            $table->dateTime('tanggal_selesai');
+            $table->date('tanggal_mulai'); 
+            $table->date('tanggal_selesai');
             $table->string('deskripsi');
             //tujuan pengambilan test [personaldev, careerdev]
             $table->string('tujuan_tes');
             $table->boolean('is_expired');
+            $table->boolean('is_answers_hold');
             $table->timestamps();
         });
     }

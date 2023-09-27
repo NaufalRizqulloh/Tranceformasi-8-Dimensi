@@ -6,6 +6,7 @@ use App\Models\Event;
 use GuzzleHttp\Client;
 use App\Http\Controllers\Controller;
 use App\Models\Info;
+use App\Models\User;
 use Helpers\Data\EventOverviewHelper;
 use Helpers\Data\EventStatHelper;
 use Illuminate\Http\Request;
@@ -18,6 +19,10 @@ class AdminEventController extends Controller
      */
     public function index(Request $request)
     {
+        // Return Event Data
+        $events = Event::all();
+        $users = User::all();
+
         // Jenis Kelamin Count
 
         // Get the specific string from the request or hard-code it
@@ -116,6 +121,8 @@ class AdminEventController extends Controller
             's2' => $s2,
             's3' => $s3,
             'counts' => $counts,
+            'events' => $events,
+            'users' => $users,
         ]);
     }
 
@@ -135,25 +142,30 @@ class AdminEventController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request->all());
+
         $request->validate([
             'nama' => 'required|string|max:60',
-            'kode-akses' => 'required|unique:events|string|max:25',
-            'institusi' => 'required|string|255',
-            'total-peserta' => 'required|integer',
-            'tanggal-mulai' => 'required|date_format:o-m-d',
-            'tanggal-selesai' => 'required|date_format:o-m-d',
-            'deskripsi' => 'required|string|255'
+            'kode_akses' => 'required|unique:events|string|max:25',
+            'institusi' => 'required|string|max:255',
+            'total_peserta' => 'required|integer',
+            'tanggal_mulai' => 'required',
+            'tanggal_selesai' => 'required',
+            'deskripsi' => 'required|string|max:255',
+            'tujuan_tes' => 'required|string|max:255|not_in:0',
         ]);
 
-        Event::create([
+        $event = Event::create([
             'nama' => $request->input('nama'),
-            'kode_akses' => $request->input('kode-akses'),
+            'kode_akses' => $request->input('kode_akses'),
             'institusi' => $request->input('institusi'),
-            'total_peserta' => $request->input('total-peserta'),
-            'tanggal_mulai' => $request->input('tanggal-mulai'),
-            'tanggal_selesai' => $request->input('tanggal-selesai'),
+            'total_peserta' => $request->input('total_peserta'),
+            'tanggal_mulai' => $request->input('tanggal_mulai'),
+            'tanggal_selesai' => $request->input('tanggal_selesai'),
             'deskripsi' => $request->input('deskripsi'),
-            'is_expired' => false
+            'tujuan_tes' => $request->input('tujuan_tes'),
+            'is_expired' => false,
+            'is_answers_hold' => false
         ]);
 
         return redirect()->back()->with('success', 'Event berhasil dibuat');

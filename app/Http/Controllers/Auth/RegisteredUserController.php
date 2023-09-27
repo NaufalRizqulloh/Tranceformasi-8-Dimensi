@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Info;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
+use GuzzleHttp\Client;
 use Illuminate\Support\Carbon;
 
 use Illuminate\Auth\Events\Registered;
@@ -26,8 +27,22 @@ class RegisteredUserController extends Controller
      */
     public function create(): View
     {
-        $cityName = Info::where('name', '=', 'city')->first();
-        $finalData = json_decode($cityName->json_value, true)['city'];
+        // $cityName = Info::where('name', '=', 'city')->first();
+        // $finalData = json_decode($cityName->json_value, true)['city'];
+        $client = new Client();
+        $response = $client->get('https://api.rajaongkir.com/starter/city', [
+            'headers' => [
+                'key' => '1d168db07423b0d975eb96d96b1d5bea'
+            ],
+        ]);
+
+        $datas = json_decode($response->getBody(), true);
+
+        $finalData = [];
+        
+        foreach ($datas['rajaongkir']['results'] as $data) {
+            $finalData[] = $data['city_name'] . ', ' . $data['province'];
+        }
 
         return view('testing.register', ['domisilis' => $finalData]);
     }

@@ -141,7 +141,19 @@ Route::get('/在漫游于一个旋涡般的资本主义中我与一只戴着单�
 /**
  * Admin route section
  */
-Route::resource('admin/event', AdminEventController::class)->middleware('admin');
+// Route::resource('admin/event', AdminEventController::class)->middleware('admin')->name('admin.event');
+
+Route::middleware(['admin'])->group(function () {
+    Route::resource('admin/event', AdminEventController::class)->names([
+        'index' => 'admin.event.index',
+        'create' => 'admin.event.create',
+        'store' => 'admin.event.store',
+        'show' => 'admin.event.show',
+        'edit' => 'admin.event.edit',
+        'update' => 'admin.event.update',
+        'destroy' => 'admin.event.destroy',
+    ]);
+});
 
 Route::get('admin/event/overview', [AdminEventController::class, 'overview'])->middleware('admin')->name('event.overview');
 Route::get('admin/event/update-on-hold/{event}', [AdminEventController::class, 'updateOnHold'])->middleware('admin')->name('update.event.on-hold');

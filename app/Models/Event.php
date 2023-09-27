@@ -11,7 +11,6 @@ class Event extends Model
 
     protected $fillable = [
         'nama',
-        'is_answers_hold',
         'kode_akses',
         'institusi',
         'tujuan_tes',
@@ -19,7 +18,8 @@ class Event extends Model
         'tanggal_mulai',
         'tanggal_selesai',
         'deskripsi',
-        'is_expired'
+        'is_expired',
+        'is_answers_hold'
     ];
 
     function scopeGetEvent($query, $accessCode)
