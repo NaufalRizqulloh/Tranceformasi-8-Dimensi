@@ -42,7 +42,7 @@
                     <h1 class="text-black font-montserrat font-semibold mx-4 my-2">Lihat Data</h1>
                 </button>
             </a>
-            <button class="bg-white w-fit h-fit mt-2 rounded-full flex">
+            <button id="editEventbtn" class="bg-white w-fit h-fit mt-2 rounded-full flex">
                 <img src="/dist/editEvent.png" alt="" class="ml-4 mt-1">
                 <h1 class="text-black font-montserrat font-semibold mx-4 my-2">Edit Event</h1>
             </button>
@@ -87,6 +87,72 @@
 
 <div id="buatEvent" class="top-0 left-1/4 w-1/2 h-[500px] mt-12 rounded-xl bg-white z-30 flex overflow-y-scroll overflow-hidden">
     <div class="w-full flex bg-primary mb-5 drop-shadow-2xl z-40 top-0 rounded-tl-xl items-center absolute">
+        <h1 class="py-3 pl-5 text-secondary text-xl">Delapan Dimensi Kepemimpinan</h1>
+    </div>
+
+    <h1 class="text-4xl text-black text-center font-bold mt-20 mb-4">Daftarkan Event Baru</h1>
+    <hr class="border-black w-3/4 mx-auto mb-4">
+
+    <form action="{{ route('admin.event.store') }}" method="POST">
+        @csrf
+        <label for="nama" id="" class="ml-14 mb-6 text-black text-xl">- Nama</label>
+        <input type="text" name="nama" id="nama" class="mx-auto mb-4 w-10/12 rounded-md text-black border-black ring-black px-3 py-2 border shadow block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500" value="{{ old('nama') }}" placeholder="Nama Event" required maxlength="60"/>
+        @error('nama')
+        <h1 class="text-red-600 -mt-2">{{ $message }}</h1>
+        @enderror
+        <label for="institusi" id="" class="ml-14 mb-6 text-black text-xl">- Institusi</label>
+        <input type="text" name="institusi" id="institusi" class="mx-auto mb-4 w-10/12 rounded-md text-black border-black ring-black px-3 py-2 border shadow block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 " value="{{ old('institusi') }}" placeholder="Institusi/Perusahaan Peserta Event" required/>
+        @error('institusi')
+        <h1 class="text-red-600 -mt-2">{{ $message }}</h1>
+        @enderror
+        <label for="tanggal_mulai" id="" class="ml-14 mb-6 text-black text-xl">- Tanggal Dimulai Event</label>
+        <input type="date" name="tanggal_mulai" id="tanggal_mulai" placeholder="Nama Lengkap" onfocus="this.showPicker()" class="mb-4 rounded-md text-black border-black ring-black mx-auto px-3 py-2 border shadow rounder w-10/12 block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 @if($errors->has('tanggal_mulai')) border-red-500 @endif" value="{{ old('tanggal_mulai') }}" oninput="removeRedBorder(this)" required/>
+        @error('tanggal_mulai')
+        <h1 class="text-red-600 -mt-2">{{ $message }}</h1>
+        @enderror
+        <label for="tanggal_selesai" id="" class="ml-14 mb-6 text-black text-xl">- Tanggal Berakhir Event</label>
+        <input type="date" name="tanggal_selesai" id="tanggal_selesai" placeholder="Nama Lengkap" onfocus="this.showPicker()" class="mb-4 rounded-md text-black border-black ring-black mx-auto px-3 py-2 border shadow rounder w-10/12 block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 @if($errors->has('tanggal_selesai')) border-red-500 @endif" value="{{ old('tanggal_selesai') }}" oninput="removeRedBorder(this)" required/>
+        @error('tanggal_selesai')
+        <h1 class="text-red-600 -mt-2">{{ $message }}</h1>
+        @enderror
+        <label for="deskripsi" id="" class="ml-14 mb-6 text-black text-xl">- Deskripsi Event</label>
+        <input type="text" name="deskripsi" id="deskripsi" class="mx-auto mb-4 w-10/12 rounded-md text-black border-black ring-black px-3 py-2 border shadow block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 " value="{{ old('deskripsi') }}" placeholder="Deskripsi Event Anda" required/>
+        @error('deskripsi')
+        <h1 class="text-red-600 -mt-2">{{ $message }}</h1>
+        @enderror
+        <h1 class="ml-14 text-black text-xl">- Tujuan Event</h1>
+        <select name="tujuan_tes" id="" class="mx-auto mb-4 w-10/12 rounded-md text-black border-black ring-black px-3 py-2 border shadow block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 " value="{{ old('tujuan_tes') }}">
+            <option value="0">-- Tujuan Diadakannya Event --</option>
+            <option value="Personal Development">Personal Development</option>
+            <option value="Career Development">Career Development</option>
+        </select>
+        @error('tujuan_tes')
+        <h1 class="text-red-600 -mt-2 ml-14">{{ $message }}</h1>
+        @enderror
+        <label for="total_peserta" id="" class="ml-14 mb-6 text-black text-xl">- Total Peserta</label>
+        <input type="number" name="total_peserta" id="total_peserta" class="mx-auto mb-4 w-10/12 rounded-md text-black border-black ring-black px-3 py-2 border shadow block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 " value="{{ old('total_peserta') }}" placeholder="Perkiraan Total Peserta Event" required/>
+        @error('total_peserta')
+        <h1 class="text-red-600 -mt-2">{{ $message }}</h1>
+        @enderror
+        <label for="kode_akses" id="" class="ml-14 mb-6 text-black text-xl">- Kode Akses</label>
+        <input type="text" name="kode_akses" id="kode_akses" class="mx-auto mb-12 w-10/12 rounded-md text-black border-black ring-black px-3 py-2 border shadow block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 " value="{{ old('kode_akses') }}" placeholder="Kode Akses untuk Event Anda (Harus berupa angka atau huruf sejumlah 6)" onkeyup="
+        var start = this.selectionStart;
+        var end = this.selectionEnd;
+        this.value = this.value.toUpperCase();
+        this.setSelectionRange(start, end);" pattern=".{6,6}" maxlength="6" required />
+        @error('kode_akses')
+        <h1 class="text-red-600 -mt-2">{{ $message }}</h1>
+        @enderror
+
+        <button type="submit" class="block w-fit h-fit px-6 py-2 mx-auto mb-12 border-2 border-black rounded-full text-black text-lg">Submit</button>
+    </form>
+    
+</div>
+
+<!-- Overlay Edit -->
+
+<div id="editEvent" class="top-0 left-1/4 w-1/2 h-[500px] mt-12 rounded-xl bg-white z-40 flex overflow-y-scroll overflow-hidden">
+<div class="w-full flex bg-primary mb-5 drop-shadow-2xl z-40 top-0 rounded-tl-xl items-center absolute">
         <h1 class="py-3 pl-5 text-secondary text-xl">Delapan Dimensi Kepemimpinan</h1>
     </div>
 

@@ -10,6 +10,12 @@
     <h1 class="w-full text-secondary text-2xl font-bold text-center py-4">Data Tes : {{ $event->nama }}</h1>
 </div>
 
+<label class="relative inline-flex items-center mr-5 cursor-pointer">
+  <input id="holdSwitch" type="checkbox" class="sr-only peer">
+  <div class="w-11 h-6 bg-gray-200 rounded-full peer dark:bg-gray-700 peer-focus:ring-4 peer-focus:ring-purple-300 dark:peer-focus:ring-purple-800 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-purple-600"></div>
+  <span class="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300">Purple</span>
+</label> 
+
 <div class="w-[90%] grid grid-cols-12 gap-6 ml-12 mb-12">
     <div class="bg-primary col-span-9 h-fit rounded-xl flex px-8 py-16">
         <h1 class="w-56 text-white">Total Peserta<br>Tanggal Pengerjaan<br>Kode Akses<br>Institusi<br>Deskripsi</h1>
@@ -28,9 +34,41 @@
 </div>
 
 <h1 class="text-black text-3xl font-bold text-center">Progres Keseluruhan</h1>
-<canvas id="progressBar" class="mx-auto" style="width:100%;max-width:600px;height:100%;max-height:100px"></canvas>
-<canvas id="pieChart" class="mx-auto mb-6 " style="width:100%;max-width:400px;height:100%;max-height:300px"></canvas>
+<canvas id="progressBar" class="mx-auto mb-6" style="width:100%;max-width:600px;height:100%;max-height:100px"></canvas>
+<div class="w-fit h-fit mx-auto mb-12 px-12 pt-6 border-4 border-primary rounded-3xl">
+  <h1 class="w-[460px] text-black text-2xl text-center font-bold -mb-6"> Jenis Kelamin</h1>
+  <canvas id="piesChart" class="mx-auto" style="width:100%;max-width:600px;height:100%;max-height:500px"></canvas>
+</div>
+<div class="flex mx-24 mb-6">
+  <canvas id="usiasChart" class="mx-auto" style="width:100%;max-width:500px;height:100%;max-height:300px;"></canvas>
+  <canvas id="pendidikanChart" class="mx-auto" style="width:100%;max-width:500px;height:100%;max-height:300px;"></canvas>
+</div>
+<div class="w-fit h-fit mx-auto mb-12 px-6 pt-6 border-4 border-primary rounded-3xl">
+    <h1 class="text-black text-2xl text-center font-bold">Penyebaran Dimensi Kepemimpinan</h1>
+  <canvas id="8DChart" class="mx-auto" style="width:100%;max-width:400px;height:100%;max-height:300px"></canvas>
+</div>
 
+<h1 class="mb-6 text-black text-2xl text-center font-light italic">Data Individual</h1>
+
+<table class="w-10/12 mx-auto border-2 border-black">
+  <tr class="border-2 border-black">
+    <th class="border-2 border-black text-black"><h1 class="mx-2 text-center my-1">No</h1></th>
+    <th class="border-2 border-black text-black"><h1 class="mx-2 text-center my-1">Selesai Mengerjakan</h1></th>
+    <th class="border-2 border-black text-black"><h1 class="mx-2 text-center my-1">Hasil</h1></th>
+  </tr>
+  @foreach ($peserta as $u)
+  <tr class="border-2 border-black">
+    <td class="border-2 border-black text-black"><h1 class="mx-2 text-center my-1">{{ $i }}</h1></td>
+    <td class="border-2 border-black text-black"><h1 class="mx-2 my-1">{{ $u->name }}</h1></td>
+    <td class="border-2 border-black"><h1 class="mx-2 text-center my-1"><a href="" class="text-blue-400 hover:underline">Download PDF</a></h1></td>
+  </tr>
+  @php
+  $i += 1;
+  @endphp
+  @endforeach
+</table>
+
+<!-- 
 <div>
   <p> kelamin {{ var_dump($kelamin) }}</p>
   <p>{{ var_dump($usia) }}</p>
@@ -38,124 +76,13 @@
   <p>{{ var_dump($domisili) }}</p>
   <p>{{ var_dump($penyebaran8D) }}</p>
 </div>
-
-<label class="relative inline-flex items-center mr-5 cursor-pointer">
-  <input id="holdSwitch" type="checkbox" class="sr-only peer">
-  <div class="w-11 h-6 bg-gray-200 rounded-full peer dark:bg-gray-700 peer-focus:ring-4 peer-focus:ring-purple-300 dark:peer-focus:ring-purple-800 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-purple-600"></div>
-  <span class="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300">Purple</span>
-</label>
-
-<!-- progress kelamin usia pendidikan domisili penyebaran8D -->
-
-<!-- Penyebaran 8D -->
-<canvas id="radarChart" style="width:100%;max-width:600px;height:100%;max-height:500px" class="border-2"></canvas>
-
-<!-- Jenis Kelamin -->
-<canvas id="pieChart" style="width:100%;max-width:600px;height:100%;max-height:500px"></canvas>
-
+-->
 <script>
-  const holdSwitch = document.getElementById('holdSwitch');
-  const holdRoute = "{{ route('update.event.on-hold', ['event' => $event]) }}";
-
-  holdSwitch.addEventListener('click', () => {
-    const value = holdSwitch.checked ? 1 : 0;
-    const extendedUrl = `${holdRoute}?value=${encodeURIComponent(value)}`;
-
-    fetch(extendedUrl)
-      .then(response => {
-        if (!response.ok) {
-          throw new Error('Response tidak diterima dari server');
-        }
-        return response.json();
-      })
-      .then(data => {
-        alert(data['on-hold']);
-        if (data['on-hold'] == 1) {
-          alert('Hasil jawaban event ini ditahan');
-        } else if (data['on-hold'] == 0){
-          alert('Hasil jawaban event ini dibuka');
-        } else {
-          throw new Error('Response tidak dikenali : ' + data);
-        }
-      })
-      .catch(error => {
-        console.error('Error:', error);
-        alert('error:' + error);
-      });
-  });
-
-  // radarChart
-
-  var dimensionData = @json($penyebaran8D);
-
-  new Chart("radarChart", {
-    type: "radar",
-    data: {
-      labels: [
-        'Pelopor',
-        'Penggerak',
-        'Afirmasi',
-        'Inklusif',
-        'Rendah Hati',
-        'Pemikir',
-        'Tegas',
-        'Berwibawa',
-      ],
-      datasets: [{
-        backgroundColor: 'rgba(255, 99, 132, 0.2)',
-        data: dimensionData,
-        barThickness: 20,
-        clip: {
-          left: 5,
-          top: 0,
-          right: 10,
-          bottom: 2,
-        },
-      }]
-    },
-    options: {
-      scales: {
-        r: {
-          beginAtZero: true,
-          // suggestedMax : 10
-        }
-      },
-      plugins: {
-        legend: {
-          display: false
-        }
-      }
-    }
-  });
-
-  var xValues = ["Laki", "Perempuan"];
-  var yValues = @json($kelamin);
-  var barColors = [
-    "#4C32EA",
-    "#CC00CC",
-  ];
-
-  new Chart("pieChart", {
-    type: "pie",
-    data: {
-      labels: xValues,
-      datasets: [{
-        backgroundColor: barColors,
-        data: yValues
-      }]
-    },
-    options: {
-      title: {
-        display: true,
-        text: "Jenis Kelamin"
-      }
-    }
-  });
 
   var progress2 = document.getElementById("progressBar").getContext('2d');
 
     let done = {{ $finishedUser }};
-    let total = {{ $user }};
+    let total = {{ $user }} ;
     let donePercent = done / total * 100;
     let totalPercent = (total - done) / total * 100;
 
@@ -215,7 +142,7 @@
       "#CC00CC",
     ];
 
-    new Chart("pieChart", {
+    new Chart("piesChart", {
       type: "pie",
       data: {
         labels: JKelamin,
@@ -231,12 +158,234 @@
         },
         plugins: {
             legend: {
-                position: 'bottom',
+                position: 'right',
+                labels: {
+                  color: 'black',
+                  font: {
+                      size: 24,
+                      weight: 'bold',
+                  }
+                }
+            },
+        },
+        responsive: true,
+      }
+    });
+
+    var rentangUsia = ["<15", "15-20", "21-30", "31-40", "41-50", ">51"];
+    var dataRUsia = [
+      {{ $usia[0] }},
+      {{ $usia[1] }},
+      {{ $usia[2] }},
+      {{ $usia[3] }},
+      {{ $usia[4] }},
+      {{ $usia[5] }},
+    ];
+    var barColors = "#8404F4";
+    // var filteredLabels = [];
+    // var filteredData = [];
+    // for (var i = 0; i < dataRUsia.length; i++) {
+    //     if (dataRUsia[i] !== 0) {
+    //         filteredLabels.push(rentangUsia[i]);
+    //         filteredData.push(dataRUsia[i]);
+    //     }
+    // }
+
+    new Chart("usiasChart", {
+      type: "bar",
+      data: {
+        labels: rentangUsia,
+        datasets: [{
+          backgroundColor: barColors,
+          data: dataRUsia,
+          barThickness: 20,
+          clip: {
+            left: 5,
+            top: 0,
+            right: 10,
+            bottom: 2,
+          },
+        }]
+      },
+      options: {
+        plugins: {
+            legend: {
+              display: false
+            },
+            title: {
+                display: true,
+                text: "Rentang Usia",
+                color: 'black',
+                font: {
+                    size: 16,
+                }
+            },
+        },
+        scales: {
+            x: {
+                grid:{
+                    display: false
+                }
+            },
+            y: {
+              suggestedMin: 0,
+              suggestedMax: 10,
             }
         },
         responsive: true,
       }
     });
+
+    var pendidikann = ["SD", "SMP", "SMA", "SMK", "D1", "D2", "D3", "D4", "S1", "S2", "S3"];
+    var dataPendidikan = [
+        {{ $pendidikan[0] }},
+        {{ $pendidikan[1] }},
+        {{ $pendidikan[2] }},
+        {{ $pendidikan[3] }},
+        {{ $pendidikan[4] }},
+        {{ $pendidikan[5] }},
+        {{ $pendidikan[6] }},
+        {{ $pendidikan[7] }},
+        {{ $pendidikan[8] }},
+        {{ $pendidikan[9] }},
+        {{ $pendidikan[10] }},
+    ];
+    var barColors = "#8404F4";
+    // var filteredLabels = [];
+    // var filteredData = [];
+
+    // for (var i = 0; i < dataPendidikan.length; i++) {
+    //     if (dataPendidikan[i] !== 0) {
+    //         filteredLabels.push(pendidikann[i]);
+    //         filteredData.push(dataPendidikan[i]);
+    //     }
+    // }
+
+    new Chart("pendidikanChart", {
+      type: "bar",
+      data: {
+        labels: pendidikann,
+        datasets: [{
+          backgroundColor: barColors,
+          data: dataPendidikan,
+          barThickness: 20,
+          clip: {
+            left: 5,
+            top: 0,
+            right: 10,
+            bottom: 2,
+          },
+        }]
+      },
+      options: {
+        plugins: {
+            legend: {
+              display: false
+            },
+            title: {
+                display: true,
+                text: "Rata - Rata Pendidikan",
+                color: 'black',
+                font: {
+                    size: 16,
+                }
+            },
+        },
+        scales: {
+            x: {
+                grid:{
+                    display: false
+                }
+            },
+            y: {
+                suggestedMin: 0,
+                suggestedMax: 10,
+            }
+        },
+        responsive: true,
+      }
+    });
+
+    var d8D = ["Pelopor", "Penggerak", "Afirmasi", "Inklusif", "Rendah Hati", "Pemikir", "Tegas", "Berwibawa"];
+    var data8D = [
+      {{ $penyebaran8D[0] }},
+      {{ $penyebaran8D[1] }},
+      {{ $penyebaran8D[2] }},
+      {{ $penyebaran8D[3] }},
+      {{ $penyebaran8D[4] }},
+      {{ $penyebaran8D[5] }},
+      {{ $penyebaran8D[6] }},
+      {{ $penyebaran8D[7] }},
+    ];
+    var barColors = [
+      "#E8FD1F",
+      "#FF2121",
+      "#8BC7D5",
+      "#5B9BD5",
+      "#00B02E",
+      "#264478",
+      "#FFC000",
+      "#9E480E",
+    ];
+
+    new Chart("8DChart", {
+      type: "pie",
+      data: {
+        labels: d8D,
+        datasets: [{
+          backgroundColor: barColors,
+          data: data8D
+        }]
+      },
+      options: {
+        title: {
+          display: true,
+          text: "Jenis Kelamin"
+        },
+        plugins: {
+            legend: {
+                position: 'left',
+                labels: {
+                  color: 'black',
+                  font: {
+                      size: 16,
+                  }
+                }
+            }
+        },
+        responsive: true,
+      }
+    });
+
+    const holdSwitch = document.getElementById('holdSwitch');
+  const holdRoute = "{{ route('update.event.on-hold', ['event' => $event]) }}";
+
+  holdSwitch.addEventListener('click', () => {
+    const value = holdSwitch.checked ? 1 : 0;
+    const extendedUrl = `${holdRoute}?value=${encodeURIComponent(value)}`;
+
+    fetch(extendedUrl)
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Response tidak diterima dari server');
+        }
+        return response.json();
+      })
+      .then(data => {
+        alert(data['on-hold']);
+        if (data['on-hold'] == 1) {
+          alert('Hasil jawaban event ini ditahan');
+        } else if (data['on-hold'] == 0){
+          alert('Hasil jawaban event ini dibuka');
+        } else {
+          throw new Error('Response tidak dikenali : ' + data);
+        }
+      })
+      .catch(error => {
+        console.error('Error:', error);
+        alert('error:' + error);
+      });
+  });
 
 </script>
 

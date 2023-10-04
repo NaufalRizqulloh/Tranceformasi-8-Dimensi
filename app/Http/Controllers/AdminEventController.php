@@ -57,7 +57,7 @@ class AdminEventController extends Controller
             $count = DB::table('users')
             ->whereBetween('usia', [$range['min'], $range['max']])
             ->count();
-            
+
             $counts[] = [
                 'range' => $range,
                 'count' => $count,
@@ -202,8 +202,11 @@ class AdminEventController extends Controller
         // 8 Dimensions Category = ['Pelopor', 'Penggerak', 'Afirmasi', 'Inklusif', 'Rendah Hati', 'Pemikir', 'Tegas', 'Berwibawa']
         $usersDimension = EventStatHelper::calculate8DimensionsDispersion($currentEvent->pluck('dimensi_kepemimpinan')->toArray());
 
+        $i = 1;
+
         return view('admin.show', [
             'event' => $event,
+            'peserta' => $users,
             'user' => $totalUser,
             'finishedUser' => $finishedUser,
             'unfinishedUser' => $unfinishedUser,
@@ -216,6 +219,7 @@ class AdminEventController extends Controller
                 'selesai' => $finishedUser,
                 'mengerjakan' => $unfinishedUser,
             ],
+            'i' => $i,
         ]);
     }
 
