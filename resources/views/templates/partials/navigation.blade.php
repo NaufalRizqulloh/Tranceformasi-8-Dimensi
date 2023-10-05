@@ -1,10 +1,9 @@
 <!-- navBar -->
 
-<header class="w-full grid grid-cols-3 bg-primary mb-10 drop-shadow-2xl absolute top-0 left-0 right-0">
-    <div class="block md:hidden w-8 h-8 ml-8"></div>
+<header class="w-full grid grid-cols-2 md:grid-cols-3 bg-primary mb-10 drop-shadow-2xl absolute top-0 left-0 right-0">
     <h1 class="my-4 mx-auto text-secondary font-bold max-md:hidden">Tranceformasi</h1>
-    <h1 class="w-full md:w-auto md:mx-auto my-4 text-bgcolor ">Delapan Dimensi Kepemimpinan</h1>
-    <img src="/dist/profile.png" alt="" class="w-8 h-8 justify-end md:mx-auto my-auto cursor-pointer" onclick="onoverlay()">
+    <h1 class="w-full md:w-auto mx-auto my-4 text-bgcolor text-center">Delapan Dimensi Kepemimpinan</h1>
+    <img src="/dist/profile.png" alt="" class="w-8 h-8 ml-72 md:mx-auto my-auto cursor-pointer" onclick="onoverlay()">
 </header>
 
 <!-- overlay -->
@@ -48,7 +47,7 @@
             <label for="toggle" class="py-4 flex mx-auto w-full text-lg border-b-2 border-slate-500 justify-center items-center cursor-pointer">
                 <img src="/dist/moon-dark.png" alt="" class="w-9 h-auto">
                 <h1 class="w-auto ml-5 text-slate-800 dark:text-slate-300">Dark Mode</h1>
-            </label>
+            </label> 
         </div>
     </div>
 </div>

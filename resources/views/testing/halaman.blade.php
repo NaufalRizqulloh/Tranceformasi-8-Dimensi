@@ -83,23 +83,23 @@
 
 <!-- overlayKodeAkses -->
 
-<div id="kodeAkses" class="top-1/4 left-1/4 w-1/2 h-fit rounded-3xl bg-white z-30 flex">
+<div id="kodeAkses" class="top-1/4 left-1/4 w-1/2 h-fit rounded-3xl bg-white dark:bg-slate-800 dark:border-2 dark:border-white z-30 flex">
     <div class="w-full flex bg-primary mb-5 drop-shadow-2xl z-40 top-0 rounded-t-3xl items-center">
         <h1 class="py-3 pl-5 text-secondary text-xl">Delapan Dimensi Kepemimpinan</h1>
     </div>
-    <h1 class="text-black text-2xl ml-12 mb-3 z-40 font-black">Masukkan Kode Akses</h1>
+    <h1 class="text-black dark:text-bgcolor text-2xl ml-12 mb-3 z-40 font-black">Masukkan Kode Akses</h1>
     <form action="">
         <label for="">
             <input type="text" placeholder="Massukan Kode Akses" class="mb-2 rounded-sm border-slate-400 ring-slate-400 ml-12 w-1/2 text-black focus:placeholder:text-transparent">
         </label>
-        <h1 class="ml-12 italic text-slate-500 text-sm mb-2">29 Juni - 4 September, 2023</h1>
-        <h1 class="ml-12 italic text-black text-sm mb-12 hover:text-blue-400 cursor-pointer underline block w-fit">Tidak memilki kode akses?</h1>
+        <h1 class="ml-12 italic text-slate-500 dark:text-bgcolor text-sm mb-2">29 Juni - 4 September, 2023</h1>
+        <h1 class="ml-12 italic text-black dark:text-bgcolor text-sm mb-12 hover:text-blue-400 cursor-pointer underline block w-fit">Tidak memilki kode akses?</h1>
         <button class="flex w-fit h-8 border-2 border-slate-300 rounded-full mx-auto mb-8 items-center justify-center">
-            <h1 class="text-center text-md ml-4 mr-3 italic">Lanjutkan</h1>
-            <img src="/dist/lanjutkan.png" alt="" class="mr-2 h-5 w-5">
+            <h1 class="dark:text-bgcolor text-center text-md ml-4 mr-3 italic">Lanjutkan</h1>
+            <img src="/dist/lanjutkan.png" alt="" class="dark:hidden mr-2 h-5 w-5">
+            <img src="/dist/ArrowDown1.png" alt="" class="hidden dark:block -rotate-90 mr-2 h-5 w-5">
         </button> 
     </form>
 </div>
-
 
 @endsection
