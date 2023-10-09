@@ -88,9 +88,14 @@
         <h1 class="py-3 pl-5 text-secondary text-xl">Delapan Dimensi Kepemimpinan</h1>
     </div>
     <h1 class="text-black dark:text-bgcolor text-2xl ml-12 mb-3 z-40 font-black">Masukkan Kode Akses</h1>
-    <form action="">
+    <form action="{{ route('user.form.store') }}" method="POST">
+        @csrf
         <label for="">
-            <input type="text" placeholder="Massukan Kode Akses" class="mb-2 rounded-sm border-slate-400 ring-slate-400 ml-12 w-1/2 text-black focus:placeholder:text-transparent">
+            <input name="kode-akses" type="text" placeholder="Massukan Kode Akses" class="mb-2 rounded-sm border-slate-400 ring-slate-400 ml-12 w-1/2 text-black focus:placeholder:text-transparent" onkeyup="
+            var start = this.selectionStart;
+            var end = this.selectionEnd;
+            this.value = this.value.toUpperCase();
+            this.setSelectionRange(start, end);" pattern=".{6,6}" maxlength="6" >
         </label>
         <h1 class="ml-12 italic text-slate-500 dark:text-bgcolor text-sm mb-2">29 Juni - 4 September, 2023</h1>
         <h1 class="ml-12 italic text-black dark:text-bgcolor text-sm mb-12 hover:text-blue-400 cursor-pointer underline block w-fit">Tidak memilki kode akses?</h1>

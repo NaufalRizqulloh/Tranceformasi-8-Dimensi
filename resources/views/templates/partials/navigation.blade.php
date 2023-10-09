@@ -24,7 +24,7 @@
                 </div>
             </button>
         </a>
-        <a href="/tprofile">
+        <form method="" action="{{ route('profile.edit') }}">
             <input type="submit" class="hidden"/>
             <button class="py-4 flex mx-auto w-full text-lg border-b-2 border-slate-500">
                 <div class="w-auto mx-auto flex items-center">
@@ -32,7 +32,7 @@
                     <h1 class="font-montserrat w-auto ml-5 text-slate-800 dark:text-slate-300">Edit Profil</h1>
                 </div>
             </button>
-        </a>
+        </form>
         <form method="POST" action="{{ route('logout') }}">
             @csrf
             <button type="submit" class="py-4 flex mx-auto w-full text-lg border-b-2 border-slate-500">

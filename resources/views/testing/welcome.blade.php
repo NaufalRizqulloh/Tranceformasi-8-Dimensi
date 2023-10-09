@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- <script src="https://cdn.tailwindcss.com"></script> -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap" rel="stylesheet">
@@ -38,7 +38,7 @@
                     </a> 
                     <br>
                     <div class="flex space-x-20 justify-center">
-                        <button type="submit" class="w-48 md:w-32 border-solid rounded-2xl md:rounded-lg border-2 bg-bgcolor md:bg-transparent dark:md:bg-bgcolor md:border-primary">
+                        <button type="submit" class="w-48 md:w-32 border-solid rounded-2xl md:rounded-lg border-2 bg-bgcolor md:bg-transparent dark:md:bg-slate-300 md:border-primary">
                             <h1 class="text-primary text-2xl md:text-base text-center font-montserrat font-semibold italic my-4 md:m-1">Masuk</h1>
                         </button>
                         <a href="{{ route('tfregister.create') }}" class="w-48 md:w-32 border-solid rounded-2xl md:rounded-lg border-2 md:bg-primary">

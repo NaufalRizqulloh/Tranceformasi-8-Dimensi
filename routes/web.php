@@ -184,9 +184,7 @@ Route::get('/', function () {
     return view('/testing/welcome');
 });
 
-Route::get('/tprofile', function () {
-    return view('/testing/profile');
-});
+Route::get('/tprofile', [ProfileController::class, 'edit'])->name('tprofile.edit');
 
 Route::get('/tfregister', [RegisteredUserController::class, 'create'])->name('tfregister.create');
 
