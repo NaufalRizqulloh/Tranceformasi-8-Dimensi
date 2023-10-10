@@ -12,6 +12,7 @@ use App\Http\Controllers\UserController;
 use App\Models\Jawaban;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ChartController;
+use App\Http\Controllers\JawabanController;
 use Dompdf\Dompdf;
 use Illuminate\Support\Facades\File;
 
@@ -188,10 +189,7 @@ Route::get('/tprofile', [ProfileController::class, 'edit'])->name('tprofile.edit
 
 Route::get('/tfregister', [RegisteredUserController::class, 'create'])->name('tfregister.create');
 
-
-Route::get('/home', function () {
-    return view('/testing/halaman');
-});
+Route::get('/home', [JawabanController::class, 'index'])->name('jawaban.index');
 
 Route::get('/section-1', function () {
     return view('.form.section-1-1 ');
@@ -204,10 +202,6 @@ Route::get('/section-1-2', function () {
 Route::get('/section-2-1', function () {
     return view('form.section-2-1 ');
 });
-
-// Route::get('/wait', function () {
-//     return view('form.section-wait');
-// });
 
 Route::get('/done', function () {
     return view('form.section-done');

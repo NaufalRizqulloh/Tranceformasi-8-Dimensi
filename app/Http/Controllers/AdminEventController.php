@@ -288,7 +288,6 @@ class AdminEventController extends Controller
             'goal' => $eventsGoalStatistic,
             'participant' => $eventsTotalParticipant,
             'institusi' => $eventsInstitution,
-
             'progress' => [count($finishedUser), count($unfinishedUser)],
             'kelamin' => $usersGender,
             'usia' => $usersAge,

@@ -125,15 +125,14 @@ class DiscHelper
                 $finalBiggestDisc = 'c';
                 break;
         }
-
         return $finalBiggestDisc;
     }
 
     public static function decideDimension(string $graph2Value, string $graph3Value) : string
     {
-        $keyword = str_replace([' ', "\t", "\n", "\r"], '', strtolower($graph2Value . $graph3Value));
+        $keyword = $graph2Value . $graph3Value;
         $dimension = null;
-
+        dd($keyword);
         if ($keyword == 'di' || $keyword == 'id') {
             $dimension = "Pelopor";
         } else if ($keyword == 'ii') {

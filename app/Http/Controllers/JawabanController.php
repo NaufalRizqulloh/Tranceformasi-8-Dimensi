@@ -3,18 +3,25 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class JawabanController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        // return view( )
-    }
+        $user = $request->user();
 
+        // dd($user);
+
+        return view('testing/halaman', [
+            'user' => $user,
+        ]);        
+    }
     /**
      * Show the form for creating a new resource.
      */

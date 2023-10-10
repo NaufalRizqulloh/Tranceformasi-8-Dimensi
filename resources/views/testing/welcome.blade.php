@@ -38,7 +38,7 @@
                     </a> 
                     <br>
                     <div class="flex space-x-20 justify-center">
-                        <button type="submit" class="w-48 md:w-32 border-solid rounded-2xl md:rounded-lg border-2 bg-bgcolor md:bg-transparent dark:md:bg-slate-300 md:border-primary">
+                        <button type="submit" class="w-48 md:w-32 border-solid rounded-2xl md:rounded-lg border-2 bg-bgcolor md:bg-transparent dark:bg-bgcolor md:border-primary">
                             <h1 class="text-primary text-2xl md:text-base text-center font-montserrat font-semibold italic my-4 md:m-1">Masuk</h1>
                         </button>
                         <a href="{{ route('tfregister.create') }}" class="w-48 md:w-32 border-solid rounded-2xl md:rounded-lg border-2 md:bg-primary">

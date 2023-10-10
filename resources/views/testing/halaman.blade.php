@@ -50,6 +50,10 @@
 
 <!-- Dimensi Anda Hero -->
 
+<!-- {{ $user->jawabans()->latest()->first()->progress }} -->
+
+@if($user->jawabans()->latest()->first()->progress == 'selesai')
+
 <div class="mt-8 lg:mt-8 w-[90%] border-2 border-transparent h-fit bg-primary rounded-xl lg:rounded-[50px] mx-auto">
     <h1 class="text-xl lg:text-3xl text-center mx-4 mt-4 mb-2 lg:mb-4 text-bgcolor">
         Selamat! Dimensi Kepemimpinan Anda Adalah :
@@ -66,8 +70,9 @@
     </h1>
     <button class="mt-2 mb-8 mx-auto block border-2 rounded-full border-secondary text-secondary hover:bg-secondary hover:border-transparent hover:text-primary py-3 px-10">Unduh Hasil Tes</button>
 </div>
-
 <!-- Empty Hero -->
+
+@else
 
 <div class="mt-8 lg:mt-8 w-[90%] border-2 border-transparent h-fit bg-primary rounded-[50px] text-bgcolor mx-auto">
     <h1 class="mt-8 mb-4 mx-4 text-lg md:text-2xl lg:text-2xl text-bgcolor text-center font-bold">
@@ -80,6 +85,8 @@
         <img src="/dist/kosong.png" alt="" class="mx-auto py-[4.5rem] w-[200px] lg:w-[300px]">
     </div>
 </div>
+
+@endif
 
 <!-- overlayKodeAkses -->
 
