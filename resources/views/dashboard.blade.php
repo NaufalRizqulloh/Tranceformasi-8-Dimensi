@@ -123,6 +123,10 @@
     <canvas id="progressBar1" style="width:100%;max-width:600px;height:100%;max-height:100px"></canvas>
 
     <progress id="bar" value="10" max="100" class="ml-2"></progress>
+
+    <input type="radio" name="radio1 2" id="">
+    <input type="radio" name="radio1 2" id="">
+    <input type="radio" name="2" id="">
   </x-app-layout>
 
   <div class="mt-8 md:mt-12 mx-auto w-[90%] md:w-[80%] lg:w-[60%] h-fit border-2 rounded-[15px] lg:rounded-[50px] bg-[#FFFFFF]">

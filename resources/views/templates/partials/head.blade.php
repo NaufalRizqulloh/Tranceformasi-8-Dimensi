@@ -40,5 +40,23 @@ h1{
     color: black;
 }
 
+.slider {
+      -webkit-appearance: none;
+      width: 500px;
+      outline: none;
+      display: flex;
+      border-radius: 9999px;
+}
+.slider::-webkit-slider-thumb{
+      -webkit-appearance: none;
+      appearance: none;
+      width: 30px;
+      height: 30px;
+      border-radius: 9999px;
+      background: #8404F4;
+      cursor: pointer;
+      transform: translateY(-18%);
+}
+
 
 </style>

@@ -26,6 +26,58 @@
                 {{ $quest['question'] }}
             </h1>
         </div>
+        <div class="flex w-fit mx-auto">
+            <i class="fa fa-frown-o" style="font-size:48px;color:red"></i>
+            <div class="container relative w-fit h-fit my-auto mx-8">
+                <input id="slider{{$index}}" name="range[{{ $index }}]" class="h-[10px] my-auto bg-gradient-to-r from-red-500 to-green-500 jarak slider" type="range" min="1" value="1" max="6" step="0.001" list="ticks">
+                <datalist id="ticks">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                    <option>6</option>
+                </datalist> 
+                a               
+                <output id="rangevalue{{$index}}" class="mt-2"></output>
+            </div>
+            <i class="fa fa-smile-o" style="font-size:48px;color:green"></i>
+        </div>
+    <div class="container flex w-fit mx-auto">
+      <h1 id="labelSlider{{$index}}1" class="mt-2 mb-6 w-fit block mx-5 text-center rounded-full border-2 border-slate-500 text-slate-500 py-3 px-5">
+        1
+      </h1>
+      <h1 id="labelSlider{{$index}}2" class="mt-2 mb-6 w-fit block mx-5 text-center rounded-full border-2 border-slate-500 text-slate-500 py-3 px-5">
+        2
+      </h1>
+      <h1 id="labelSlider{{$index}}3" class="mt-2 mb-6 w-fit block mx-5 text-center rounded-full border-2 border-slate-500 text-slate-500 py-3 px-5">
+        3
+      </h1>
+      <h1 id="labelSlider{{$index}}4" class="mt-2 mb-6 w-fit block mx-5 text-center rounded-full border-2 border-slate-500 text-slate-500 py-3 px-5">
+        4
+      </h1>
+      <h1 id="labelSlider{{$index}}5" class="mt-2 mb-6 w-fit block mx-5 text-center rounded-full border-2 border-slate-500 text-slate-500 py-3 px-5">
+        5
+      </h1>
+      <h1 id="labelSlider{{$index}}6" class="mt-2 mb-6 w-fit block mx-5 text-center rounded-full border-2 border-slate-500 text-slate-500 py-3 px-5">
+        6
+      </h1>
+    </div>
+
+    <div class="mb-12">
+
+    </div>
+
+  </div>
+    <!-- <div class="mt-8 md:mt-12 mx-auto w-[90%] md:w-[80%] lg:w-[60%] h-fit border-2 rounded-[15px] lg:rounded-[50px] bg-[#FFFFFF]">
+        <h1 class="mt-10 mb-6 w-max block mx-auto text-center rounded-full border-2 border-slate-500 py-3 px-5">
+            {{ $index }}
+        </h1>
+        <div class="ml-3 mr-3">
+            <h1 class="w-fit mx-auto block text-center text-lg sm:text-xl mb-2 md:mb-4">
+                {{ $quest['question'] }}
+            </h1>
+        </div>
         <div class="flex h-fit w-fit mx-auto">
             <div class="w-8 sm:w-12 mt-10 sm:mt-9">
                 <img src="dist/thumbdown.png" alt="Tidak Setuju">
@@ -54,7 +106,7 @@
             </label>
             <label for="{{ $index }}-6" class="mt-8 ml-2 sm:ml-6 select-none cursor-pointer rounded-full border-2 border-slate-400 h-10 w-10 sm:h-12 sm:w-12 transition-colors duration-200 ease-in-out peer-checked/{{ $index }}-6:bg-green-600 peer-checked/{{ $index }}-6:border-transparent mr-1 text-center text-xs sm:text-base pt-[10px] peer-checked/{{ $index }}-6:text-white">
                 6
-            </label>
+            </label> -->
             <!-- <input id="yearslider" class="" type="range" min="1" value="1" max="6" step="0.01" list="ticks">
             <datalist id="ticks">
                 <option>1</option>
@@ -65,7 +117,7 @@
                 <option>6</option>
             </datalist>
             <output id="rangevalue"></output> -->
-            <div class="w-8 sm:w-12 mt-7 sm:mt-4 ml-4 sm:ml-5">
+            <!-- <div class="w-8 sm:w-12 mt-7 sm:mt-4 ml-4 sm:ml-5">
                 <img src="dist/thumbup.png" alt="Setuju">
             </div>
         </div>
@@ -73,7 +125,7 @@
 
         </div>
 
-    </div>
+    </div> -->
     @endforeach
 
     <div>
