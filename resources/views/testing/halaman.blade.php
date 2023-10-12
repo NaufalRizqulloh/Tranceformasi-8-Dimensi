@@ -102,7 +102,7 @@
             var start = this.selectionStart;
             var end = this.selectionEnd;
             this.value = this.value.toUpperCase();
-            this.setSelectionRange(start, end);" pattern=".{6,6}" maxlength="6" >
+            this.setSelectionRange(start, end);" pattern=".{6,6}" maxlength="6" required>
         </label>
         <h1 class="ml-12 italic text-slate-500 dark:text-bgcolor text-sm mb-2">29 Juni - 4 September, 2023</h1>
         <h1 class="ml-12 italic text-black dark:text-bgcolor text-sm mb-12 hover:text-blue-400 cursor-pointer underline block w-fit">Tidak memilki kode akses?</h1>

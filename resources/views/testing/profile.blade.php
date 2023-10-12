@@ -22,14 +22,15 @@
 
 <!-- editProfile -->
 
-<form method="POST" action="" class="max-w-sm mx-auto">
+<form method="POST" action="{{ route('profile.update') }}" class="max-w-sm mx-auto">
+    @method('PATCH')
     @csrf
     <h1 class="ml-1 mb-1">Isi Data Dirimu</h1>
     <label for="name" id="">
         <input type="text" name="name" id="name" placeholder="Nama Lengkap" value="{{Auth::user()->name}}" class="text-black mb-2 rounded-md border-black ring-black mx-auto px-3 py-2 border shadow rounder w-full block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 invalid:text-pink-700 invalid:focus:ring-pink-700 invalid:focus:border-pink-700 focus:placeholder:text-transparent"/>
     </label>
     <label for="tanggallahir" id="">
-        <input type="date" name="{{Auth::user()->tanggal_lahir}}" id="tanggal_lahir" onfocus="this.showPicker()" class="text-black mb-2 rounded-md border-black ring-black mx-auto px-3 py-2 border shadow w-full block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 invalid:text-pink-700 invalid:focus:ring-pink-700 invalid:focus:border-pink-700 focus:placeholder:text-transparent cursor-pointer"/>
+        <input type="date" name="tanggal_lahir" id="tanggal_lahir" value="{{Auth::user()->tanggal_lahir}}" onfocus="this.showPicker()" class="text-black mb-2 rounded-md border-black ring-black mx-auto px-3 py-2 border shadow w-full block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 invalid:text-pink-700 invalid:focus:ring-pink-700 invalid:focus:border-pink-700 focus:placeholder:text-transparent cursor-pointer"/>
     </label>
     <label for="jeniskelamin" id="" class="flex mb-3">
         <input type="text" disabled name="jenis_kelamin" id="jenis_kelamin" value="{{Auth::user()->jenis_kelamin}}" class="text-slate-600 bg-slate-300 border-slate-600 mx-auto px-3 py-2 rounded-md w-full text-sm">
@@ -63,14 +64,14 @@
         </label>
     </div>
     <label for="password" id="">
-        <input type="text" name="password" placeholder="Password" value="Password (Tidak dapat dirubah)" class="mb-3 rounded-md border-black ring-black mx-auto px-3 py-2 border shadow rounder w-full block text-sm bg-slate-300" disabled/>
+        <input type="text" name="password" placeholder="Password tidak dapat dirubah" value="" class="mb-3 rounded-md border-black ring-black mx-auto px-3 py-2 border shadow rounder w-full block text-sm bg-slate-300" disabled/>
     </label>
     <div class="flex mt-12 mb-36 w-full">
         <button type="submit" class="w-fit border-solid rounded-lg bg-[#8404F4] hover:ring-indigo-800 hover:ring-2 transition-colors duration-200 ease-in-out px-3 py-1 mx-auto">
             <h1 class="text-[#F7F1F1] text-center font-semibold italic m-1">Ubah Profile</h1>
         </button>
-        
     </div>
+
 </form>
 
 <!-- End editProfile -->

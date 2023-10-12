@@ -13,8 +13,8 @@
 
       <div class="mt-0 mb-8"></div>
   </div>
-  {{-- action="{{ route('user.form.update', ['jawaban' => $jawaban->id, 'destination' => $nextDestination]) }}" --}}
-  <form id="form" method="POST">
+  <!-- {{-- action="{{ route('user.form.update', ['jawaban' => $jawaban->id, 'destination' => $nextDestination]) }}" --}} -->
+  <form id="form" method="POST" action="{{ route('user.form.update', ['jawaban' => $jawaban->id, 'destination' => $nextDestination]) }}">
       @method('PATCH')
       @csrf
       @foreach( $questions as $index => $quest)
@@ -28,19 +28,21 @@
           </div>
           <ul>
               @for ($i = 1; $i <= 4; $i++) <li class="flex h-auto">
-                  <input type="radio" id="{{ $index . '-1-' . $i }}" class="peer/{{ $index . '-1-' . $i }} single-checkbox{{ $index }}1 check{{ $index . $i }}" name="checkbox[p][{{ $index }}]" value="{{ $quest['value-p'][($i - 1)] }}" {{ (isset($answers['p'][$index]) && $answers['p'][$index] == $quest['value-p'][$i - 1]) ? 'checked' : ''}} />
-                  <label for="{{ $index . '-1-' . $i }}" class="mt-8 ml-4 md:ml-8 lg:ml-[4rem] select-none cursor-pointer rounded-full border-2 border-slate-500 dark:border-white h-10 w-10 transition-colors duration-200 ease-in-out peer-checked/{{ ($index) . '-1-' . $i }}:bg-green-500 peer-checked/{{ ($index) . '-1-' . $i }}:border-transparent dark:peer-checked/{{ ($index) . '-1-' . $i }}:border-white"></label>
+              <!-- peer/{{ $index . '-1-' . $i }}  -->
+              <!-- peer/{{ $index . '-2-' . $i }} -->
+                  <input type="radio" id="{{ $index . '-1-' . $i }}" class="single-checkbox{{ $index }}1 check{{ $index . $i }}" name="checkbox[p][{{ $index }}]" value="{{ $quest['value-p'][($i - 1)] }}" {{ (isset($answers['p'][$index]) && $answers['p'][$index] == $quest['value-p'][$i - 1]) ? 'checked' : ''}} />
+                  <label for="{{ $index . '-1-' . $i }}" id="{{ $index . '-1-' . $i . 'l' }}" class="mt-8 ml-4 md:ml-8 lg:ml-[4rem] select-none cursor-pointer rounded-full border-2 border-slate-500 dark:border-white h-10 w-10 transition-colors duration-200 ease-in-out peer-checked/{{ ($index) . '-1-' . $i }}:bg-green-500 peer-checked/{{ ($index) . '-1-' . $i }}:border-transparent dark:peer-checked/{{ ($index) . '-1-' . $i }}:border-white"></label>
                   <div class="mt-8 text-center block align mx-auto h-auto w-[60%] text-md border-2 border-slate-500 dark:border-white rounded-full">
                       <h1 class="mt-[6px] dark:text-bgcolor">{{ $quest['question'][($i - 1)] }}</h1>
                   </div>
-                  <input type="radio" id="{{ $index . '-2-' . $i }}" class="peer/{{ $index . '-2-' . $i }} single-checkbox{{ $index }}2 check{{ $index . $i }}" name="checkbox[t][{{ $index }}]" value="{{ $quest['value-t'][($i - 1)] }}" {{ (isset($answers['t'][$index]) && $answers['t'][$index] == $quest['value-t'][$i - 1]) ? 'checked' : ''}} />
-                  <label for="{{ $index . '-2-' . $i }}" class="mt-8 mr-4 md:mr-8 lg:mr-[4rem] select-none cursor-pointer rounded-full border-2 border-slate-500 dark:border-white h-10 w-10 transition-colors duration-200 ease-in-out peer-checked/{{ ($index) . '-2-' . $i }}:bg-green-500 peer-checked/{{ ($index) . '-2-' . $i }}:border-transparent dark:peer-checked/{{ ($index) . '-2-' . $i }}:border-white"></label>
+                  <input type="radio" id="{{ $index . '-2-' . $i }}" class="single-checkbox{{ $index }}2 check{{ $index . $i }}" name="checkbox[t][{{ $index }}]" value="{{ $quest['value-t'][($i - 1)] }}" {{ (isset($answers['t'][$index]) && $answers['t'][$index] == $quest['value-t'][$i - 1]) ? 'checked' : ''}} />
+                  <label for="{{ $index . '-2-' . $i }}" id="{{ $index . '-2-' . $i . 'l' }}" class="mt-8 mr-4 md:mr-8 lg:mr-[4rem] select-none cursor-pointer rounded-full border-2 border-slate-500 dark:border-white h-10 w-10 transition-colors duration-200 ease-in-out peer-checked/{{ ($index) . '-2-' . $i }}:bg-green-500 peer-checked/{{ ($index) . '-2-' . $i }}:border-transparent dark:peer-checked/{{ ($index) . '-2-' . $i }}:border-white"></label>
                   </li>
                   <br>
                   {{ $quest['value-p'][$i - 1] }}
                   <br>
                   {{ $quest['value-t'][$i - 1] }}
-                  @endfor
+              @endfor
                   <input type="radio" name="honda" id="vario" class="peer/vario">
                   <label for="vario" class="p-8 border-2 rounded-full peer-checked/vario:bg-green-600"></label>
                   <input type="radio" name="honda" id="supra">

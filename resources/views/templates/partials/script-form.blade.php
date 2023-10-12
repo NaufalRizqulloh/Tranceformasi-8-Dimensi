@@ -21,6 +21,8 @@
     for (let i = 1; i <= 24; i++) {
       for (let j = 1; j <= 4; j++) {
         $('.check' + i + j).on('change', function() {
+          const left = document.getElementById(i + "-1-" + j + "l");
+          left.classList.add('bg-green-500');
           $('.check' + i + j).not(this).prop('checked', false);
         });
       }

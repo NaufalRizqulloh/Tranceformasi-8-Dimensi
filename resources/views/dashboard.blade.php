@@ -127,6 +127,21 @@
     <input type="radio" name="radio1 2" id="">
     <input type="radio" name="radio1 2" id="">
     <input type="radio" name="2" id="">
+
+<div class="question">
+    <div class="left-group">
+        <input type="checkbox" name="left1" value="1">
+        <input type="checkbox" name="left2" value="2">
+        <input type="checkbox" name="left3" value="3">
+        <input type="checkbox" name="left4" value="4">
+    </div>
+    <div class="right-group">
+        <input type="checkbox" name="right1" value="1">
+        <input type="checkbox" name="right2" value="2">
+        <input type="checkbox" name="right3" value="3">
+        <input type="checkbox" name="right4" value="4">
+    </div>
+</div>
   </x-app-layout>
 
   <div class="mt-8 md:mt-12 mx-auto w-[90%] md:w-[80%] lg:w-[60%] h-fit border-2 rounded-[15px] lg:rounded-[50px] bg-[#FFFFFF]">
@@ -185,6 +200,7 @@
 
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script>
+    
     // barChart rentangUsia
     // var xValues = ["<15", "15-20", "21-30", "31-40", "41-50", ">51"];
     // var yValues = [12, 49, 90, 51, 14, 20];
