@@ -7,7 +7,11 @@
     }
   });
 
+  
   $(document).ready(function() {
+
+    // Top to Bottom
+
     for (let i = 1; i <= 24; i++) {
       for (let j = 1; j <= 2; j++) {
         $('.single-checkbox' + i + j).on('change', function() {
@@ -15,19 +19,29 @@
         });
       }
     }
-  });
+    
+    // Left and Right
 
-  $(document).ready(function() {
     for (let i = 1; i <= 24; i++) {
       for (let j = 1; j <= 4; j++) {
         $('.check' + i + j).on('change', function() {
-          const left = document.getElementById(i + "-1-" + j + "l");
-          left.classList.add('bg-green-500');
           $('.check' + i + j).not(this).prop('checked', false);
+          if ($('.check' + i + j).prop('checked') && $('.single-checkbox' + i + '1').prop('checked')) {
+            const left = document.getElementById(i + '-1-' + j + 'l');
+            left.classList.add('bg-green-500', 'border-transparent') ;
+          }
+          if ($('.check' + i + j).prop('checked') && $('.single-checkbox' + i + '2').prop('checked')) {
+            const right = document.getElementById(i + '-2-' + j + 'r');
+            right.classList.add('bg-green-500');
+          }
         });
       }
     }
+
   });
+
+
+
 
   for (let i = 1; i<=20; i++){
     var slider = document.getElementById("slider" + i);
