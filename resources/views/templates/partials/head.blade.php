@@ -2,7 +2,27 @@
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0/dist/js/select2.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<!-- <script src="https://cdn.tailwindcss.com"></script> -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+    tailwind.config = {
+        theme: {
+            extend: {
+                fontFamily:{
+                    montserrat: ['Montserrat', 'sans'],
+                },
+                colors: {
+                    primary: '#8404F4',
+                    secondary: '#FCF304',
+                    bgcolor: '#F7F1F1',
+                    // ...
+                  },
+                  spacing: {
+                    '25' : '25rem',
+                  },
+            },
+        },
+    }
+</script>
 <script>
     $(document).ready(function() {
         $('#domisili').select2();

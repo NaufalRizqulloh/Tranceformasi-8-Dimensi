@@ -1,9 +1,9 @@
 <!-- navBar -->
 
-<header class="w-full grid grid-cols-2 md:grid-cols-3 bg-primary mb-10 drop-shadow-2xl absolute top-0 left-0 right-0">
+<header class="w-full grid grid-cols-4 md:grid-cols-3 bg-primary mb-10 drop-shadow-2xl absolute top-0 left-0 right-0">
     <h1 class="my-4 mx-auto text-secondary font-bold max-md:hidden">Tranceformasi</h1>
-    <h1 class="w-full md:w-auto mx-auto my-4 text-bgcolor text-center">Delapan Dimensi Kepemimpinan</h1>
-    <img src="/dist/profile.png" alt="" class="w-8 h-8 ml-72 md:mx-auto my-auto cursor-pointer" onclick="onoverlay()">
+    <h1 class="w-full md:w-auto mx-auto my-4 text-bgcolor text-center col-span-3 md:col-span-1">Delapan Dimensi Kepemimpinan</h1>
+    <img src="/dist/profile.png" alt="" class="w-8 h-8 ml-12 md:ml-72 md:mx-auto my-auto cursor-pointer" onclick="onoverlay()">
 </header>
 
 <!-- overlay -->

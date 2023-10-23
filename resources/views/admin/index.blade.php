@@ -70,8 +70,11 @@
 </div>
 
 <div class="w-fit mx-auto flex space-x-12">
-    <canvas id="rentangUsiaChart" class="border-4 border-primary rounded-3xl p-4" style="width:100%;max-width:500px;height:100%;max-height:300px"></canvas>
     <canvas id="PendidikanChart" class="border-4 border-primary rounded-3xl p-4" style="width:100%;max-width:500px;height:100%;max-height:300px"></canvas>
+</div>
+
+<div class="w-[300px] h-[500px]">
+    <canvas id="rentangUsiaChart" class="border-4 border-primary rounded-3xl p-4"></canvas>
 </div>
 
 <br>

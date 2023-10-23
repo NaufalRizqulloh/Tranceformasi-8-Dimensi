@@ -6,11 +6,11 @@
 
 <div class="mt-20 mx-auto w-[90%] ring-2 ring-white dark:ring-0 h-fit rounded-xl lg:rounded-[50px] lg:rounded-tr-[250px] bg-primary lg:bg-[#FFEEFE] lg:dark:bg-slate-700 lg:flex">
     <div class="lg:w-1/2 h-max lg:bg-primary rounded-xl lg:rounded-tl-[50px] lg:rounded-bl-[50px]">
-        <h1 class="font-bold text-center lg:text-left text-secondary lg:ml-12 pt-8 text-4xl mx-4">DELAPAN DIMENSI <br> KEPEMIMPINAN</h1>
-        <h1 class="mx-4 lg:mx-12 text-center lg:text-left text-1xl mt-4 text-bgcolor">
-            Dalam asessment ini, Anda akan mengeksplorasi tiga area utama, yaitu
+        <h1 class="font-bold text-center lg:text-left text-secondary lg:ml-12 pt-8 text-3xl md:text-4xl mx-4">DELAPAN DIMENSI <br> KEPEMIMPINAN</h1>
+        <h1 class="mx-4 lg:mx-12 text-center lg:text-left text-sm mt-4 text-bgcolor">
+            Dalam asessment ini, Anda akan mengeksplorasi tiga area utama, yaitu :
         </h1>
-        <h1 class="mx-4 lg:mx-12 text-1xl mt-4 text-bgcolor">
+        <h1 class="mx-4 lg:mx-12 text-sm mt-4 text-bgcolor">
             1. Dimensi kepemimpinan dominan<br>
             2. Pendorong psikologis, motiasi, dan "titik buta" khas gaya kepemimpinan <br>
             3. Apa yang paling penting dalam pengembangan kepemimpinan Anda saat ini dan yang akan datang
@@ -30,21 +30,26 @@
 <!-- Start Hero -->
 
 <div class="mt-8 lg:mt-8 w-[90%] border-2 border-transparent h-fit bg-primary rounded-xl lg:rounded-[50px] mx-auto">
-    <h1 class="text-2xl lg:text-4xl text-center lg:text-left font-semibold mx-4 lg:ml-12 mt-8 lg:mt-12 text-bgcolor">
-        Luangkan waktu 15 menit saja !! <br>
+    <h1 class="text-xl lg:text-4xl text-center lg:text-left font-semibold mx-4 lg:ml-12 mt-8 lg:mt-12 text-bgcolor">
+        Luangkan waktu 15 menit saja! <br>
         Yuk langsung klik tombol mulai di bawah ini!
     </h1>
-    <h1 class="text-base lg:text-lg text-center lg:text-left mx-4 lg:ml-12 mt-2 text-bgcolor italic font-light">
+    <h1 class="text-xs lg:text-lg text-center lg:text-left mx-4 lg:ml-12 mt-2 text-bgcolor italic font-light">
         *Gunakan kode akses yang sudah anda terima dari admin
     </h1>
     <div class="group w-fit mx-auto">
-        <img src="dist/play.png" alt="" class="w-[60px] mx-auto mt-8 lg:mt-12 transition ease-in-out delay-150 duration-300 group-hover:hidden">
-        <button class="hidden transition ease-in-out delay-150 duration-300 group-hover:block mx-auto text-3xl text-center rounded-full font-bold mt-8 lg:mt-12 text-primary bg-secondary py-3 px-10" onclick="kodeAkses()">
+        <div class="hidden md:block mx-auto w-fit h-fit">
+            <img src="dist/play.png" alt="" class="w-[60px] mx-auto mt-8 lg:mt-12 transition ease-in-out delay-150 duration-300 group-hover:hidden">
+            <button class="hidden transition ease-in-out delay-150 duration-300 group-hover:block mx-auto text-3xl text-center rounded-full font-bold mt-8 lg:mt-12 text-primary bg-secondary py-3 px-10" onclick="kodeAkses()">
             <span onclick="kodeAkses()">Mulai</span>
+            </button>
+        </div>
+        <button class="md:hidden mx-auto text-3xl text-center text-montserrat rounded-full font-bold mt-8 text-primary bg-secondary py-3 px-10" onclick="kodeAkses()">
+            <span>Mulai</span>
         </button>
     </div>
     <h1 class="text-md font-light italic text-bgcolor text-center mt-8 lg:mt-12 mb-8">
-        Sudah mengerjakan? Lihat hasilnya <span class="underline cursor-pointer hover:text-sky-500">disini!</span>
+        Sudah mengerjakan? Lihat hasilnya <span class="underline cursor-pointer hover:text-sky-500 max-md:text-sky-400">disini!</span>
     </h1>
 </div>
 
