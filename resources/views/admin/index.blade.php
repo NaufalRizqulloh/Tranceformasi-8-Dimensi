@@ -4,8 +4,8 @@
 
 <div class="mt-20"></div>
 
-<div class="flex relative w-full mb-12">
-    <h1 class="ml-12 text-2xl font-montserrat">Selamat datang, Admin (nama) <br><span class="text-base font-light">Berikut rekaman event yang sedang berlangsung</span></h1>
+<div class="flex relative items-center w-full mb-12">
+    <h1 class="ml-12 text-2xl dark:text-bgcolor font-montserrat">Selamat datang, Admin {{ Auth::user()->name }} <br><span class="text-base font-light">Berikut rekaman event yang sedang berlangsung</span></h1>
     <div class="absolute right-0 flex mr-12">
         <button id="buatEventbtn" class="bg-primary rounded-3xl w-40 h-24 mr-12">
             <h1 class="text-secondary font-bold font-montserrat">Buat Event</h1>
@@ -26,8 +26,8 @@
     </div>
 </div>
 
-<h1 class="ml-12 font-montserrat">Event yang sedang berlangsung</h1>
-<hr class="mx-12 mb-5 border-black">
+<h1 class="ml-12 dark:text-bgcolor font-montserrat">Event yang sedang berlangsung</h1>
+<hr class="mx-12 mb-5 border-black dark:border-bgcolor">
 
 @foreach ($events as $e)
     <div class="bg-primary w-[93%] h-14 ml-12 mb-2 rounded-full relative flex">
@@ -51,18 +51,18 @@
 @endforeach
 <div class="mb-10"></div>
 
-<h1 class="ml-12 font-montserrat">Event yang sudah berlalu</h1>
-<hr class="mx-12 mb-5 border-black">
+<h1 class="ml-12 font-montserrat dark:text-bgcolor">Event yang sudah berlalu</h1>
+<hr class="mx-12 mb-5 border-black dark:border-bgcolor">
 <div class="mb-12"></div>
 
 <div class="w-fit mx-auto flex mb-12">
-    <div class="bg-black w-4 h-4 mx-2 rounded-full"></div>
-    <div class="bg-black w-4 h-4 mx-2 rounded-full"></div>
-    <div class="bg-black w-4 h-4 mx-2 rounded-full"></div>
+    <div class="bg-black dark:bg-bgcolor w-4 h-4 mx-2 rounded-full"></div>
+    <div class="bg-black dark:bg-bgcolor w-4 h-4 mx-2 rounded-full"></div>
+    <div class="bg-black dark:bg-bgcolor w-4 h-4 mx-2 rounded-full"></div>
 </div>
 
-<h1 class="ml-12 font-montserrat">Data Keseluruhan</h1>
-<hr class="mx-12 mb-5 border-black">
+<h1 class="ml-12 font-montserrat dark:text-bgcolor">Data Keseluruhan</h1>
+<hr class="mx-12 mb-5 border-black dark:border-bgcolor">
 
 <div class="w-fit h-fit mx-auto mb-12 drop-shadow-2xl border-4 border-primary rounded-3xl">
     <h1 class="text-2xl font-bold text-center px-56 mt-4 mb-6">Jenis Kelamin</h1>

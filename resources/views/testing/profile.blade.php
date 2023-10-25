@@ -7,16 +7,16 @@
 <!-- topSection -->
 
 <img src="/dist/profileimg.png" alt="profile picture" class="w-fit mx-auto mb-2">
-<h1 class="font-black text-5xl text-center text-black">{{Auth::user()->name}}</h1>
-<h1 class="text-center text-black mb-5">{{Auth::user()->email}}</h1>
+<h1 class="font-black text-5xl text-center text-black dark:text-bgcolor">{{Auth::user()->name}}</h1>
+<h1 class="text-center text-black dark:text-bgcolor mb-5">{{Auth::user()->email}}</h1>
 
 <!-- End topSection -->
 
 <!-- labelEdit -->
 
-<h1 class="text-xl text-center text-black">Edit Profil</h1>
-<h1 class="text-center text-black">Profil hanya dapat diubah 48 jam sekali </h1>
-<h1 class="text-center text-black italic text-xs mb-8">*Beberapa informasi tidak dapat Anda ubah, silahkan hubungi admin untuk informasi lebih lanjut</h1>
+<h1 class="text-xl text-center text-black dark:text-bgcolor">Edit Profil</h1>
+<h1 class="text-center text-black dark:text-bgcolor">Profil hanya dapat diubah 48 jam sekali </h1>
+<h1 class="text-center text-black dark:text-bgcolor italic text-xs mb-8">*Beberapa informasi tidak dapat Anda ubah, silahkan hubungi admin untuk informasi lebih lanjut</h1>
 
 <!-- End labelEdit -->
 
@@ -25,7 +25,7 @@
 <form method="POST" action="{{ route('profile.update') }}" class="max-w-sm mx-auto">
     @method('PATCH')
     @csrf
-    <h1 class="ml-1 mb-1">Isi Data Dirimu</h1>
+    <h1 class="ml-1 mb-1 text-black dark:text-bgcolor">Isi Data Dirimu</h1>
     <label for="name" id="">
         <input type="text" name="name" id="name" placeholder="Nama Lengkap" value="{{Auth::user()->name}}" class="text-black mb-2 rounded-md border-black ring-black mx-auto px-3 py-2 border shadow rounder w-full block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 invalid:text-pink-700 invalid:focus:ring-pink-700 invalid:focus:border-pink-700 focus:placeholder:text-transparent"/>
     </label>

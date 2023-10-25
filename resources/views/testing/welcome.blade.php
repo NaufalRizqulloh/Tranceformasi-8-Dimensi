@@ -6,6 +6,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
+            darkMode: 'class',
             theme: {
                 extend: {
                     fontFamily:{
@@ -51,14 +52,14 @@
                         />
                     </label>
                     @error('email')
-                    <h1 class="text-red-600 max-md:text-center mt-2 md:-mt-10 mb-4 md:mb-4">Email atau Password salah</h1>
+                    <h1 class="text-red-600 max-md:text-center mt-2 md:-mt-10 mb-2 md:mb-4">Email atau Password salah</h1>
                     @enderror
                     <a href="" class="text-bgcolor text-sm md:text-base dark:md:text-slate-300 md:text-black w-max block mx-auto underline font-montserrat hover:text-blue-400 dark:hover:text-blue-400">
                         Lupa Kata Sandi?
                     </a> 
                     <br>
                     <div class="flex space-x-8 md:space-x-20 justify-center">
-                        <button type="submit" class="w-24 md:w-32 border-solid rounded-2xl md:rounded-lg border-2 bg-bgcolor md:bg-transparent dark:bg-bgcolor md:border-primary">
+                        <button type="submit" class="w-24 md:w-32 border-solid rounded-2xl md:rounded-lg border-2 bg-transparent md:bg-transparent border-bgcolor md:border-primary">
                             <h1 class="text-bgcolor md:text-primary text-md md:text-base text-center font-montserrat font-semibold italic my-2 md:m-1">Masuk</h1>
                         </button>
                         <a href="{{ route('tfregister.create') }}" class="w-24 md:w-32 border-solid rounded-2xl md:rounded-lg border-2 md:bg-primary">

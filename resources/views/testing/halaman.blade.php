@@ -4,7 +4,7 @@
 
 <!-- Main Hero -->
 
-<div class="mt-20 mx-auto w-[90%] ring-2 ring-white dark:ring-0 h-fit rounded-xl lg:rounded-[50px] lg:rounded-tr-[250px] bg-primary lg:bg-[#FFEEFE] lg:dark:bg-slate-700 lg:flex">
+<div class="mt-20 mx-auto w-[90%] ring-2 ring-white dark:ring-0 h-fit rounded-[50px] lg:rounded-[50px] lg:rounded-tr-[250px] bg-primary lg:bg-[#FFEEFE] lg:dark:bg-slate-700 lg:flex">
     <div class="lg:w-1/2 h-max lg:bg-primary rounded-xl lg:rounded-tl-[50px] lg:rounded-bl-[50px]">
         <h1 class="font-bold text-center lg:text-left text-secondary lg:ml-12 pt-8 text-3xl md:text-4xl mx-4">DELAPAN DIMENSI <br> KEPEMIMPINAN</h1>
         <h1 class="mx-4 lg:mx-12 text-center lg:text-left text-sm mt-4 text-bgcolor">
@@ -29,7 +29,7 @@
 
 <!-- Start Hero -->
 
-<div class="mt-8 lg:mt-8 w-[90%] border-2 border-transparent h-fit bg-primary rounded-xl lg:rounded-[50px] mx-auto">
+<div class="mt-8 lg:mt-8 w-[90%] border-2 border-transparent h-fit bg-primary rounded-[50px] lg:rounded-[50px] mx-auto">
     <h1 class="text-xl lg:text-4xl text-center lg:text-left font-semibold mx-4 lg:ml-12 mt-8 lg:mt-12 text-bgcolor">
         Luangkan waktu 15 menit saja! <br>
         Yuk langsung klik tombol mulai di bawah ini!
@@ -55,11 +55,9 @@
 
 <!-- Dimensi Anda Hero -->
 
-<!-- {{ $user->jawabans()->latest()->first()->progress }} -->
-
 @if($user->jawabans()->latest()->first()->progress == 'selesai')
 
-<div class="mt-8 lg:mt-8 w-[90%] border-2 border-transparent h-fit bg-primary rounded-xl lg:rounded-[50px] mx-auto">
+<div class="mt-8 lg:mt-8 w-[90%] border-2 border-transparent h-fit bg-primary rounded-[50px] lg:rounded-[50px] mx-auto">
     <h1 class="text-xl lg:text-3xl text-center mx-4 mt-4 mb-2 lg:mb-4 text-bgcolor">
         Selamat! Dimensi Kepemimpinan Anda Adalah :
     </h1>
@@ -95,15 +93,15 @@
 
 <!-- overlayKodeAkses -->
 
-<div id="kodeAkses" class="top-1/4 left-1/4 w-1/2 h-fit rounded-3xl bg-white dark:bg-slate-800 dark:border-2 dark:border-white z-30 flex">
-    <div class="w-full flex bg-primary mb-5 drop-shadow-2xl z-40 top-0 rounded-t-3xl items-center">
+<div id="kodeAkses" class="top-1/4 left-1 md:left-1/4 w-[98vw] md:w-1/2 h-fit rounded-xl md:rounded-3xl bg-white dark:bg-slate-800 dark:border-2 dark:border-white z-30 flex">
+    <div class="w-full flex bg-primary mb-5 drop-shadow-2xl z-40 top-0 rounded-t-xl md:rounded-t-3xl items-center">
         <h1 class="py-3 pl-5 text-secondary text-xl">Delapan Dimensi Kepemimpinan</h1>
     </div>
     <h1 class="text-black dark:text-bgcolor text-2xl ml-12 mb-3 z-40 font-black">Masukkan Kode Akses</h1>
     <form action="{{ route('user.form.store') }}" method="POST">
         @csrf
         <label for="">
-            <input name="kode-akses" type="text" placeholder="Massukan Kode Akses" class="mb-2 rounded-sm border-slate-400 ring-slate-400 ml-12 w-1/2 text-black focus:placeholder:text-transparent" onkeyup="
+            <input name="kode-akses" type="text" placeholder="Massukan Kode Akses (6 Huruf/Angka)" class="mb-2 pl-2 rounded-sm border-2 border-slate-400 ring-slate-400 ml-12 w-3/4 text-black focus:placeholder:text-transparent" onkeyup="
             var start = this.selectionStart;
             var end = this.selectionEnd;
             this.value = this.value.toUpperCase();
