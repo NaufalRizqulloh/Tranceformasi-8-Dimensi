@@ -32,11 +32,11 @@
 
     <title>Tranceformasi - Beranda</title>
  
-<body class="bg-[#F7F1F1]">
-    <div class="w-full flex bg-[#8404F4] mb-10 drop-shadow-2xl fixed top-0 left-0 right-0">
-        <h1 class="my-4 ml-12 text-[#FCF304] font-bold">UNNAMED</h1>
-        <h1 class=" mx-auto my-auto text-[#F7F1F1]">Delapan dimensi kepemimpinan</h1>  
-    <h1 class="my-auto mr-12 text-[#F7F1F1]">Profil</h1> 
+<body class="bg-bgcolor">
+    <div class="w-full flex bg-primary mb-10 drop-shadow-2xl fixed top-0 left-0 right-0">
+        <h1 class="my-4 ml-12 text-secondary font-bold">UNNAMED</h1>
+        <h1 class=" mx-auto my-auto text-bgcolor">Delapan dimensi kepemimpinan</h1>  
+    <h1 class="my-auto mr-12 text-bgcolor">Profil</h1> 
     </div>
     
     <div class="mb-24"></div>

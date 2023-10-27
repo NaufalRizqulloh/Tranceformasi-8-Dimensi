@@ -21,6 +21,7 @@ return new class extends Migration
             $table->json('type1_formatted_value')->nullable();
             $table->json('type2_formatted_value')->nullable();
             $table->string('progress');
+            $table->string('inconsistent_dimension')->nullable();
             $table->timestamps();
         });
     }

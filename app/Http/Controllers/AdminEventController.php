@@ -333,6 +333,5 @@ class AdminEventController extends Controller
         $event->save();
         
         return response()->json(['on-hold' => $isHold]);
-
     }
 }

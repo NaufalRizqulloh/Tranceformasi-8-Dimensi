@@ -19,7 +19,10 @@ class Event extends Model
         'tanggal_selesai',
         'deskripsi',
         'is_expired',
-        'is_answers_hold'
+        'is_answers_hold',
+        'collab_logo_base64',
+        'collab_url',
+        'collab_company_name',
     ];
 
     function scopeGetEvent($query, $accessCode)

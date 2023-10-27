@@ -67,7 +67,7 @@
         <input type="text" name="password" placeholder="Password tidak dapat dirubah" value="" class="mb-3 rounded-md border-black ring-black mx-auto px-3 py-2 border shadow rounder w-full block text-sm bg-slate-300" disabled/>
     </label>
     <div class="flex mt-12 mb-36 w-full">
-        <button type="submit" class="w-fit border-solid rounded-lg bg-[#8404F4] hover:ring-indigo-800 hover:ring-2 transition-colors duration-200 ease-in-out px-3 py-1 mx-auto">
+        <button type="submit" class="w-fit border-solid rounded-lg bg-primary hover:ring-indigo-800 hover:ring-2 transition-colors duration-200 ease-in-out px-3 py-1 mx-auto">
             <h1 class="text-[#F7F1F1] text-center font-semibold italic m-1">Ubah Profile</h1>
         </button>
     </div>

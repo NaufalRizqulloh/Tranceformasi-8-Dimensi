@@ -35,7 +35,7 @@
 
 <h1 class="text-black text-3xl font-bold text-center">Progres Keseluruhan</h1>
 <canvas id="progressBar" class="mx-auto mb-6" style="width:100%;max-width:600px;height:100%;max-height:100px"></canvas>
-<div class="w-fit h-fit mx-auto mb-12 px-12 pt-6 border-4 border-primary rounded-3xl">
+<div class="w-fit h-fit mx-auto mb-12 px-24 pt-6 border-4 border-primary rounded-3xl">
   <h1 class="w-[460px] text-black text-2xl text-center font-bold -mb-6"> Jenis Kelamin</h1>
   <canvas id="piesChart" class="mx-auto" style="width:100%;max-width:600px;height:100%;max-height:500px"></canvas>
 </div>

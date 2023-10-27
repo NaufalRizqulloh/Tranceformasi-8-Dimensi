@@ -13,8 +13,8 @@
                         montserrat: ['Montserrat', 'sans'],
                     },
                     colors: {
-                        primary: '#8404F4',
-                        secondary: '#FCF304',
+                        primary: '#6001D1',
+                        secondary: '#F7F1F1',
                         bgcolor: '#F7F1F1',
                         // ...
                       },

@@ -14,7 +14,9 @@ class Jawaban extends Model
         'dimensi_kepemimpinan',
         'type1_formatted_value',
         'type2_formatted_value',
-        'progress'
+        'progress',
+        'pdf_filepath',
+        'pdf_original_name',
     ];
 
     use HasFactory;

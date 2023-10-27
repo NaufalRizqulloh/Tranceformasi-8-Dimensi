@@ -11,7 +11,12 @@ use Exception;
 use Helpers\Validation\Validation;
 use Helpers\Data\DiscHelper;
 use Helpers\Data\SectionTwoHelper;
+use Helpers\Data\StringHelper;
 use Helpers\Validation\JumperValidation;
+use Dompdf\Dompdf;
+use Dompdf\Options;
+use Illuminate\Support\Facades\View;
+use Carbon\Carbon;
 
 class FormController extends Controller
 {
@@ -265,7 +270,7 @@ class FormController extends Controller
         $this->saveAnswer($jawaban->id, $checkboxAnswers, $rangeAnswers);
 
         if (JumperValidation::isJumpingSubmit($jawaban->id)) {
-            dd('no');
+            dd('tes no');
         }
 
         $answer = session('answers-' . $jawaban->id);
@@ -278,11 +283,65 @@ class FormController extends Controller
         $changeValue = DiscHelper::getChangeValue($mostValue,  $leastValue);
 
         $answerSection2 = SectionTwoHelper::normalizeData($answerSection2);
-        
+                    
         $graph2Value = DiscHelper::calculateGraphValue($leastValue, config('graph-key.graph2'));
         $graph3Value = DiscHelper::calculateGraphValue($changeValue, config('graph-key.graph3'));
 
-        $dimension = DiscHelper::decideDimension($graph2Value, $graph3Value);
+        $dimension = null;
+
+        $inconsistentDimension = DiscHelper::checkInconsistent($graph2Value, $graph3Value);
+        if(isset($inconsistentDimension)){
+            $dimension = $inconsistentDimension[0];     
+        } else {
+            $dimension = DiscHelper::decideDimension($graph2Value, $graph3Value);
+        }
+        
+        $user = $jawaban->user;
+
+        $name = $user->name;
+        $testDate = StringHelper::replaceDate(date('j F Y'));
+        $nickname = StringHelper::pickFirstWord($name);
+        $birthday = StringHelper::replaceDate(Carbon::parse($user->tanggal_lahir)->format('l, j F Y'));
+        $education = isset($user->jurusan) ? $user->jurusan : $user->pendidikan_terakhir;
+        $email = $user->email;
+        $notelp = $user->notelp;
+        $testPurpose = $jawaban->event->tujuan_tes;
+        $gender = $user->jenis_kelamin;
+        $collabLogo = $jawaban->event->collab_logo_base64;
+        $collabUrl = $jawaban->event->collab_url;
+        $collabCompanyName = $jawaban->event->collab_company_name;
+
+        $pdfFileName = 'Laporan Dimensi - ' .  $name . ' - ' . date('j F Y');
+
+        $options = new Options();
+        $options->set('chroot', storage_path());
+        
+        $html = View::make('template-pdf/8dimensi-master', [
+            'name' => $name,
+            'date' => $testDate,
+            'nickname' => $nickname,
+            'birthday' => $birthday,
+            'education' => $education,
+            'email' => $email,
+            'phoneNumber' => $notelp,
+            'testPurpose' => $testPurpose,
+            'dimension' => $dimension,
+            'title' => 'Preview Laporan PDF',
+            'gender' => $gender,
+            'inconsistentDimension' => $inconsistentDimension[1],
+            'score' => $answerSection2,
+
+            'collabLogo' => $collabLogo,
+            'collabCompany' => $collabUrl,
+            'collabWatermark' => $collabCompanyName
+        ])->render();
+
+        $dompdf = new Dompdf();
+        $dompdf->loadHtml($html);
+
+        $dompdf->setPaper('A4', 'potrait');
+
+        $dompdf->render();
         
         $jawaban->dimensi_kepemimpinan = $dimension;
 

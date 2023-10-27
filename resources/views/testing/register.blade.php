@@ -148,7 +148,7 @@
              @enderror
             </label>
          <div class="flex mt-12 mb-36 w-full space-x-28">
-             <button type="submit" class="w-32 border-solid rounded-lg border-4 bg-[#8404F4] hover:border-indigo-800 hover:border-4 transition-colors duration-200 ease-in-out">
+             <button type="submit" class="w-32 border-solid rounded-lg border-4 bg-primary hover:border-indigo-800 hover:border-4 transition-colors duration-200 ease-in-out">
                  <h1 class="text-[#F7F1F1] text-center font-semibold italic m-1">Daftar</h1>
              </button>
              <a href="" class="underline justify-self-end m-1 hover:text-sky-500">

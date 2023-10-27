@@ -24,6 +24,9 @@ return new class extends Migration
             $table->string('tujuan_tes');
             $table->boolean('is_expired');
             $table->boolean('is_answers_hold');
+            $table->string('collab_logo_base64')->nullable();
+            $table->string('collab_url')->nullable();
+            $table->string('collab_company_name')->nullable();
             $table->timestamps();
         });
     }

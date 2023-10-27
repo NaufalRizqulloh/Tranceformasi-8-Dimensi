@@ -128,11 +128,11 @@ class DiscHelper
         return $finalBiggestDisc;
     }
 
-    public static function decideDimension(string $graph2Value, string $graph3Value) : string
+    public static function decideDimension(string $graph2Value, string $graph3Value): string
     {
         $keyword = $graph2Value . $graph3Value;
         $dimension = null;
-        dd($keyword);
+
         if ($keyword == 'di' || $keyword == 'id') {
             $dimension = "Pelopor";
         } else if ($keyword == 'ii') {
@@ -150,6 +150,24 @@ class DiscHelper
         } else if ($keyword == 'dd') {
             $dimension = "Berwibawa";
         }
+
+        return $dimension;
+    }
+
+    public static function checkInconsistent(string $graph2Value, string $graph3Value)
+    {
+        $keyword = $graph2Value . $graph3Value;
+        $dimension = [null, null];
+
+        if ($keyword == 'ds') {
+            $dimension = ["Pelopor", "ds"];
+        } else if ($keyword == 'sd') {
+            $dimension = ["Rendah Hati", 'sd'];
+        } else if ($keyword == 'ic') {
+            $dimension = ["Penggerak", 'ic'];
+        } else if ($keyword == 'ci') {
+            $dimension = ["Pemikir", 'ci'];
+        } 
 
         return $dimension;
     }

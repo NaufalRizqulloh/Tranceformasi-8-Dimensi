@@ -10,11 +10,12 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use App\Models\Jawaban;
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ChartController;
 use App\Http\Controllers\JawabanController;
-use Dompdf\Dompdf;
-use Illuminate\Support\Facades\File;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Lang;
 
 use Illuminate\Http\Request;
 
@@ -37,20 +38,13 @@ Route::get('/ds', function () {
     dd('anggap dashboard');
 });
 
-Route::get('/t', function () {
-    $html = File::get(resource_path('views/testing-pdf/8d.blade.php'));
+Route::get('/t/{user}', function (User $user) {
+    $education = isset($user->jurusan) ? $user->jurusan : $user->pendidikan_terakhir;
+    dd($education);
+});
 
-    $dompdf = new Dompdf();
-    $dompdf->loadHtml($html);
-
-    $dompdf->setPaper('A4', 'potrait');
-
-    $dompdf->render();
-
-    $pdfFileName = 'aaa-' . date('Y') . '.pdf';
-
-    $dompdf->stream($pdfFileName, array('Attachment' => false));
-    exit(0);
+Route::get('/tesss', function () {
+    
 });
 
 Route::get('/dn', function () {
