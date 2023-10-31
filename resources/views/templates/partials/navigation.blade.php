@@ -15,7 +15,7 @@
         <h1 class="ml-4 pl-4 text-white my-4 border-l-2">Nama</h1>
     </div> 
     <div class="block">
-        <a href="/home">  
+        <a href="/home">
             <input type="submit" class="hidden"/>  
             <button class="mt-[3.3rem] py-4 flex mx-auto w-full text-lg border-b-2 border-slate-500">
                 <div class="w-auto mx-auto flex">
@@ -49,5 +49,15 @@
                 <h1 class="w-auto ml-5 text-slate-800 dark:text-slate-300">Dark Mode</h1>
             </label> 
         </div>
+        @if(auth()->user()->isAdmin($email) == 'true')
+            <div class="flex w-full select-none">
+                <input type="checkbox" name="" id="toggle" class="peer hidden"/>
+                <label for="toggle" class="py-4 flex mx-auto w-full text-lg border-b-2 border-slate-500 justify-center items-center cursor-pointer">
+                    <img src="/dist/moon-dark.png" alt="" class="w-9 h-auto">
+                    <h1 class="w-auto ml-5 text-slate-800 dark:text-slate-300">Dark Mode</h1>
+                </label> 
+            </div>
+        @endif
+        {{ auth()->user()->isAdmin($email) }}
     </div>
 </div>

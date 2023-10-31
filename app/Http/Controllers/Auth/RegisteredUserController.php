@@ -7,6 +7,7 @@ use App\Models\Info;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use GuzzleHttp\Client;
+use Helpers\Data\StringHelper;
 use Illuminate\Support\Carbon;
 
 use Illuminate\Auth\Events\Registered;
@@ -86,7 +87,7 @@ class RegisteredUserController extends Controller
             'email' => ['required', 'string', 'email', 'max:255', 'unique:' . User::class],
             'notelp' => 'required',
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
-            'pendidikan_terakhir' => ['required', 'string'],
+            'pendidikan_terakhir' => ['required', 'string', 'not_in:0'],
             'domisili' => ['required', 'string', 'not_in:0'],
             'status' => ['required', 'in:1,2'],
 
@@ -107,6 +108,7 @@ class RegisteredUserController extends Controller
         // $tanggalLahir = DateTime::createFromFormat('Y-m-d', $request->tanggal_lahir);
         $tanggalLahir = Carbon::parse($request->tanggal_lahir)->setTimezone('Asia/Jakarta');
         $usia = $tanggalLahir->age;
+        $name = StringHelper::cleanName($request->name);
 
         // dd('berhasil');
         // dd(
@@ -127,7 +129,7 @@ class RegisteredUserController extends Controller
         // );
 
         $user = User::create([
-            'name' => $request->name,
+            'name' => $name,
             'tanggal_lahir' => $request->tanggal_lahir,
             'jenis_kelamin' => $request->jenis_kelamin,
             'email' => $request->email,

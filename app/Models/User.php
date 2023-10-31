@@ -55,12 +55,23 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    function jawabans(){
+    function jawabans()
+    {
         return $this->hasMany(Jawaban::class);
     }
 
-    function userReaplicationRequest(){
+    function userReaplicationRequest()
+    {
         return $this->hasOne(UserReapplicationRequest::class);
     }
 
+    function isAdmin($email)
+    {
+        foreach(EmailAdmin::all() as $emailAdmin){
+            if ($email == $emailAdmin){
+                return 'false';
+            }
+        }
+        return 'true';
+    }
 }

@@ -55,7 +55,7 @@
 
 <!-- Dimensi Anda Hero -->
 
-@if($user->jawabans()->latest()->first()->progress == 'selesai')
+@if(optional($user->jawabans()->latest()->first())->progress == 'selesai')
 
 <div class="mt-8 lg:mt-8 w-[90%] border-2 border-transparent h-fit bg-primary rounded-[50px] lg:rounded-[50px] mx-auto">
     <h1 class="text-xl lg:text-3xl text-center mx-4 mt-4 mb-2 lg:mb-4 text-bgcolor">

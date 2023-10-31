@@ -2,12 +2,30 @@
  <html lang="en">
 
  <head>
-     <!-- primary: '#8404F4',
-                        secondary: '#FCF304',
-                        bgcolor: '#F7F1F1', -->
      <meta charset="UTF-8">
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <script src="https://cdn.tailwindcss.com"></script>
+     <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily:{
+                        montserrat: ['Montserrat', 'sans'],
+                    },
+                    colors: {
+                        primary: '#6001D1',
+                        secondary: '#F7F1F1',
+                        bgcolor: '#F7F1F1',
+                        // ...
+                      },
+                      spacing: {
+                        '25' : '25rem',
+                      },
+                },
+            },
+        }
+    </script>
      <title>Tranceformasi - Register</title>
  </head>
 
@@ -30,7 +48,7 @@
          </label>
          <h1 class="ml-1 mb-1">Tanggal Lahir</h1>
          <label for="tanggal_lahir" id="">
-             <input type="date" name="tanggal_lahir" id="tanggal_lahir" placeholder="Nama Lengkap" onfocus="this.showPicker()" class="mb-2 rounded-md border-black ring-black mx-auto px-3 py-2 border shadow rounder w-full block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 @if($errors->has('tanggal_lahir')) border-red-500 @endif" value="{{ old('tanggal_lahir') }}" oninput="removeRedBorder(this)" />
+             <input type="date" name="tanggal_lahir" id="tanggal_lahir" placeholder="Tanggal Lahir" onfocus="this.showPicker()" class="mb-2 rounded-md border-black ring-black mx-auto px-3 py-2 border shadow rounder w-full block text-sm bg-white placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 @if($errors->has('tanggal_lahir')) border-red-500 @endif" value="{{ old('tanggal_lahir') }}" oninput="removeRedBorder(this)" />
              @error('tanggal_lahir')
              <h1 class="text-red-600 -mt-2">{{ $message }}</h1>
              @enderror
@@ -63,7 +81,7 @@
              <h1 class="text-red-600 -mt-3 mb-1">{{ $message }}</h1>
              @enderror
          </label>
-         <select id="domisili" name="domisili" size="1" class="mb-3 rounded-md border-black ring-black mx-auto px-3 py-2 border shadow rounder w-full block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 @if(old('domisili') == '0') border-red-500 @endif" >
+         <select id="domisili" name="domisili" size="1" class="mb-3 rounded-md bg-white border-black ring-black mx-auto px-3 py-2 border shadow rounder w-full block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 @if(old('domisili') == '0') border-red-500 @endif" >
            <option value="0">-- Pilih Domisili --</option>
            @foreach($domisilis as $domisili)
            <option value="{{ $domisili }}" @if(old('domisili')==$domisili ) selected @endif>{{ $domisili }}</option>
@@ -73,13 +91,26 @@
          <h1 class="text-red-600 -mt-3 mb-1">{{ $message }}</h1>
          @enderror
          <label for="pendidikan_terakhir" id="">
-             <input type="text" name="pendidikan_terakhir" id="pendidikan_terakhir" placeholder="Pendidikan Terakhir (SMA/D3/S1/S2/dsb)" class="mb-3 rounded-md border-black ring-black mx-auto px-3 py-2 border shadow rounder w-full block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 @error('pendidikan_terakhir')  placeholder-shown:border-red-500 @enderror" value="{{ old('pendidikan_terakhir') }}" />
+             <select name="pendidikan_terakhir" id="pendidikan_terakhir" placeholder="Pendidikan Terakhir (SMA/D3/S1/S2/dsb)" class="mb-3 rounded-md border-black ring-black mx-auto px-3 py-2 border shadow rounder w-full block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 @error('pendidikan_terakhir')  placeholder-shown:border-red-500 @enderror" value="{{ old('pendidikan_terakhir') }}" />
+                 <option value="0" @if(old('pendidikan_terakhir')=='0' ) selected @endif>-- Pendidikan Terakihr --</option>
+                 <option value="sd" @if(old('pendidikan_terakhir')=='sd' ) selected @endif>SD</option>
+                 <option value="smp" @if(old('pendidikan_terakhir')=='smp' ) selected @endif>SMP</option>
+                 <option value="sma" @if(old('pendidikan_terakhir')=='sma' ) selected @endif>SMA</option>
+                 <option value="smk" @if(old('pendidikan_terakhir')=='smk' ) selected @endif>SMK</option>
+                 <option value="d1" @if(old('pendidikan_terakhir')=='d1' ) selected @endif>D1</option>
+                 <option value="d2" @if(old('pendidikan_terakhir')=='d2' ) selected @endif>D2</option>
+                 <option value="d3" @if(old('pendidikan_terakhir')=='d3' ) selected @endif>D3</option>
+                 <option value="d4" @if(old('pendidikan_terakhir')=='d4' ) selected @endif>D4</option>
+                 <option value="s1" @if(old('pendidikan_terakhir')=='s1' ) selected @endif>S1</option>
+                 <option value="s2" @if(old('pendidikan_terakhir')=='s2' ) selected @endif>S2</option>
+                 <option value="s3" @if(old('pendidikan_terakhir')=='s3' ) selected @endif>S3</option>
+             </select>
              @error('pendidikan_terakhir')
              <h1 class="text-red-600 -mt-3 mb-1">{{ $message }}</h1>
              @enderror
          </label>
          <label for="status" id="">
-             <select name="status" id="status" class="mb-3 rounded-md border-black ring-black mx-auto px-3 py-2 border shadow rounder w-full block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 @if(old('status') == '0') border-red-500 @endif" oninput="removeRedBorder(this)">
+             <select name="status" id="status" class="mb-3 rounded-md bg-white border-black ring-black mx-auto px-3 py-2 border shadow rounder w-full block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 @if(old('status') == '0') border-red-500 @endif" oninput="removeRedBorder(this)">
                  <option value="0" @if(old('status')=='0' ) selected @endif>-- Pilih Status --</option>
                  <option value="1" @if(old('status')=='1' ) selected @endif>Pelajar</option>
                  <option value="2" @if(old('status')=='2' ) selected @endif>Pekerja</option>

@@ -25,4 +25,13 @@ class StringHelper
 
         return $firstWord;
     }
+
+    public static function cleanName($string){
+        $lowercaseString = strtolower($string);
+        $capitalizedString = ucwords($lowercaseString);
+        $trimmedString = trim($capitalizedString);
+        $finalString = preg_replace('/\s+/', ' ', $trimmedString);
+
+        return $finalString;
+    }
 }

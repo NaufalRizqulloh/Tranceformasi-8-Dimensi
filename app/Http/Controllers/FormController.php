@@ -295,7 +295,7 @@ class FormController extends Controller
         } else {
             $dimension = DiscHelper::decideDimension($graph2Value, $graph3Value);
         }
-        
+
         $user = $jawaban->user;
 
         $name = $user->name;
@@ -311,7 +311,7 @@ class FormController extends Controller
         $collabUrl = $jawaban->event->collab_url;
         $collabCompanyName = $jawaban->event->collab_company_name;
 
-        $pdfFileName = 'Laporan Dimensi - ' .  $name . ' - ' . date('j F Y');
+        $pdfFileName = 'Laporan Dimensi - ' .  $name . ' - ' . StringHelper::replaceDate(date('j F Y'));
 
         $options = new Options();
         $options->set('chroot', storage_path());
@@ -328,7 +328,7 @@ class FormController extends Controller
             'dimension' => $dimension,
             'title' => 'Preview Laporan PDF',
             'gender' => $gender,
-            'inconsistentDimension' => $inconsistentDimension[1],
+            'inconsistentDimension' => isset($inconsistentDimension[1]) ? $inconsistentDimension[1] : '',
             'score' => $answerSection2,
 
             'collabLogo' => $collabLogo,
@@ -343,6 +343,17 @@ class FormController extends Controller
 
         $dompdf->render();
         
+        $pdfDirectory = storage_path('pdf/');
+        $pdfPath = $pdfDirectory . $pdfFileName . '.pdf';
+        file_put_contents($pdfPath, $dompdf->output());
+
+        $jawaban->pdf_filepath = $pdfPath;
+        $jawaban->pdf_original_name = $pdfFileName;
+
+        // if(isset($inconsistentDimension[1])){
+        //     $jawaban->inconsistent_dimension = $inconsistentDimension[1];
+        // }
+
         $jawaban->dimensi_kepemimpinan = $dimension;
 
         $jawaban->type1_formatted_value = json_encode([

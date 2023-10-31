@@ -54,7 +54,7 @@
                     @error('email')
                     <h1 class="text-red-600 max-md:text-center mt-2 md:-mt-10 mb-2 md:mb-4">Email atau Password salah</h1>
                     @enderror
-                    <a href="" class="text-bgcolor text-sm md:text-base dark:md:text-slate-300 md:text-black w-max block mx-auto underline font-montserrat hover:text-blue-400 dark:hover:text-blue-400">
+                    <a href="{{ route('password.request') }}" class="text-bgcolor text-sm md:text-base dark:md:text-slate-300 md:text-black w-max block mx-auto underline font-montserrat hover:text-blue-400 dark:hover:text-blue-400">
                         Lupa Kata Sandi?
                     </a> 
                     <br>

@@ -10,8 +10,9 @@ class UserController extends Controller
 {
     public function index()
     {
-        return view('dashboard', [
-            'user' => auth()->user()
+        return view('testing/halaman', [
+            'user' => auth()->user(),
+            'email' => auth()->user()->email
         ]);
     }
 

@@ -42,7 +42,20 @@
         <input type="text" disabled name="notelp" id="notelp" placeholder="Nomor Telepon" value="{{Auth::user()->notelp}}" class="mb-3 rounded-md border-slate-600 mx-auto px-3 py-2 border shadow w-full block text-sm bg-slate-300 text-slate-600"/>
     </label>
     <label for="pendidikanterkahir" id="">
-        <input type="text" name="pendidikan_terakhir" id="pendidikan_terakhir" placeholder="Pendidikan Terakhir (SMA/D3/S1/S2/dsb)" value="{{Auth::user()->pendidikan_terakhir}}" class="mb-3 rounded-md border-black ring-black mx-auto px-3 py-2 border shadow rounder w-full block text-sm text-black placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 invalid:text-pink-700 invalid:focus:ring-pink-700 invalid:focus:border-pink-700 focus:placeholder:text-transparent"/>
+        <select name="pendidikan_terakhir" id="pendidikan_terakhir" placeholder="Pendidikan Terakhir (SMA/D3/S1/S2/dsb)" value="{{Auth::user()->pendidikan_terakhir}}" class="mb-3 rounded-md border-black ring-black mx-auto px-3 py-2 border shadow rounder w-full block text-sm text-black placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 invalid:text-pink-700 invalid:focus:ring-pink-700 invalid:focus:border-pink-700 focus:placeholder:text-transparent"/>
+                 <option value="0" @if(Auth::user()->pendidikan_terakhir == '0') selected @endif>-- Pendidikan Terakihr --</option>
+                 <option value="sd" @if(Auth::user()->pendidikan_terakhir == 'sd') selected @endif>SD</option>
+                 <option value="smp" @if(Auth::user()->pendidikan_terakhir == 'smp') selected @endif>SMP</option>
+                 <option value="sma" @if(Auth::user()->pendidikan_terakhir == 'sma') selected @endif>SMA</option>
+                 <option value="smk" @if(Auth::user()->pendidikan_terakhir == 'smk') selected @endif>SMK</option>
+                 <option value="d1" @if(Auth::user()->pendidikan_terakhir == 'd1') selected @endif>D1</option>
+                 <option value="d2" @if(Auth::user()->pendidikan_terakhir == 'd2') selected @endif>D2</option>
+                 <option value="d3" @if(Auth::user()->pendidikan_terakhir == 'd3') selected @endif>D3</option>
+                 <option value="d4" @if(Auth::user()->pendidikan_terakhir == 'd4') selected @endif>D4</option>
+                 <option value="s1" @if(Auth::user()->pendidikan_terakhir == 's1') selected @endif>S1</option>
+                 <option value="s2" @if(Auth::user()->pendidikan_terakhir == 's2') selected @endif>S2</option>
+                 <option value="s3" @if(Auth::user()->pendidikan_terakhir == 's3') selected @endif>S3</option>
+        </select>
     </label>
     <div class="m-0 p-0 @if(Auth::user()->status == '1') block @else hidden @endif">
         <label for="Jurusan" id="">

@@ -17,19 +17,19 @@ class IsAdmin
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if(!auth()->check() || !$this->isNotAdmin(auth()->user()->email)){
+        if(auth()->check() || $this->isNotAdmin(auth()->user()->email)){
             abort(403, 'Anda bukan admin');
         }
         return $next($request);
     }
 
-    // Return true if admin
-    private function isNotAdmin($email): bool{
-        foreach(EmailAdmin::all() as $emailAdmin){
-            if ($email == $emailAdmin){
-                return false;
-            }
-        }
+    // Return true if not admin
+    private function isNotAdmin(): bool{
+        // foreach(EmailAdmin::all() as $emailAdmin){
+        //     if ($email == $emailAdmin){
+        //         return true;
+        //     }
+        // }
         return true;
     }
 }

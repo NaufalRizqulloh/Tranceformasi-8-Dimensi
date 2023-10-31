@@ -155,7 +155,7 @@ class AdminEventController extends Controller
             'tujuan_tes' => 'required|string|max:255|not_in:0',
         ]);
 
-        $event = Event::create([
+        Event::create([
             'nama' => $request->input('nama'),
             'kode_akses' => $request->input('kode_akses'),
             'institusi' => $request->input('institusi'),

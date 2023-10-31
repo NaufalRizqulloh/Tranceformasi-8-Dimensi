@@ -137,15 +137,15 @@ class DiscHelper
             $dimension = "Pelopor";
         } else if ($keyword == 'ii') {
             $dimension = "Penggerak";
-        } else if ($keyword == 'is' && $keyword == 'si') {
+        } else if ($keyword == 'is' || $keyword == 'si') {
             $dimension = "Afirmasi";
         } else if ($keyword == 'ss') {
             $dimension = "Inklusif";
-        } else if ($keyword == 'sc' && $keyword == 'cs') {
+        } else if ($keyword == 'sc' || $keyword == 'cs') {
             $dimension = "Rendah Hati";
         } else if ($keyword == 'cc') {
             $dimension = "Pemikir";
-        } else if ($keyword == 'cd' && $keyword == 'dc') {
+        } else if ($keyword == 'cd' || $keyword == 'dc') {
             $dimension = "Tegas";
         } else if ($keyword == 'dd') {
             $dimension = "Berwibawa";
@@ -157,7 +157,7 @@ class DiscHelper
     public static function checkInconsistent(string $graph2Value, string $graph3Value)
     {
         $keyword = $graph2Value . $graph3Value;
-        $dimension = [null, null];
+        $dimension = null;
 
         if ($keyword == 'ds') {
             $dimension = ["Pelopor", "ds"];
