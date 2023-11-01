@@ -58,11 +58,9 @@
 
       <div class="flex mx-auto w-fit space-x-8 md:space-x-16">
           @if($previousDestination == 'go-dashboard')
-          <div class="flex mt-8 w-40 h-12 text-base md:text-xl justify-center items-center border-2 rounded-full bg-white dark:bg-slate-700 border-slate-500 text-black dark:text-bgcolor text-center">          
-              <a href="/ds">
+          <a href="{{ route('user.dashboard') }}" class="flex mt-8 w-40 h-12 text-base md:text-xl justify-center items-center border-2 rounded-full bg-white dark:bg-slate-700 border-slate-500 text-black dark:text-bgcolor text-center">          
                   Kembali
-                </a>
-          </div>
+          </a>
           @else
           <button onclick="toPrevious()" class="mt-8 w-40 h-12 text-base md:text-xl border-2 rounded-full bg-white dark:bg-slate-700 border-slate-500 text-black dark:text-bgcolor text-center">
               Kembali

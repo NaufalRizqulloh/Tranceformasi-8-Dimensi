@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use Helpers\Validation\Validation;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -12,7 +13,7 @@ class UserController extends Controller
     {
         return view('testing/halaman', [
             'user' => auth()->user(),
-            'email' => auth()->user()->email
+            'isAdmin' => Validation::isAdmin(auth()->user()->email),
         ]);
     }
 

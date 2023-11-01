@@ -52,10 +52,13 @@ return [
 
         'mailgun' => [
             'transport' => 'mailgun',
+            'domain' => env('MAILGUN_DOMAIN'),
+            'secret' => env('MAILGUN_SECRET'),
             // 'client' => [
             //     'timeout' => 5,
             // ],
         ],
+
 
         'postmark' => [
             'transport' => 'postmark',
@@ -81,6 +84,7 @@ return [
         'failover' => [
             'transport' => 'failover',
             'mailers' => [
+                'mailgun',
                 'smtp',
                 'log',
             ],
@@ -99,8 +103,8 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'hello@example.com'),
-        'name' => env('MAIL_FROM_NAME', 'Example'),
+        'address' => env('MAIL_FROM_ADDRESS', 'no-reply@gmail.com'),
+        'name' => env('MAIL_FROM_NAME', 'Hello Laravel'),
     ],
 
     /*

@@ -16,6 +16,7 @@ use App\Http\Controllers\ChartController;
 use App\Http\Controllers\JawabanController;
 use Carbon\Carbon;
 use Helpers\Data\StringHelper;
+use Helpers\Validation\Validation;
 use Illuminate\Support\Facades\Lang;
 
 use Illuminate\Http\Request;
@@ -124,13 +125,16 @@ Route::patch('user/form/update/{jawaban}/submit', [FormController::class, 'submi
 
 Route::post('user/form/save-answer/{jawaban}', [FormController::class, 'saveAnswer'])->middleware('auth')->name('user.form.save-answer');
 
-Route::get('user/form/terimakasih-telah-mengisi', function () {
-    return view('form/section-done');
-})->middleware('auth')->name('user.form.done');
+Route::get('terimakasih-telah-mengisi', function () {
+    return view('form/section-done', ['isAdmin' => Validation::isAdmin(auth()->user()->email)]);
+})->middleware('auth')->name('user.form.finish');
 
 Route::get('/在漫游于一个旋涡般的资本主义中我与一只戴着单片眼镜的大猩猩进行了一次奇怪的对话他能够通过解释有感知能力的棉花糖的运动来预测外太空的橡皮鸭的情感', function () {
     $jawaban = request('jawaban');
-    return view('alt-form/no-jump', ['jawaban' => $jawaban]);
+    return view('alt-form/no-jump', [
+        'jawaban' => $jawaban,
+        'isAdmin' => Validation::isAdmin(auth()->user()->email)
+    ]);
 })->name('user.form.jumper');
 
 /**

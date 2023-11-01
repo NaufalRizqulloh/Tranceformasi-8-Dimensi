@@ -9,6 +9,7 @@ use App\Models\Info;
 use App\Models\User;
 use Helpers\Data\EventOverviewHelper;
 use Helpers\Data\EventStatHelper;
+use Helpers\Validation\Validation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -123,6 +124,7 @@ class AdminEventController extends Controller
             'counts' => $counts,
             'events' => $events,
             'users' => $users,
+            'isAdmin' => Validation::isAdmin(auth()->user()->email),
         ]);
     }
 
@@ -220,6 +222,7 @@ class AdminEventController extends Controller
                 'mengerjakan' => $unfinishedUser,
             ],
             'i' => $i,
+            'isAdmin' => Validation::isAdmin(auth()->user()->email),
         ]);
     }
 

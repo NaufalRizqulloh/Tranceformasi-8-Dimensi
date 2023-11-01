@@ -101,14 +101,17 @@
     <form action="{{ route('user.form.store') }}" method="POST">
         @csrf
         <label for="">
-            <input name="kode-akses" type="text" placeholder="Massukan Kode Akses (6 Huruf/Angka)" class="mb-2 pl-2 rounded-sm border-2 border-slate-400 ring-slate-400 ml-12 w-3/4 text-black focus:placeholder:text-transparent" onkeyup="
+            <input name="kode-akses" type="text" placeholder="Masukan Kode Akses (6 Huruf/Angka)" class="mb-2 pl-2 rounded-sm border-2 border-slate-400 ring-slate-400 ml-12 w-3/4 text-black focus:placeholder:text-transparent" onkeyup="
             var start = this.selectionStart;
             var end = this.selectionEnd;
             this.value = this.value.toUpperCase();
             this.setSelectionRange(start, end);" pattern=".{6,6}" maxlength="6" required>
         </label>
         <h1 class="ml-12 italic text-slate-500 dark:text-bgcolor text-sm mb-2">29 Juni - 4 September, 2023</h1>
-        <h1 class="ml-12 italic text-black dark:text-bgcolor text-sm mb-12 hover:text-blue-400 cursor-pointer underline block w-fit">Tidak memilki kode akses?</h1>
+        <h1 class="ml-12 italic text-black dark:text-bgcolor text-sm hover:text-blue-400 cursor-pointer underline block w-fit">Tidak memilki kode akses?</h1>
+        @error('kode-akses')
+            <h6 class="mb-4 text-red-600 ml-12 text-xs italic">{{ $message }}</h1>
+        @enderror
         <button class="flex w-fit h-8 border-2 border-slate-300 rounded-full mx-auto mb-8 items-center justify-center">
             <h1 class="dark:text-bgcolor text-center text-md ml-4 mr-3 italic">Lanjutkan</h1>
             <img src="/dist/lanjutkan.png" alt="" class="dark:hidden mr-2 h-5 w-5">
@@ -116,5 +119,13 @@
         </button> 
     </form>
 </div>
+
+@error('kode-akses')
+    <script>
+        document.getElementById("overlay").style.display = "block";
+        document.getElementById("kodeAkses").style.display = "block";
+        window.location = '#mulai';
+    </script>
+@enderror
 
 @endsection

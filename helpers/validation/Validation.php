@@ -7,6 +7,7 @@ use App\Models\Event;
 use App\Models\EmailAdmin;
 use App\Models\Jawaban;
 use Ramsey\Uuid\Type\Integer;
+use Carbon\Carbon;
 
 class Validation
 {
@@ -43,7 +44,7 @@ class Validation
     public static function isAdmin($email): bool
     {
         foreach (EmailAdmin::all() as $emailAdmin) {
-            if ($$email == $emailAdmin) {
+            if ($email == $emailAdmin->email_admin) {
                 return true;
             }
         }
@@ -76,5 +77,17 @@ class Validation
                 }
             }
         }
+    }
+
+    public static function isEventExpired($codeAccess) {
+        $event = Event::where('kode_akses', '=', $codeAccess)
+            ->first();
+        
+        $currentDatetime = $event->tanggal_mulai;
+        $expirationDate = $event->tanggal_selesai;
+
+        $isExpired = $currentDatetime > $expirationDate;
+
+        return $isExpired;
     }
 }

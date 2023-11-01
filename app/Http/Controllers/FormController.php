@@ -50,35 +50,31 @@ class FormController extends Controller
         $event = Event::where('kode_akses', '=', $accessCode)
             ->first();
 
-        try {
-            if (!$event) {
-                throw new Exception('Kode akses invalid');
+
+        if (!$event) {
+            return redirect()->back()->withErrors(['kode-akses' => 'Kode akses event tidak ditemukan']);
+        }
+        if (Validation::isCodeAccessValid($accessCode)) {
+            return redirect()->back()->withErrors(['kode-akses' => 'Event sudah tidak berlaku']);
+        }
+
+        $answer = Jawaban::where('event_id', '=', $event->id)
+            ->where('user_id', '=', $user->id)
+            ->latest()
+            ->first();
+
+        if ($answer) {
+            if ($answer->progress != 'selesai') {
+                return redirect()->route('user.form.show', [
+                    'jawaban' => $answer,
+                    'destination' => 'section-1-1'
+                ]);
             }
-            if ($event->is_expired == true) {
-                throw new Exception('Event yang anda masuki sudah berakhir');
+            if ($answer->progress == 'selesai') {
+                return redirect()->back()->withErrors(['kode-akses' => 'Anda sudah mengisi jawaban di event ini']);
             }
 
-            $answer = Jawaban::where('event_id', '=', $event->id)
-                ->where('user_id', '=', $user->id)
-                ->latest()
-                ->first();
-
-            if ($answer) {
-                if ($answer->progress != 'selesai') {
-                    return redirect()->route('user.form.show', [
-                        'jawaban' => $answer,
-                        'destination' => 'section-1-1'
-                    ]);
-                }
-                if ($answer->progress == 'selesai') {
-                    throw new Exception('Anda sudah mengisi');
-                }
-
-                throw new Exception('Terjadi kesalahan sistem');
-            }
-        } catch (Exception $e) {
-            // return response()->with('error', 'Terjadi kesalahan : ' . $e->getMessage());
-            return dd($e->getMessage());
+            return redirect()->back()->withErrors(['kode-akses' => 'Terjadi kesalahan sistem']);
         }
 
         Jawaban::create([
@@ -152,7 +148,8 @@ class FormController extends Controller
             case "section-wait":
                 return view('alt-form/section-wait', [
                     'nextDestination' => 'section-2-1',
-                    'jawaban' => $jawaban
+                    'jawaban' => $jawaban,
+                    'isAdmin' => Validation::isAdmin(auth()->user()->email)
                 ]);
             default:
                 dd('idk', $destination);
@@ -178,7 +175,8 @@ class FormController extends Controller
             'questions' => $questions,
             'answers' => $answers,
             'nextDestination' => $nextDestination,
-            'previousDestination' => $previousDestination
+            'previousDestination' => $previousDestination,
+            'isAdmin' => Validation::isAdmin(auth()->user()->email),
         ]);
     }
 
@@ -283,15 +281,15 @@ class FormController extends Controller
         $changeValue = DiscHelper::getChangeValue($mostValue,  $leastValue);
 
         $answerSection2 = SectionTwoHelper::normalizeData($answerSection2);
-                    
+
         $graph2Value = DiscHelper::calculateGraphValue($leastValue, config('graph-key.graph2'));
         $graph3Value = DiscHelper::calculateGraphValue($changeValue, config('graph-key.graph3'));
 
         $dimension = null;
 
         $inconsistentDimension = DiscHelper::checkInconsistent($graph2Value, $graph3Value);
-        if(isset($inconsistentDimension)){
-            $dimension = $inconsistentDimension[0];     
+        if (isset($inconsistentDimension)) {
+            $dimension = $inconsistentDimension[0];
         } else {
             $dimension = DiscHelper::decideDimension($graph2Value, $graph3Value);
         }
@@ -302,7 +300,8 @@ class FormController extends Controller
         $testDate = StringHelper::replaceDate(date('j F Y'));
         $nickname = StringHelper::pickFirstWord($name);
         $birthday = StringHelper::replaceDate(Carbon::parse($user->tanggal_lahir)->format('l, j F Y'));
-        $education = isset($user->jurusan) ? $user->jurusan : $user->pendidikan_terakhir;
+        $education = isset($user->jurusan) ? $user->jurusan : null;
+        $jobTitle = isset($user->jabatan) ? $user->jabatan : 'Undefined';
         $email = $user->email;
         $notelp = $user->notelp;
         $testPurpose = $jawaban->event->tujuan_tes;
@@ -315,13 +314,14 @@ class FormController extends Controller
 
         $options = new Options();
         $options->set('chroot', storage_path());
-        
+
         $html = View::make('template-pdf/8dimensi-master', [
             'name' => $name,
             'date' => $testDate,
             'nickname' => $nickname,
             'birthday' => $birthday,
             'education' => $education,
+            'jobTitle' => $jobTitle,
             'email' => $email,
             'phoneNumber' => $notelp,
             'testPurpose' => $testPurpose,
@@ -342,7 +342,7 @@ class FormController extends Controller
         $dompdf->setPaper('A4', 'potrait');
 
         $dompdf->render();
-        
+
         $pdfDirectory = storage_path('pdf/');
         $pdfPath = $pdfDirectory . $pdfFileName . '.pdf';
         file_put_contents($pdfPath, $dompdf->output());
@@ -369,7 +369,7 @@ class FormController extends Controller
         $jawaban->progress = 'selesai';
         $jawaban->save();
 
-        return redirect()->route('user.form.done');
+        return redirect()->route('user.form.finish');
     }
 
     public function updateProgress(Request $request, Jawaban $jawaban)
