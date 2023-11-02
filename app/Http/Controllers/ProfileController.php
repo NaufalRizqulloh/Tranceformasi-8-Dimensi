@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ProfileUpdateRequest;
 use App\Models\User;
+use Helpers\Validation\Validation;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -22,6 +23,7 @@ class ProfileController extends Controller
 
         return view('testing/profile', [
             'user' => $users,
+            'isAdmin' => Validation::isAdmin(auth()->user()->email),
         ]);
         
     }

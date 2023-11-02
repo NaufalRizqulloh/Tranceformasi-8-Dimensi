@@ -14,25 +14,27 @@
         <div class="bg-primary rounded-3xl w-40 h-fit mr-12">
             <div class="my-5">
                 <h1 class="text-secondary font-bold text-center font-montserrat">Total Event</h1>
-                <h1 class="text-white text-2xl font-bold font-montserrat text-center">{{ $events->count() }}</h1>
+                <h1 class="text-white text-2xl font-bold font-montserrat text-center">{{ $latestEvents->count() + $expiredEvents->count() }}</h1>
             </div>
         </div>
         <div class="bg-primary rounded-3xl w-40 h-fit">
             <div class="my-5">
                 <h1 class="text-secondary font-bold text-center font-montserrat">Total Peserta</h1>
-                <h1 class="text-white text-2xl font-bold font-montserrat text-center">{{ $users->count() }}</h1>
+                <h1 class="text-white text-2xl font-bold font-montserrat text-center">{{ $totalParticipant }}</h1>
             </div>
         </div>
     </div>
 </div>
-
+<form action="{{ route('admin.event.index') }}">
+    <input type="number" name="year" placeholder="Year" value="{{ isset($year) ? $year : date('Y') }}">
+</form>
 <h1 class="ml-12 dark:text-bgcolor font-montserrat">Event yang sedang berlangsung</h1>
 <hr class="mx-12 mb-5 border-black dark:border-bgcolor">
 
-@foreach ($events as $e)
+@foreach ($latestEvents as $e)
     <div class="bg-primary w-[93%] h-14 ml-12 mb-2 rounded-full relative flex">
         <div class="bg-secondary ml-3 w-auto h-auto my-auto rounded-full">
-            <h1 class="text-primary font-bold font-montserrat text-center my-2 mx-4">{{ $e->id }}</h1>
+            <h1 class="text-primary font-bold font-montserrat text-center my-2 mx-4">{{ $loop->index + 1 }}</h1>
         </div>
         <h1 class="text-secondary font-semibold font-montserrat ml-3 mt-4">{{ $e->nama }} - {{ $e->tanggal_selesai }}</h1>
         <div class="absolute right-0 mr-4 flex">
@@ -54,6 +56,27 @@
 <h1 class="ml-12 font-montserrat dark:text-bgcolor">Event yang sudah berlalu</h1>
 <hr class="mx-12 mb-5 border-black dark:border-bgcolor">
 <div class="mb-12"></div>
+
+@foreach ($expiredEvents as $e)
+    <div class="bg-primary w-[93%] h-14 ml-12 mb-2 rounded-full relative flex">
+        <div class="bg-secondary ml-3 w-auto h-auto my-auto rounded-full">
+            <h1 class="text-primary font-bold font-montserrat text-center my-2 mx-4">{{ $loop->index + 1 }}</h1>
+        </div>
+        <h1 class="text-secondary font-semibold font-montserrat ml-3 mt-4">{{ $e->nama }} - {{ $e->tanggal_selesai }}</h1>
+        <div class="absolute right-0 mr-4 flex">
+            <a href="{{ route('admin.event.show', $e) }}">
+                <button class="bg-white w-fit h-fit mt-2 mr-4 rounded-full flex">
+                    <img src="/dist/data.png" alt="" class="ml-4 mt-1">
+                    <h1 class="text-black font-montserrat font-semibold mx-4 my-2">Lihat Data</h1>
+                </button>
+            </a>
+            <button id="editEventbtn" class="bg-white w-fit h-fit mt-2 rounded-full flex">
+                <img src="/dist/editEvent.png" alt="" class="ml-4 mt-1">
+                <h1 class="text-black font-montserrat font-semibold mx-4 my-2">Edit Event</h1>
+            </button>
+        </div>
+    </div>
+@endforeach
 
 <div class="w-fit mx-auto flex mb-12">
     <div class="bg-black dark:bg-bgcolor w-4 h-4 mx-2 rounded-full"></div>
@@ -218,6 +241,13 @@
     
 </div>
 
+@if ($errors->any())
+    <script>
+        document.getElementById("overlay").style.display = "block";
+        document.getElementById("buatEvent").style.display = "block";
+    </script>
+@endif
+
 <!-- end Overlay buatEvent -->
 
 <!-- @foreach ($latestEvents as $event)
@@ -246,16 +276,11 @@
 </label>
 
 <ul>
-    @foreach ($counts as $data)
-        <li>
-            Age Range: {{ $data['range']['min'] }} - {{ $data['range']['max'] }}
-            Count: {{ $data['count'] }}
-        </li>
-    @endforeach
+    {{-- z --}}
 </ul>
 
 
-{{$sd}}
+{{-- {{$sd}}
 {{$smp}}
 {{$smak}}
 {{$d1}}
@@ -264,15 +289,15 @@
 {{$d4}}
 {{$s1}}
 {{$s2}}
-{{$s3}} -->
+{{$s3}} --> --}}
 
 <script>
 
 
     var JKelamin = ["Laki", "Perempuan"];
     var dataJKelamin = [
-      {{ $laki }},
-      {{ $perempuan }}
+      {{-- {{ $laki }},
+      {{ $perempuan }} --}}
     ];
     var barColors = [
       "#4C32EA",
@@ -311,9 +336,9 @@
     
     var rentangUsia = ["<15", "15-20", "21-30", "31-40", "41-50", ">51"];
     var dataRUsia = [
-        @foreach ($counts as $data)
+        {{-- @foreach ($counts as $data)
         {{ $data['count'] }},
-        @endforeach
+        @endforeach --}}
     ];
     var barColors = "#8404F4";
 
@@ -366,7 +391,7 @@
     
     var pendidikan = ["SD", "SMP", "SMA/K", "D1", "D2", "D3", "D4", "S1", "S2", "S3"];
     var dataPendidikan = [
-        {{$sd}},
+        {{-- {{$sd}},
         {{$smp}},
         {{$smak}},
         {{$d1}},
@@ -375,7 +400,7 @@
         {{$d4}},
         {{$s1}},
         {{$s2}},
-        {{$s3}},
+        {{$s3}}, --}}
     ];
     var barColors = "#8404F4";
 

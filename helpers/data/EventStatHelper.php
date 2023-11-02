@@ -124,6 +124,8 @@ class EventStatHelper
             }
         }
 
+        arsort($usersResidence);
+
         return $usersResidence;
     }
 

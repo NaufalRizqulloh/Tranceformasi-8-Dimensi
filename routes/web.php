@@ -45,8 +45,9 @@ Route::get('/t/{user}', function (User $user) {
 });
 
 Route::get('/t', function () {
-    dd(StringHelper::cleanName('  rEyhaN   PuTRA   ariUTAMA'));
-});
+    $a = auth()->user()->jawabans->first();
+    dd($a);
+})->middleware('auth');
 
 Route::get('/dn', function () {
     dd('anggap done', request());

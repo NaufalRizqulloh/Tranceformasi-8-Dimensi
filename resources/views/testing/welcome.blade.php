@@ -75,12 +75,13 @@
         <section class="hidden md:flex w-1/2 justify-center items-center bg-primary h-[100vh]">
             <div class="">
                 <img src="/dist/title.png" alt="title" class="hidden md:block w-9/12 mx-auto">
-                <h1 class="font-montserrat justify-center align-middle text-center text-bgcolor italic mt-12 text-4xl">
+                <h1 class="font-montserrat justify-center align-middle text-center text-bgcolor italic mt-12 mb-4 text-4xl">
                     SELF ASSESMENT
                 </h1>
-                <h1 class="font-montserrat justify-center align-middle text-center text-bgcolor italic mt-12 font-light text-xs">
+                <img src="/dist/member-of.png" alt="" class="w-52 mx-auto">
+                <!-- <h1 class="font-montserrat justify-center align-middle text-center text-bgcolor italic mt-12 font-light text-xs">
                     PT. TRANCEFORMASI INDONESIA - 2023
-                </h1>
+                </h1> -->
             </div>
         </section>
     </div>

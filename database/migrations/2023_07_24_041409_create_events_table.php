@@ -16,7 +16,6 @@ return new class extends Migration
             $table->string('nama')->unique();
             $table->string('kode_akses')->unique();
             $table->string('institusi');
-            $table->integer('total_peserta');
             $table->date('tanggal_mulai'); 
             $table->date('tanggal_selesai');
             $table->string('deskripsi');

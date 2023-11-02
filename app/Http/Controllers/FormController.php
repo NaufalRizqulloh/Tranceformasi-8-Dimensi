@@ -50,12 +50,19 @@ class FormController extends Controller
         $event = Event::where('kode_akses', '=', $accessCode)
             ->first();
 
-
         if (!$event) {
-            return redirect()->back()->withErrors(['kode-akses' => 'Kode akses event tidak ditemukan']);
+            return redirect()->back()->withErrors(['kode-akses' => 'Kode akses event tidak sesuai']);
         }
-        if (Validation::isCodeAccessValid($accessCode)) {
-            return redirect()->back()->withErrors(['kode-akses' => 'Event sudah tidak berlaku']);
+
+        
+        $startDate = $event->tanggal_mulai;
+        $expirationDate = $event->tanggal_selesai;
+
+        if (Validation::isEventNotStarted($startDate, $expirationDate)) {
+            return redirect()->back()->withErrors(['kode-akses' => 'Event belum dimulai']);
+        }
+        if (Validation::isEventExpired($startDate, $expirationDate)) {
+            return redirect()->back()->withErrors(['kode-akses' => 'Event sudah berakhir']);
         }
 
         $answer = Jawaban::where('event_id', '=', $event->id)

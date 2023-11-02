@@ -27,7 +27,7 @@ class EventOverviewHelper
     {
         // Total number of participants based on the year the event ended = ['2023' => '']
         $formattedParticipants = [];
-
+        
         foreach ($participants as $date => $participant){
             $year = substr($date, 0, 4);
 

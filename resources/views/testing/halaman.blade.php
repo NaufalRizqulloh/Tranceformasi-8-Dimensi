@@ -55,23 +55,26 @@
 
 <!-- Dimensi Anda Hero -->
 
-@if(optional($user->jawabans()->latest()->first())->progress == 'selesai')
+@if(optional($jawaban)->progress == 'selesai')
 
 <div class="mt-8 lg:mt-8 w-[90%] border-2 border-transparent h-fit bg-primary rounded-[50px] lg:rounded-[50px] mx-auto">
     <h1 class="text-xl lg:text-3xl text-center mx-4 mt-4 mb-2 lg:mb-4 text-bgcolor">
         Selamat! Dimensi Kepemimpinan Anda Adalah :
     </h1>
     <hr class="w-3/4 mx-auto">
-    <div class="flex w-fit mx-auto mt-4">
-        <h1 class="text-4xl lg:text-6xl mx-4 mt-8 md:mt-20 lg:mt-12 font-bold md:font-black text-bgcolor text-center">
-            Baik Hati dan <br> Tidak Sombong
+    <div class="flex w-fit mx-auto mt-4 justify-center items-center">
+        <h1 class="text-4xl lg:text-6xl mx-4 font-bold md:font-black text-bgcolor text-center">
+            {{ strtoupper($jawaban->dimensi_kepemimpinan) }}
         </h1>
         <img src="/dist/baikhati.png" alt="baikhati" class="h-32 md:h-56 w-auto">
     </div>
-    <h1 class="mx-4 mt-8 lg:mt-4 font-light text-center text-bgcolor italic">
+    <h1 class="mx-4 mt-8 lg:mt-6 font-light text-xs md:text-base text-center text-bgcolor italic">
         *Untuk mengetahui detail lebih lanjut, silahkan unduh file di bawah ini
     </h1>
-    <button class="mt-2 mb-8 mx-auto block border-2 rounded-full border-secondary text-secondary hover:bg-secondary hover:border-transparent hover:text-primary py-3 px-10">Unduh Hasil Tes</button>
+    <h1 class="mx-4 mt-2 lg:mt-0 lg:mb-4 font-light text-xs md:text-base text-center text-bgcolor italic">
+        *Hasil tes diambil pada tanggal {{ $testDate }}
+    </h1>
+    <a href="" class="mt-2 mb-8 w-3/4 md:w-1/4 mx-auto block border-2 rounded-full border-secondary text-center text-secondary hover:bg-secondary hover:border-transparent hover:text-primary py-3 px-10">Unduh Hasil Tes</a href="">
 </div>
 <!-- Empty Hero -->
 

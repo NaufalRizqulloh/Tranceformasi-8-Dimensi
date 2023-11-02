@@ -11,11 +11,6 @@ use Carbon\Carbon;
 
 class Validation
 {
-    public static function isCodeAccessValid(): bool
-    {
-
-        return true;
-    }
 
     // perlu testing
     public static function isUserExistIn($userId, $eventId)
@@ -79,14 +74,18 @@ class Validation
         }
     }
 
-    public static function isEventExpired($codeAccess) {
-        $event = Event::where('kode_akses', '=', $codeAccess)
-            ->first();
-        
-        $currentDatetime = $event->tanggal_mulai;
-        $expirationDate = $event->tanggal_selesai;
+    public static function isEventExpired($startDate, $expirationDate) {
+        $currentDate = Carbon::now();
 
-        $isExpired = $currentDatetime > $expirationDate;
+        $isExpired = $currentDate > $expirationDate;
+
+        return $isExpired;
+    }
+    
+    public static function isEventNotStarted($startDate, $expirationDate) {
+        $currentDate = Carbon::now();
+
+        $isExpired = $currentDate < $startDate ;
 
         return $isExpired;
     }

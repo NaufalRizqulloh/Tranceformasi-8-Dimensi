@@ -1,6 +1,4 @@
-<h1 class="block mt-12 font-light italic text-center text-primary pb-24">
-    PT. Tranceformasi Indonesia - 2023
-</h1>
+<img src="/dist/member-of-purple.png" alt="" class="w-32 mx-auto mt-12 pb-12">
 
 <!-- Back to top Start -->
 
