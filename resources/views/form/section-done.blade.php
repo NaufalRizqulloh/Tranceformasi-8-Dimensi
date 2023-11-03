@@ -9,7 +9,7 @@
     <h1 class="mt-16 text-center font-bold text-2xl">Terimakasih Atas Jawaban Anda</h1>
     <h1 class="ml-12 mr-12 mb-16 text-lg mt-4 text-center">Untuk melihat hasil silahkan unduh hasil di halaman dashboard. Jika tidak muncul, harap hubungi admin untuk penyelesaian</h1>
 </div>
-<a href="" class="block mx-auto w-fit h-fit text-center text-lg font-light italic py-2 px-5 border-2 border-slate-300 rounded-full bg-white transition hover:bg-primary hover:border-transparent hover:text-white ease-in-out">
+<a href="{{ route('user.dashboard') }}" class="block mx-auto w-fit h-fit text-center text-lg font-light italic py-2 px-5 border-2 border-slate-300 rounded-full bg-white transition hover:bg-primary hover:border-transparent hover:text-white ease-in-out">
     Kembali ke Dashboard
 </a>
 

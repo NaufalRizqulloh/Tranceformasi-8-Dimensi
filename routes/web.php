@@ -111,7 +111,7 @@ Route::get('/request-invalid', function (Request $request) {
  * User route section
  */
 Route::get('/home', [UserController::class, 'index'])->middleware('auth')->name('user.dashboard');
-Route::get('/user/hasil', [UserController::class, 'downloadHasil'])->middleware('auth')->name('user.dashboard.download');
+Route::get('/user/hasil', [UserController::class, 'downloadHasil'])->middleware('auth')->name('user.download.laporan');
 
 /**
  * User form route section
@@ -127,7 +127,10 @@ Route::patch('user/form/update/{jawaban}/submit', [FormController::class, 'submi
 Route::post('user/form/save-answer/{jawaban}', [FormController::class, 'saveAnswer'])->middleware('auth')->name('user.form.save-answer');
 
 Route::get('terimakasih-telah-mengisi', function () {
-    return view('form/section-done', ['isAdmin' => Validation::isAdmin(auth()->user()->email)]);
+    return view('form/section-done', [
+        'isAdmin' => Validation::isAdmin(auth()->user()->email),
+        'user' => auth()->user(),
+    ]);
 })->middleware('auth')->name('user.form.finish');
 
 Route::get('/在漫游于一个旋涡般的资本主义中我与一只戴着单片眼镜的大猩猩进行了一次奇怪的对话他能够通过解释有感知能力的棉花糖的运动来预测外太空的橡皮鸭的情感', function () {

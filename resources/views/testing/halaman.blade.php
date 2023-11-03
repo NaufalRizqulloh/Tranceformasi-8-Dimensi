@@ -48,36 +48,56 @@
             <span>Mulai</span>
         </button>
     </div>
-    <h1 class="text-md font-light italic text-bgcolor text-center mt-8 lg:mt-12 mb-8">
-        Sudah mengerjakan? Lihat hasilnya <span class="underline cursor-pointer hover:text-sky-500 max-md:text-sky-400">disini!</span>
+    <h1 id="hasil" class="text-md font-light italic text-bgcolor text-center mt-8 lg:mt-12 mb-8">
+        Sudah mengerjakan? Lihat hasilnya <a href="#hasil" class="underline cursor-pointer hover:text-sky-500 max-md:text-sky-400">disini!</a>
     </h1>
 </div>
 
 <!-- Dimensi Anda Hero -->
 
 @if(optional($jawaban)->progress == 'selesai')
-
-<div class="mt-8 lg:mt-8 w-[90%] border-2 border-transparent h-fit bg-primary rounded-[50px] lg:rounded-[50px] mx-auto">
-    <h1 class="text-xl lg:text-3xl text-center mx-4 mt-4 mb-2 lg:mb-4 text-bgcolor">
-        Selamat! Dimensi Kepemimpinan Anda Adalah :
-    </h1>
-    <hr class="w-3/4 mx-auto">
-    <div class="flex w-fit mx-auto mt-4 justify-center items-center">
-        <h1 class="text-4xl lg:text-6xl mx-4 font-bold md:font-black text-bgcolor text-center">
-            {{ strtoupper($jawaban->dimensi_kepemimpinan) }}
-        </h1>
-        <img src="/dist/baikhati.png" alt="baikhati" class="h-32 md:h-56 w-auto">
-    </div>
-    <h1 class="mx-4 mt-8 lg:mt-6 font-light text-xs md:text-base text-center text-bgcolor italic">
-        *Untuk mengetahui detail lebih lanjut, silahkan unduh file di bawah ini
-    </h1>
-    <h1 class="mx-4 mt-2 lg:mt-0 lg:mb-4 font-light text-xs md:text-base text-center text-bgcolor italic">
-        *Hasil tes diambil pada tanggal {{ $testDate }}
-    </h1>
-    <a href="" class="mt-2 mb-8 w-3/4 md:w-1/4 mx-auto block border-2 rounded-full border-secondary text-center text-secondary hover:bg-secondary hover:border-transparent hover:text-primary py-3 px-10">Unduh Hasil Tes</a href="">
-</div>
+    @if($jawaban->event->is_answers_hold == true)
+        <div class="mt-8 lg:mt-8 w-[90%] border-2 border-transparent h-fit bg-primary rounded-[50px] text-bgcolor mx-auto">
+            <h1 class="mt-8 mb-4 mx-4 text-lg md:text-2xl lg:text-2xl text-bgcolor text-center font-bold">
+                HASIL LAPORAN ANDA SEDANG DITAHAN 
+                <br>
+                Tanyakan pada admin untuk info lebih lanjut
+            </h1>
+            <hr class="w-3/4 mx-auto">
+            <div class="w-[350px] lg:w-[450px] h-[350px] lg:h-[450px] mx-auto justify-center items-center rounded-full bg-bgcolor dark:bg-slate-800 my-4 lg:my-6">
+                <img src="/dist/kosong.png" alt="" class="mx-auto py-[4.5rem] w-[200px] lg:w-[300px]">
+            </div>
+        </div>
+    @else 
+        <div class="mt-8 lg:mt-8 w-[90%] border-2 border-transparent h-fit bg-primary rounded-[50px] lg:rounded-[50px] mx-auto">
+            <h1 class="text-xl lg:text-3xl text-center mx-4 mt-4 mb-2 lg:mb-4 text-bgcolor">
+                Selamat! Dimensi Kepemimpinan Anda Adalah :
+            </h1>
+            <hr class="w-3/4 mx-auto">
+            <div class="flex w-fit mx-auto mt-4 justify-center items-center">
+                <h1 class="text-4xl lg:text-6xl mx-4 font-bold md:font-black text-bgcolor text-center">
+                    {{ strtoupper($jawaban->dimensi_kepemimpinan) }}
+                </h1>
+                <img src="/dist/baikhati.png" alt="baikhati" class="h-32 md:h-56 w-auto">
+            </div>
+            <h1 class="mx-4 mt-8 lg:mt-6 font-light text-xs md:text-base text-center text-bgcolor italic">
+                *Untuk mengetahui detail lebih lanjut, silahkan unduh file di bawah ini
+            </h1>
+            <h1 class="mx-4 mt-2 lg:mt-0 lg:mb-4 font-light text-xs md:text-base text-center text-bgcolor italic">
+                *Hasil tes diambil pada tanggal {{ $testDate }}
+            </h1>
+            @error('filePdf')
+                <h1 class="text-red-400 mx-4 mt-2 lg:mt-0 lg:mb-4 font-light text-xs md:text-base text-center italic">
+                    {{ $message }}
+                </h1>
+            @enderror
+            <div class="flex">
+                <a href="{{ route('user.download.laporan') }}" class="mr-2 mt-2 mb-8 w-3/4 md:w-2/12 mx-auto block border-2 rounded-full border-secondary text-center text-secondary hover:bg-secondary hover:border-transparent hover:text-primary py-3 px-2">Unduh Hasil Tes</a>
+                <a href="{{ route('user.download.laporan', ['view' => 'view']) }}" class="ml-2 mt-2 mb-8 w-3/4 md:w-2/12 mx-auto block border-2 rounded-full border-secondary text-center text-secondary hover:bg-secondary hover:border-transparent hover:text-primary py-3 px-2" target="_blank">Lihat Hasil Tes</a>
+            </div>
+        </div>
 <!-- Empty Hero -->
-
+    @endif
 @else
 
 <div class="mt-8 lg:mt-8 w-[90%] border-2 border-transparent h-fit bg-primary rounded-[50px] text-bgcolor mx-auto">
@@ -110,8 +130,7 @@
             this.value = this.value.toUpperCase();
             this.setSelectionRange(start, end);" pattern=".{6,6}" maxlength="6" required>
         </label>
-        <h1 class="ml-12 italic text-slate-500 dark:text-bgcolor text-sm mb-2">29 Juni - 4 September, 2023</h1>
-        <h1 class="ml-12 italic text-black dark:text-bgcolor text-sm hover:text-blue-400 cursor-pointer underline block w-fit">Tidak memilki kode akses?</h1>
+        <h1 class="ml-12 italic text-slate-500 dark:text-bgcolor text-sm mb-6">*Hubungi admin jika terdapat masalah dengan kode akses</h1>
         @error('kode-akses')
             <h6 class="mb-4 text-red-600 ml-12 text-xs italic">{{ $message }}</h1>
         @enderror
@@ -128,6 +147,12 @@
         document.getElementById("overlay").style.display = "block";
         document.getElementById("kodeAkses").style.display = "block";
         window.location = '#mulai';
+    </script>
+@enderror
+
+@error('filePdf')
+    <script>
+        window.location = '#hasil';
     </script>
 @enderror
 

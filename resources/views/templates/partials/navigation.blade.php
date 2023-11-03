@@ -12,7 +12,7 @@
 <div id="overlay1" class="bg-white dark:bg-slate-800 dark:text-slate-300 top-0 right-0 w-full lg:w-3/12 h-3/12 lg:h-full z-30">
     <div class="w-full lg:w-3/12 flex bg-primary drop-shadow-2xl items-center fixed top-0 right-0">
         <img src="/dist/profile.png" alt="" class="w-8 h-8 ml-8 my-auto cursor-pointer" onclick="offoverlay()">
-        <h1 class="ml-4 pl-4 text-white my-4 border-l-2">Nama</h1>
+        <h1 class="ml-4 pl-4 text-white my-4 border-l-2">{{ $user->name }}</h1>
     </div> 
     <div class="block">
         <a href="/home">

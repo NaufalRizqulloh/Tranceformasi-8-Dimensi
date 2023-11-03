@@ -557,10 +557,10 @@
             </tr>
             <tr>
                 <td class="table-data-diri-kiri">
-                    {{ isset($education) ? 'Education' : 'Job Title' }}
+                    {{ isset($jobTitle) ? 'Job Title' : 'Education' }}
                 </td>
                 <td class="table-data-diri-kanan">
-                    {{ isset($education) ? $education : $jobTitle }}
+                    {{ isset($jobTitle) ? $jobTitle : $education }}
                 </td>
             </tr>
             <tr>

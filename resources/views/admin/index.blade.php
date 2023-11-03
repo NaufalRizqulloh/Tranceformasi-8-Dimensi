@@ -26,7 +26,7 @@
     </div>
 </div>
 <form action="{{ route('admin.event.index') }}">
-    <input type="number" name="year" placeholder="Year" value="{{ isset($year) ? $year : date('Y') }}">
+    <input type="number" name="year" placeholder="Year" value="{{ isset($year) ? $year : date('Y') }}" class="ml-12 mb-4 rounded-md">
 </form>
 <h1 class="ml-12 dark:text-bgcolor font-montserrat">Event yang sedang berlangsung</h1>
 <hr class="mx-12 mb-5 border-black dark:border-bgcolor">
@@ -94,11 +94,9 @@
 
 <div class="w-fit mx-auto flex space-x-12">
     <canvas id="PendidikanChart" class="border-4 border-primary rounded-3xl p-4" style="width:100%;max-width:500px;height:100%;max-height:300px"></canvas>
+    <canvas id="rentangUsiaChart" class="border-4 border-primary rounded-3xl p-4" style="width:100%;max-width:500px;height:100%;max-height:300px"></canvas>
 </div>
 
-<div class="w-[300px] h-[500px]">
-    <canvas id="rentangUsiaChart" class="border-4 border-primary rounded-3xl p-4"></canvas>
-</div>
 
 <br>
 
@@ -250,55 +248,13 @@
 
 <!-- end Overlay buatEvent -->
 
-<!-- @foreach ($latestEvents as $event)
-<a href="admin/event?event={{ $event->id }}">{{$event->nama}}</a>
-@endforeach
-<br>
-<h1>EXPIRED</h1>
-<br>
-@foreach ($expiredEvents as $event)
-<a href="admin/event?event={{ $event->id }}">{{$event->nama}}</a>
-@endforeach
-<br> <br>
 
-<button id="fetchButton">Update City</button>
-<br>
-<div id="city-notification" class="" hidden>
-    Data domisili sudah
-</div>
-<div id="error-notification" class="" hidden>
-</div>
-
-<label class="relative inline-flex items-center mr-5 cursor-pointer">
-    <input type="checkbox" value="" class="sr-only peer">
-    <div class="w-11 h-6 bg-gray-200 rounded-full peer dark:bg-gray-700 peer-focus:ring-4 peer-focus:ring-purple-300 dark:peer-focus:ring-purple-800 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-purple-600"></div>
-    <span class="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300">Purple</span>
-</label>
-
-<ul>
-    {{-- z --}}
-</ul>
-
-
-{{-- {{$sd}}
-{{$smp}}
-{{$smak}}
-{{$d1}}
-{{$d2}}
-{{$d3}}
-{{$d4}}
-{{$s1}}
-{{$s2}}
-{{$s3}} --> --}}
 
 <script>
 
 
     var JKelamin = ["Laki", "Perempuan"];
-    var dataJKelamin = [
-      {{-- {{ $laki }},
-      {{ $perempuan }} --}}
-    ];
+    var dataJKelamin = {!! json_encode($gender) !!};
     var barColors = [
       "#4C32EA",
       "#CC00CC",
@@ -334,12 +290,8 @@
     // rentangUsiaChart rentangUsia
 
     
-    var rentangUsia = ["<15", "15-20", "21-30", "31-40", "41-50", ">51"];
-    var dataRUsia = [
-        {{-- @foreach ($counts as $data)
-        {{ $data['count'] }},
-        @endforeach --}}
-    ];
+    var rentangUsia = ["<15", "15-20", "21-30", "31-40", "41-50", ">50"];
+    var dataRUsia = {!! json_encode($age) !!};
     var barColors = "#8404F4";
 
     new Chart("rentangUsiaChart", {
@@ -391,16 +343,16 @@
     
     var pendidikan = ["SD", "SMP", "SMA/K", "D1", "D2", "D3", "D4", "S1", "S2", "S3"];
     var dataPendidikan = [
-        {{-- {{$sd}},
-        {{$smp}},
-        {{$smak}},
-        {{$d1}},
-        {{$d2}},
-        {{$d3}},
-        {{$d4}},
-        {{$s1}},
-        {{$s2}},
-        {{$s3}}, --}}
+        {{$education[0]}},
+        {{$education[1]}},
+        {{$education[2] + $education[3]}},
+        {{$education[4]}},
+        {{$education[5]}},
+        {{$education[6]}},
+        {{$education[7]}},
+        {{$education[8]}},
+        {{$education[9]}},
+        {{$education[10]}},
     ];
     var barColors = "#8404F4";
 

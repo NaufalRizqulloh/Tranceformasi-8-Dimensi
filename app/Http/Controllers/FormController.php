@@ -184,6 +184,7 @@ class FormController extends Controller
             'nextDestination' => $nextDestination,
             'previousDestination' => $previousDestination,
             'isAdmin' => Validation::isAdmin(auth()->user()->email),
+            'user' => auth()->user(),
         ]);
     }
 
@@ -313,6 +314,7 @@ class FormController extends Controller
         $notelp = $user->notelp;
         $testPurpose = $jawaban->event->tujuan_tes;
         $gender = $user->jenis_kelamin;
+        
         $collabLogo = $jawaban->event->collab_logo_base64;
         $collabUrl = $jawaban->event->collab_url;
         $collabCompanyName = $jawaban->event->collab_company_name;
@@ -321,7 +323,7 @@ class FormController extends Controller
 
         $options = new Options();
         $options->set('chroot', storage_path());
-
+        
         $html = View::make('template-pdf/8dimensi-master', [
             'name' => $name,
             'date' => $testDate,

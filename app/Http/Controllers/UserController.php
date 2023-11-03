@@ -8,12 +8,14 @@ use Carbon\Carbon;
 use Helpers\Data\StringHelper;
 use Helpers\Validation\Validation;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Symfony\Component\HttpFoundation\BinaryFileResponse;
 
 class UserController extends Controller
 {
     public function index()
     {
-        $jawaban = auth()->user()->jawabans->first();
+        $jawaban = auth()->user()->jawabans()->latest()->first();
         return view('testing/halaman', [
             'user' => auth()->user(),
             'isAdmin' => Validation::isAdmin(auth()->user()->email),
@@ -24,13 +26,28 @@ class UserController extends Controller
 
     public function downloadHasil(User $user)
     {
-        $currentSection = $user->jawabans()->latest()->first()->hasilPDF();
-    }
-    
-    public function storeFinalAnswer(User $user)
-    {
-        $currentSection = $user->jawabans()->latest()->first()->hasilPDF();
+        $view = request('view', 'download');
 
-        
+        $directory = storage_path('pdf');
+        $filename = auth()->user()->jawabans->first()->pdf_original_name . '.pdf';
+        $filePath = $directory . DIRECTORY_SEPARATOR . $filename;
+
+        // Check if the file exists.
+        if (file_exists($filePath)) {
+            if($view == 'download'){
+                // Create a BinaryFileResponse for the download.
+                return response()->download($filePath, $filename);
+            } else {
+                // Set the appropriate headers for PDF display.
+                header('Content-Type: application/pdf');
+                header('Content-Disposition: inline; filename="' . $filename . '"');
+
+                // Output the PDF file content to the browser.
+                readfile($filePath);
+            }
+        } else {
+            // File not found.
+            return redirect()->back()->withErrors(['filePdf' => 'File laporan tidak ditemukan']);  
+        }
     }
 }

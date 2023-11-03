@@ -20,7 +20,7 @@
     <div class="bg-primary col-span-9 h-fit rounded-xl flex px-8 py-16">
         <h1 class="w-56 text-white">Total Peserta<br>Tanggal Pengerjaan<br>Kode Akses<br>Institusi<br>Deskripsi</h1>
         <h1 class="w-fit text-white ml-6">:<br>:<br>:<br>:<br>:</h1>
-        <h1 class="w-fit text-white ml-6">{{ $user }}<br>{{ $event->tanggal_mulai }} - {{ $event->tanggal_selesai }}<br>{{ $event->kode_akses }}<br>{{ $event->institusi }}<br>{{ $event->deskripsi }}</h1>
+        <h1 class="w-fit text-white ml-6">{{ $users }}<br>{{ $timeStart }} - {{ $timeEnd }}<br>{{ $event->kode_akses }}<br>{{ $event->institusi }}<br>{{ $event->deskripsi }}</h1>
     </div>
     <div class="bg-primary h-full col-span-3 rounded-xl px-6 py-4">
         <h1 class="w-full text-white text-lg text-center font-bold mb-2">View</h1>
@@ -48,23 +48,38 @@
   <canvas id="8DChart" class="mx-auto" style="width:100%;max-width:400px;height:100%;max-height:300px"></canvas>
 </div>
 
-<h1 class="mb-6 text-black text-2xl text-center font-light italic">Data Individual</h1>
+<h1 class="mb-6 text-black text-2xl text-center font-light italic">Data Individual Yang Selesai</h1>
 
-<table class="w-10/12 mx-auto border-2 border-black">
+<table class="w-10/12 mx-auto mb-8 border-2 border-black">
   <tr class="border-2 border-black">
     <th class="border-2 border-black text-black"><h1 class="mx-2 text-center my-1">No</h1></th>
     <th class="border-2 border-black text-black"><h1 class="mx-2 text-center my-1">Selesai Mengerjakan</h1></th>
     <th class="border-2 border-black text-black"><h1 class="mx-2 text-center my-1">Hasil</h1></th>
   </tr>
-  @foreach ($peserta as $u)
+  @foreach ($finishedUserS as $u)
   <tr class="border-2 border-black">
-    <td class="border-2 border-black text-black"><h1 class="mx-2 text-center my-1">{{ $i }}</h1></td>
-    <td class="border-2 border-black text-black"><h1 class="mx-2 my-1">{{ $u->name }}</h1></td>
+    <td class="border-2 border-black text-black"><h1 class="mx-2 text-center my-1">{{ $loop->iteration }}</h1></td>
+    <td class="border-2 border-black text-black"><h1 class="mx-2 my-1">{{ $u->user->name }}</h1></td>
     <td class="border-2 border-black"><h1 class="mx-2 text-center my-1"><a href="" class="text-blue-400 hover:underline">Download PDF</a></h1></td>
   </tr>
-  @php
-  $i += 1;
-  @endphp
+  @endforeach
+</table>
+
+
+<h1 class="mb-6 text-black text-2xl text-center font-light italic">Data Peserta Yang Sedang Mengerjakan</h1>
+
+<table class="w-10/12 mx-auto border-2 border-black">
+  <tr class="border-2 border-black">
+    <th class="border-2 border-black text-black"><h1 class="mx-2 text-center my-1">No</h1></th>
+    <th class="border-2 border-black text-black"><h1 class="mx-2 text-center my-1">Selesai Mengerjakan</h1></th>
+    <th class="border-2 border-black text-black"><h1 class="mx-2 text-center my-1">Progress</h1></th>
+  </tr>
+  @foreach ($unfinishedUserS as $u)
+  <tr class="border-2 border-black">
+    <td class="border-2 border-black text-black"><h1 class="mx-2 text-center my-1">{{ $loop->iteration }}</h1></td>
+    <td class="border-2 border-black text-black"><h1 class="mx-2 my-1">{{ $u->user->name }}</h1></td>
+    <td class="border-2 border-black"><h1 class="mx-2 text-center my-1 capitalize">{{ $u->progress }}</h1></td>
+  </tr>
   @endforeach
 </table>
 
@@ -82,7 +97,7 @@
   var progress2 = document.getElementById("progressBar").getContext('2d');
 
     let done = {{ $finishedUser }};
-    let total = {{ $user }} ;
+    let total = {{ $users }} ;
     let donePercent = done / total * 100;
     let totalPercent = (total - done) / total * 100;
 

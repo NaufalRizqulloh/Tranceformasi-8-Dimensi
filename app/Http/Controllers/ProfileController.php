@@ -18,11 +18,11 @@ class ProfileController extends Controller
      */
     public function edit(Request $request): View
     {
-        $users = User::all();
+        $user = auth()->user();
         // dd($users);
 
         return view('testing/profile', [
-            'user' => $users,
+            'user' => $user,
             'isAdmin' => Validation::isAdmin(auth()->user()->email),
         ]);
         
