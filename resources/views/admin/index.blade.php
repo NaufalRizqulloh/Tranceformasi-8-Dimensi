@@ -53,7 +53,7 @@
 
     <!-- Overlay Edit -->
 
-    <div id="editEvent" class="top-0 left-1/4 w-1/2 h-[500px] mt-12 rounded-xl bg-white z-40 flex overflow-y-scroll overflow-hidden">
+    <div id="editEvent{{ $loop->iteration }}" class="top-0 left-1/4 w-1/2 h-[500px] mt-12 rounded-xl bg-white z-40 flex overflow-y-scroll overflow-hidden">
         <div class="w-full flex bg-primary mb-5 drop-shadow-2xl z-40 top-0 rounded-tl-xl items-center absolute">
             <h1 class="py-3 pl-5 text-secondary text-xl">Delapan Dimensi Kepemimpinan</h1>
         </div>
@@ -328,9 +328,6 @@
 
 <script>
 
-    $.ajax({
-
-    })
     document.getElementById("buatEventbtn").addEventListener("click", function() {
         document.getElementById("overlay").style.display = "block";
         document.getElementById("buatEvent").style.display = "block";
@@ -351,7 +348,7 @@
     for(let i = 1; i <= {{ $expiredEvents->count() }}; i++) {
         document.getElementById("editEventDonebtn" + i).addEventListener("click", function() {
             document.getElementById("overlay").style.display = "block";
-            document.getElementById("editEvent").style.display = "block";
+            document.getElementById("editEvent" + i).style.display = "block";
         });
     }
     
