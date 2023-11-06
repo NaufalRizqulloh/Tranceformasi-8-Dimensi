@@ -135,6 +135,7 @@ class AdminEventController extends Controller
         
         return view('admin/index', [
             'user'=> auth()->user(),
+            'event' => $events,
             'latestEvents' => $latestEvent,
             'expiredEvents' => $expiredEvents,
             'gender' => $usersGender,
@@ -190,6 +191,7 @@ class AdminEventController extends Controller
             'tanggal_selesai' => 'required',
             'deskripsi' => 'required|string|max:255',
             'tujuan_tes' => 'required|string|max:255|not_in:0',
+            'collab_url' => 'required|string|max255',
         ]);
         
         Event::create([
@@ -304,17 +306,35 @@ class AdminEventController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Event $event)
+    public function update(Request $request, string $id)
     {
         $request->validate([
-            'nama' => 'required|string|max:60',
-            'kode_akses' => 'required|unique:events|string|max:25',
-            'institusi' => 'required|string|255',
-            'total_peserta' => 'required|integer',
-            'tanggal_mulai' => 'required|date_format:o-m-d',
-            'tanggal_selesai' => 'required|date_format:o-m-d',
-            'deskripsi' => 'required|string|255'
+            'nama' => 'required|string',
+            // 'kode_akses' => 'required|unique:events|string',
+            'institusi' => 'required|string',
+            // 'collab_logo_base64' => 'required|mimes:png,jpeg,jpg',
+            'tanggal_mulai' => 'required',
+            'tanggal_selesai' => 'required',
+            'deskripsi' => 'required|string',
+            'tujuan_tes' => 'required|string|not_in:0',
+            'collab_url' => 'required|string',
         ]);
+
+        $eventt = Event::find($id);
+
+        $eventt->nama = $request->nama;
+        // $eventt->kode_akses = $request->kode_akses;
+        $eventt->institusi = $request->institusi;
+        // $eventt->collab_logo_base64 = $request->collab_logo_base64;
+        $eventt->tanggal_mulai = $request->tanggal_mulai;
+        $eventt->tanggal_selesai = $request->tanggal_selesai;
+        $eventt->deskripsi = $request->deskripsi;
+        $eventt->tujuan_tes = $request->tujuan_tes;
+        $eventt->collab_url = $request->collab_url;
+
+        $eventt->save();
+
+        return redirect()->route('admin.event.index');
     }
 
     /**

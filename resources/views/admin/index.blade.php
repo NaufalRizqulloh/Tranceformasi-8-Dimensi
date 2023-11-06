@@ -61,7 +61,8 @@
         <h1 class="text-4xl text-black text-center font-bold mt-20 mb-4">Edit Event {{ $e->nama }}</h1>
         <hr class="border-black w-3/4 mx-auto mb-4">
     
-        <form action="{{ route('admin.event.store') }}" method="POST">
+        <form action="{{ route('admin.event.update', $e->id) }}" method="POST">
+            @method('PUT')
             @csrf
             <label for="nama" id="" class="ml-14 mb-6 text-black text-xl">- Nama</label>
             <input type="text" name="nama" id="nama" class="mx-auto mb-4 w-10/12 rounded-md text-black border-black ring-black px-3 py-2 border shadow block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500" value="{{ $e->nama }}" placeholder="Nama Event" required maxlength="60"/>
@@ -69,22 +70,22 @@
             <h1 class="text-red-600 -mt-2">{{ $message }}</h1>
             @enderror
             <label for="institusi" id="" class="ml-14 mb-6 text-black text-xl">- Institusi</label>
-            <input type="text" name="institusi" id="institusi" class="mx-auto mb-4 w-10/12 rounded-md text-black border-black ring-black px-3 py-2 border shadow block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 " value="{{ old('institusi') }}" placeholder="Institusi/Perusahaan Peserta Event" required/>
+            <input type="text" name="institusi" id="institusi" class="mx-auto mb-4 w-10/12 rounded-md text-black border-black ring-black px-3 py-2 border shadow block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 " value="{{ $e->institusi }}" placeholder="Institusi/Perusahaan Peserta Event" required/>
             @error('institusi')
             <h1 class="text-red-600 -mt-2">{{ $message }}</h1>
             @enderror
             <label for="tanggal_mulai" id="" class="ml-14 mb-6 text-black text-xl">- Tanggal Dimulai Event</label>
-            <input type="date" name="tanggal_mulai" id="tanggal_mulai" placeholder="Nama Lengkap" onfocus="this.showPicker()" class="mb-4 rounded-md text-black border-black ring-black mx-auto px-3 py-2 border shadow rounder w-10/12 block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 @if($errors->has('tanggal_mulai')) border-red-500 @endif" value="{{ old('tanggal_mulai') }}" oninput="removeRedBorder(this)" required/>
+            <input type="date" name="tanggal_mulai" id="tanggal_mulai" placeholder="Nama Lengkap" onfocus="this.showPicker()" class="mb-4 rounded-md text-black border-black ring-black mx-auto px-3 py-2 border shadow rounder w-10/12 block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 @if($errors->has('tanggal_mulai')) border-red-500 @endif" value="{{ $e->tanggal_mulai }}" oninput="removeRedBorder(this)" required/>
             @error('tanggal_mulai')
             <h1 class="text-red-600 -mt-2">{{ $message }}</h1>
             @enderror
             <label for="tanggal_selesai" id="" class="ml-14 mb-6 text-black text-xl">- Tanggal Berakhir Event</label>
-            <input type="date" name="tanggal_selesai" id="tanggal_selesai" placeholder="Nama Lengkap" onfocus="this.showPicker()" class="mb-4 rounded-md text-black border-black ring-black mx-auto px-3 py-2 border shadow rounder w-10/12 block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 @if($errors->has('tanggal_selesai')) border-red-500 @endif" value="{{ old('tanggal_selesai') }}" oninput="removeRedBorder(this)" required/>
+            <input type="date" name="tanggal_selesai" id="tanggal_selesai" placeholder="Nama Lengkap" onfocus="this.showPicker()" class="mb-4 rounded-md text-black border-black ring-black mx-auto px-3 py-2 border shadow rounder w-10/12 block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 @if($errors->has('tanggal_selesai')) border-red-500 @endif" value="{{ $e->tanggal_selesai }}" oninput="removeRedBorder(this)" required/>
             @error('tanggal_selesai')
             <h1 class="text-red-600 -mt-2">{{ $message }}</h1>
             @enderror
             <label for="deskripsi" id="" class="ml-14 mb-6 text-black text-xl">- Deskripsi Event</label>
-            <input type="text" name="deskripsi" id="deskripsi" class="mx-auto mb-4 w-10/12 rounded-md text-black border-black ring-black px-3 py-2 border shadow block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 " value="{{ old('deskripsi') }}" placeholder="Deskripsi Event Anda" required/>
+            <input type="text" name="deskripsi" id="deskripsi" class="mx-auto mb-4 w-10/12 rounded-md text-black border-black ring-black px-3 py-2 border shadow block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 " value="{{ $e->deskripsi }}" placeholder="Deskripsi Event Anda" required/>
             @error('deskripsi')
             <h1 class="text-red-600 -mt-2">{{ $message }}</h1>
             @enderror
@@ -98,24 +99,24 @@
             <h1 class="text-red-600 -mt-2 ml-14">{{ $message }}</h1>
             @enderror
             <label for="collab_url" id="" class="ml-14 mb-6 text-black text-xl">- Alamat Web Perusahaan</label>
-            <input type="text" name="collab_url" id="collab_url" class="mx-auto mb-4 w-10/12 rounded-md text-black border-black ring-black px-3 py-2 border shadow block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 " value="{{ old('collab_url') }}" placeholder="example.com" maxlength="40" required/>
+            <input type="text" name="collab_url" id="collab_url" class="mx-auto mb-4 w-10/12 rounded-md text-black border-black ring-black px-3 py-2 border shadow block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 " value="{{ $e->collab_url }}" placeholder="example.com" maxlength="40" required/>
             @error('collab_url')
             <h1 class="text-red-600 -mt-2">{{ $message }}</h1>
             @enderror
-            <label for="collab_logo_base64" id="" class="ml-14 mb-6 text-black text-xl">- Logo Perusahaan</label>
-            <input type="file" name="collab_logo_base64" id="collab_logo_base64" class="mx-auto mb-4 w-10/12 rounded-md text-black border-black ring-black px-3 py-2 border shadow block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 " value="{{ old('collab_logo_base64') }}" accept="image/*" required/>
+            <!-- <label for="collab_logo_base64" id="" class="ml-14 mb-6 text-black text-xl">- Logo Perusahaan</label>
+            <input type="file" name="collab_logo_base64" id="collab_logo_base64" class="mx-auto mb-4 w-10/12 rounded-md text-black border-black ring-black px-3 py-2 border shadow block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 " value="" accept="image/*" required/>
             @error('collab_logo_base64')
             <h1 class="text-red-600 -mt-2">{{ $message }}</h1>
             @enderror
             <label for="kode_akses" id="" class="ml-14 mb-6 text-black text-xl">- Kode Akses</label>
-            <input type="text" name="kode_akses" id="kode_akses" class="mx-auto mb-12 w-10/12 rounded-md text-black border-black ring-black px-3 py-2 border shadow block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 " value="{{ old('kode_akses') }}" placeholder="Kode Akses untuk Event Anda (Harus berupa angka atau huruf sejumlah 6)" onkeyup="
+            <input type="text" name="kode_akses" id="kode_akses" class="mx-auto mb-12 w-10/12 rounded-md text-slate-600 bg-slate-300 border-slate-600 px-3 py-2 border shadow block text-sm placeholder:text-slate-400" value="{{ $e->kode_akses }}" placeholder="Kode Akses untuk Event Anda (Harus berupa angka atau huruf sejumlah 6)" onkeyup="
             var start = this.selectionStart;
             var end = this.selectionEnd;
             this.value = this.value.toUpperCase();
-            this.setSelectionRange(start, end);" pattern=".{6,6}" maxlength="6" required />
+            this.setSelectionRange(start, end);" pattern=".{6,6}" maxlength="6" required disabled />
             @error('kode_akses')
             <h1 class="text-red-600 -mt-2">{{ $message }}</h1>
-            @enderror
+            @enderror -->
     
             <button type="submit" class="block w-fit h-fit px-6 py-2 mx-auto mb-12 border-2 border-black rounded-full text-black text-lg">Submit</button>
         </form>
@@ -150,7 +151,7 @@
 
     <!-- Overlay Edit -->
 
-    <div id="editEvent" class="top-0 left-1/4 w-1/2 h-[500px] mt-12 rounded-xl bg-white z-40 flex overflow-y-scroll overflow-hidden">
+    <div id="editEventDone{{ $loop->iteration }}" class="top-0 left-1/4 w-1/2 h-[500px] mt-12 rounded-xl bg-white z-40 flex overflow-y-scroll overflow-hidden">
         <div class="w-full flex bg-primary mb-5 drop-shadow-2xl z-40 top-0 rounded-tl-xl items-center absolute">
             <h1 class="py-3 pl-5 text-secondary text-xl">Delapan Dimensi Kepemimpinan</h1>
         </div>
@@ -295,7 +296,7 @@
         @error('collab_url')
         <h1 class="text-red-600 -mt-2">{{ $message }}</h1>
         @enderror
-        <label for="collab_logo_base64" id="" class="ml-14 mb-6 text-black text-xl">- Logo Perusahaan</label>
+        <!-- <label for="collab_logo_base64" id="" class="ml-14 mb-6 text-black text-xl">- Logo Perusahaan</label>
         <input type="file" name="collab_logo_base64" id="collab_logo_base64" class="mx-auto mb-4 w-10/12 rounded-md text-black border-black ring-black px-3 py-2 border shadow block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 " value="{{ old('collab_logo_base64') }}" accept="image/*" required/>
         @error('collab_logo_base64')
         <h1 class="text-red-600 -mt-2">{{ $message }}</h1>
@@ -308,19 +309,19 @@
         this.setSelectionRange(start, end);" pattern=".{6,6}" maxlength="6" required />
         @error('kode_akses')
         <h1 class="text-red-600 -mt-2">{{ $message }}</h1>
-        @enderror
+        @enderror -->
 
         <button type="submit" class="block w-fit h-fit px-6 py-2 mx-auto mb-12 border-2 border-black rounded-full text-black text-lg">Submit</button>
     </form>
     
 </div>
-
+<!-- 
 @if ($errors->any())
     <script>
         document.getElementById("overlay").style.display = "block";
         document.getElementById("buatEvent").style.display = "block";
     </script>
-@endif
+@endif -->
 
 <!-- end Overlay buatEvent -->
 
@@ -339,23 +340,30 @@
     });
 
     for(let i = 1; i <= {{ $latestEvents->count() }}; i++) {
+        document.getElementById("editEvent" + i).style.display = "none";
+        document.getElementById("editEvent" + i).style.position = "fixed";
         document.getElementById("editEventbtn" + i).addEventListener("click", function() {
             document.getElementById("overlay").style.display = "block";
-            document.getElementById("editEvent").style.display = "block";
+            document.getElementById("editEvent" + i).style.display = "block";
+        });
+        document.getElementById("overlay").addEventListener("click", function() {
+            document.getElementById("overlay").style.display = "none";
+            document.getElementById("editEvent" + i).style.display = "none";
         });
     }
     
     for(let i = 1; i <= {{ $expiredEvents->count() }}; i++) {
+        document.getElementById("editEventDone" + i).style.display = "none";
+        document.getElementById("editEventDone" + i).style.position = "fixed";
         document.getElementById("editEventDonebtn" + i).addEventListener("click", function() {
             document.getElementById("overlay").style.display = "block";
-            document.getElementById("editEvent" + i).style.display = "block";
+            document.getElementById("editEventDone" + i).style.display = "block";
+        });
+        document.getElementById("overlay").addEventListener("click", function() {
+            document.getElementById("overlay").style.display = "none";
+            document.getElementById("editEventDone" + i).style.display = "none";
         });
     }
-    
-    document.getElementById("overlay").addEventListener("click", function() {
-        document.getElementById("overlay").style.display = "none";
-        document.getElementById("editEvent").style.display = "none";
-    });  
 
     var JKelamin = ["Laki", "Perempuan"];
     var dataJKelamin = {!! json_encode($gender) !!};
