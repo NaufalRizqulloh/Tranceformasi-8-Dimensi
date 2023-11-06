@@ -65,24 +65,4 @@
     document.getElementById("buatEvent").style.display = "block";
   }
   
-  document.getElementById("buatEventbtn").addEventListener("click", function() {
-    document.getElementById("overlay").style.display = "block";
-    document.getElementById("buatEvent").style.display = "block";
-  });
-  
-  document.getElementById("overlay").addEventListener("click", function() {
-    document.getElementById("overlay").style.display = "none";
-    document.getElementById("buatEvent").style.display = "none";
-  });
-  
-  document.getElementById("editEventbtn").addEventListener("click", function() {
-    document.getElementById("overlay").style.display = "block";
-    document.getElementById("editEvent").style.display = "block";
-  });
-
-  document.getElementById("overlay").addEventListener("click", function() {
-    document.getElementById("overlay").style.display = "none";
-    document.getElementById("editEvent").style.display = "none";
-  });  
-  
 </script>

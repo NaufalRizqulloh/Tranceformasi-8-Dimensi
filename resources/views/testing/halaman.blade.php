@@ -59,9 +59,9 @@
     @if($jawaban->event->is_answers_hold == true)
         <div class="mt-8 lg:mt-8 w-[90%] border-2 border-transparent h-fit bg-primary rounded-[50px] text-bgcolor mx-auto">
             <h1 class="mt-8 mb-4 mx-4 text-lg md:text-2xl lg:text-2xl text-bgcolor text-center font-bold">
-                HASIL LAPORAN ANDA SEDANG DITAHAN 
+                TERIMA KASIH, HASIL LAPORAN ANDA SEDANG TERTAHAN
                 <br>
-                Tanyakan pada admin untuk info lebih lanjut
+                Tanyakan … atau WhatsApp kami <a target="_blank" href="https://wa.me/06281336336339?text=Hai%20admin%2C%20saya%20ingin%20mengonfirmasi%20mengapa%20laporan%20saya%20saat%20ini%20ditahan%20di%20website%20Delapan%20Dimensi%20Kepemimpinan.%20Apakah%20ada%20alasan%20tertentu%20atau%20prosedur%20yang%20perlu%20saya%20ketahui%20untuk%20mendapatkan%20laporan%20tersebut%3F%2C" class="max-md:text-sky-400 max-md:underline hover:text-sky-400 no-underline hover:underline">(di sini)</a>
             </h1>
             <hr class="w-3/4 mx-auto">
             <div class="w-[350px] lg:w-[450px] h-[350px] lg:h-[450px] mx-auto justify-center items-center rounded-full bg-bgcolor dark:bg-slate-800 my-4 lg:my-6">
@@ -84,7 +84,7 @@
                 *Untuk mengetahui detail lebih lanjut, silahkan unduh file di bawah ini
             </h1>
             <h1 class="mx-4 mt-2 lg:mt-0 lg:mb-4 font-light text-xs md:text-base text-center text-bgcolor italic">
-                *Hasil tes diambil pada tanggal {{ $testDate }}
+                *Hasil tes diambil pada tanggal {{ isset($testDate)? $testDate : '[Belum Tes]' }}
             </h1>
             @error('filePdf')
                 <h1 class="text-red-400 mx-4 mt-2 lg:mt-0 lg:mb-4 font-light text-xs md:text-base text-center italic">
@@ -104,7 +104,7 @@
     <h1 class="mt-8 mb-4 mx-4 text-lg md:text-2xl lg:text-2xl text-bgcolor text-center font-bold">
         WAH, TERNYATA KAMU BELUM MENGISI FORMNYA
         <br>
-        Klik <span class="font-bold underline cursor-pointer"><a href="#mulai">DISINI</a></span> untuk segera mengisi
+        Klik <span class="font-bold hover:text-sky-400 underline cursor-pointer"><a href="#mulai">DISINI</a></span> untuk segera mengisi
     </h1>
     <hr class="w-3/4 mx-auto">
     <div class="w-[350px] lg:w-[450px] h-[350px] lg:h-[450px] mx-auto justify-center items-center rounded-full bg-bgcolor dark:bg-slate-800 my-4 lg:my-6">
@@ -130,7 +130,7 @@
             this.value = this.value.toUpperCase();
             this.setSelectionRange(start, end);" pattern=".{6,6}" maxlength="6" required>
         </label>
-        <h1 class="ml-12 italic text-slate-500 dark:text-bgcolor text-sm mb-6">*Hubungi admin jika terdapat masalah dengan kode akses</h1>
+        <h1 class="ml-12 italic text-slate-500 dark:text-bgcolor text-sm mb-6">*Hubungi admin jika terdapat masalah dengan kode akses <a target="_blank" href="https://wa.me/06281336336339?text=Hai%20admin%2C%20saya%20ingin%20menanyakan%20apakah%20ada%20kode%20akses%20yang%20diperlukan%20untuk%20mengikuti%20tes%20Delapan%20Dimensi%20Kepemimpinan%3F.%20Jika%20ada%2C%20mungkin%20Anda%20bisa%20memberikan%20saya%20informasi%20lebih%20lanjut%20atau%20panduan%20tentang%20cara%20mendapatkannya%3F" class="max-md:text-sky-400 max-md:underline hover:text-sky-400 no-underline hover:underline">(disini)</a></h1>
         @error('kode-akses')
             <h6 class="mb-4 text-red-600 ml-12 text-xs italic">{{ $message }}</h1>
         @enderror

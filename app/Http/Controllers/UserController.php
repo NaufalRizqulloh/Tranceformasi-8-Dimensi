@@ -16,11 +16,14 @@ class UserController extends Controller
     public function index()
     {
         $jawaban = auth()->user()->jawabans()->latest()->first();
+        if ($jawaban) {
+            $testDate = StringHelper::replaceDate(Carbon::parse($jawaban->updated_at)->format('j F Y'));
+        }
         return view('testing/halaman', [
             'user' => auth()->user(),
             'isAdmin' => Validation::isAdmin(auth()->user()->email),
             'jawaban' => $jawaban,
-            'testDate' => StringHelper::replaceDate(Carbon::parse($jawaban->updated_at)->format('j F Y'))
+            'testDate' => isset($testDate) ? $testDate : null,
         ]);
     }
 
@@ -29,7 +32,7 @@ class UserController extends Controller
         $view = request('view', 'download');
 
         $directory = storage_path('pdf');
-        $filename = auth()->user()->jawabans->first()->pdf_original_name . '.pdf';
+        $filename = auth()->user()->jawabans()->latest()->first()->pdf_original_name . '.pdf';
         $filePath = $directory . DIRECTORY_SEPARATOR . $filename;
 
         // Check if the file exists.

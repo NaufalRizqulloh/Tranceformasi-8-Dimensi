@@ -68,7 +68,7 @@
     @endforeach
 
     
-    {{-- kalau error --}}
+    <!-- {{-- kalau error --}} -->
     <div>
         @foreach(['checkbox', 'checkbox.p', 'checkbox.t', 'range'] as $field)
         @error($field)
@@ -77,15 +77,15 @@
         @endforeach
     </div>
 
-    {{-- previous or next button --}}
+    <!-- {{-- previous or next button --}} -->
     <div class="flex w-fit space-x-8 md:space-x-12 mx-auto">
         <button onclick="toPrevious()" class="mt-8 w-40 h-12 text-base md:text-xl border-2 rounded-full bg-white dark:bg-slate-700 border-slate-500 text-black dark:text-bgcolor text-center">
             Kembali
         </button>
         
         @if($nextDestination == 'submit')
-        <div class="flex mt-8 w-40 h-12 text-base md:text-xl justify-center items-center border-2 rounded-full bg-white dark:bg-slate-700 border-slate-500 text-black dark:text-bgcolor text-center">
-            <a id="submit-button" class="mt-8 text-lg md:text-xl py-2 px-16 w-fit h-93 border-2 rounded-full bg-[#ffffff] text-center cursor-pointer">
+        <div id="submit-button" class="flex mt-8 w-40 h-12 text-base md:text-xl justify-center items-center border-2 rounded-full bg-white dark:bg-slate-700 border-slate-500 text-black dark:text-bgcolor text-center">
+            <a>
                 Submit
             </a>
         </div>
@@ -94,17 +94,6 @@
             Selanjutnya
         </button>
         @endif
-    </div>
-    
-    <div>
-        <h1>{{ var_dump($answers) }}</h1>
-    </div>
-    <div>
-        <br>
-        <h1>{{ $nextDestination }}</h1>
-        <br>
-        <h1>{{ $previousDestination }}</h1>
-        <br>
     </div>
     
     <!-- overlaySubmit -->
@@ -133,8 +122,6 @@
     <!-- End overlaySubmit -->
 
 </form>
-
-<button onclick="alertme()">test</button>
 
 @include('templates.partials.script-form')
 @endsection

@@ -32,12 +32,10 @@ class EventFactory extends Factory
             'nama' => fake()->name(),
             'kode_akses' => fake()->password(5, 6),
             'institusi' => fake()->city() . $institution,
-            'total_peserta' => rand(30, 300),
             'tanggal_mulai' => Carbon::parse('2023-01-01 15:00:00'),
             'tanggal_selesai' => Carbon::parse($randDate . ' 15:00:00'),
             'tujuan_tes' => $goal,
             'deskripsi' => fake()->text('100'),
-            'is_expired' => $isExpired,
             'is_answers_hold' => false
         ];
         // fake()->dateTime("now", "Asia/Jakarta")

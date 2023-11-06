@@ -45,8 +45,7 @@ Route::get('/t/{user}', function (User $user) {
 });
 
 Route::get('/t', function () {
-    $a = auth()->user()->jawabans->first();
-    dd($a);
+    dd(base64_encode(file_get_contents(public_path('static/logo TI Red.png'))));
 })->middleware('auth');
 
 Route::get('/dn', function () {
@@ -137,7 +136,8 @@ Route::get('/在漫游于一个旋涡般的资本主义中我与一只戴着单�
     $jawaban = request('jawaban');
     return view('alt-form/no-jump', [
         'jawaban' => $jawaban,
-        'isAdmin' => Validation::isAdmin(auth()->user()->email)
+        'isAdmin' => Validation::isAdmin(auth()->user()->email),
+        'user' => auth()->user()
     ]);
 })->name('user.form.jumper');
 
@@ -210,3 +210,4 @@ Route::get('/done', function () {
 });
 
 require __DIR__ . '/auth.php';
+{{  }}

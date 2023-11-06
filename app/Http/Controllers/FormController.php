@@ -100,7 +100,7 @@ class FormController extends Controller
 
         return redirect()->route('user.form.show', [
             'jawaban' => $newAnswer,
-            'destination' => 'section-1-1'
+            'destination' => 'section-1-1',
         ]);
     }
 
@@ -156,7 +156,8 @@ class FormController extends Controller
                 return view('alt-form/section-wait', [
                     'nextDestination' => 'section-2-1',
                     'jawaban' => $jawaban,
-                    'isAdmin' => Validation::isAdmin(auth()->user()->email)
+                    'isAdmin' => Validation::isAdmin(auth()->user()->email),
+                    'user' => auth()->user()
                 ]);
             default:
                 dd('idk', $destination);
@@ -317,7 +318,7 @@ class FormController extends Controller
         
         $collabLogo = $jawaban->event->collab_logo_base64;
         $collabUrl = $jawaban->event->collab_url;
-        $collabCompanyName = $jawaban->event->collab_company_name;
+        $collabCompanyName = $jawaban->event->institusi;
 
         $pdfFileName = 'Laporan Dimensi - ' .  $name . ' - ' . StringHelper::replaceDate(date('j F Y'));
 
@@ -341,8 +342,8 @@ class FormController extends Controller
             'score' => $answerSection2,
 
             'collabLogo' => $collabLogo,
-            'collabCompany' => $collabUrl,
-            'collabWatermark' => $collabCompanyName
+            'collabCompany' => $collabCompanyName,
+            'collabWatermark' => $collabUrl
         ])->render();
 
         $dompdf = new Dompdf();

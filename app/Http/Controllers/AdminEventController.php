@@ -185,25 +185,47 @@ class AdminEventController extends Controller
             'nama' => 'required|string|max:60',
             'kode_akses' => 'required|unique:events|string|max:25',
             'institusi' => 'required|string|max:255',
-            'total_peserta' => 'required|integer',
+            'collab_logo_base64' => 'required|mimes:png,jpeg,jpg',
             'tanggal_mulai' => 'required',
             'tanggal_selesai' => 'required',
             'deskripsi' => 'required|string|max:255',
             'tujuan_tes' => 'required|string|max:255|not_in:0',
         ]);
-
+        
         Event::create([
             'nama' => $request->input('nama'),
             'kode_akses' => $request->input('kode_akses'),
             'institusi' => $request->input('institusi'),
-            'total_peserta' => $request->input('total_peserta'),
             'tanggal_mulai' => $request->input('tanggal_mulai'),
             'tanggal_selesai' => $request->input('tanggal_selesai'),
             'deskripsi' => $request->input('deskripsi'),
             'tujuan_tes' => $request->input('tujuan_tes'),
-            'is_expired' => false, // TAKEDOWN
-            'is_answers_hold' => false
+            'collab_url' => $request->input('collab_url'),
+            'is_answers_hold' => false,
         ]);
+
+        $event = Event::latest()->first();
+        $path = public_path('/static/' . 'logo-event-' . $event->id . '.png');
+
+        if ($request->hasFile('collab_logo_base64')) {
+            $collab_logo_base64 = $request->file('collab_logo_base64')->storeAs('public/static', 'logo-event-' . $event->id . '.png');
+        }
+
+        $event->collab_logo_base64 = $path;
+        $event->save();
+
+        // dd([
+        //     'nama' => $request->input('nama'),
+        //     'kode_akses' => $request->input('kode_akses'),
+        //     'institusi' => $request->input('institusi'),
+        //     'tanggal_mulai' => $request->input('tanggal_mulai'),
+        //     'tanggal_selesai' => $request->input('tanggal_selesai'),
+        //     'deskripsi' => $request->input('deskripsi'),
+        //     'tujuan_tes' => $request->input('tujuan_tes'),
+        //     'collab_logo_base64' => $img,
+        //     'collab_url' => $request->input('collab_url'),
+        //     'is_answers_hold' => false,
+        // ]);
 
         return redirect()->back()->with('success', 'Event berhasil dibuat');
     }

@@ -81,8 +81,6 @@
       </div>
 
   </form>
-  <h1>{{ var_dump($answers) }}</h1>
-  <h1>{{ $previousDestination . "   " .  $nextDestination }}</h1>
 
   @include('templates.partials.script-form')
   @endsection

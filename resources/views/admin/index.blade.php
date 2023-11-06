@@ -19,7 +19,7 @@
         </div>
         <div class="bg-primary rounded-3xl w-40 h-fit">
             <div class="my-5">
-                <h1 class="text-secondary font-bold text-center font-montserrat">Total Peserta</h1>
+                <h1 class="text-secondary font-bold text-center font-montserrat">Total Percobaan</h1>
                 <h1 class="text-white text-2xl font-bold font-montserrat text-center">{{ $totalParticipant }}</h1>
             </div>
         </div>
@@ -44,10 +44,82 @@
                     <h1 class="text-black font-montserrat font-semibold mx-4 my-2">Lihat Data</h1>
                 </button>
             </a>
-            <button id="editEventbtn" class="bg-white w-fit h-fit mt-2 rounded-full flex">
+            <button id="editEventbtn{{ $loop->iteration }}" class="bg-white w-fit h-fit mt-2 rounded-full flex">
                 <img src="/dist/editEvent.png" alt="" class="ml-4 mt-1">
                 <h1 class="text-black font-montserrat font-semibold mx-4 my-2">Edit Event</h1>
             </button>
+        </div>
+    </div>
+
+    <!-- Overlay Edit -->
+
+    <div id="editEvent" class="top-0 left-1/4 w-1/2 h-[500px] mt-12 rounded-xl bg-white z-40 flex overflow-y-scroll overflow-hidden">
+        <div class="w-full flex bg-primary mb-5 drop-shadow-2xl z-40 top-0 rounded-tl-xl items-center absolute">
+            <h1 class="py-3 pl-5 text-secondary text-xl">Delapan Dimensi Kepemimpinan</h1>
+        </div>
+    
+        <h1 class="text-4xl text-black text-center font-bold mt-20 mb-4">Edit Event {{ $e->nama }}</h1>
+        <hr class="border-black w-3/4 mx-auto mb-4">
+    
+        <form action="{{ route('admin.event.store') }}" method="POST">
+            @csrf
+            <label for="nama" id="" class="ml-14 mb-6 text-black text-xl">- Nama</label>
+            <input type="text" name="nama" id="nama" class="mx-auto mb-4 w-10/12 rounded-md text-black border-black ring-black px-3 py-2 border shadow block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500" value="{{ $e->nama }}" placeholder="Nama Event" required maxlength="60"/>
+            @error('nama')
+            <h1 class="text-red-600 -mt-2">{{ $message }}</h1>
+            @enderror
+            <label for="institusi" id="" class="ml-14 mb-6 text-black text-xl">- Institusi</label>
+            <input type="text" name="institusi" id="institusi" class="mx-auto mb-4 w-10/12 rounded-md text-black border-black ring-black px-3 py-2 border shadow block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 " value="{{ old('institusi') }}" placeholder="Institusi/Perusahaan Peserta Event" required/>
+            @error('institusi')
+            <h1 class="text-red-600 -mt-2">{{ $message }}</h1>
+            @enderror
+            <label for="tanggal_mulai" id="" class="ml-14 mb-6 text-black text-xl">- Tanggal Dimulai Event</label>
+            <input type="date" name="tanggal_mulai" id="tanggal_mulai" placeholder="Nama Lengkap" onfocus="this.showPicker()" class="mb-4 rounded-md text-black border-black ring-black mx-auto px-3 py-2 border shadow rounder w-10/12 block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 @if($errors->has('tanggal_mulai')) border-red-500 @endif" value="{{ old('tanggal_mulai') }}" oninput="removeRedBorder(this)" required/>
+            @error('tanggal_mulai')
+            <h1 class="text-red-600 -mt-2">{{ $message }}</h1>
+            @enderror
+            <label for="tanggal_selesai" id="" class="ml-14 mb-6 text-black text-xl">- Tanggal Berakhir Event</label>
+            <input type="date" name="tanggal_selesai" id="tanggal_selesai" placeholder="Nama Lengkap" onfocus="this.showPicker()" class="mb-4 rounded-md text-black border-black ring-black mx-auto px-3 py-2 border shadow rounder w-10/12 block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 @if($errors->has('tanggal_selesai')) border-red-500 @endif" value="{{ old('tanggal_selesai') }}" oninput="removeRedBorder(this)" required/>
+            @error('tanggal_selesai')
+            <h1 class="text-red-600 -mt-2">{{ $message }}</h1>
+            @enderror
+            <label for="deskripsi" id="" class="ml-14 mb-6 text-black text-xl">- Deskripsi Event</label>
+            <input type="text" name="deskripsi" id="deskripsi" class="mx-auto mb-4 w-10/12 rounded-md text-black border-black ring-black px-3 py-2 border shadow block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 " value="{{ old('deskripsi') }}" placeholder="Deskripsi Event Anda" required/>
+            @error('deskripsi')
+            <h1 class="text-red-600 -mt-2">{{ $message }}</h1>
+            @enderror
+            <h1 class="ml-14 text-black text-xl">- Tujuan Event</h1>
+            <select name="tujuan_tes" id="" class="mx-auto mb-4 w-10/12 rounded-md text-black border-black ring-black px-3 py-2 border shadow block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 " value="{{ old('tujuan_tes') }}">
+                <option value="0">-- Tujuan Diadakannya Event --</option>
+                <option value="Personal Development">Personal Development</option>
+                <option value="Career Development">Career Development</option>
+            </select>
+            @error('tujuan_tes')
+            <h1 class="text-red-600 -mt-2 ml-14">{{ $message }}</h1>
+            @enderror
+            <label for="collab_url" id="" class="ml-14 mb-6 text-black text-xl">- Alamat Web Perusahaan</label>
+            <input type="text" name="collab_url" id="collab_url" class="mx-auto mb-4 w-10/12 rounded-md text-black border-black ring-black px-3 py-2 border shadow block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 " value="{{ old('collab_url') }}" placeholder="example.com" maxlength="40" required/>
+            @error('collab_url')
+            <h1 class="text-red-600 -mt-2">{{ $message }}</h1>
+            @enderror
+            <label for="collab_logo_base64" id="" class="ml-14 mb-6 text-black text-xl">- Logo Perusahaan</label>
+            <input type="file" name="collab_logo_base64" id="collab_logo_base64" class="mx-auto mb-4 w-10/12 rounded-md text-black border-black ring-black px-3 py-2 border shadow block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 " value="{{ old('collab_logo_base64') }}" accept="image/*" required/>
+            @error('collab_logo_base64')
+            <h1 class="text-red-600 -mt-2">{{ $message }}</h1>
+            @enderror
+            <label for="kode_akses" id="" class="ml-14 mb-6 text-black text-xl">- Kode Akses</label>
+            <input type="text" name="kode_akses" id="kode_akses" class="mx-auto mb-12 w-10/12 rounded-md text-black border-black ring-black px-3 py-2 border shadow block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 " value="{{ old('kode_akses') }}" placeholder="Kode Akses untuk Event Anda (Harus berupa angka atau huruf sejumlah 6)" onkeyup="
+            var start = this.selectionStart;
+            var end = this.selectionEnd;
+            this.value = this.value.toUpperCase();
+            this.setSelectionRange(start, end);" pattern=".{6,6}" maxlength="6" required />
+            @error('kode_akses')
+            <h1 class="text-red-600 -mt-2">{{ $message }}</h1>
+            @enderror
+    
+            <button type="submit" class="block w-fit h-fit px-6 py-2 mx-auto mb-12 border-2 border-black rounded-full text-black text-lg">Submit</button>
+        </form>
+        
         </div>
     </div>
 @endforeach
@@ -55,7 +127,6 @@
 
 <h1 class="ml-12 font-montserrat dark:text-bgcolor">Event yang sudah berlalu</h1>
 <hr class="mx-12 mb-5 border-black dark:border-bgcolor">
-<div class="mb-12"></div>
 
 @foreach ($expiredEvents as $e)
     <div class="bg-primary w-[93%] h-14 ml-12 mb-2 rounded-full relative flex">
@@ -70,19 +141,85 @@
                     <h1 class="text-black font-montserrat font-semibold mx-4 my-2">Lihat Data</h1>
                 </button>
             </a>
-            <button id="editEventbtn" class="bg-white w-fit h-fit mt-2 rounded-full flex">
+            <button id="editEventDonebtn{{ $loop->iteration }}" class="bg-white w-fit h-fit mt-2 rounded-full flex">
                 <img src="/dist/editEvent.png" alt="" class="ml-4 mt-1">
                 <h1 class="text-black font-montserrat font-semibold mx-4 my-2">Edit Event</h1>
             </button>
         </div>
     </div>
-@endforeach
 
-<div class="w-fit mx-auto flex mb-12">
-    <div class="bg-black dark:bg-bgcolor w-4 h-4 mx-2 rounded-full"></div>
-    <div class="bg-black dark:bg-bgcolor w-4 h-4 mx-2 rounded-full"></div>
-    <div class="bg-black dark:bg-bgcolor w-4 h-4 mx-2 rounded-full"></div>
-</div>
+    <!-- Overlay Edit -->
+
+    <div id="editEvent" class="top-0 left-1/4 w-1/2 h-[500px] mt-12 rounded-xl bg-white z-40 flex overflow-y-scroll overflow-hidden">
+        <div class="w-full flex bg-primary mb-5 drop-shadow-2xl z-40 top-0 rounded-tl-xl items-center absolute">
+            <h1 class="py-3 pl-5 text-secondary text-xl">Delapan Dimensi Kepemimpinan</h1>
+        </div>
+
+        <h1 class="text-4xl text-black text-center font-bold mt-20 mb-4">Edit Event {{ $e->name }}</h1>
+        <hr class="border-black w-3/4 mx-auto mb-4">
+
+        <form action="{{ route('admin.event.store') }}" method="POST">
+            @csrf
+            <label for="nama" id="" class="ml-14 mb-6 text-black text-xl">- Nama</label>
+            <input type="text" name="nama" id="nama" class="mx-auto mb-4 w-10/12 rounded-md text-black border-black ring-black px-3 py-2 border shadow block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500" value="{{ old('nama') }}" placeholder="Nama Event" required maxlength="60"/>
+            @error('nama')
+            <h1 class="text-red-600 -mt-2">{{ $message }}</h1>
+            @enderror
+            <label for="institusi" id="" class="ml-14 mb-6 text-black text-xl">- Institusi</label>
+            <input type="text" name="institusi" id="institusi" class="mx-auto mb-4 w-10/12 rounded-md text-black border-black ring-black px-3 py-2 border shadow block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 " value="{{ old('institusi') }}" placeholder="Institusi/Perusahaan Peserta Event" required/>
+            @error('institusi')
+            <h1 class="text-red-600 -mt-2">{{ $message }}</h1>
+            @enderror
+            <label for="tanggal_mulai" id="" class="ml-14 mb-6 text-black text-xl">- Tanggal Dimulai Event</label>
+            <input type="date" name="tanggal_mulai" id="tanggal_mulai" placeholder="Nama Lengkap" onfocus="this.showPicker()" class="mb-4 rounded-md text-black border-black ring-black mx-auto px-3 py-2 border shadow rounder w-10/12 block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 @if($errors->has('tanggal_mulai')) border-red-500 @endif" value="{{ old('tanggal_mulai') }}" oninput="removeRedBorder(this)" required/>
+            @error('tanggal_mulai')
+            <h1 class="text-red-600 -mt-2">{{ $message }}</h1>
+            @enderror
+            <label for="tanggal_selesai" id="" class="ml-14 mb-6 text-black text-xl">- Tanggal Berakhir Event</label>
+            <input type="date" name="tanggal_selesai" id="tanggal_selesai" placeholder="Nama Lengkap" onfocus="this.showPicker()" class="mb-4 rounded-md text-black border-black ring-black mx-auto px-3 py-2 border shadow rounder w-10/12 block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 @if($errors->has('tanggal_selesai')) border-red-500 @endif" value="{{ old('tanggal_selesai') }}" oninput="removeRedBorder(this)" required/>
+            @error('tanggal_selesai')
+            <h1 class="text-red-600 -mt-2">{{ $message }}</h1>
+            @enderror
+            <label for="deskripsi" id="" class="ml-14 mb-6 text-black text-xl">- Deskripsi Event</label>
+            <input type="text" name="deskripsi" id="deskripsi" class="mx-auto mb-4 w-10/12 rounded-md text-black border-black ring-black px-3 py-2 border shadow block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 " value="{{ old('deskripsi') }}" placeholder="Deskripsi Event Anda" required/>
+            @error('deskripsi')
+            <h1 class="text-red-600 -mt-2">{{ $message }}</h1>
+            @enderror
+            <h1 class="ml-14 text-black text-xl">- Tujuan Event</h1>
+            <select name="tujuan_tes" id="" class="mx-auto mb-4 w-10/12 rounded-md text-black border-black ring-black px-3 py-2 border shadow block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 " value="{{ old('tujuan_tes') }}">
+                <option value="0">-- Tujuan Diadakannya Event --</option>
+                <option value="Personal Development">Personal Development</option>
+                <option value="Career Development">Career Development</option>
+            </select>
+            @error('tujuan_tes')
+            <h1 class="text-red-600 -mt-2 ml-14">{{ $message }}</h1>
+            @enderror
+            <label for="collab_url" id="" class="ml-14 mb-6 text-black text-xl">- Alamat Web Perusahaan</label>
+            <input type="text" name="collab_url" id="collab_url" class="mx-auto mb-4 w-10/12 rounded-md text-black border-black ring-black px-3 py-2 border shadow block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 " value="{{ old('collab_url') }}" placeholder="example.com" maxlength="40" required/>
+            @error('collab_url')
+            <h1 class="text-red-600 -mt-2">{{ $message }}</h1>
+            @enderror
+            <label for="collab_logo_base64" id="" class="ml-14 mb-6 text-black text-xl">- Logo Perusahaan</label>
+            <input type="file" name="collab_logo_base64" id="collab_logo_base64" class="mx-auto mb-4 w-10/12 rounded-md text-black border-black ring-black px-3 py-2 border shadow block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 " value="{{ old('collab_logo_base64') }}" accept="image/*" required/>
+            @error('collab_logo_base64')
+            <h1 class="text-red-600 -mt-2">{{ $message }}</h1>
+            @enderror
+            <label for="kode_akses" id="" class="ml-14 mb-6 text-black text-xl">- Kode Akses</label>
+            <input type="text" name="kode_akses" id="kode_akses" class="mx-auto mb-12 w-10/12 rounded-md text-black border-black ring-black px-3 py-2 border shadow block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 " value="{{ old('kode_akses') }}" placeholder="Kode Akses untuk Event Anda (Harus berupa angka atau huruf sejumlah 6)" onkeyup="
+            var start = this.selectionStart;
+            var end = this.selectionEnd;
+            this.value = this.value.toUpperCase();
+            this.setSelectionRange(start, end);" pattern=".{6,6}" maxlength="6" required />
+            @error('kode_akses')
+            <h1 class="text-red-600 -mt-2">{{ $message }}</h1>
+            @enderror
+
+            <button type="submit" class="block w-fit h-fit px-6 py-2 mx-auto mb-12 border-2 border-black rounded-full text-black text-lg">Submit</button>
+        </form>
+
+        </div>
+    </div>
+@endforeach
 
 <h1 class="ml-12 font-montserrat dark:text-bgcolor">Data Keseluruhan</h1>
 <hr class="mx-12 mb-5 border-black dark:border-bgcolor">
@@ -117,7 +254,7 @@
     <h1 class="text-4xl text-black text-center font-bold mt-20 mb-4">Daftarkan Event Baru</h1>
     <hr class="border-black w-3/4 mx-auto mb-4">
 
-    <form action="{{ route('admin.event.store') }}" method="POST">
+    <form action="{{ route('admin.event.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <label for="nama" id="" class="ml-14 mb-6 text-black text-xl">- Nama</label>
         <input type="text" name="nama" id="nama" class="mx-auto mb-4 w-10/12 rounded-md text-black border-black ring-black px-3 py-2 border shadow block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500" value="{{ old('nama') }}" placeholder="Nama Event" required maxlength="60"/>
@@ -153,75 +290,14 @@
         @error('tujuan_tes')
         <h1 class="text-red-600 -mt-2 ml-14">{{ $message }}</h1>
         @enderror
-        <label for="total_peserta" id="" class="ml-14 mb-6 text-black text-xl">- Total Peserta</label>
-        <input type="number" name="total_peserta" id="total_peserta" class="mx-auto mb-4 w-10/12 rounded-md text-black border-black ring-black px-3 py-2 border shadow block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 " value="{{ old('total_peserta') }}" placeholder="Perkiraan Total Peserta Event" required/>
-        @error('total_peserta')
+        <label for="collab_url" id="" class="ml-14 mb-6 text-black text-xl">- Alamat Web Perusahaan</label>
+        <input type="text" name="collab_url" id="collab_url" class="mx-auto mb-4 w-10/12 rounded-md text-black border-black ring-black px-3 py-2 border shadow block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 " value="{{ old('collab_url') }}" placeholder="example.com" maxlength="40" required/>
+        @error('collab_url')
         <h1 class="text-red-600 -mt-2">{{ $message }}</h1>
         @enderror
-        <label for="kode_akses" id="" class="ml-14 mb-6 text-black text-xl">- Kode Akses</label>
-        <input type="text" name="kode_akses" id="kode_akses" class="mx-auto mb-12 w-10/12 rounded-md text-black border-black ring-black px-3 py-2 border shadow block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 " value="{{ old('kode_akses') }}" placeholder="Kode Akses untuk Event Anda (Harus berupa angka atau huruf sejumlah 6)" onkeyup="
-        var start = this.selectionStart;
-        var end = this.selectionEnd;
-        this.value = this.value.toUpperCase();
-        this.setSelectionRange(start, end);" pattern=".{6,6}" maxlength="6" required />
-        @error('kode_akses')
-        <h1 class="text-red-600 -mt-2">{{ $message }}</h1>
-        @enderror
-
-        <button type="submit" class="block w-fit h-fit px-6 py-2 mx-auto mb-12 border-2 border-black rounded-full text-black text-lg">Submit</button>
-    </form>
-    
-</div>
-
-<!-- Overlay Edit -->
-
-<div id="editEvent" class="top-0 left-1/4 w-1/2 h-[500px] mt-12 rounded-xl bg-white z-40 flex overflow-y-scroll overflow-hidden">
-<div class="w-full flex bg-primary mb-5 drop-shadow-2xl z-40 top-0 rounded-tl-xl items-center absolute">
-        <h1 class="py-3 pl-5 text-secondary text-xl">Delapan Dimensi Kepemimpinan</h1>
-    </div>
-
-    <h1 class="text-4xl text-black text-center font-bold mt-20 mb-4">Daftarkan Event Baru</h1>
-    <hr class="border-black w-3/4 mx-auto mb-4">
-
-    <form action="{{ route('admin.event.store') }}" method="POST">
-        @csrf
-        <label for="nama" id="" class="ml-14 mb-6 text-black text-xl">- Nama</label>
-        <input type="text" name="nama" id="nama" class="mx-auto mb-4 w-10/12 rounded-md text-black border-black ring-black px-3 py-2 border shadow block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500" value="{{ old('nama') }}" placeholder="Nama Event" required maxlength="60"/>
-        @error('nama')
-        <h1 class="text-red-600 -mt-2">{{ $message }}</h1>
-        @enderror
-        <label for="institusi" id="" class="ml-14 mb-6 text-black text-xl">- Institusi</label>
-        <input type="text" name="institusi" id="institusi" class="mx-auto mb-4 w-10/12 rounded-md text-black border-black ring-black px-3 py-2 border shadow block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 " value="{{ old('institusi') }}" placeholder="Institusi/Perusahaan Peserta Event" required/>
-        @error('institusi')
-        <h1 class="text-red-600 -mt-2">{{ $message }}</h1>
-        @enderror
-        <label for="tanggal_mulai" id="" class="ml-14 mb-6 text-black text-xl">- Tanggal Dimulai Event</label>
-        <input type="date" name="tanggal_mulai" id="tanggal_mulai" placeholder="Nama Lengkap" onfocus="this.showPicker()" class="mb-4 rounded-md text-black border-black ring-black mx-auto px-3 py-2 border shadow rounder w-10/12 block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 @if($errors->has('tanggal_mulai')) border-red-500 @endif" value="{{ old('tanggal_mulai') }}" oninput="removeRedBorder(this)" required/>
-        @error('tanggal_mulai')
-        <h1 class="text-red-600 -mt-2">{{ $message }}</h1>
-        @enderror
-        <label for="tanggal_selesai" id="" class="ml-14 mb-6 text-black text-xl">- Tanggal Berakhir Event</label>
-        <input type="date" name="tanggal_selesai" id="tanggal_selesai" placeholder="Nama Lengkap" onfocus="this.showPicker()" class="mb-4 rounded-md text-black border-black ring-black mx-auto px-3 py-2 border shadow rounder w-10/12 block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 @if($errors->has('tanggal_selesai')) border-red-500 @endif" value="{{ old('tanggal_selesai') }}" oninput="removeRedBorder(this)" required/>
-        @error('tanggal_selesai')
-        <h1 class="text-red-600 -mt-2">{{ $message }}</h1>
-        @enderror
-        <label for="deskripsi" id="" class="ml-14 mb-6 text-black text-xl">- Deskripsi Event</label>
-        <input type="text" name="deskripsi" id="deskripsi" class="mx-auto mb-4 w-10/12 rounded-md text-black border-black ring-black px-3 py-2 border shadow block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 " value="{{ old('deskripsi') }}" placeholder="Deskripsi Event Anda" required/>
-        @error('deskripsi')
-        <h1 class="text-red-600 -mt-2">{{ $message }}</h1>
-        @enderror
-        <h1 class="ml-14 text-black text-xl">- Tujuan Event</h1>
-        <select name="tujuan_tes" id="" class="mx-auto mb-4 w-10/12 rounded-md text-black border-black ring-black px-3 py-2 border shadow block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 " value="{{ old('tujuan_tes') }}">
-            <option value="0">-- Tujuan Diadakannya Event --</option>
-            <option value="Personal Development">Personal Development</option>
-            <option value="Career Development">Career Development</option>
-        </select>
-        @error('tujuan_tes')
-        <h1 class="text-red-600 -mt-2 ml-14">{{ $message }}</h1>
-        @enderror
-        <label for="total_peserta" id="" class="ml-14 mb-6 text-black text-xl">- Total Peserta</label>
-        <input type="number" name="total_peserta" id="total_peserta" class="mx-auto mb-4 w-10/12 rounded-md text-black border-black ring-black px-3 py-2 border shadow block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 " value="{{ old('total_peserta') }}" placeholder="Perkiraan Total Peserta Event" required/>
-        @error('total_peserta')
+        <label for="collab_logo_base64" id="" class="ml-14 mb-6 text-black text-xl">- Logo Perusahaan</label>
+        <input type="file" name="collab_logo_base64" id="collab_logo_base64" class="mx-auto mb-4 w-10/12 rounded-md text-black border-black ring-black px-3 py-2 border shadow block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 " value="{{ old('collab_logo_base64') }}" accept="image/*" required/>
+        @error('collab_logo_base64')
         <h1 class="text-red-600 -mt-2">{{ $message }}</h1>
         @enderror
         <label for="kode_akses" id="" class="ml-14 mb-6 text-black text-xl">- Kode Akses</label>
@@ -252,6 +328,37 @@
 
 <script>
 
+    $.ajax({
+
+    })
+    document.getElementById("buatEventbtn").addEventListener("click", function() {
+        document.getElementById("overlay").style.display = "block";
+        document.getElementById("buatEvent").style.display = "block";
+    });
+
+    document.getElementById("overlay").addEventListener("click", function() {
+        document.getElementById("overlay").style.display = "none";
+        document.getElementById("buatEvent").style.display = "none";
+    });
+
+    for(let i = 1; i <= {{ $latestEvents->count() }}; i++) {
+        document.getElementById("editEventbtn" + i).addEventListener("click", function() {
+            document.getElementById("overlay").style.display = "block";
+            document.getElementById("editEvent").style.display = "block";
+        });
+    }
+    
+    for(let i = 1; i <= {{ $expiredEvents->count() }}; i++) {
+        document.getElementById("editEventDonebtn" + i).addEventListener("click", function() {
+            document.getElementById("overlay").style.display = "block";
+            document.getElementById("editEvent").style.display = "block";
+        });
+    }
+    
+    document.getElementById("overlay").addEventListener("click", function() {
+        document.getElementById("overlay").style.display = "none";
+        document.getElementById("editEvent").style.display = "none";
+    });  
 
     var JKelamin = ["Laki", "Perempuan"];
     var dataJKelamin = {!! json_encode($gender) !!};
@@ -449,6 +556,7 @@
                 errorNotification.removeAttribute('hidden');
             });
     }
+
 </script>
 
 @endsection

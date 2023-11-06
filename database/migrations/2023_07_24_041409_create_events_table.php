@@ -19,12 +19,10 @@ return new class extends Migration
             $table->date('tanggal_mulai'); 
             $table->date('tanggal_selesai');
             $table->string('deskripsi');
-            //tujuan pengambilan test [personaldev, careerdev]
             $table->string('tujuan_tes');
             $table->boolean('is_answers_hold');
-            $table->string('collab_logo_base64')->nullable();
+            $table->string('collab_logo_path')->nullable();
             $table->string('collab_url')->nullable();
-            $table->string('collab_company_name')->nullable();
             $table->timestamps();
         });
     }
