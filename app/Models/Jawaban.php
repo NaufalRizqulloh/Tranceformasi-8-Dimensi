@@ -17,6 +17,7 @@ class Jawaban extends Model
         'progress',
         'pdf_filepath',
         'pdf_original_name',
+        'inconsistent_dimension'
     ];
 
     use HasFactory;

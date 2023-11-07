@@ -70,7 +70,21 @@
             <input type="text" name="perusahaan" id="Perusahaan" placeholder="Perusahaan" value="{{Auth::user()->perusahaan}}" class="mb-3 rounded-md border-black ring-black mx-auto px-3 py-2 border shadow rounder w-full block text-sm text-black placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 invalid:text-pink-700 invalid:focus:ring-pink-700 invalid:focus:border-pink-700 focus:placeholder:text-transparent"/>
         </label>
         <label for="jabatan" id="">
-            <input type="text" name="jabatan" id="jabatan" placeholder="Jabatan dalam perusahaan" value="{{Auth::user()->jabatan}}" class="mb-3 rounded-md border-black ring-black mx-auto px-3 py-2 border shadow rounder w-full block text-sm text-black placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 invalid:text-pink-700 invalid:focus:ring-pink-700 invalid:focus:border-pink-700 focus:placeholder:text-transparent"/>
+            @error('jabatan')
+            <h1 class="text-red-600 -mt-3 mb-1">{{ $message }}</h1>
+            @enderror
+            {{-- <input type="text" name="jabatan" id="jabatan" placeholder="Jabatan dalam perusahaan" class="mb-3 rounded-md border-black ring-black mx-auto px-3 py-2 border shadow rounder w-full block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500" value="{{ old('jabatan') }}" /> --}}
+            <select id="jabatan" name="jabatan" size="1" class="mb-3 rounded-md text-black border-black ring-black mx-auto px-3 py-2 border shadow rounder w-full block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 @if(old('jabatan') == '0') border-red-500 @endif" >
+               <option value="0">-- Pilih Jabatan --</option>
+               <option value="Staff/Pelaksana" @if(Auth::user()->jabatan =='Staff/Pelaksana' ) selected @endif>Staff/Pelaksana</option>
+               <option value="Team Lead/Supervisor" @if(Auth::user()->jabatan =='Team Lead/Supervisor' ) selected @endif>Team Lead/Supervisor</option>
+               <option value="Assisten Manager/Muda" @if(Auth::user()->jabatan =='Assisten Manager/Muda' ) selected @endif>Assisten Manager/Muda</option>
+               <option value="Manager/Jr. Manager/Madya" @if(Auth::user()->jabatan =='Manager/Jr. Manager/Madya' ) selected @endif>Manager/Jr. Manager/Madya</option>
+               <option value="General Manager/Sr. Manager/Utama" @if(Auth::user()->jabatan =='General Manager/Sr. Manager/Utama' ) selected @endif>General Manager/Sr. Manager/Utama</option>
+               <option value="Direktur/C-Level" @if(Auth::user()->jabatan =='Direktur/C-Level' ) selected @endif>Direktur/C-Level</option>
+               <option value="Owner/Pemilik" @if(Auth::user()->jabatan =='Owner/Pemilik' ) selected @endif>Owner/Pemilik</option>
+               <option value="Lain-lain" @if(Auth::user()->jabatan =='Lain-lain' ) selected @endif>Lain-lain</option>
+             </select>
         </label>
         <label for="masa_kerja" id="">
             <input type="text" name="masa_kerja" id="masa_kerja" placeholder="Masa Kerja" value="{{Auth::user()->masa_kerja}}" class="mb-3 rounded-md border-black ring-black mx-auto px-3 py-2 border shadow rounder w-full block text-sm text-black placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 invalid:text-pink-700 invalid:focus:ring-pink-700 invalid:focus:border-pink-700 focus:placeholder:text-transparent"/>

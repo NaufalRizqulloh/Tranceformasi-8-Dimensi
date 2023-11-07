@@ -18,7 +18,9 @@ use Carbon\Carbon;
 use Helpers\Data\StringHelper;
 use Helpers\Validation\Validation;
 use Illuminate\Support\Facades\Lang;
-
+use Dompdf\Options;
+use Illuminate\Support\Facades\View;
+use Dompdf\Dompdf;
 use Illuminate\Http\Request;
 
 /*
@@ -45,8 +47,39 @@ Route::get('/t/{user}', function (User $user) {
 });
 
 Route::get('/t', function () {
-    dd(base64_encode(file_get_contents(public_path('static/logo TI Red.png'))));
-})->middleware('auth');
+    $options = new Options();
+        $options->set('chroot', storage_path());
+        
+        $html = View::make('template-pdf/8dimensi-master', [
+            'name' => 'tes',
+            'date' => 'tes',
+            'nickname' => 'tes',
+            'birthday' => 'tes',
+            'education' => 'tes',
+            'jobTitle' => 'tes',
+            'email' => 'tes',
+            'phoneNumber' => 'tes',
+            'testPurpose' => 'tes',
+            'dimension' => 'Berwibawa',
+            'title' => 'Preview Laporan PDF',
+            'gender' => 'laki',
+            'inconsistentDimension' => 'ds',
+            'score' => [6,7,8,9,10],
+
+            'collabLogo' => null,
+            'collabCompany' => null,
+            'collabWatermark' => null
+        ])->render();
+
+        $dompdf = new Dompdf();
+        $dompdf->loadHtml($html);
+
+        $dompdf->setPaper('A4', 'potrait');
+
+        $dompdf->render();
+        $dompdf->stream('b', array('Attachment' => false));
+        exit(0);
+});
 
 Route::get('/dn', function () {
     dd('anggap done', request());

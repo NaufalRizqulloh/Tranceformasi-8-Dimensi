@@ -14,6 +14,8 @@ use Helpers\Data\StringHelper;
 use Helpers\Validation\Validation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 
 class AdminEventController extends Controller
 {
@@ -191,13 +193,25 @@ class AdminEventController extends Controller
             'tanggal_selesai' => 'required',
             'deskripsi' => 'required|string|max:255',
             'tujuan_tes' => 'required|string|max:255|not_in:0',
-            'collab_url' => 'required|string|max255',
+            'collab_url' => 'required|string|max:255',
         ]);
+        
+        $name = null;
+
+        if ($request->hasFile('collab_logo_base64')) {
+            // $img = $request->file('collab_logo_base64')->store('collab-logo');
+            // $img = Storage::disk('local')->put('images/', $request->file('collab_logo_base64'));
+
+            $file = $request->file('collab_logo_base64');
+            $name = 'logo-event-'. Event::latest()->first()->id + 1 . '.' . $file->getClientOriginalExtension();
+            $file->move(public_path('collab-logo'), $name);
+        }
         
         Event::create([
             'nama' => $request->input('nama'),
             'kode_akses' => $request->input('kode_akses'),
             'institusi' => $request->input('institusi'),
+            'collab_logo_name' => $name,
             'tanggal_mulai' => $request->input('tanggal_mulai'),
             'tanggal_selesai' => $request->input('tanggal_selesai'),
             'deskripsi' => $request->input('deskripsi'),
@@ -205,16 +219,6 @@ class AdminEventController extends Controller
             'collab_url' => $request->input('collab_url'),
             'is_answers_hold' => false,
         ]);
-
-        $event = Event::latest()->first();
-        $path = public_path('/static/' . 'logo-event-' . $event->id . '.png');
-
-        if ($request->hasFile('collab_logo_base64')) {
-            $collab_logo_base64 = $request->file('collab_logo_base64')->storeAs('public/static', 'logo-event-' . $event->id . '.png');
-        }
-
-        $event->collab_logo_base64 = $path;
-        $event->save();
 
         // dd([
         //     'nama' => $request->input('nama'),
@@ -268,6 +272,8 @@ class AdminEventController extends Controller
         $timeStart = StringHelper::replaceDate(Carbon::parse($event->tanggal_mulai)->format('d F Y'));
         $timeEnd = StringHelper::replaceDate(Carbon::parse($event->tanggal_selesai)->format('d F Y'));
 
+        $imgPath = public_path('collab-logo/' . $event->collab_logo_name);
+
         return view('admin.show', [ 
             'timeStart' => $timeStart,
             'timeEnd' => $timeEnd,
@@ -289,6 +295,7 @@ class AdminEventController extends Controller
                 'mengerjakan' => $unfinishedUser,
             ],
             'isAdmin' => Validation::isAdmin(auth()->user()->email),
+            'img' => $imgPath
         ]);
     }
 
@@ -309,15 +316,15 @@ class AdminEventController extends Controller
     public function update(Request $request, string $id)
     {
         $request->validate([
-            'nama' => 'required|string',
-            // 'kode_akses' => 'required|unique:events|string',
-            'institusi' => 'required|string',
-            // 'collab_logo_base64' => 'required|mimes:png,jpeg,jpg',
+            'nama' => 'required|string|max:60',
+            // 'kode_akses' => 'required|unique:events|string|max:25',
+            'institusi' => 'required|string|max:255',
+            'collab_logo_base64' => 'required|mimes:png,jpeg,jpg',
             'tanggal_mulai' => 'required',
             'tanggal_selesai' => 'required',
-            'deskripsi' => 'required|string',
-            'tujuan_tes' => 'required|string|not_in:0',
-            'collab_url' => 'required|string',
+            'deskripsi' => 'required|string|max:255',
+            'tujuan_tes' => 'required|string|max:255|not_in:0',
+            'collab_url' => 'required|string|max:255',
         ]);
 
         $eventt = Event::find($id);
@@ -325,7 +332,7 @@ class AdminEventController extends Controller
         $eventt->nama = $request->nama;
         // $eventt->kode_akses = $request->kode_akses;
         $eventt->institusi = $request->institusi;
-        // $eventt->collab_logo_base64 = $request->collab_logo_base64;
+        $eventt->collab_logo_base64 = $request->collab_logo_base64;
         $eventt->tanggal_mulai = $request->tanggal_mulai;
         $eventt->tanggal_selesai = $request->tanggal_selesai;
         $eventt->deskripsi = $request->deskripsi;
@@ -340,9 +347,11 @@ class AdminEventController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Event $event)
+    public function destroy(string $id)
     {
-        //
+        $eventt = Event::find($id)->delete();
+
+        return redirect()->route('admin.event.index');
     }
 
     // Belum jadi

@@ -66,7 +66,7 @@
                 padding-top: 14px;
                 padding-bottom: 14px;">
                     <b style="transform: scaleX(1.25);
-                    font-size: 16.3px;;">SASARAN & PRIORITAS KERJA</b>
+                    fon t-size: 16.3px;">SASARAN & PRIORITAS KERJA</b>
                 </div>
             </td>
             <td style="width: 14px;"></td>

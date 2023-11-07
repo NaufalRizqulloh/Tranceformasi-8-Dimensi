@@ -316,7 +316,7 @@ class FormController extends Controller
         $testPurpose = $jawaban->event->tujuan_tes;
         $gender = $user->jenis_kelamin;
         
-        $collabLogo = $jawaban->event->collab_logo_base64;
+        $collabLogo = file_get_contents(public_path('collab-logo/' . $jawaban->event->collab_logo_name))? base64_encode(file_get_contents(public_path('collab-logo/' . $jawaban->event->collab_logo_name))) : null;
         $collabUrl = $jawaban->event->collab_url;
         $collabCompanyName = $jawaban->event->institusi;
 
@@ -355,9 +355,11 @@ class FormController extends Controller
 
         $pdfDirectory = storage_path('pdf/');
         $pdfPath = $pdfDirectory . $pdfFileName . '.pdf';
+        $pdfRelativePath = 'pdf/' . $pdfFileName . '.pdf';
+
         file_put_contents($pdfPath, $dompdf->output());
 
-        $jawaban->pdf_filepath = $pdfPath;
+        $jawaban->pdf_filepath = $pdfRelativePath;
         $jawaban->pdf_original_name = $pdfFileName;
 
         // if(isset($inconsistentDimension[1])){

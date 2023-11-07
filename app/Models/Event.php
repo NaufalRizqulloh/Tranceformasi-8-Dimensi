@@ -20,9 +20,8 @@ class Event extends Model
         'deskripsi',
         'is_expired',
         'is_answers_hold',
-        'collab_logo_base64',
+        'collab_logo_name',
         'collab_url',
-        'collab_company_name',
     ];
 
     function scopeGetEvent($query, $accessCode)

@@ -32,7 +32,7 @@ class SectionTwoHelper
          * then divide it by 10 to get 1 digit number
          */
         foreach ($scores as $score) {
-            $finalScores[] = round(($score * 100) / 24, -1) / 10;
+            $finalScores[] = (int)round(($score * 6.25), -1) / 10;
         }
 
         return $finalScores;

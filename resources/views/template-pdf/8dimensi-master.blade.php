@@ -557,10 +557,10 @@
             </tr>
             <tr>
                 <td class="table-data-diri-kiri">
-                    {{ isset($jobTitle) ? 'Job Title' : 'Education' }}
+                    {{ isset($education) ? 'Education' : 'Job Title' }}
                 </td>
                 <td class="table-data-diri-kanan">
-                    {{ isset($jobTitle) ? $jobTitle : $education }}
+                    {{ isset($education) ? $education : $jobTitle }}
                 </td>
             </tr>
             <tr>
@@ -1388,7 +1388,7 @@
             <table>
                 <tr>
                     <td class="sepuluh-poin-batch-pertama-nomor">
-                        <b style="font-size: 16px;">4</b>
+                        <b style="font-size: 16px;">5</b>
                     </td>
                     <td style="width: 15px;"></td>
                     <td class="sepuluh-poin-batch-pertama-judul">
@@ -1498,7 +1498,6 @@
             
         </div>
     </div>
-
 </body>
 
 </html>

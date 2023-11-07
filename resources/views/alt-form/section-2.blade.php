@@ -116,7 +116,6 @@
                     </button> 
                 </li>
             </ul>
-            <button type="button" id="close-button" class="mt-4 bg-red-500 text-white px-4 py-2 rounded-lg">Close</button>
     </div>
     
     <!-- End overlaySubmit -->

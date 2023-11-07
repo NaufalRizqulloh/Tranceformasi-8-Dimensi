@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('deskripsi');
             $table->string('tujuan_tes');
             $table->boolean('is_answers_hold');
-            $table->string('collab_logo_path')->nullable();
+            $table->string('collab_logo_name')->nullable();
             $table->string('collab_url')->nullable();
             $table->timestamps();
         });
