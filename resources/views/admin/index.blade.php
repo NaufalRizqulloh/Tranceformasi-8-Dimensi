@@ -26,7 +26,7 @@
     </div>
 </div>
 <form action="{{ route('admin.event.index') }}">
-    <input type="number" name="year" placeholder="Year" value="{{ isset($year) ? $year : date('Y') }}" class="ml-12 mb-4 rounded-md text-black">
+    <input type="number" name="year" placeholder="Year" value="{{ isset($year) ? $year : date('Y') }}" class="ml-12 mb-4 rounded-md bg-bgcolor dark:bg-slate-800 text-black dark:text-bgcolor border-2 border-black dark:border-bgcolor">
 </form>
 <h1 class="ml-12 dark:text-bgcolor font-montserrat">Event yang sedang berlangsung</h1>
 <hr class="mx-12 mb-5 border-black dark:border-bgcolor">
@@ -56,7 +56,7 @@
 
     <!-- Overlay Edit -->
 
-    <div id="editEvent{{ $loop->iteration }}" class="top-0 left-1/4 w-1/2 h-[500px] mt-12 rounded-xl bg-white z-40 flex overflow-y-scroll overflow-hidden">
+    <div id="editEvent{{ $loop->iteration }}" class="top-0 left-1/4 w-1/2 h-[500px] mt-12 rounded-xl bg-bgcolor dark:bg-slate-800 z-40 flex overflow-y-scroll overflow-hidden">
         <div class="w-full grid grid-cols-4 bg-primary mb-5 drop-shadow-2xl z-40 top-0 rounded-tl-xl items-center absolute">
             <h1 class="col-span-3 py-3 pl-5 text-secondary text-xl">Delapan Dimensi Kepemimpinan</h1>
             <form action="{{ route('admin.event.destroy', $e->id) }}" method="POST">
@@ -66,39 +66,39 @@
             </form>
         </div>
     
-        <h1 class="text-4xl text-black text-center font-bold mt-20 mb-4">Edit Event {{ $e->nama }}</h1>
-        <hr class="border-black w-3/4 mx-auto mb-4">
+        <h1 class="text-4xl text-black dark:text-bgcolor text-center font-bold mt-20 mb-4">Edit Event {{ $e->nama }}</h1>
+        <hr class="border-black dark:border-bgcolor w-3/4 mx-auto mb-4">
     
-        <form action="{{ route('admin.event.update', $e->id) }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('admin.event.update', ['event' => $e->id, 'year' => $year]) }}" method="POST" enctype="multipart/form-data">
             @method('PUT')
             @csrf
-            <label for="nama" id="" class="ml-14 mb-6 text-black text-xl">- Nama</label>
-            <input type="text" name="nama" id="nama" class="mx-auto mb-4 w-10/12 rounded-md text-black border-black ring-black px-3 py-2 border shadow block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500" value="{{ $e->nama }}" placeholder="Nama Event" required maxlength="60"/>
+            <label for="nama" id="" class="ml-14 mb-6 text-black dark:text-bgcolor text-xl">- Nama</label>
+            <input type="text" name="nama" id="nama" class="mx-auto mb-4 w-10/12 rounded-md text-black dark:text-bgcolor dark:bg-slate-800 border-black dark:border-bgcolor ring-black px-3 py-2 border shadow block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500" value="{{ $e->nama }}" placeholder="Nama Event" required maxlength="60"/>
             @error('nama')
             <h1 class="text-red-600 -mt-2">{{ $message }}</h1>
             @enderror
-            <label for="institusi" id="" class="ml-14 mb-6 text-black text-xl">- Institusi</label>
-            <input type="text" name="institusi" id="institusi" class="mx-auto mb-4 w-10/12 rounded-md text-black border-black ring-black px-3 py-2 border shadow block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 " value="{{ $e->institusi }}" placeholder="Institusi/Perusahaan Peserta Event" required/>
+            <label for="institusi" id="" class="ml-14 mb-6 text-black dark:text-bgcolor text-xl">- Institusi</label>
+            <input type="text" name="institusi" id="institusi" class="mx-auto mb-4 w-10/12 rounded-md text-black dark:text-bgcolor dark:bg-slate-800 border-black dark:border-bgcolor ring-black px-3 py-2 border shadow block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500" value="{{ $e->institusi }}" placeholder="Institusi/Perusahaan Peserta Event" required/>
             @error('institusi')
             <h1 class="text-red-600 -mt-2">{{ $message }}</h1>
             @enderror
-            <label for="tanggal_mulai" id="" class="ml-14 mb-6 text-black text-xl">- Tanggal Dimulai Event</label>
-            <input type="date" name="tanggal_mulai" id="tanggal_mulai" placeholder="Nama Lengkap" onfocus="this.showPicker()" class="mb-4 rounded-md text-black border-black ring-black mx-auto px-3 py-2 border shadow rounder w-10/12 block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 @if($errors->has('tanggal_mulai')) border-red-500 @endif" value="{{ $e->tanggal_mulai }}" oninput="removeRedBorder(this)" required/>
+            <label for="tanggal_mulai" id="" class="ml-14 mb-6 text-black dark:text-bgcolor text-xl">- Tanggal Dimulai Event</label>
+            <input type="date" name="tanggal_mulai" id="tanggal_mulai" placeholder="Nama Lengkap" onfocus="this.showPicker()" class="mb-4 rounded-md text-black dark:text-bgcolor dark:bg-slate-800 border-black dark:border-bgcolor ring-black mx-auto px-3 py-2 border shadow rounder w-10/12 block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 @if($errors->has('tanggal_mulai')) border-red-500 @endif" value="{{ $e->tanggal_mulai }}" oninput="removeRedBorder(this)" required/>
             @error('tanggal_mulai')
             <h1 class="text-red-600 -mt-2">{{ $message }}</h1>
             @enderror
-            <label for="tanggal_selesai" id="" class="ml-14 mb-6 text-black text-xl">- Tanggal Berakhir Event</label>
-            <input type="date" name="tanggal_selesai" id="tanggal_selesai" placeholder="Nama Lengkap" onfocus="this.showPicker()" class="mb-4 rounded-md text-black border-black ring-black mx-auto px-3 py-2 border shadow rounder w-10/12 block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 @if($errors->has('tanggal_selesai')) border-red-500 @endif" value="{{ $e->tanggal_selesai }}" oninput="removeRedBorder(this)" required/>
+            <label for="tanggal_selesai" id="" class="ml-14 mb-6 text-black dark:text-bgcolor text-xl">- Tanggal Berakhir Event</label>
+            <input type="date" name="tanggal_selesai" id="tanggal_selesai" placeholder="Nama Lengkap" onfocus="this.showPicker()" class="mb-4 rounded-md text-black dark:text-bgcolor dark:bg-slate-800 border-black dark:border-bgcolor ring-black mx-auto px-3 py-2 border shadow rounder w-10/12 block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 @if($errors->has('selesai')) border-red-500 @endif" value="{{ $e->tanggal_selesai }}" oninput="removeRedBorder(this)" required/>
             @error('tanggal_selesai')
             <h1 class="text-red-600 -mt-2">{{ $message }}</h1>
             @enderror
-            <label for="deskripsi" id="" class="ml-14 mb-6 text-black text-xl">- Deskripsi Event</label>
-            <input type="text" name="deskripsi" id="deskripsi" class="mx-auto mb-4 w-10/12 rounded-md text-black border-black ring-black px-3 py-2 border shadow block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 " value="{{ $e->deskripsi }}" placeholder="Deskripsi Event Anda" required/>
+            <label for="deskripsi" id="" class="ml-14 mb-6 text-black dark:text-bgcolor text-xl">- Deskripsi Event</label>
+            <input type="text" name="deskripsi" id="deskripsi" class="mx-auto mb-4 w-10/12 rounded-md text-black dark:text-bgcolor dark:bg-slate-800 border-black dark:border-bgcolor ring-black px-3 py-2 border shadow block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500" value="{{ $e->deskripsi }}" placeholder="Deskripsi Event Anda" required/>
             @error('deskripsi')
             <h1 class="text-red-600 -mt-2">{{ $message }}</h1>
             @enderror
-            <h1 class="ml-14 text-black text-xl">- Tujuan Event</h1>
-            <select name="tujuan_tes" id="" class="mx-auto mb-4 w-10/12 rounded-md text-black border-black ring-black px-3 py-2 border shadow block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 " value="{{ old('tujuan_tes') }}">
+            <h1 class="ml-14 text-black dark:text-bgcolor text-xl">- Tujuan Event</h1>
+            <select name="tujuan_tes" id="" class="mx-auto mb-4 w-10/12 rounded-md text-black dark:text-bgcolor dark:bg-slate-800 border-black dark:border-bgcolor ring-black px-3 py-2 border shadow block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500" value="{{ old('tujuan_tes') }}">
                 <option value="0">-- Tujuan Diadakannya Event --</option>
                 <option value="Personal Development" @if( $e->tujuan_tes =='Personal Development' ) selected @endif>Personal Development</option>
                 <option value="Career Development" @if( $e->tujuan_tes =='Career Development' ) selected @endif>Career Development</option>
@@ -106,17 +106,18 @@
             @error('tujuan_tes')
             <h1 class="text-red-600 -mt-2 ml-14">{{ $message }}</h1>
             @enderror
-            <label for="collab_url" id="" class="ml-14 mb-6 text-black text-xl">- Alamat Web Perusahaan</label>
-            <input type="text" name="collab_url" id="collab_url" class="mx-auto mb-4 w-10/12 rounded-md text-black border-black ring-black px-3 py-2 border shadow block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 " value="{{ $e->collab_url }}" placeholder="example.com" maxlength="40" required/>
+            <label for="collab_url" id="" class="ml-14 mb-6 text-black dark:text-bgcolor text-xl">- Alamat Web Perusahaan</label>
+            <input type="text" name="collab_url" id="collab_url" class="mx-auto mb-4 w-10/12 rounded-md text-black dark:text-bgcolor dark:bg-slate-800 border-black dark:border-bgcolor ring-black px-3 py-2 border shadow block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500" value="{{ $e->collab_url }}" placeholder="example.com" maxlength="40" required/>
             @error('collab_url')
             <h1 class="text-red-600 -mt-2">{{ $message }}</h1>
             @enderror
-            <label for="collab_logo_base64" id="" class="ml-14 mb-6 text-black text-xl">- Logo Perusahaan</label>
-            <input type="file" name="collab_logo_base64" id="collab_logo_base64" class="mx-auto mb-4 w-10/12 rounded-md text-black border-black ring-black px-3 py-2 border shadow block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 " value="" accept="image/*" required/>
+            <h1 class="ml-14 text-black dark:text-bgcolor text-xl">- Logo Perusahaan</h1>
+            <label for="collab_logo_base64" id="LogoPerusahaan{{ $loop->iteration }}" class="mx-auto mb-4 w-10/12 rounded-md text-black dark:text-bgcolor dark:bg-slate-800 border-black dark:border-bgcolor ring-black px-3 py-2 border shadow block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500">Logo Perusahaan</label>
+            <input type="file" id="logoFile{{ $loop->iteration }}" name="collab_logo_base64" id="collab_logo_base64" class="absolute -mt-20 ml-[3.25rem] w-10/12 h-16 opacity-0" value="{{ old('collab_logo_base64') }}" accept="image/*" required/>
             @error('collab_logo_base64')
             <h1 class="text-red-600 -mt-2">{{ $message }}</h1>
             @enderror
-            <label for="kode_akses" id="" class="ml-14 mb-6 text-black text-xl">- Kode Akses</label>
+            <label for="kode_akses" id="" class="ml-14 mb-6 text-black dark:text-bgcolor text-xl">- Kode Akses</label>
             <input type="text" name="kode_akses" id="kode_akses" class="mx-auto mb-12 w-10/12 rounded-md text-slate-600 bg-slate-300 border-slate-600 px-3 py-2 border shadow block text-sm placeholder:text-slate-400" value="{{ $e->kode_akses }}" placeholder="Kode Akses untuk Event Anda (Harus berupa angka atau huruf sejumlah 6)" onkeyup="
             var start = this.selectionStart;
             var end = this.selectionEnd;
@@ -126,7 +127,7 @@
             <h1 class="text-red-600 -mt-2">{{ $message }}</h1>
             @enderror
     
-            <button type="submit" class="block w-fit h-fit px-6 py-2 mx-auto mb-12 border-2 border-black rounded-full text-black text-lg">Submit</button>
+            <button type="submit" class="block w-fit h-fit px-6 py-2 mx-auto mb-12 border-2 border-black dark:border-bgcolor rounded-full text-black dark:text-bgcolor text-lg">Submit</button>
         </form>
         
         </div>
@@ -160,7 +161,7 @@
 
     <!-- Overlay Edit -->
 
-    <div id="editEventDone{{ $loop->iteration }}" class="top-0 left-1/4 w-1/2 h-[500px] mt-12 rounded-xl bg-white z-40 flex overflow-y-scroll overflow-hidden">
+    <div id="editEventDone{{ $loop->iteration }}" class="top-0 left-1/4 w-1/2 h-[500px] mt-12 rounded-xl bg-bgcolor dark:bg-slate-800 z-40 flex overflow-y-scroll overflow-hidden">
         <div class="w-full grid grid-cols-4 bg-primary mb-5 drop-shadow-2xl z-40 top-0 rounded-tl-xl items-center absolute">
             <h1 class="col-span-3 py-3 pl-5 text-secondary text-xl">Delapan Dimensi Kepemimpinan</h1>
             <form action="{{ route('admin.event.destroy', $e->id) }}" method="POST">
@@ -170,39 +171,39 @@
             </form>
         </div>
     
-        <h1 class="text-4xl text-black text-center font-bold mt-20 mb-4">Edit Event {{ $e->nama }}</h1>
-        <hr class="border-black w-3/4 mx-auto mb-4">
+        <h1 class="text-4xl text-black dark:text-bgcolor text-center font-bold mt-20 mb-4">Edit Event {{ $e->nama }}</h1>
+        <hr class="border-black dark:border-bgcolor w-3/4 mx-auto mb-4">
     
         <form action="{{ route('admin.event.update', $e->id) }}" method="POST" enctype="multipart/form-data">
             @method('PUT')
             @csrf
-            <label for="nama" id="" class="ml-14 mb-6 text-black text-xl">- Nama</label>
-            <input type="text" name="nama" id="nama" class="mx-auto mb-4 w-10/12 rounded-md text-black border-black ring-black px-3 py-2 border shadow block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500" value="{{ $e->nama }}" placeholder="Nama Event" required maxlength="60"/>
+            <label for="nama" id="" class="ml-14 mb-6 text-black dark:text-bgcolor text-xl">- Nama</label>
+            <input type="text" name="nama" id="nama" class="mx-auto mb-4 w-10/12 rounded-md text-black dark:text-bgcolor dark:bg-slate-800 border-black dark:border-bgcolor ring-black px-3 py-2 border shadow block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500" value="{{ $e->nama }}" placeholder="Nama Event" required maxlength="60"/>
             @error('nama')
             <h1 class="text-red-600 -mt-2">{{ $message }}</h1>
             @enderror
-            <label for="institusi" id="" class="ml-14 mb-6 text-black text-xl">- Institusi</label>
-            <input type="text" name="institusi" id="institusi" class="mx-auto mb-4 w-10/12 rounded-md text-black border-black ring-black px-3 py-2 border shadow block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 " value="{{ $e->institusi }}" placeholder="Institusi/Perusahaan Peserta Event" required/>
+            <label for="institusi" id="" class="ml-14 mb-6 text-black dark:text-bgcolor text-xl">- Institusi</label>
+            <input type="text" name="institusi" id="institusi" class="mx-auto mb-4 w-10/12 rounded-md text-black dark:text-bgcolor dark:bg-slate-800 border-black dark:border-bgcolor ring-black px-3 py-2 border shadow block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500" value="{{ $e->institusi }}" placeholder="Institusi/Perusahaan Peserta Event" required/>
             @error('institusi')
             <h1 class="text-red-600 -mt-2">{{ $message }}</h1>
             @enderror
-            <label for="tanggal_mulai" id="" class="ml-14 mb-6 text-black text-xl">- Tanggal Dimulai Event</label>
-            <input type="date" name="tanggal_mulai" id="tanggal_mulai" placeholder="Nama Lengkap" onfocus="this.showPicker()" class="mb-4 rounded-md text-black border-black ring-black mx-auto px-3 py-2 border shadow rounder w-10/12 block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 @if($errors->has('tanggal_mulai')) border-red-500 @endif" value="{{ $e->tanggal_mulai }}" oninput="removeRedBorder(this)" required/>
+            <label for="tanggal_mulai" id="" class="ml-14 mb-6 text-black dark:text-bgcolor text-xl">- Tanggal Dimulai Event</label>
+            <input type="date" name="tanggal_mulai" id="tanggal_mulai" placeholder="Nama Lengkap" onfocus="this.showPicker()" class="mb-4 rounded-md text-black dark:text-bgcolor dark:bg-slate-800 border-black dark:border-bgcolor ring-black mx-auto px-3 py-2 border shadow rounder w-10/12 block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 @if($errors->has('tanggal_mulai')) border-red-500 @endif" value="{{ $e->tanggal_mulai }}" oninput="removeRedBorder(this)" required/>
             @error('tanggal_mulai')
             <h1 class="text-red-600 -mt-2">{{ $message }}</h1>
             @enderror
-            <label for="tanggal_selesai" id="" class="ml-14 mb-6 text-black text-xl">- Tanggal Berakhir Event</label>
-            <input type="date" name="tanggal_selesai" id="tanggal_selesai" placeholder="Nama Lengkap" onfocus="this.showPicker()" class="mb-4 rounded-md text-black border-black ring-black mx-auto px-3 py-2 border shadow rounder w-10/12 block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 @if($errors->has('tanggal_selesai')) border-red-500 @endif" value="{{ $e->tanggal_selesai }}" oninput="removeRedBorder(this)" required/>
+            <label for="tanggal_selesai" id="" class="ml-14 mb-6 text-black dark:text-bgcolor text-xl">- Tanggal Berakhir Event</label>
+            <input type="date" name="tanggal_selesai" id="tanggal_selesai" placeholder="Nama Lengkap" onfocus="this.showPicker()" class="mb-4 rounded-md text-black dark:text-bgcolor dark:bg-slate-800 border-black dark:border-bgcolor ring-black mx-auto px-3 py-2 border shadow rounder w-10/12 block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 @if($errors->has('selesai')) border-red-500 @endif" value="{{ $e->tanggal_selesai }}" oninput="removeRedBorder(this)" required/>
             @error('tanggal_selesai')
             <h1 class="text-red-600 -mt-2">{{ $message }}</h1>
             @enderror
-            <label for="deskripsi" id="" class="ml-14 mb-6 text-black text-xl">- Deskripsi Event</label>
-            <input type="text" name="deskripsi" id="deskripsi" class="mx-auto mb-4 w-10/12 rounded-md text-black border-black ring-black px-3 py-2 border shadow block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 " value="{{ $e->deskripsi }}" placeholder="Deskripsi Event Anda" required/>
+            <label for="deskripsi" id="" class="ml-14 mb-6 text-black dark:text-bgcolor text-xl">- Deskripsi Event</label>
+            <input type="text" name="deskripsi" id="deskripsi" class="mx-auto mb-4 w-10/12 rounded-md text-black dark:text-bgcolor dark:bg-slate-800 border-black dark:border-bgcolor ring-black px-3 py-2 border shadow block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500" value="{{ $e->deskripsi }}" placeholder="Deskripsi Event Anda" required/>
             @error('deskripsi')
             <h1 class="text-red-600 -mt-2">{{ $message }}</h1>
             @enderror
-            <h1 class="ml-14 text-black text-xl">- Tujuan Event</h1>
-            <select name="tujuan_tes" id="" class="mx-auto mb-4 w-10/12 rounded-md text-black border-black ring-black px-3 py-2 border shadow block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 " value="{{ old('tujuan_tes') }}">
+            <h1 class="ml-14 text-black dark:text-bgcolor text-xl">- Tujuan Event</h1>
+            <select name="tujuan_tes" id="" class="mx-auto mb-4 w-10/12 rounded-md text-black dark:text-bgcolor dark:bg-slate-800 border-black dark:border-bgcolor ring-black px-3 py-2 border shadow block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500" value="{{ old('tujuan_tes') }}">
                 <option value="0">-- Tujuan Diadakannya Event --</option>
                 <option value="Personal Development" @if( $e->tujuan_tes =='Personal Development' ) selected @endif>Personal Development</option>
                 <option value="Career Development" @if( $e->tujuan_tes =='Career Development' ) selected @endif>Career Development</option>
@@ -210,17 +211,18 @@
             @error('tujuan_tes')
             <h1 class="text-red-600 -mt-2 ml-14">{{ $message }}</h1>
             @enderror
-            <label for="collab_url" id="" class="ml-14 mb-6 text-black text-xl">- Alamat Web Perusahaan</label>
-            <input type="text" name="collab_url" id="collab_url" class="mx-auto mb-4 w-10/12 rounded-md text-black border-black ring-black px-3 py-2 border shadow block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 " value="{{ $e->collab_url }}" placeholder="example.com" maxlength="40" required/>
+            <label for="collab_url" id="" class="ml-14 mb-6 text-black dark:text-bgcolor text-xl">- Alamat Web Perusahaan</label>
+            <input type="text" name="collab_url" id="collab_url" class="mx-auto mb-4 w-10/12 rounded-md text-black dark:text-bgcolor dark:bg-slate-800 border-black dark:border-bgcolor ring-black px-3 py-2 border shadow block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500" value="{{ $e->collab_url }}" placeholder="example.com" maxlength="40" required/>
             @error('collab_url')
             <h1 class="text-red-600 -mt-2">{{ $message }}</h1>
             @enderror
-            <label for="collab_logo_base64" id="" class="ml-14 mb-6 text-black text-xl">- Logo Perusahaan</label>
-            <input type="file" name="collab_logo_base64" id="collab_logo_base64" class="mx-auto mb-4 w-10/12 rounded-md text-black border-black ring-black px-3 py-2 border shadow block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 " value="" accept="image/*" required/>
+            <h1 class="ml-14 text-black dark:text-bgcolor text-xl">- Logo Perusahaan</h1>
+            <label for="collab_logo_base64" id="LogoPerusahaanDone{{ $loop->iteration }}" class="mx-auto mb-4 w-10/12 rounded-md text-black dark:text-bgcolor dark:bg-slate-800 border-black dark:border-bgcolor ring-black px-3 py-2 border shadow block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500">Logo Perusahaan</label>
+            <input type="file" id="logoFileDone{{ $loop->iteration }}" name="collab_logo_base64" id="collab_logo_base64" class="absolute -mt-20 ml-[3.25rem] w-10/12 h-16 opacity-0" value="{{ old('collab_logo_base64') }}" accept="image/*" required/>
             @error('collab_logo_base64')
             <h1 class="text-red-600 -mt-2">{{ $message }}</h1>
             @enderror
-            <label for="kode_akses" id="" class="ml-14 mb-6 text-black text-xl">- Kode Akses</label>
+            <label for="kode_akses" id="" class="ml-14 mb-6 text-black dark:text-bgcolor text-xl">- Kode Akses</label>
             <input type="text" name="kode_akses" id="kode_akses" class="mx-auto mb-12 w-10/12 rounded-md text-slate-600 bg-slate-300 border-slate-600 px-3 py-2 border shadow block text-sm placeholder:text-slate-400" value="{{ $e->kode_akses }}" placeholder="Kode Akses untuk Event Anda (Harus berupa angka atau huruf sejumlah 6)" onkeyup="
             var start = this.selectionStart;
             var end = this.selectionEnd;
@@ -246,10 +248,46 @@
 </div>
 
 <div class="w-fit mx-auto flex space-x-12">
-    <canvas id="PendidikanChart" class="border-4 border-primary rounded-3xl p-4" style="width:100%;max-width:500px;height:100%;max-height:300px"></canvas>
-    <canvas id="rentangUsiaChart" class="border-4 border-primary rounded-3xl p-4" style="width:100%;max-width:500px;height:100%;max-height:300px"></canvas>
+    <div class="border-4 border-primary rounded-3xl w-[500px] p-4">
+        <h1 class="text-2xl text-black dark:text-bgcolor font-bold text-center mt-4 mb-6">Rata-Rata Pendidikan</h1>
+        <canvas id="PendidikanChart" class="mx-auto mb-6" style="width:100%;max-width:500px;height:100%;max-height:300px"></canvas>
+    </div>
+    <div class="border-4 border-primary rounded-3xl w-[500px] p-4">
+        <h1 class="text-2xl text-black dark:text-bgcolor font-bold text-center mt-4 mb-6">Rentang Usia</h1>
+        <canvas id="rentangUsiaChart" class="mx-auto mb-6" style="width:100%;max-width:500px;height:100%;max-height:300px"></canvas>
+    </div>
 </div>
 
+<div class="flex w-fit mx-auto justify-center mb-6 mt-10">
+    <div class="mr-5 w-fit h-fit mx-auto mb-0 px-8 pt-4 pb-4 border-4 border-primary rounded-3xl">
+      <h1 class="text-black dark:text-bgcolor text-2xl text-center font-bold">Domisili Terbanyak</h1>
+      <div class="mt-6">
+        <table style="border-collapse: collapse;
+        border-style: hidden;">
+          @foreach($domisili as $d => $numD)
+            <tr>
+              <td class="w-96 border border-gray-500 dark:border-bgcolor px-2 pt-2 pb-2"><h1 class="text-black dark:text-bgcolor text-center">{{ $d }}</h1></td>  
+              <td class="w-32 border border-gray-500 dark:border-bgcolor px-2 pt-2 pb-2"><h1 class="text-black dark:text-bgcolor text-center">{{ $numD }}</h1></td>  
+            </tr>
+          @endforeach
+        </table>
+      </div>
+    </div>
+    <div class="ml-5 w-fit h-fit mx-auto mb-0 px-8 pt-4 pb-4 border-4 border-primary rounded-3xl">
+        <h1 class="text-black dark:text-bgcolor text-2xl text-center font-bold">Tujuan Tes</h1>
+        <div class="mt-6">
+          <table style="border-collapse: collapse;
+          border-style: hidden;">
+            @foreach($goal as $g => $numG)
+              <tr>
+                <td class="w-60 border border-gray-500 dark:border-bgcolor px-2 pt-2 pb-2"><h1 class="text-black dark:text-bgcolor text-center">{{ $g }}</h1></td>  
+                <td class="w-32 border border-gray-500 dark:border-bgcolor px-2 pt-2 pb-2"><h1 class="text-black dark:text-bgcolor text-center">{{ $numG }}</h1></td>  
+              </tr>
+            @endforeach
+          </table>
+        </div>
+      </div>
+  </div>
 
 <br>
 
@@ -278,7 +316,7 @@
         <h1 class="text-red-600 -mt-2">{{ $message }}</h1>
         @enderror
         <label for="institusi" id="" class="ml-14 mb-6 text-black dark:text-bgcolor text-xl">- Institusi</label>
-        <input type="text" name="institusi" id="institusi" class="mx-auto mb-4 w-10/12 rounded-md text-black dark:text-bgcolor dark:bg-slate-800 border-black dark:border-bgcolor ring-black px-3 py-2 border shadow block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 " value="{{ old('institusi') }}" placeholder="Institusi/Perusahaan Peserta Event" required/>
+        <input type="text" name="institusi" id="institusi" class="mx-auto mb-4 w-10/12 rounded-md text-black dark:text-bgcolor dark:bg-slate-800 border-black dark:border-bgcolor ring-black px-3 py-2 border shadow block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500" value="{{ old('institusi') }}" placeholder="Institusi/Perusahaan Peserta Event" required/>
         @error('institusi')
         <h1 class="text-red-600 -mt-2">{{ $message }}</h1>
         @enderror
@@ -293,12 +331,12 @@
         <h1 class="text-red-600 -mt-2">{{ $message }}</h1>
         @enderror
         <label for="deskripsi" id="" class="ml-14 mb-6 text-black dark:text-bgcolor text-xl">- Deskripsi Event</label>
-        <input type="text" name="deskripsi" id="deskripsi" class="mx-auto mb-4 w-10/12 rounded-md text-black dark:text-bgcolor dark:bg-slate-800 border-black dark:border-bgcolor ring-black px-3 py-2 border shadow block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 " value="{{ old('deskripsi') }}" placeholder="Deskripsi Event Anda" required/>
+        <input type="text" name="deskripsi" id="deskripsi" class="mx-auto mb-4 w-10/12 rounded-md text-black dark:text-bgcolor dark:bg-slate-800 border-black dark:border-bgcolor ring-black px-3 py-2 border shadow block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500" value="{{ old('deskripsi') }}" placeholder="Deskripsi Event Anda" required/>
         @error('deskripsi')
         <h1 class="text-red-600 -mt-2">{{ $message }}</h1>
         @enderror
         <h1 class="ml-14 text-black dark:text-bgcolor text-xl">- Tujuan Event</h1>
-        <select name="tujuan_tes" id="" class="mx-auto mb-4 w-10/12 rounded-md text-black dark:text-bgcolor dark:bg-slate-800 border-black dark:border-bgcolor ring-black px-3 py-2 border shadow block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 " value="{{ old('tujuan_tes') }}">
+        <select name="tujuan_tes" id="" class="mx-auto mb-4 w-10/12 rounded-md text-black dark:text-bgcolor dark:bg-slate-800 border-black dark:border-bgcolor ring-black px-3 py-2 border shadow block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500" value="{{ old('tujuan_tes') }}">
             <option value="0">-- Tujuan Diadakannya Event --</option>
             <option value="Personal Development">Personal Development</option>
             <option value="Career Development">Career Development</option>
@@ -307,19 +345,18 @@
         <h1 class="text-red-600 -mt-2 ml-14">{{ $message }}</h1>
         @enderror
         <label for="collab_url" id="" class="ml-14 mb-6 text-black dark:text-bgcolor text-xl">- Alamat Web Perusahaan</label>
-        <input type="text" name="collab_url" id="collab_url" class="mx-auto mb-4 w-10/12 rounded-md text-black dark:text-bgcolor dark:bg-slate-800 border-black dark:border-bgcolor ring-black px-3 py-2 border shadow block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 " value="{{ old('collab_url') }}" placeholder="example.com" maxlength="40" required/>
+        <input type="text" name="collab_url" id="collab_url" class="mx-auto mb-4 w-10/12 rounded-md text-black dark:text-bgcolor dark:bg-slate-800 border-black dark:border-bgcolor ring-black px-3 py-2 border shadow block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500" value="{{ old('collab_url') }}" placeholder="example.com" maxlength="40" required/>
         @error('collab_url')
         <h1 class="text-red-600 -mt-2">{{ $message }}</h1>
         @enderror
         <h1 class="ml-14 text-black dark:text-bgcolor text-xl">- Logo Perusahaan</h1>
-        <label for="collab_logo_base64" id="LogoPerusahaan" class="mx-auto mb-4 w-10/12 rounded-md text-black dark:text-bgcolor dark:bg-slate-800 border-black dark:border-bgcolor ring-black px-3 py-2 border shadow block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 ">Logo Perusahaan</label>
-        <input type="file" id="logoFile" name="collab_logo_base64" id="collab_logo_base64" class="hidden" value="{{ old('collab_logo_base64') }}" accept="image/*" required/>
-        <p id="logoPerusahaan"></p>
+        <label for="collab_logo_base64" id="LogoPerusahaanBaru" class="mx-auto mb-4 w-10/12 rounded-md text-black dark:text-bgcolor dark:bg-slate-800 border-black dark:border-bgcolor ring-black px-3 py-2 border shadow block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500">Logo Perusahaan</label>
+        <input type="file" id="logoFileBaru" name="collab_logo_base64" id="collab_logo_base64" class="absolute -mt-20 ml-[3.25rem] w-10/12 h-16 opacity-0 " value="{{ old('collab_logo_base64') }}" accept="image/*" required/>
         @error('collab_logo_base64')
         <h1 class="text-red-600 -mt-2">{{ $message }}</h1>
         @enderror
         <label for="kode_akses" id="" class="ml-14 mb-6 text-black dark:text-bgcolor text-xl">- Kode Akses</label>
-        <input type="text" name="kode_akses" id="kode_akses" class="mx-auto mb-12 w-10/12 rounded-md text-black dark:text-bgcolor dark:bg-slate-800 border-black dark:border-bgcolor ring-black px-3 py-2 border shadow block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 " value="{{ old('kode_akses') }}" placeholder="Kode Akses untuk Event Anda (Harus berupa angka atau huruf sejumlah 6)" onkeyup="
+        <input type="text" name="kode_akses" id="kode_akses" class="mx-auto mb-4 w-10/12 rounded-md text-black dark:text-bgcolor dark:bg-slate-800 border-black dark:border-bgcolor ring-black px-3 py-2 border shadow block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500" value="{{ old('kode_akses') }}" placeholder="Kode Akses untuk Event Anda (Harus berupa angka atau huruf sejumlah 6)" onkeyup="
         var start = this.selectionStart;
         var end = this.selectionEnd;
         this.value = this.value.toUpperCase();
@@ -328,10 +365,11 @@
         <h1 class="text-red-600 -mt-2">{{ $message }}</h1>
         @enderror
 
-        <button type="submit" class="block w-fit h-fit px-6 py-2 mx-auto mb-12 border-2 border-black rounded-full text-black dark:text-bgcolor text-lg">Submit</button>
+        <button type="submit" class="block w-fit h-fit px-6 py-2 mx-auto mb-12 border-2 border-black dark:border-bgcolor rounded-full text-black dark:text-bgcolor text-lg">Submit</button>
     </form>
     
 </div>
+
 <!-- 
 @if ($errors->any())
     <script>
@@ -346,8 +384,8 @@
 
 <script>
 
-    document.querySelector("#logoFile").onchange = function(){
-        document.querySelector("#LogoPerusahaan").textContent = this.files[0].name;
+    document.getElementById("logoFileBaru").onchange = function(){
+        document.getElementById("LogoPerusahaanBaru").textContent = this.files[0].name;
     }
 
     document.getElementById("buatEventbtn").addEventListener("click", function() {
@@ -371,6 +409,10 @@
             document.getElementById("overlay").style.display = "none";
             document.getElementById("editEvent" + i).style.display = "none";
         });
+
+        document.getElementById("logoFile" + i).onchange = function(){
+            document.getElementById("LogoPerusahaan" + i).textContent = this.files[0].name;
+        }
     }
     
     for(let i = 1; i <= {{ $expiredEvents->count() }}; i++) {
@@ -384,6 +426,10 @@
             document.getElementById("overlay").style.display = "none";
             document.getElementById("editEventDone" + i).style.display = "none";
         });
+
+        document.getElementById("logoFileDone" + i).onchange = function(){
+            document.getElementById("LogoPerusahaanDone" + i).textContent = this.files[0].name;
+        }
     }
 
     // if(localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
@@ -466,12 +512,7 @@
               display: false
             },
             title: {
-                display: true,
-                text: "Rentang Usia",
-                color: titleColor,
-                font: {
-                    size: 16,
-                }
+                display: false,
             },
         },
         scales: {
@@ -525,15 +566,10 @@
       options: {
         plugins: {
             legend: {
-              display: false
+                display: false
             },
             title: {
-                display: true,
-                text: "Rata - Rata Pendidikan",
-                color: titleColor,
-                font: {
-                    size: 16,
-                }
+                display: false,
             },
         },
         scales: {

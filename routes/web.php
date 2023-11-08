@@ -194,6 +194,8 @@ Route::middleware('admin')->group(function () {
 Route::get('admin/event/overview', [AdminEventController::class, 'overview'])->middleware('admin')->name('event.overview');
 Route::get('admin/event/update-on-hold/{event}', [AdminEventController::class, 'updateOnHold'])->middleware('admin')->name('update.event.on-hold');
 Route::get('admin/update-city', [AdminEventController::class, 'updateCityApi'])->middleware('admin')->name('update.city-api');
+Route::get('admin/event-pdf-download/{jawaban}', [AdminEventController::class, 'eventPdfDownload'])->middleware('admin')->name('event.pdf.download');
+Route::get('admin/event-pdf-generate/{jawaban}', [AdminEventController::class, 'eventPdfGenerate'])->middleware('admin')->name('event.pdf.generate');
 
 /////////
 

@@ -27,10 +27,10 @@
     @csrf
     <h1 class="ml-1 mb-1 text-black dark:text-bgcolor">Isi Data Dirimu</h1>
     <label for="name" id="">
-        <input type="text" name="name" id="name" placeholder="Nama Lengkap" value="{{Auth::user()->name}}" class="text-black mb-2 rounded-md border-black ring-black mx-auto px-3 py-2 border shadow rounder w-full block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 invalid:text-pink-700 invalid:focus:ring-pink-700 invalid:focus:border-pink-700 focus:placeholder:text-transparent"/>
+        <input type="text" name="name" id="name" placeholder="Nama Lengkap" value="{{Auth::user()->name}}" class="text-black dark:text-bgcolor bg-bgcolor dark:bg-slate-800 mb-2 rounded-md border-black dark:border-bgcolor mx-auto px-3 py-2 border shadow rounder w-full block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 invalid:text-pink-700 invalid:focus:ring-pink-700 invalid:focus:border-pink-700 focus:placeholder:text-transparent"/>
     </label>
     <label for="tanggallahir" id="">
-        <input type="date" name="tanggal_lahir" id="tanggal_lahir" value="{{Auth::user()->tanggal_lahir}}" onfocus="this.showPicker()" class="text-black mb-2 rounded-md border-black ring-black mx-auto px-3 py-2 border shadow w-full block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 invalid:text-pink-700 invalid:focus:ring-pink-700 invalid:focus:border-pink-700 focus:placeholder:text-transparent cursor-pointer"/>
+        <input type="date" name="tanggal_lahir" id="tanggal_lahir" value="{{Auth::user()->tanggal_lahir}}" onfocus="this.showPicker()" class="text-black dark:text-bgcolor bg-bgcolor dark:bg-slate-800 mb-2 rounded-md border-black dark:border-bgcolor mx-auto px-3 py-2 border shadow w-full block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 invalid:text-pink-700 invalid:focus:ring-pink-700 invalid:focus:border-pink-700 focus:placeholder:text-transparent cursor-pointer"/>
     </label>
     <label for="jeniskelamin" id="" class="flex mb-3">
         <input type="text" disabled name="jenis_kelamin" id="jenis_kelamin" value="{{Auth::user()->jenis_kelamin}}" class="text-slate-600 bg-slate-300 border-slate-600 mx-auto px-3 py-2 rounded-md w-full text-sm">
@@ -42,7 +42,7 @@
         <input type="text" disabled name="notelp" id="notelp" placeholder="Nomor Telepon" value="{{Auth::user()->notelp}}" class="mb-3 rounded-md border-slate-600 mx-auto px-3 py-2 border shadow w-full block text-sm bg-slate-300 text-slate-600"/>
     </label>
     <label for="pendidikanterkahir" id="">
-        <select name="pendidikan_terakhir" id="pendidikan_terakhir" placeholder="Pendidikan Terakhir (SMA/D3/S1/S2/dsb)" value="{{Auth::user()->pendidikan_terakhir}}" class="mb-3 rounded-md border-black ring-black mx-auto px-3 py-2 border shadow rounder w-full block text-sm text-black placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 invalid:text-pink-700 invalid:focus:ring-pink-700 invalid:focus:border-pink-700 focus:placeholder:text-transparent"/>
+        <select name="pendidikan_terakhir" id="pendidikan_terakhir" placeholder="Pendidikan Terakhir (SMA/D3/S1/S2/dsb)" value="{{Auth::user()->pendidikan_terakhir}}" class="mb-3 rounded-md border-black dark:border-bgcolor mx-auto px-3 py-2 border shadow rounder w-full block text-sm text-black dark:text-bgcolor bg-bgcolor dark:bg-slate-800 placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 invalid:text-pink-700 invalid:focus:ring-pink-700 invalid:focus:border-pink-700 focus:placeholder:text-transparent"/>
                  <option value="0" @if(Auth::user()->pendidikan_terakhir == '0') selected @endif>-- Pendidikan Terakihr --</option>
                  <option value="sd" @if(Auth::user()->pendidikan_terakhir == 'sd') selected @endif>SD</option>
                  <option value="smp" @if(Auth::user()->pendidikan_terakhir == 'smp') selected @endif>SMP</option>
@@ -59,22 +59,22 @@
     </label>
     <div class="m-0 p-0 @if(Auth::user()->status == '1') block @else hidden @endif">
         <label for="Jurusan" id="">
-            <input type="text" name="jurusan" id="Jurusan" placeholder="Jurusan" value="{{Auth::user()->jurusan}}" class="mb-3 rounded-md border-black ring-black mx-auto px-3 py-2 border shadow rounder w-full block text-sm text-black placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 invalid:text-pink-700 invalid:focus:ring-pink-700 invalid:focus:border-pink-700 focus:placeholder:text-transparent"/>
+            <input type="text" name="jurusan" id="Jurusan" placeholder="Jurusan" value="{{Auth::user()->jurusan}}" class="mb-3 rounded-md border-black dark:border-bgcolor mx-auto px-3 py-2 border shadow rounder w-full block text-sm text-black dark:text-bgcolor bg-bgcolor dark:bg-slate-800 placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 invalid:text-pink-700 invalid:focus:ring-pink-700 invalid:focus:border-pink-700 focus:placeholder:text-transparent"/>
         </label>
         <label for="institusi" id="">
-            <input type="text" name="institusi" id="institusi" placeholder="Institusi" value="{{Auth::user()->institusi}}" class="mb-3 rounded-md border-black ring-black mx-auto px-3 py-2 border shadow rounder w-full block text-sm text-black placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 invalid:text-pink-700 invalid:focus:ring-pink-700 invalid:focus:border-pink-700 focus:placeholder:text-transparent"/>
+            <input type="text" name="institusi" id="institusi" placeholder="Institusi" value="{{Auth::user()->institusi}}" class="mb-3 rounded-md border-black dark:border-bgcolor mx-auto px-3 py-2 border shadow rounder w-full block text-sm text-black dark:text-bgcolor bg-bgcolor dark:bg-slate-800 placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 invalid:text-pink-700 invalid:focus:ring-pink-700 invalid:focus:border-pink-700 focus:placeholder:text-transparent"/>
         </label>
     </div>
     <div class="m-0 p-0 @if(Auth::user()->status == '2') block @else hidden @endif">
         <label for="Perusahaan" id="">
-            <input type="text" name="perusahaan" id="Perusahaan" placeholder="Perusahaan" value="{{Auth::user()->perusahaan}}" class="mb-3 rounded-md border-black ring-black mx-auto px-3 py-2 border shadow rounder w-full block text-sm text-black placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 invalid:text-pink-700 invalid:focus:ring-pink-700 invalid:focus:border-pink-700 focus:placeholder:text-transparent"/>
+            <input type="text" name="perusahaan" id="Perusahaan" placeholder="Perusahaan" value="{{Auth::user()->perusahaan}}" class="mb-3 rounded-md border-black dark:border-bgcolor mx-auto px-3 py-2 border shadow rounder w-full block text-sm text-black dark:text-bgcolor bg-bgcolor dark:bg-slate-800 placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 invalid:text-pink-700 invalid:focus:ring-pink-700 invalid:focus:border-pink-700 focus:placeholder:text-transparent"/>
         </label>
         <label for="jabatan" id="">
             @error('jabatan')
             <h1 class="text-red-600 -mt-3 mb-1">{{ $message }}</h1>
             @enderror
-            {{-- <input type="text" name="jabatan" id="jabatan" placeholder="Jabatan dalam perusahaan" class="mb-3 rounded-md border-black ring-black mx-auto px-3 py-2 border shadow rounder w-full block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500" value="{{ old('jabatan') }}" /> --}}
-            <select id="jabatan" name="jabatan" size="1" class="mb-3 rounded-md text-black border-black ring-black mx-auto px-3 py-2 border shadow rounder w-full block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 @if(old('jabatan') == '0') border-red-500 @endif" >
+            {{-- <input type="text" name="jabatan" id="jabatan" placeholder="Jabatan dalam perusahaan" class="mb-3 rounded-md border-black dark:border-bgcolor mx-auto px-3 py-2 border shadow rounder w-full block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500" value="{{ old('jabatan') }}" /> --}}
+            <select id="jabatan" name="jabatan" size="1" class="mb-3 rounded-md text-black dark:text-bgcolor bg-bgcolor dark:bg-slate-800 border-black dark:border-bgcolor mx-auto px-3 py-2 border shadow rounder w-full block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 @if(old('jabatan') == '0') border-red-500 @endif" >
                <option value="0">-- Pilih Jabatan --</option>
                <option value="Staff/Pelaksana" @if(Auth::user()->jabatan =='Staff/Pelaksana' ) selected @endif>Staff/Pelaksana</option>
                <option value="Team Lead/Supervisor" @if(Auth::user()->jabatan =='Team Lead/Supervisor' ) selected @endif>Team Lead/Supervisor</option>
@@ -87,11 +87,11 @@
              </select>
         </label>
         <label for="masa_kerja" id="">
-            <input type="text" name="masa_kerja" id="masa_kerja" placeholder="Masa Kerja" value="{{Auth::user()->masa_kerja}}" class="mb-3 rounded-md border-black ring-black mx-auto px-3 py-2 border shadow rounder w-full block text-sm text-black placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 invalid:text-pink-700 invalid:focus:ring-pink-700 invalid:focus:border-pink-700 focus:placeholder:text-transparent"/>
+            <input type="text" name="masa_kerja" id="masa_kerja" placeholder="Masa Kerja" value="{{Auth::user()->masa_kerja}}" class="mb-3 rounded-md border-black dark:border-bgcolor mx-auto px-3 py-2 border shadow rounder w-full block text-sm text-black dark:text-bgcolor bg-bgcolor dark:bg-slate-800 placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 invalid:text-pink-700 invalid:focus:ring-pink-700 invalid:focus:border-pink-700 focus:placeholder:text-transparent"/>
         </label>
     </div>
     <label for="password" id="">
-        <input type="text" name="password" placeholder="Password tidak dapat dirubah" value="" class="mb-3 rounded-md border-black ring-black mx-auto px-3 py-2 border shadow rounder w-full block text-sm bg-slate-300" disabled/>
+        <input type="text" name="password" placeholder="Password tidak dapat dirubah" value="" class="mb-3 rounded-md border-black dark:border-bgcolor mx-auto px-3 py-2 border shadow rounder w-full block text-sm bg-slate-300" disabled/>
     </label>
     <div class="flex mt-12 mb-36 w-full">
         <button type="submit" class="w-fit border-solid rounded-lg bg-primary hover:ring-indigo-800 hover:ring-2 transition-colors duration-200 ease-in-out px-3 py-1 mx-auto">

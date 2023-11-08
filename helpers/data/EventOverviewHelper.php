@@ -7,22 +7,22 @@ class EventOverviewHelper
     public static function calculateEventsGoal(array $goals): array
     {
         // Events Goal Category = ['personaldev', 'careerdev']
-        $eventsGoal = [0, 0];
-
+        $eventsGoal = ['Personal Development' => 0, 'Career Development' => 0];
         foreach ($goals as $goal) {
             switch ($goal) {
-                case 'personaldev':
-                    $eventsGoal[0];
+                case 'Personal Development':
+                    $eventsGoal['Personal Development'] += 1;
                     break;
-                case 'careerdev':
-                    $eventsGoal[1];
+                case 'Career Development':
+                    $eventsGoal['Career Development'] += 1;
                     break;
             }
         }
-
+        
         return $eventsGoal;
     }
 
+    // usang
     public static function calculateTotalParticipant(array $participants): array
     {
         // Total number of participants based on the year the event ended = ['2023' => '']

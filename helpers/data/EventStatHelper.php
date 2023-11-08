@@ -113,7 +113,6 @@ class EventStatHelper
          * Residence Category = ['X1' => 14, 'X2' => 7, 'X3' => 4]
          */
         $usersResidence = [];
-
         foreach ($users as $user) {
             $userResidence = Validation::returnIfString($user, 'Domisili');
 
@@ -125,7 +124,7 @@ class EventStatHelper
         }
 
         arsort($usersResidence);
-
+        $usersResidence  = array_slice($usersResidence, 0, 5);
         return $usersResidence;
     }
 

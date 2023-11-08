@@ -1,4 +1,6 @@
-<img src="/dist/member-of-purple.png" alt="" class="w-32 mx-auto mt-12 pb-12">
+<img src="/dist/member-of-purple.png" alt="" class="dark:hidden w-32 mx-auto mt-12 pb-12">
+<img src="/dist/member-of.png" alt="" class="hidden dark:block w-32 mx-auto mt-12 pb-12">
+
 
 <!-- Back to top Start -->
 

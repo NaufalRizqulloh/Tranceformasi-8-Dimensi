@@ -28,63 +28,100 @@
     <div class="bg-primary h-full col-span-3 rounded-xl px-6 py-4">
         <h1 class="w-full text-white text-lg text-center font-bold mb-2">View</h1>
         <hr class="w-3/4 mx-auto border-white mb-6">
-        <a href="#" class="text-white mb-2 hover:underline">- Progres</a> <br>
-        <a href="#" class="text-white mb-2 hover:underline">- Jenis Kelamin</a> <br>
-        <a href="#" class="text-white mb-2 hover:underline">- Usia/Pendidikan</a> <br>
-        <a href="#" class="text-white mb-2 hover:underline">- Penyebaran8D</a> <br>
-        <a href="#" class="text-white mb-2 hover:underline">- Data Individual</a>
+        <a href="#progress" class="text-white mb-2 hover:underline">- Progress</a> <br>
+        <a href="#kelamin" class="text-white mb-2 hover:underline">- Jenis Kelamin</a> <br>
+        <a href="#usia" class="text-white mb-2 hover:underline">- Usia & Pendidikan</a> <br>
+        <a href="#domisili" class="text-white mb-2 hover:underline">- Domisili & Logo</a> <br>
+        <a href="#dimensi" class="text-white mb-2 hover:underline">- Penyebaran8D</a> <br>
+        <a href="#data" class="text-white mb-2 hover:underline">- Data Individual</a>
     </div>
 </div>
 
-<h1 class="text-black text-3xl font-bold text-center">Progres Keseluruhan</h1>
-<canvas id="progressBar" class="mx-auto mb-6" style="width:100%;max-width:600px;height:100%;max-height:100px"></canvas>
-<div class="w-fit h-fit mx-auto mb-12 px-24 pt-6 border-4 border-primary rounded-3xl">
-  <h1 class="w-[460px] text-black text-2xl text-center font-bold -mb-6"> Jenis Kelamin</h1>
+<h1 id="progress" class="text-black dark:text-bgcolor text-3xl font-bold text-center">Progres Keseluruhan</h1>
+<canvas id="progressBar" class="mx-auto mb-8" style="width:100%;max-width:600px;height:100%;max-height:100px"></canvas>
+<div id="kelamin" class="w-fit h-fit mx-auto mb-12 px-24 pt-6 border-4 border-primary rounded-3xl">
+  <h1 class="w-[460px] text-black dark:text-bgcolor text-2xl text-center font-bold -mb-6">Jenis Kelamin</h1>
   <canvas id="piesChart" class="mx-auto" style="width:100%;max-width:600px;height:100%;max-height:500px"></canvas>
 </div>
-<div class="flex mx-24 mb-6">
+<div id="usia" class="flex mx-24 mb-14">
   <canvas id="usiasChart" class="mx-auto" style="width:100%;max-width:500px;height:100%;max-height:300px;"></canvas>
   <canvas id="pendidikanChart" class="mx-auto" style="width:100%;max-width:500px;height:100%;max-height:300px;"></canvas>
 </div>
-<div class="w-fit h-fit mx-auto mb-12 px-6 pt-6 border-4 border-primary rounded-3xl">
-    <h1 class="text-black text-2xl text-center font-bold">Penyebaran Dimensi Kepemimpinan</h1>
+<div id="domisili" class="flex w-fit mx-auto justify-center mb-10">
+  <div class="mr-5 w-fit h-fit mx-auto mb-0 px-8 pt-4 pb-4 border-4 border-primary rounded-3xl">
+    <h1 class="text-black dark:text-bgcolor text-2xl text-center font-bold">Domisili Terbanyak</h1>
+    <div class="mt-6">
+      <table style="border-collapse: collapse;
+      border-style: hidden;">
+        @foreach($domisili as $d => $num)
+          <tr>
+            <td class="w-96 border border-gray-500 dark:border-bgcolor px-2 pt-2 pb-2"><h1 class="text-black dark:text-bgcolor text-center">{{ $d }}</h1></td>  
+            <td class="w-32 border border-gray-500 dark:border-bgcolor px-2 pt-2 pb-2"><h1 class="text-black dark:text-bgcolor text-center">{{ $num }}</h1></td>  
+          </tr>
+        @endforeach
+      </table>
+    </div>
+  </div>
+  <div class="ml-5 w-fit h-fit mx-auto mb-0 px-8 pt-4 pb-4 border-4 border-primary rounded-3xl">
+    <h1 class="text-black dark:text-bgcolor text-2xl text-center font-bold">Logo Collab</h1>
+    <img src="/collab-logo/{{ $img }}" alt="" class="w-[250px] h-[250px] mt-4">
+  </div>
+</div>
+<div id="dimensi" class="w-fit h-fit mx-auto mb-12 px-6 pt-6 border-4 border-primary rounded-3xl">
+    <h1 class="text-black dark:text-bgcolor text-2xl text-center font-bold">Penyebaran Dimensi Kepemimpinan</h1>
   <canvas id="8DChart" class="mx-auto" style="width:100%;max-width:400px;height:100%;max-height:300px"></canvas>
 </div>
 
-<h1 class="mb-6 text-black text-2xl text-center font-light italic">Data Individual Yang Selesai</h1>
+<h1 id="data" class="mb-6 text-black dark:text-bgcolor text-2xl text-center font-light italic">Data Individual Yang Selesai</h1>
 
-<table class="w-10/12 mx-auto mb-8 border-2 border-black">
-  <tr class="border-2 border-black">
-    <th class="border-2 border-black text-black"><h1 class="mx-2 text-center my-1">No</h1></th>
-    <th class="border-2 border-black text-black"><h1 class="mx-2 text-center my-1">Selesai Mengerjakan</h1></th>
-    <th class="border-2 border-black text-black"><h1 class="mx-2 text-center my-1">Hasil</h1></th>
+<table id="selesai" class="w-10/12 mx-auto mb-8 border-2 border-black dark:border-bgcolor">
+  <tr class="border-2 border-black dark:border-bgcolor">
+    <th class="border-2 border-black dark:border-bgcolor text-black"><h1 class="mx-2 text-center text-black dark:text-bgcolor my-1">No</h1></th>
+    <th class="border-2 border-black dark:border-bgcolor text-black"><h1 class="mx-2 text-center text-black dark:text-bgcolor my-1">Selesai Mengerjakan</h1></th>
+    <th class="border-2 border-black dark:border-bgcolor text-black"><h1 class="mx-2 text-center text-black dark:text-bgcolor my-1">Hasil</h1></th>
   </tr>
   @foreach ($finishedUserS as $u)
-  <tr class="border-2 border-black">
-    <td class="border-2 border-black text-black"><h1 class="mx-2 text-center my-1">{{ $loop->iteration }}</h1></td>
-    <td class="border-2 border-black text-black"><h1 class="mx-2 my-1">{{ $u->user->name }}</h1></td>
-    <td class="border-2 border-black"><h1 class="mx-2 text-center my-1"><a href="" class="text-blue-400 hover:underline">Download PDF</a></h1></td>
+  <tr class="border-2 border-black dark:border-bgcolor">
+    <td class="border-2 border-black dark:border-bgcolor text-black"><h1 class="mx-2 text-center text-black dark:text-bgcolor my-1">{{ $loop->iteration }}</h1></td>
+    <td class="border-2 border-black dark:border-bgcolor text-black"><h1 class="mx-2 my-1 text-black dark:text-bgcolor">{{ $u->user->name }}</h1></td>
+
+    @php
+      $filePath = storage_path('pdf') . DIRECTORY_SEPARATOR . $u->pdf_original_name . '.pdf';
+    @endphp
+
+    @if(file_exists($filePath))
+      <td class="border-2 border-black dark:border-bgcolor"><h1 class="mx-2 text-center my-1"><a href="{{ route('event.pdf.download', ['jawaban' => $u->id]) }}" class="text-blue-400 hover:underline">Download PDF</a></h1></td>
+    @else 
+      <td class="border-2 border-black dark:border-bgcolor"><h1 class="mx-2 text-center my-1"><a href="{{ route('event.pdf.generate', ['jawaban' => $u->id]) }}" class="text-blue-400 hover:underline">Generate PDF</a></h1></td>
+    @endif
+    
   </tr>
   @endforeach
 </table>
 
 
-<h1 class="mb-6 text-black text-2xl text-center font-light italic">Data Peserta Yang Sedang Mengerjakan</h1>
+<h1 class="mb-6 text-black dark:text-bgcolor text-2xl text-center font-light italic">Data Peserta Yang Sedang Mengerjakan</h1>
 
-<table class="w-10/12 mx-auto border-2 border-black">
-  <tr class="border-2 border-black">
-    <th class="border-2 border-black text-black"><h1 class="mx-2 text-center my-1">No</h1></th>
-    <th class="border-2 border-black text-black"><h1 class="mx-2 text-center my-1">Selesai Mengerjakan</h1></th>
-    <th class="border-2 border-black text-black"><h1 class="mx-2 text-center my-1">Progress</h1></th>
+<table class="w-10/12 mx-auto border-2 border-black dark:border-bgcolor">
+  <tr class="border-2 border-black dark:border-bgcolor">
+    <th class="border-2 border-black dark:border-bgcolor"><h1 class="mx-2 text-center text-black dark:text-bgcolor my-1">No</h1></th>
+    <th class="border-2 border-black dark:border-bgcolor"><h1 class="mx-2 text-center text-black dark:text-bgcolor my-1">Nama</h1></th>
+    <th class="border-2 border-black dark:border-bgcolor"><h1 class="mx-2 text-center text-black dark:text-bgcolor my-1">Progress</h1></th>
   </tr>
   @foreach ($unfinishedUserS as $u)
-  <tr class="border-2 border-black">
-    <td class="border-2 border-black text-black"><h1 class="mx-2 text-center my-1">{{ $loop->iteration }}</h1></td>
-    <td class="border-2 border-black text-black"><h1 class="mx-2 my-1">{{ $u->user->name }}</h1></td>
-    <td class="border-2 border-black"><h1 class="mx-2 text-center my-1 capitalize">{{ $u->progress }}</h1></td>
+  <tr class="border-2 border-black dark:border-bgcolor">
+    <td class="border-2 border-black dark:border-bgcolor"><h1 class="mx-2 text-center text-black dark:text-bgcolor my-1">{{ $loop->iteration }}</h1></td>
+    <td class="border-2 border-black dark:border-bgcolor"><h1 class="mx-2 my-1 text-black dark:text-bgcolor">{{ $u ->user->name }}</h1></td>
+    <td class="border-2 border-black dark:border-bgcolor"><h1 class="mx-2 text-black dark:text-bgcolor text-center my-1 capitalize">{{ $u->progress }}</h1></td>
   </tr>
   @endforeach
 </table>
+
+<div class="flex justify-center">
+  <a href="{{ route('admin.event.index') }}" class="mt-16 w-fit h-fit border-2 border-black dark:border-white rounded-full inline-block cursor-pointer">
+    <h1 class="mx-8 my-2 text-black dark:text-white">Kembali</h1>
+  </a>
+</div>
 
 <!-- 
 <div>
@@ -95,12 +132,19 @@
   <p>{{ var_dump($penyebaran8D) }}</p>
 </div>
 -->
+
+@if(session('success'))
+  <script>
+    window.location = '#selesai';
+  </script>
+@endif
+
 <script>
 
   var progress2 = document.getElementById("progressBar").getContext('2d');
 
     let done = {{ $finishedUser }};
-    let total = {{ $users }} ;
+    let total = {{ $totalJawaban }} ;
     let donePercent = done / total * 100;
     let totalPercent = (total - done) / total * 100;
 
