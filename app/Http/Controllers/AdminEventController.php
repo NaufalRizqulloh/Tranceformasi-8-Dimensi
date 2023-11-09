@@ -186,22 +186,10 @@ class AdminEventController extends Controller
             'collab_url' => 'required|string|max:255',
         ]);
 
-        $name = null;
-
-        if ($request->hasFile('collab_logo_base64')) {
-            // $img = $request->file('collab_logo_base64')->store('collab-logo');
-            // $img = Storage::disk('local')->put('images/', $request->file('collab_logo_base64'));
-
-            $file = $request->file('collab_logo_base64');
-            $name = 'logo-event-' . Event::latest()->first()->id + 1 . '.' . $file->getClientOriginalExtension();
-            $file->move(public_path('collab-logo'), $name);
-        }
-
         Event::create([
             'nama' => $request->input('nama'),
             'kode_akses' => $request->input('kode_akses'),
             'institusi' => $request->input('institusi'),
-            'collab_logo_name' => $name,
             'tanggal_mulai' => $request->input('tanggal_mulai'),
             'tanggal_selesai' => $request->input('tanggal_selesai'),
             'deskripsi' => $request->input('deskripsi'),
@@ -209,6 +197,20 @@ class AdminEventController extends Controller
             'collab_url' => $request->input('collab_url'),
             'is_answers_hold' => false,
         ]);
+
+        if ($request->hasFile('collab_logo_base64')) {
+            // $img = $request->file('collab_logo_base64')->store('collab-logo');
+            // $img = Storage::disk('local')->put('images/', $request->file('collab_logo_base64'));
+            $event = Event::latest()->first();
+
+            $file = $request->file('collab_logo_base64');
+            $name = 'logo-event-' . $event->id . '.' . $file->getClientOriginalExtension();
+            $file->move(public_path('collab-logo'), $name);
+
+            $event->collab_logo_name = $name;
+            $event->save();
+        }
+
 
         // dd([
         //     'nama' => $request->input('nama'),
@@ -325,6 +327,12 @@ class AdminEventController extends Controller
         if ($request->hasFile('collab_logo_base64')) {
             $file = $request->file('collab_logo_base64');
             $name = 'logo-event-' . $event->id . '.' . $file->getClientOriginalExtension();
+            $deletePath = public_path('collab-logo/') . $event->collab_logo_name;
+
+            if(file_exists($deletePath)) {
+                unlink($deletePath);
+            }
+
             $file->move(public_path('collab-logo'), $name);
             $event->collab_logo_name = $name;
         }
@@ -348,7 +356,14 @@ class AdminEventController extends Controller
      */
     public function destroy(string $id)
     {
-        Event::find($id)->delete();
+        $event = Event::find($id);
+        $path = public_path('collab-logo/') . $event->collab_logo_name;
+
+        if(file_exists($path)) {
+            unlink($path);
+        }
+
+        $event->delete();
 
         return redirect()->route('admin.event.index');
     }

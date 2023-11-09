@@ -13,10 +13,10 @@
 <img src="{{ asset('storage/' . $event->collab_logo_base64) }}" alt="">
 {{ $event->collab_logo_base64 }}
 
-<label class="relative inline-flex items-center mr-5 cursor-pointer">
+<label class="ml-[49px] relative inline-flex items-center mr-5 cursor-pointer">
   <input id="holdSwitch" type="checkbox" class="sr-only peer">
   <div class="w-11 h-6 bg-gray-200 rounded-full peer dark:bg-gray-700 peer-focus:ring-4 peer-focus:ring-purple-300 dark:peer-focus:ring-purple-800 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-purple-600"></div>
-  <span class="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300">Purple</span>
+  <span class="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300">Hold Event</span>
 </label> 
 
 <div class="w-[90%] grid grid-cols-12 gap-6 ml-12 mb-12">
@@ -25,6 +25,7 @@
         <h1 class="w-fit text-white ml-6">:<br>:<br>:<br>:<br>:</h1>
         <h1 class="w-fit text-white ml-6">{{ $users }}<br>{{ $timeStart }} - {{ $timeEnd }}<br>{{ $event->kode_akses }}<br>{{ $event->institusi }}<br>{{ $event->deskripsi }}</h1>
     </div>
+    
     <div class="bg-primary h-full col-span-3 rounded-xl px-6 py-4">
         <h1 class="w-full text-white text-lg text-center font-bold mb-2">View</h1>
         <hr class="w-3/4 mx-auto border-white mb-6">
@@ -36,7 +37,6 @@
         <a href="#data" class="text-white mb-2 hover:underline">- Data Individual</a>
     </div>
 </div>
-
 <h1 id="progress" class="text-black dark:text-bgcolor text-3xl font-bold text-center">Progres Keseluruhan</h1>
 <canvas id="progressBar" class="mx-auto mb-8" style="width:100%;max-width:600px;height:100%;max-height:100px"></canvas>
 <div id="kelamin" class="w-fit h-fit mx-auto mb-12 px-24 pt-6 border-4 border-primary rounded-3xl">
@@ -434,11 +434,10 @@
         return response.json();
       })
       .then(data => {
-        alert(data['on-hold']);
         if (data['on-hold'] == 1) {
-          alert('Hasil jawaban event ini ditahan');
+          // kalau mau alert
         } else if (data['on-hold'] == 0){
-          alert('Hasil jawaban event ini dibuka');
+          // kalau mau alert
         } else {
           throw new Error('Response tidak dikenali : ' + data);
         }

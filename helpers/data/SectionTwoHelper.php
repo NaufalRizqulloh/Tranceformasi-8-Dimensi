@@ -11,17 +11,16 @@ class SectionTwoHelper
     {
         $scores = [0, 0, 0, 0, 0];
         foreach ($values as $index => $value) {
-
             if (GeneralHelper::isBetweenAnd($index, 1, 4)) {
-                $scores[0] += $value;
+                $scores[0] += $value - 1;
             } else if (GeneralHelper::isBetweenAnd($index, 5, 8)) {
-                $scores[1] += $value;
+                $scores[1] += $value -1;
             } else if (GeneralHelper::isBetweenAnd($index, 9, 12)) {
-                $scores[2] += $value;
+                $scores[2] += $value - 1;
             } else if (GeneralHelper::isBetweenAnd($index, 13, 16)) {
-                $scores[3] += $value;
+                $scores[3] += $value - 1;
             } else if (GeneralHelper::isBetweenAnd($index, 17, 20)) {
-                $scores[4] += $value;
+                $scores[4] += $value - 1;
             }
         }
 
@@ -32,7 +31,7 @@ class SectionTwoHelper
          * then divide it by 10 to get 1 digit number
          */
         foreach ($scores as $score) {
-            $finalScores[] = (int)round(($score * 6.25), -1) / 10;
+            $finalScores[] = (int)round(($score * 5), -1) / 10;
         }
 
         return $finalScores;

@@ -33,111 +33,6 @@ use Illuminate\Http\Request;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-// TESTING
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/ds', function () {
-    dd('anggap dashboard');
-});
-
-Route::get('/t/{user}', function (User $user) {
-    
-});
-
-Route::get('/t', function () {
-    $options = new Options();
-        $options->set('chroot', storage_path());
-        
-        $html = View::make('template-pdf/8dimensi-master', [
-            'name' => 'tes',
-            'date' => 'tes',
-            'nickname' => 'tes',
-            'birthday' => 'tes',
-            'education' => 'tes',
-            'jobTitle' => 'tes',
-            'email' => 'tes',
-            'phoneNumber' => 'tes',
-            'testPurpose' => 'tes',
-            'dimension' => 'Berwibawa',
-            'title' => 'Preview Laporan PDF',
-            'gender' => 'laki',
-            'inconsistentDimension' => 'ds',
-            'score' => [6,7,8,9,10],
-
-            'collabLogo' => null,
-            'collabCompany' => null,
-            'collabWatermark' => null
-        ])->render();
-
-        $dompdf = new Dompdf();
-        $dompdf->loadHtml($html);
-
-        $dompdf->setPaper('A4', 'potrait');
-
-        $dompdf->render();
-        $dompdf->stream('b', array('Attachment' => false));
-        exit(0);
-});
-
-Route::get('/dn', function () {
-    dd('anggap done', request());
-});
-
-Route::get('/j', function () {
-    return view('alt-form/no-jump');
-});
-
-Route::get('/request21', function () {
-    return session('answers-21');
-});
-
-Route::get('/testform/{jawaban}', [FormController::class, 'show'])->name('testt');
-
-Route::get('/hasil', function () {
-    return request();
-});
-
-Route::get('/overview', [AdminEventController::class, 'overview']);
-Route::get('/chart', [AdminEventController::class, 'show']);
-Route::get('/testing', function () {
-    return [
-        substr('123456789', 0, 4),
-        substr('123456789', 0, -3),
-        substr('123456789', 2, 3),
-        substr('123456789', 2, -3)
-    ];
-});
-
-Route::get('/wait', function () {
-    return view('alt-form/section-wait', [
-        'nextDestination' => 'section-2-1',
-        'jawaban' => 1
-    ]);
-});
-
-Route::get('/event-test/{event}', [AdminEventController::class, 'show']);
-
-Route::get('/request', function (Request $request) {
-    return view('alt-form/section-1', [
-        'questions' => config('form-section1-1.content'),
-        'answers' => [],
-        'nextDestination' => 'section-1-2',
-        'previousDestination' => 'go-dashboard'
-    ]);
-});
-
-Route::post('/post/{jawaban}', function (Request $request, Jawaban $jawaban) {
-    return redirect()->route('testt', [
-        'jawaban' => $jawaban,
-        'destination' => $request->destination
-    ]);
-})->name('post');
-
-Route::get('/request-invalid', function (Request $request) {
-    return view('form/section-1-1', ['question' => ['1.1' => null]]);
-});
 
 /**
  * User route section
@@ -199,10 +94,6 @@ Route::get('admin/event-pdf-generate/{jawaban}', [AdminEventController::class, '
 
 /////////
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
-Route::get('/dashboardchart', [ChartController::class, 'dashboardchart']);
 // ->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
@@ -211,12 +102,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::resource('checkbox', CheckboxController::class);
 // Route::post('/storeCheckboxes', [CheckboxController::class, 'store'])->name('storeCheckboxes');
-
-Route::get('/dashboard/{user}', []);
-
-Route::get('/charts', [ChartController::class, 'index'])->name('chart.index');
 
 Route::get('/', function () {
     return view('/testing/welcome');
@@ -228,21 +114,6 @@ Route::get('/tfregister', [RegisteredUserController::class, 'create'])->name('tf
 
 // Route::get('/home', [JawabanController::class, 'index'])->name('jawaban.index');
 
-Route::get('/section-1', function () {
-    return view('.form.section-1-1 ');
-});
-
-Route::get('/section-1-2', function () {
-    return view('.form.section-1-2');
-});
-
-Route::get('/section-2-1', function () {
-    return view('form.section-2-1 ');
-});
-
-Route::get('/done', function () {
-    return view('form.section-done');
-});
 
 require __DIR__ . '/auth.php';
 {{  }}
