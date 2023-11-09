@@ -77,11 +77,6 @@ document.getElementById("submit-button").addEventListener("click", function() {
     document.getElementById("confirm-element").style.display = "block";
 });
 
-document.getElementById("close-button").addEventListener("click", function() {
-    document.getElementById("overlay").style.display = "none";
-    document.getElementById("confirm-element").style.display = "none";
-});
-
 document.getElementById("overlay").addEventListener("click", function() {
     document.getElementById("overlay").style.display = "none";
     document.getElementById("confirm-element").style.display = "none";

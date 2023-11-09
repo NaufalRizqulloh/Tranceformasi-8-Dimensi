@@ -54,7 +54,7 @@ class FormController extends Controller
             return redirect()->back()->withErrors(['kode-akses' => 'Kode akses event tidak sesuai']);
         }
 
-        
+
         $startDate = $event->tanggal_mulai;
         $expirationDate = $event->tanggal_selesai;
 
@@ -315,8 +315,11 @@ class FormController extends Controller
         $notelp = $user->notelp;
         $testPurpose = $jawaban->event->tujuan_tes;
         $gender = $user->jenis_kelamin;
+        $collabLogo = null;
         
-        $collabLogo = file_get_contents(public_path('collab-logo/' . $jawaban->event->collab_logo_name))? base64_encode(file_get_contents(public_path('collab-logo/' . $jawaban->event->collab_logo_name))) : null;
+        if (file_exists(public_path('collab-logo/' . $jawaban->event->collab_logo_name))) {
+            $collabLogo = base64_encode(file_get_contents(public_path('collab-logo/' . $jawaban->event->collab_logo_name)));
+        }
         $collabUrl = $jawaban->event->collab_url;
         $collabCompanyName = $jawaban->event->institusi;
 
@@ -324,7 +327,7 @@ class FormController extends Controller
 
         $options = new Options();
         $options->set('chroot', storage_path());
-        
+
         $html = View::make('template-pdf/8dimensi-master', [
             'name' => $name,
             'date' => $testDate,

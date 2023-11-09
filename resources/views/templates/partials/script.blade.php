@@ -47,6 +47,13 @@
     document.getElementById("overlay1").style.display = "block";
   }
   
+  document.getElementById("overlay").addEventListener("click", function() {
+    document.getElementById("overlay").style.display = "none";
+    document.getElementById("overlay1").style.display = "none";
+    document.getElementById("kodeAkses").style.display = "none";
+    document.getElementById("confirm-element").style.display = "none";
+    document.getElementById("buatEvent").style.display = "none";
+  });
   function offoverlay() {
     document.getElementById("overlay").style.display = "none";
     document.getElementById("overlay1").style.display = "none";

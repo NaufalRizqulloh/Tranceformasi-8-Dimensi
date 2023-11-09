@@ -5,7 +5,7 @@
 <div class="mt-24"></div>
 <div class="flex w-fit mx-auto mb-12`">
     <img src="/dist/check.png" alt="" class="mr-8 mt-5">
-    <h1 class="mt-12 text-center font-black text-6xl">FORM 1 SELESAI</h1>
+    <h1 class="mt-12 text-center font-black text-4xl md:text-6xl">FORM 1 SELESAI</h1>
 </div>
 <h1 class="text-center font-medium text-2xl mb-12">
     Jawaban anda sudah tersimpan <br> Klik “Lanjutkan” untuk mengisi form berikutnya

@@ -107,13 +107,13 @@
             <h1 class="text-red-600 -mt-2 ml-14">{{ $message }}</h1>
             @enderror
             <label for="collab_url" id="" class="ml-14 mb-6 text-black dark:text-bgcolor text-xl">- Alamat Web Perusahaan</label>
-            <input type="text" name="collab_url" id="collab_url" class="mx-auto mb-4 w-10/12 rounded-md text-black dark:text-bgcolor dark:bg-slate-800 border-black dark:border-bgcolor ring-black px-3 py-2 border shadow block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500" value="{{ $e->collab_url }}" placeholder="example.com" maxlength="40" required/>
+            <input type="text" name="collab_url" id="collab_url" class="mx-auto mb-4 w-10/12 rounded-md text-black dark:text-bgcolor dark:bg-slate-800 border-black dark:border-bgcolor ring-black px-3 py-2 border shadow block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500" value="{{ $e->collab_url }}" placeholder="example.com" maxlength="40" />
             @error('collab_url')
             <h1 class="text-red-600 -mt-2">{{ $message }}</h1>
             @enderror
             <h1 class="ml-14 text-black dark:text-bgcolor text-xl">- Logo Perusahaan</h1>
             <label for="collab_logo_base64" id="LogoPerusahaan{{ $loop->iteration }}" class="mx-auto mb-4 w-10/12 rounded-md text-black dark:text-bgcolor dark:bg-slate-800 border-black dark:border-bgcolor ring-black px-3 py-2 border shadow block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500">Logo Perusahaan</label>
-            <input type="file" id="logoFile{{ $loop->iteration }}" name="collab_logo_base64" id="collab_logo_base64" class="absolute -mt-20 ml-[3.25rem] w-10/12 h-16 opacity-0" value="{{ old('collab_logo_base64') }}" accept="image/*" required/>
+            <input type="file" id="logoFile{{ $loop->iteration }}" name="collab_logo_base64" id="collab_logo_base64" class="absolute -mt-20 ml-[3.25rem] w-10/12 h-16 opacity-0" value="{{ old('collab_logo_base64') }}" accept="image/*" />
             @error('collab_logo_base64')
             <h1 class="text-red-600 -mt-2">{{ $message }}</h1>
             @enderror
@@ -212,13 +212,13 @@
             <h1 class="text-red-600 -mt-2 ml-14">{{ $message }}</h1>
             @enderror
             <label for="collab_url" id="" class="ml-14 mb-6 text-black dark:text-bgcolor text-xl">- Alamat Web Perusahaan</label>
-            <input type="text" name="collab_url" id="collab_url" class="mx-auto mb-4 w-10/12 rounded-md text-black dark:text-bgcolor dark:bg-slate-800 border-black dark:border-bgcolor ring-black px-3 py-2 border shadow block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500" value="{{ $e->collab_url }}" placeholder="example.com" maxlength="40" required/>
+            <input type="text" name="collab_url" id="collab_url" class="mx-auto mb-4 w-10/12 rounded-md text-black dark:text-bgcolor dark:bg-slate-800 border-black dark:border-bgcolor ring-black px-3 py-2 border shadow block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500" value="{{ $e->collab_url }}" placeholder="example.com" maxlength="40"/>
             @error('collab_url')
             <h1 class="text-red-600 -mt-2">{{ $message }}</h1>
             @enderror
             <h1 class="ml-14 text-black dark:text-bgcolor text-xl">- Logo Perusahaan</h1>
             <label for="collab_logo_base64" id="LogoPerusahaanDone{{ $loop->iteration }}" class="mx-auto mb-4 w-10/12 rounded-md text-black dark:text-bgcolor dark:bg-slate-800 border-black dark:border-bgcolor ring-black px-3 py-2 border shadow block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500">Logo Perusahaan</label>
-            <input type="file" id="logoFileDone{{ $loop->iteration }}" name="collab_logo_base64" id="collab_logo_base64" class="absolute -mt-20 ml-[3.25rem] w-10/12 h-16 opacity-0" value="{{ old('collab_logo_base64') }}" accept="image/*" required/>
+            <input type="file" id="logoFileDone{{ $loop->iteration }}" name="collab_logo_base64" id="collab_logo_base64" class="absolute -mt-20 ml-[3.25rem] w-10/12 h-16 opacity-0" value="{{ old('collab_logo_base64') }}" accept="image/*"/>
             @error('collab_logo_base64')
             <h1 class="text-red-600 -mt-2">{{ $message }}</h1>
             @enderror
@@ -345,13 +345,13 @@
         <h1 class="text-red-600 -mt-2 ml-14">{{ $message }}</h1>
         @enderror
         <label for="collab_url" id="" class="ml-14 mb-6 text-black dark:text-bgcolor text-xl">- Alamat Web Perusahaan</label>
-        <input type="text" name="collab_url" id="collab_url" class="mx-auto mb-4 w-10/12 rounded-md text-black dark:text-bgcolor dark:bg-slate-800 border-black dark:border-bgcolor ring-black px-3 py-2 border shadow block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500" value="{{ old('collab_url') }}" placeholder="example.com" maxlength="40" required/>
+        <input type="text" name="collab_url" id="collab_url" class="mx-auto mb-4 w-10/12 rounded-md text-black dark:text-bgcolor dark:bg-slate-800 border-black dark:border-bgcolor ring-black px-3 py-2 border shadow block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500" value="{{ old('collab_url') }}" placeholder="example.com" maxlength="40"/>
         @error('collab_url')
         <h1 class="text-red-600 -mt-2">{{ $message }}</h1>
         @enderror
         <h1 class="ml-14 text-black dark:text-bgcolor text-xl">- Logo Perusahaan</h1>
         <label for="collab_logo_base64" id="LogoPerusahaanBaru" class="mx-auto mb-4 w-10/12 rounded-md text-black dark:text-bgcolor dark:bg-slate-800 border-black dark:border-bgcolor ring-black px-3 py-2 border shadow block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500">Logo Perusahaan</label>
-        <input type="file" id="logoFileBaru" name="collab_logo_base64" id="collab_logo_base64" class="absolute -mt-20 ml-[3.25rem] w-10/12 h-16 opacity-0 " value="{{ old('collab_logo_base64') }}" accept="image/*" required/>
+        <input type="file" id="logoFileBaru" name="collab_logo_base64" id="collab_logo_base64" class="absolute -mt-20 ml-[3.25rem] w-10/12 h-16 opacity-0 " value="{{ old('collab_logo_base64') }}" accept="image/*"/>
         @error('collab_logo_base64')
         <h1 class="text-red-600 -mt-2">{{ $message }}</h1>
         @enderror

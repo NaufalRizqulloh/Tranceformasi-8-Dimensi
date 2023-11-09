@@ -110,7 +110,7 @@
              @enderror
          </label>
          <label for="status" id="">
-             <select name="status" id="status" class="mb-3 rounded-md bg-white border-black ring-black mx-auto px-3 py-2 border shadow rounder w-full block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 @if(old('status') == '0') border-red-500 @endif" oninput="removeRedBorder(this)">
+             <select name="status" id="status" class="mb-3 rounded-md bg-white border-black ring-black mx-auto px-3 py-2 border shadow rounder w-full block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500" oninput="removeRedBorder(this)">
                  <option value="0" @if(old('status')=='0' ) selected @endif>-- Pilih Status --</option>
                  <option value="1" @if(old('status')=='1' ) selected @endif>Pelajar</option>
                  <option value="2" @if(old('status')=='2' ) selected @endif>Pekerja</option>
@@ -182,7 +182,7 @@
              <button type="submit" class="w-32 border-solid rounded-lg border-4 bg-primary hover:border-indigo-800 hover:border-4 transition-colors duration-200 ease-in-out">
                  <h1 class="text-[#F7F1F1] text-center font-semibold italic m-1">Daftar</h1>
              </button>
-             <a href="" class="underline justify-self-end m-1 hover:text-sky-500">
+             <a href="{{ route('loginPage') }}" class="underline justify-self-end m-1 hover:text-sky-500">
                  Sudah Punya Akun?
              </a>
          </div>

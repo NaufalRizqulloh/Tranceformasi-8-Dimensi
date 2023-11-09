@@ -18,11 +18,11 @@
     @csrf
     @foreach($questions as $index => $quest)
     <div class="mt-4 md:mt-12 mx-auto w-[90%] md:w-[80%] lg:w-[60%] h-fit border-2 rounded-[30px] lg:rounded-[50px] bg-white dark:bg-slate-700 dark:border-transparent">        
-        <div class="flex mt-10 mx-auto w-12 h-12 text-sm md:text-lg text-black dark:text-bgcolor justify-center items-center rounded-full border-2 border-slate-500 dark:border-white">
+        <div class="flex mt-10 mb-4 mx-auto w-12 h-12 text-sm md:text-lg text-black dark:text-bgcolor justify-center items-center rounded-full border-2 border-slate-500 dark:border-white">
             {{ $index }}
         </div>
         <div class="ml-3 mr-3">
-            <h1 class="w-fit mx-auto block text-center text-lg sm:text-xl mb-2 md:mb-4">
+            <h1 class="w-11/12 md:w-10/12 mx-auto block text-black dark:text-bgcolor text-center text-base md:text-lg mb-2 md:mb-4">
                 {{ $quest['question'] }}
             </h1>
         </div>
@@ -98,21 +98,21 @@
     
     <!-- overlaySubmit -->
     
-    <div id="confirm-element" class="top-1/4 left-1/4 w-1/2 h-fit rounded-3xl bg-white z-30 flex">
-        <div class="w-full flex bg-primary mb-5 z-40 top-0 rounded-t-3xl items-center">
+    <div id="confirm-element" class="top-1/4 left-3 md:left-1/4 w-[95vw] md:w-1/2 h-fit rounded-md md:rounded-3xl bg-white dark:bg-slate-800 z-30 flex">
+        <div class="w-full flex bg-primary mb-5 z-40 top-0 rounded-t-md md:rounded-t-3xl items-center">
             <h1 class="py-3 text-secondary text-xl mx-auto">Delapan Dimensi Kepemimpinan</h1>
         </div>
-        <h1 class="text-2xl text-black font-bold text-center mb-5">Apakah Anda yakin dengan jawaban anda?</h1>
-        <h1 class="text-lg text-black text-center mb-4">Klik "Lanjutkan" untuk menyelesaikan sesi ini</h1>
+        <h1 class="text-2xl text-black dark:text-bgcolor font-bold text-center mb-5">Apakah Anda yakin dengan jawaban anda?</h1>
+        <h1 class="text-lg text-black dark:text-bgcolor text-center mb-4">Klik "Lanjutkan" untuk menyelesaikan sesi ini</h1>
         <ul class="inline-flex w-full justify-center mx-auto">
                 <li>
-                    <a href="" class="flex w-[200px] h-8 border-2 border-slate-300 rounded-full mx-auto mb-8 items-center justify-center italic mr-4" onclick="offoverlay()">
+                    <a href="" class="flex w-[150px] md:w-[200px] h-8 border-2 border-slate-300 dark:border-bgcolor text-black dark:text-bgcolor rounded-full mx-auto mb-8 items-center justify-center italic mr-4" onclick="offoverlay()">
                         Kembali
                     </a>
                 </li>
                 <li>
-                    <button onclick="submit()" class="flex w-[200px] h-8 border-2 border-slate-300 rounded-full mx-auto mb-8 items-center justify-center">
-                        <h1 class="text-center text-md ml-4 mr-3 italic">Lanjutkan</h1>
+                    <button onclick="submit()" class="flex w-[150px] md:w-[200px] h-8 border-2 border-slate-300 dark:border-bgcolor rounded-full mx-auto mb-8 items-center justify-center">
+                        <h1 class="text-center text-md ml-4 mr-3 italic text-black dark:text-bgcolor">Lanjutkan</h1>
                     </button> 
                 </li>
             </ul>

@@ -22,6 +22,7 @@ use Dompdf\Options;
 use Illuminate\Support\Facades\View;
 use Dompdf\Dompdf;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 /*
 |--------------------------------------------------------------------------
@@ -106,7 +107,7 @@ Route::middleware('auth')->group(function () {
 
 Route::get('/', function () {
     return view('/testing/welcome');
-});
+})->name('loginPage');
 
 Route::get('/tprofile', [ProfileController::class, 'edit'])->name('tprofile.edit');
 

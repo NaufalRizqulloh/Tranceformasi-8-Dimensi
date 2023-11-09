@@ -178,12 +178,12 @@ class AdminEventController extends Controller
             'nama' => 'required|string|max:60',
             'kode_akses' => 'required|unique:events|string|max:25',
             'institusi' => 'required|string|max:255',
-            'collab_logo_base64' => 'required|mimes:png,jpeg,jpg',
+            'collab_logo_base64' => 'mimes:png,jpeg,jpg',
             'tanggal_mulai' => 'required',
             'tanggal_selesai' => 'required',
             'deskripsi' => 'required|string|max:255',
             'tujuan_tes' => 'required|string|max:255|not_in:0',
-            'collab_url' => 'required|string|max:255',
+            'collab_url' => 'nullable|string|max:255',
         ]);
 
         Event::create([
@@ -313,12 +313,12 @@ class AdminEventController extends Controller
             'nama' => 'required|string|max:60',
             // 'kode_akses' => 'required|unique:events|string|max:25',
             'institusi' => 'required|string|max:255',
-            'collab_logo_base64' => 'required|mimes:png,jpeg,jpg',
+            'collab_logo_base64' => 'mimes:png,jpeg,jpg',
             'tanggal_mulai' => 'required',
             'tanggal_selesai' => 'required',
             'deskripsi' => 'required|string|max:255',
             'tujuan_tes' => 'required|string|max:255|not_in:0',
-            'collab_url' => 'required|string|max:255',
+            'collab_url' => 'nullable|string|max:255',
         ]);
 
         $event = Event::find($id);
@@ -328,8 +328,8 @@ class AdminEventController extends Controller
             $file = $request->file('collab_logo_base64');
             $name = 'logo-event-' . $event->id . '.' . $file->getClientOriginalExtension();
             $deletePath = public_path('collab-logo/') . $event->collab_logo_name;
-
-            if(file_exists($deletePath)) {
+            
+            if($event->collab_logo_name && file_exists($deletePath)) {
                 unlink($deletePath);
             }
 
@@ -359,10 +359,11 @@ class AdminEventController extends Controller
         $event = Event::find($id);
         $path = public_path('collab-logo/') . $event->collab_logo_name;
 
-        if(file_exists($path)) {
+        if($event->collab_logo_name && file_exists($path)) {
             unlink($path);
         }
 
+        $event->jawabans()->delete();
         $event->delete();
 
         return redirect()->route('admin.event.index');
@@ -473,8 +474,11 @@ class AdminEventController extends Controller
         $testPurpose = $jawaban->event->tujuan_tes;
         $gender = $user->jenis_kelamin;
         $dimension = $jawaban->dimensi_kepemimpinan;
+        $collabLogo = null;
         
-        $collabLogo = file_get_contents(public_path('collab-logo/' . $jawaban->event->collab_logo_name))? base64_encode(file_get_contents(public_path('collab-logo/' . $jawaban->event->collab_logo_name))) : null;
+        if (file_exists(public_path('collab-logo/' . $jawaban->event->collab_logo_name))) {
+            $collabLogo = base64_encode(file_get_contents(public_path('collab-logo/' . $jawaban->event->collab_logo_name)));
+        }
         $collabUrl = $jawaban->event->collab_url;
         $collabCompanyName = $jawaban->event->institusi;
         $inconsistentDimension = $jawaban->inconsistent_dimension;

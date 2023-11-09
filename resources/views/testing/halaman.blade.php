@@ -91,9 +91,9 @@
                     {{ $message }}
                 </h1>
             @enderror
-            <div class="flex">
-                <a href="{{ route('user.download.laporan') }}" class="mr-2 mt-2 mb-8 w-3/4 md:w-2/12 mx-auto block border-2 rounded-full border-secondary text-center text-secondary hover:bg-secondary hover:border-transparent hover:text-primary py-3 px-2">Unduh Hasil Tes</a>
-                <a href="{{ route('user.download.laporan', ['view' => 'view']) }}" class="ml-2 mt-2 mb-8 w-3/4 md:w-2/12 mx-auto block border-2 rounded-full border-secondary text-center text-secondary hover:bg-secondary hover:border-transparent hover:text-primary py-3 px-2" target="_blank">Lihat Hasil Tes</a>
+            <div class="md:flex">
+                <a href="{{ route('user.download.laporan') }}" class="md:mr-2 mt-6 md:mt-2 mb-2 md:mb-8 w-3/4 md:w-2/12 mx-auto block border-2 rounded-full border-secondary text-center text-secondary hover:bg-secondary hover:border-transparent hover:text-primary py-3 px-2">Unduh Hasil Tes</a>
+                <a href="{{ route('user.download.laporan', ['view' => 'view']) }}" class="md:ml-2 mt-2 mb-8 w-3/4 md:w-2/12 mx-auto block border-2 rounded-full border-secondary text-center text-secondary hover:bg-secondary hover:border-transparent hover:text-primary py-3 px-2" target="_blank">Lihat Hasil Tes</a>
             </div>
         </div>
 <!-- Empty Hero -->
