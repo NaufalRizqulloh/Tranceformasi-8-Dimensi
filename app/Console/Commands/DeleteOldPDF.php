@@ -20,7 +20,7 @@ class DeleteOldPDF extends Command
      *
      * @var string
      */
-    protected $description = 'Command description';
+    protected $description = 'Delete old pdf files (30 days+)';
 
     /**
      * Execute the console command.
